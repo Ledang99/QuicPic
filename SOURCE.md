@@ -1,6 +1,6 @@
 # Source Code Guide
 
-This repository contains the **most complete publicly available source** for QuickPic Gallery Mod **v10.0**. The original Java/Kotlin Gradle project was never released by the developer — only modded APKs are distributed.
+This repository contains the **most complete publicly available source** for QuickPic Gallery Mod **v10.0.8**. The original Java/Kotlin Gradle project was never released by the developer — only modded APKs are distributed.
 
 ## What is included
 
@@ -9,7 +9,8 @@ This repository contains the **most complete publicly available source** for Qui
 | `source/` | Smali + XML resources | **Rebuild APK** with apktool (`./build.sh`) |
 | `source-java/` | Decompiled Java | **Read and study** app logic in Android Studio / any IDE (v9.7 reference) |
 | `source/lib/` | Native binaries | `libqpicjni156.so` — `arm64-v8a`, `armeabi`, `x86` |
-| `releases/stable.apk` | Signed APK | Pre-built output (v10.0) |
+| `native/` | C source | Reproducible arm64 compatibility stub for Android 16 |
+| `releases/stable.apk` | Signed APK | Pre-built output (v10.0.8) |
 | `.github/workflows/android.yml` | GitHub Actions | Automated build on push to `master` |
 
 ### App packages (main code)
@@ -17,7 +18,7 @@ This repository contains the **most complete publicly available source** for Qui
 - **QuickPic UI:** `com.alensw.*` — gallery, viewer, settings, cloud sync
 - **Libraries:** `androidx.*`, `org.apache.http.*`, bundled support libs
 
-### File counts (v10.0)
+### File counts (v10.0.8)
 
 - ~2,800+ smali files (`source/smali/`, `smali_classes2/`–`smali_classes4/`)
 - ~2,163 Java files (`source-java/sources/`) — reference from v9.7
@@ -28,7 +29,7 @@ This repository contains the **most complete publicly available source** for Qui
 These cannot be recovered from the APK:
 
 1. **Original Gradle/Android Studio project** — no `build.gradle`, no original class names
-2. **Native C/C++ source** — `libqpicjni156.so` is a compiled binary (image processing JNI)
+2. **Original native C/C++ source** — only the arm64 compatibility stub is reproducible; the functional 32-bit image-processing JNI remains prebuilt
 3. **Unobfuscated names** — some packages use minified names (`p000a`, `p012b`, etc.)
 
 ## Build from source
@@ -36,6 +37,12 @@ These cannot be recovered from the APK:
 ```bash
 ./scripts/setup-tools.sh   # install apktool + Android SDK tools (first time)
 ./build.sh                 # compiles source/ → releases/stable.apk
+```
+
+To rebuild the arm64 compatibility library, install NDK 29 and run:
+
+```bash
+./scripts/build-arm64-stub.sh
 ```
 
 Modifications must be made in `source/` (smali/resources), not `source-java/`. Java files are for reference only — recompiling them requires a separate Gradle setup.
@@ -68,15 +75,26 @@ Download from: **Actions** → latest green run → **Artifacts**.
 
 **Minimum Android:** API 26 (Android 8.0).
 
-Older v9.7 builds (32-bit `armeabi` / `x86` only) will **not install** on many newer phones. This repo uses v10.0 source with `arm64-v8a`.
+Older v9.7 builds (32-bit only, `targetSdk 23`) will **not install** on many newer phones. This repo uses v10.0 with `arm64-v8a` and `targetSdk 34`.
 
 ## Known issues and fixes (this fork)
 
 ### Install: "App not compatible with your phone"
 
-**Cause:** APK lacks `arm64-v8a` native libraries (v9.7 and earlier).
+**Causes:**
 
-**Fix:** Build from this repo’s v10.0 `source/` (includes `lib/arm64-v8a/libqpicjni156.so`). See [CHANGELOG.md](CHANGELOG.md).
+1. **Missing `arm64-v8a`** — v9.7 official APK has only 32-bit libs.
+2. **Low `targetSdkVersion`** — Android 15+ blocks apps targeting API 23 or lower at install time. A v9.7-based build will fail on Android 15 even with arm64 added.
+
+**Fix:** Build from this repo’s v10.0.8 `source/` (`targetSdk 34`, `arm64-v8a`, `READ_MEDIA_*` permissions). See [CHANGELOG.md](CHANGELOG.md).
+
+### Crash immediately after install (opens then closes)
+
+**Causes:** v10.0.2 alpha lacked Android 13+ `READ_MEDIA_*` permissions. Later startup hardening accidentally returned integer `400` from the boolean `QuickApp.g()` method, which Android 16 ART rejected before creating the application. The arm64 compatibility stub also bundled an obsolete NDK r26b static runtime.
+
+**Fix:** Permissions were added in v10.0.1; v10.0.7 restores valid bytecode and rebuilds the arm64 stub with NDK r29 and flexible 16 KB page support. v10.0.8 adds persistent startup/crash logs and repairs the complete folder-access onboarding flow.
+
+Debug logs are written to the app external-files directory. Once **All files access** is enabled, a directly viewable copy is also appended at `Download/QuickPic-debug.log`.
 
 ### Grid thumbnails sideways after rotating an image
 
@@ -95,6 +113,6 @@ Older v9.7 builds (32-bit `armeabi` / `x86` only) will **not install** on many n
 
 ## Upstream
 
-Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha**.
+Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha** with manifest fixes.
 
 See [CHANGELOG.md](CHANGELOG.md) for fork-specific changes.
