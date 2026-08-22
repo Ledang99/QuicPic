@@ -26,8 +26,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 54
-    .local p0, "this":Lorg/apache/http/impl/client/AbstractResponseHandler;, "Lorg/apache/http/impl/client/AbstractResponseHandler<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -53,7 +51,6 @@
 
 .method public handleResponse(Lorg/apache/http/HttpResponse;)Ljava/lang/Object;
     .locals 5
-    .param p1, "response"    # Lorg/apache/http/HttpResponse;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -69,20 +66,14 @@
         }
     .end annotation
 
-    .line 65
-    .local p0, "this":Lorg/apache/http/impl/client/AbstractResponseHandler;, "Lorg/apache/http/impl/client/AbstractResponseHandler<TT;>;"
     invoke-interface {p1}, Lorg/apache/http/HttpResponse;->getStatusLine()Lorg/apache/http/StatusLine;
 
     move-result-object v0
 
-    .line 66
-    .local v0, "statusLine":Lorg/apache/http/StatusLine;
     invoke-interface {p1}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v1
 
-    .line 67
-    .local v1, "entity":Lorg/apache/http/HttpEntity;
     invoke-interface {v0}, Lorg/apache/http/StatusLine;->getStatusCode()I
 
     move-result v2
@@ -91,7 +82,6 @@
 
     if-ge v2, v3, :cond_1
 
-    .line 72
     if-nez v1, :cond_0
 
     const/4 v2, 0x0
@@ -106,11 +96,9 @@
     :goto_0
     return-object v2
 
-    .line 68
     :cond_1
     invoke-static {v1}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 69
     new-instance v2, Lorg/apache/http/client/HttpResponseException;
 
     invoke-interface {v0}, Lorg/apache/http/StatusLine;->getStatusCode()I

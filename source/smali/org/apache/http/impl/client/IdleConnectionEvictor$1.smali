@@ -27,7 +27,6 @@
 .method constructor <init>(Lorg/apache/http/impl/client/IdleConnectionEvictor;Lorg/apache/http/conn/HttpClientConnectionManager;)V
     .locals 0
 
-    .line 61
     iput-object p1, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->this$0:Lorg/apache/http/impl/client/IdleConnectionEvictor;
 
     iput-object p2, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->val$connectionManager:Lorg/apache/http/conn/HttpClientConnectionManager;
@@ -42,7 +41,6 @@
 .method public run()V
     .locals 5
 
-    .line 65
     :cond_0
     :goto_0
     :try_start_0
@@ -56,7 +54,6 @@
 
     if-nez v0, :cond_1
 
-    .line 66
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->this$0:Lorg/apache/http/impl/client/IdleConnectionEvictor;
 
     invoke-static {v0}, Lorg/apache/http/impl/client/IdleConnectionEvictor;->access$000(Lorg/apache/http/impl/client/IdleConnectionEvictor;)J
@@ -65,12 +62,10 @@
 
     invoke-static {v0, v1}, Ljava/lang/Thread;->sleep(J)V
 
-    .line 67
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->val$connectionManager:Lorg/apache/http/conn/HttpClientConnectionManager;
 
     invoke-interface {v0}, Lorg/apache/http/conn/HttpClientConnectionManager;->closeExpiredConnections()V
 
-    .line 68
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->this$0:Lorg/apache/http/impl/client/IdleConnectionEvictor;
 
     invoke-static {v0}, Lorg/apache/http/impl/client/IdleConnectionEvictor;->access$100(Lorg/apache/http/impl/client/IdleConnectionEvictor;)J
@@ -83,7 +78,6 @@
 
     if-lez v4, :cond_0
 
-    .line 69
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->val$connectionManager:Lorg/apache/http/conn/HttpClientConnectionManager;
 
     iget-object v1, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->this$0:Lorg/apache/http/impl/client/IdleConnectionEvictor;
@@ -100,22 +94,16 @@
 
     goto :goto_0
 
-    .line 74
     :cond_1
     goto :goto_1
 
-    .line 72
     :catch_0
     move-exception v0
 
-    .line 73
-    .local v0, "ex":Ljava/lang/Exception;
     iget-object v1, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;->this$0:Lorg/apache/http/impl/client/IdleConnectionEvictor;
 
     invoke-static {v1, v0}, Lorg/apache/http/impl/client/IdleConnectionEvictor;->access$202(Lorg/apache/http/impl/client/IdleConnectionEvictor;Ljava/lang/Exception;)Ljava/lang/Exception;
 
-    .line 76
-    .end local v0    # "ex":Ljava/lang/Exception;
     :goto_1
     return-void
 .end method

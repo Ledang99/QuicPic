@@ -33,7 +33,6 @@
 .method static constructor <clinit>()V
     .locals 5
 
-    .line 54
     :try_start_0
     const-class v0, Lorg/apache/http/impl/client/CloseableHttpResponseProxy;
 
@@ -69,18 +68,13 @@
     :try_end_0
     .catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 58
     nop
 
-    .line 59
     return-void
 
-    .line 56
     :catch_0
     move-exception v0
 
-    .line 57
-    .local v0, "ex":Ljava/lang/NoSuchMethodException;
     new-instance v1, Ljava/lang/IllegalStateException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
@@ -90,23 +84,17 @@
 
 .method constructor <init>(Lorg/apache/http/HttpResponse;)V
     .locals 0
-    .param p1, "original"    # Lorg/apache/http/HttpResponse;
 
-    .line 64
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 65
     iput-object p1, p0, Lorg/apache/http/impl/client/CloseableHttpResponseProxy;->original:Lorg/apache/http/HttpResponse;
 
-    .line 66
     return-void
 .end method
 
 .method public static newProxy(Lorg/apache/http/HttpResponse;)Lorg/apache/http/client/methods/CloseableHttpResponse;
     .locals 4
-    .param p0, "original"    # Lorg/apache/http/HttpResponse;
 
-    .line 96
     :try_start_0
     sget-object v0, Lorg/apache/http/impl/client/CloseableHttpResponseProxy;->CONSTRUCTOR:Ljava/lang/reflect/Constructor;
 
@@ -134,38 +122,27 @@
 
     return-object v0
 
-    .line 101
     :catch_0
     move-exception v0
 
-    .line 102
-    .local v0, "ex":Ljava/lang/IllegalAccessException;
     new-instance v1, Ljava/lang/IllegalStateException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
 
     throw v1
 
-    .line 99
-    .end local v0    # "ex":Ljava/lang/IllegalAccessException;
     :catch_1
     move-exception v0
 
-    .line 100
-    .local v0, "ex":Ljava/lang/reflect/InvocationTargetException;
     new-instance v1, Ljava/lang/IllegalStateException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
 
     throw v1
 
-    .line 97
-    .end local v0    # "ex":Ljava/lang/reflect/InvocationTargetException;
     :catch_2
     move-exception v0
 
-    .line 98
-    .local v0, "ex":Ljava/lang/InstantiationException;
     new-instance v1, Ljava/lang/IllegalStateException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
@@ -183,39 +160,29 @@
         }
     .end annotation
 
-    .line 69
     iget-object v0, p0, Lorg/apache/http/impl/client/CloseableHttpResponseProxy;->original:Lorg/apache/http/HttpResponse;
 
     invoke-interface {v0}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v0
 
-    .line 70
-    .local v0, "entity":Lorg/apache/http/HttpEntity;
     invoke-static {v0}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 71
     return-void
 .end method
 
 .method public invoke(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;
     .locals 3
-    .param p1, "proxy"    # Ljava/lang/Object;
-    .param p2, "method"    # Ljava/lang/reflect/Method;
-    .param p3, "args"    # [Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
         }
     .end annotation
 
-    .line 76
     invoke-virtual {p2}, Ljava/lang/reflect/Method;->getName()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 77
-    .local v0, "mname":Ljava/lang/String;
     const-string v1, "close"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -224,15 +191,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 78
     invoke-virtual {p0}, Lorg/apache/http/impl/client/CloseableHttpResponseProxy;->close()V
 
-    .line 79
     const/4 v1, 0x0
 
     return-object v1
 
-    .line 82
     :cond_0
     :try_start_0
     iget-object v1, p0, Lorg/apache/http/impl/client/CloseableHttpResponseProxy;->original:Lorg/apache/http/HttpResponse;
@@ -245,24 +209,17 @@
 
     return-object v1
 
-    .line 83
     :catch_0
     move-exception v1
 
-    .line 84
-    .local v1, "ex":Ljava/lang/reflect/InvocationTargetException;
     invoke-virtual {v1}, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
 
     move-result-object v2
 
-    .line 85
-    .local v2, "cause":Ljava/lang/Throwable;
     if-eqz v2, :cond_1
 
-    .line 86
     throw v2
 
-    .line 88
     :cond_1
     throw v1
 .end method

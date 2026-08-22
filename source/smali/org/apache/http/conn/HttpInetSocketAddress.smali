@@ -19,22 +19,15 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/HttpHost;Ljava/net/InetAddress;I)V
     .locals 1
-    .param p1, "httphost"    # Lorg/apache/http/HttpHost;
-    .param p2, "addr"    # Ljava/net/InetAddress;
-    .param p3, "port"    # I
 
-    .line 51
     invoke-direct {p0, p2, p3}, Ljava/net/InetSocketAddress;-><init>(Ljava/net/InetAddress;I)V
 
-    .line 52
     const-string v0, "HTTP host"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 53
     iput-object p1, p0, Lorg/apache/http/conn/HttpInetSocketAddress;->httphost:Lorg/apache/http/HttpHost;
 
-    .line 54
     return-void
 .end method
 
@@ -43,7 +36,6 @@
 .method public getHttpHost()Lorg/apache/http/HttpHost;
     .locals 1
 
-    .line 57
     iget-object v0, p0, Lorg/apache/http/conn/HttpInetSocketAddress;->httphost:Lorg/apache/http/HttpHost;
 
     return-object v0
@@ -52,7 +44,6 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .line 62
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

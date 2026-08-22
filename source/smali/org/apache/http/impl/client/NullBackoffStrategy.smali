@@ -10,7 +10,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 38
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -20,9 +19,7 @@
 # virtual methods
 .method public shouldBackoff(Ljava/lang/Throwable;)Z
     .locals 1
-    .param p1, "t"    # Ljava/lang/Throwable;
 
-    .line 42
     const/4 v0, 0x0
 
     return v0
@@ -30,9 +27,7 @@
 
 .method public shouldBackoff(Lorg/apache/http/HttpResponse;)Z
     .locals 1
-    .param p1, "resp"    # Lorg/apache/http/HttpResponse;
 
-    .line 47
     const/4 v0, 0x0
 
     return v0

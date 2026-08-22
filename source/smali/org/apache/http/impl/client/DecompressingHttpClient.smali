@@ -23,22 +23,18 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 89
     new-instance v0, Lorg/apache/http/impl/client/DefaultHttpClient;
 
     invoke-direct {v0}, Lorg/apache/http/impl/client/DefaultHttpClient;-><init>()V
 
     invoke-direct {p0, v0}, Lorg/apache/http/impl/client/DecompressingHttpClient;-><init>(Lorg/apache/http/client/HttpClient;)V
 
-    .line 90
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/client/HttpClient;)V
     .locals 2
-    .param p1, "backend"    # Lorg/apache/http/client/HttpClient;
 
-    .line 99
     new-instance v0, Lorg/apache/http/client/protocol/RequestAcceptEncoding;
 
     invoke-direct {v0}, Lorg/apache/http/client/protocol/RequestAcceptEncoding;-><init>()V
@@ -49,29 +45,20 @@
 
     invoke-direct {p0, p1, v0, v1}, Lorg/apache/http/impl/client/DecompressingHttpClient;-><init>(Lorg/apache/http/client/HttpClient;Lorg/apache/http/HttpRequestInterceptor;Lorg/apache/http/HttpResponseInterceptor;)V
 
-    .line 100
     return-void
 .end method
 
 .method constructor <init>(Lorg/apache/http/client/HttpClient;Lorg/apache/http/HttpRequestInterceptor;Lorg/apache/http/HttpResponseInterceptor;)V
     .locals 0
-    .param p1, "backend"    # Lorg/apache/http/client/HttpClient;
-    .param p2, "requestInterceptor"    # Lorg/apache/http/HttpRequestInterceptor;
-    .param p3, "responseInterceptor"    # Lorg/apache/http/HttpResponseInterceptor;
 
-    .line 104
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 105
     iput-object p1, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->backend:Lorg/apache/http/client/HttpClient;
 
-    .line 106
     iput-object p2, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->acceptEncodingInterceptor:Lorg/apache/http/HttpRequestInterceptor;
 
-    .line 107
     iput-object p3, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->contentEncodingInterceptor:Lorg/apache/http/HttpResponseInterceptor;
 
-    .line 108
     return-void
 .end method
 
@@ -79,8 +66,6 @@
 # virtual methods
 .method public execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;)Ljava/lang/Object;
     .locals 1
-    .param p1, "target"    # Lorg/apache/http/HttpHost;
-    .param p2, "request"    # Lorg/apache/http/HttpRequest;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -100,8 +85,6 @@
         }
     .end annotation
 
-    .line 197
-    .local p3, "responseHandler":Lorg/apache/http/client/ResponseHandler;, "Lorg/apache/http/client/ResponseHandler<+TT;>;"
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, p2, p3, v0}, Lorg/apache/http/impl/client/DecompressingHttpClient;->execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;
@@ -113,9 +96,6 @@
 
 .method public execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;
     .locals 3
-    .param p1, "target"    # Lorg/apache/http/HttpHost;
-    .param p2, "request"    # Lorg/apache/http/HttpRequest;
-    .param p4, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -137,14 +117,10 @@
         }
     .end annotation
 
-    .line 203
-    .local p3, "responseHandler":Lorg/apache/http/client/ResponseHandler;, "Lorg/apache/http/client/ResponseHandler<+TT;>;"
     invoke-virtual {p0, p1, p2, p4}, Lorg/apache/http/impl/client/DecompressingHttpClient;->execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;
 
     move-result-object v0
 
-    .line 205
-    .local v0, "response":Lorg/apache/http/HttpResponse;
     :try_start_0
     invoke-interface {p3, v0}, Lorg/apache/http/client/ResponseHandler;->handleResponse(Lorg/apache/http/HttpResponse;)Ljava/lang/Object;
 
@@ -152,24 +128,17 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 207
     invoke-interface {v0}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v2
 
-    .line 208
-    .local v2, "entity":Lorg/apache/http/HttpEntity;
     if-eqz v2, :cond_0
 
-    .line 209
     invoke-static {v2}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 211
-    .end local v2    # "entity":Lorg/apache/http/HttpEntity;
     :cond_0
     return-object v1
 
-    .line 207
     :catchall_0
     move-exception v1
 
@@ -177,22 +146,16 @@
 
     move-result-object v2
 
-    .line 208
-    .restart local v2    # "entity":Lorg/apache/http/HttpEntity;
     if-eqz v2, :cond_1
 
-    .line 209
     invoke-static {v2}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 211
-    .end local v2    # "entity":Lorg/apache/http/HttpEntity;
     :cond_1
     throw v1
 .end method
 
 .method public execute(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/client/ResponseHandler;)Ljava/lang/Object;
     .locals 1
-    .param p1, "request"    # Lorg/apache/http/client/methods/HttpUriRequest;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -211,8 +174,6 @@
         }
     .end annotation
 
-    .line 185
-    .local p2, "responseHandler":Lorg/apache/http/client/ResponseHandler;, "Lorg/apache/http/client/ResponseHandler<+TT;>;"
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/client/DecompressingHttpClient;->getHttpHost(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpHost;
 
     move-result-object v0
@@ -226,8 +187,6 @@
 
 .method public execute(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;
     .locals 1
-    .param p1, "request"    # Lorg/apache/http/client/methods/HttpUriRequest;
-    .param p3, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -248,8 +207,6 @@
         }
     .end annotation
 
-    .line 191
-    .local p2, "responseHandler":Lorg/apache/http/client/ResponseHandler;, "Lorg/apache/http/client/ResponseHandler<+TT;>;"
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/client/DecompressingHttpClient;->getHttpHost(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpHost;
 
     move-result-object v0
@@ -263,8 +220,6 @@
 
 .method public execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;)Lorg/apache/http/HttpResponse;
     .locals 1
-    .param p1, "target"    # Lorg/apache/http/HttpHost;
-    .param p2, "request"    # Lorg/apache/http/HttpRequest;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;,
@@ -272,7 +227,6 @@
         }
     .end annotation
 
-    .line 144
     const/4 v0, 0x0
 
     check-cast v0, Lorg/apache/http/protocol/HttpContext;
@@ -286,9 +240,6 @@
 
 .method public execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;
     .locals 5
-    .param p1, "target"    # Lorg/apache/http/HttpHost;
-    .param p2, "request"    # Lorg/apache/http/HttpRequest;
-    .param p3, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;,
@@ -296,7 +247,6 @@
         }
     .end annotation
 
-    .line 150
     if-eqz p3, :cond_0
 
     move-object v0, p3
@@ -309,14 +259,11 @@
 
     invoke-direct {v0}, Lorg/apache/http/protocol/BasicHttpContext;-><init>()V
 
-    .line 152
-    .local v0, "localContext":Lorg/apache/http/protocol/HttpContext;
     :goto_0
     instance-of v1, p2, Lorg/apache/http/HttpEntityEnclosingRequest;
 
     if-eqz v1, :cond_1
 
-    .line 153
     new-instance v1, Lorg/apache/http/impl/client/EntityEnclosingRequestWrapper;
 
     move-object v2, p2
@@ -325,24 +272,18 @@
 
     invoke-direct {v1, v2}, Lorg/apache/http/impl/client/EntityEnclosingRequestWrapper;-><init>(Lorg/apache/http/HttpEntityEnclosingRequest;)V
 
-    .local v1, "wrapped":Lorg/apache/http/HttpRequest;
     goto :goto_1
 
-    .line 155
-    .end local v1    # "wrapped":Lorg/apache/http/HttpRequest;
     :cond_1
     new-instance v1, Lorg/apache/http/impl/client/RequestWrapper;
 
     invoke-direct {v1, p2}, Lorg/apache/http/impl/client/RequestWrapper;-><init>(Lorg/apache/http/HttpRequest;)V
 
-    .line 157
-    .restart local v1    # "wrapped":Lorg/apache/http/HttpRequest;
     :goto_1
     iget-object v2, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->acceptEncodingInterceptor:Lorg/apache/http/HttpRequestInterceptor;
 
     invoke-interface {v2, v1, v0}, Lorg/apache/http/HttpRequestInterceptor;->process(Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)V
 
-    .line 158
     iget-object v2, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->backend:Lorg/apache/http/client/HttpClient;
 
     invoke-interface {v2, p1, v1, v0}, Lorg/apache/http/client/HttpClient;->execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;
@@ -351,14 +292,11 @@
     :try_end_0
     .catch Lorg/apache/http/HttpException; {:try_start_0 .. :try_end_0} :catch_3
 
-    .line 160
-    .local v2, "response":Lorg/apache/http/HttpResponse;
     :try_start_1
     iget-object v3, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->contentEncodingInterceptor:Lorg/apache/http/HttpResponseInterceptor;
 
     invoke-interface {v3, v2, v0}, Lorg/apache/http/HttpResponseInterceptor;->process(Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)V
 
-    .line 161
     sget-object v3, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
 
     const-string v4, "http.client.response.uncompressed"
@@ -373,17 +311,14 @@
 
     if-eqz v3, :cond_2
 
-    .line 162
     const-string v3, "Content-Length"
 
     invoke-interface {v2, v3}, Lorg/apache/http/HttpResponse;->removeHeaders(Ljava/lang/String;)V
 
-    .line 163
     const-string v3, "Content-Encoding"
 
     invoke-interface {v2, v3}, Lorg/apache/http/HttpResponse;->removeHeaders(Ljava/lang/String;)V
 
-    .line 164
     const-string v3, "Content-MD5"
 
     invoke-interface {v2, v3}, Lorg/apache/http/HttpResponse;->removeHeaders(Ljava/lang/String;)V
@@ -392,16 +327,12 @@
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
     .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 166
     :cond_2
     return-object v2
 
-    .line 173
     :catch_0
     move-exception v3
 
-    .line 174
-    .local v3, "ex":Ljava/lang/RuntimeException;
     :try_start_2
     invoke-interface {v2}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
 
@@ -409,77 +340,41 @@
 
     invoke-static {v4}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 175
     nop
 
-    .end local p1    # "target":Lorg/apache/http/HttpHost;
-    .end local p2    # "request":Lorg/apache/http/HttpRequest;
-    .end local p3    # "context":Lorg/apache/http/protocol/HttpContext;
     throw v3
 
-    .line 170
-    .end local v3    # "ex":Ljava/lang/RuntimeException;
-    .restart local p1    # "target":Lorg/apache/http/HttpHost;
-    .restart local p2    # "request":Lorg/apache/http/HttpRequest;
-    .restart local p3    # "context":Lorg/apache/http/protocol/HttpContext;
     :catch_1
     move-exception v3
 
-    .line 171
-    .local v3, "ex":Ljava/io/IOException;
     invoke-interface {v2}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v4
 
     invoke-static {v4}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 172
     nop
 
-    .end local p1    # "target":Lorg/apache/http/HttpHost;
-    .end local p2    # "request":Lorg/apache/http/HttpRequest;
-    .end local p3    # "context":Lorg/apache/http/protocol/HttpContext;
     throw v3
 
-    .line 167
-    .end local v3    # "ex":Ljava/io/IOException;
-    .restart local p1    # "target":Lorg/apache/http/HttpHost;
-    .restart local p2    # "request":Lorg/apache/http/HttpRequest;
-    .restart local p3    # "context":Lorg/apache/http/protocol/HttpContext;
     :catch_2
     move-exception v3
 
-    .line 168
-    .local v3, "ex":Lorg/apache/http/HttpException;
     invoke-interface {v2}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v4
 
     invoke-static {v4}, Lorg/apache/http/util/EntityUtils;->consume(Lorg/apache/http/HttpEntity;)V
 
-    .line 169
     nop
 
-    .end local p1    # "target":Lorg/apache/http/HttpHost;
-    .end local p2    # "request":Lorg/apache/http/HttpRequest;
-    .end local p3    # "context":Lorg/apache/http/protocol/HttpContext;
     throw v3
     :try_end_2
     .catch Lorg/apache/http/HttpException; {:try_start_2 .. :try_end_2} :catch_3
 
-    .line 177
-    .end local v0    # "localContext":Lorg/apache/http/protocol/HttpContext;
-    .end local v1    # "wrapped":Lorg/apache/http/HttpRequest;
-    .end local v2    # "response":Lorg/apache/http/HttpResponse;
-    .end local v3    # "ex":Lorg/apache/http/HttpException;
-    .restart local p1    # "target":Lorg/apache/http/HttpHost;
-    .restart local p2    # "request":Lorg/apache/http/HttpRequest;
-    .restart local p3    # "context":Lorg/apache/http/protocol/HttpContext;
     :catch_3
     move-exception v0
 
-    .line 178
-    .local v0, "e":Lorg/apache/http/HttpException;
     new-instance v1, Lorg/apache/http/client/ClientProtocolException;
 
     invoke-direct {v1, v0}, Lorg/apache/http/client/ClientProtocolException;-><init>(Ljava/lang/Throwable;)V
@@ -489,7 +384,6 @@
 
 .method public execute(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
     .locals 2
-    .param p1, "request"    # Lorg/apache/http/client/methods/HttpUriRequest;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;,
@@ -497,7 +391,6 @@
         }
     .end annotation
 
-    .line 120
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/client/DecompressingHttpClient;->getHttpHost(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpHost;
 
     move-result-object v0
@@ -515,8 +408,6 @@
 
 .method public execute(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;
     .locals 1
-    .param p1, "request"    # Lorg/apache/http/client/methods/HttpUriRequest;
-    .param p2, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;,
@@ -524,7 +415,6 @@
         }
     .end annotation
 
-    .line 139
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/client/DecompressingHttpClient;->getHttpHost(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpHost;
 
     move-result-object v0
@@ -539,7 +429,6 @@
 .method public getConnectionManager()Lorg/apache/http/conn/ClientConnectionManager;
     .locals 1
 
-    .line 115
     iget-object v0, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->backend:Lorg/apache/http/client/HttpClient;
 
     invoke-interface {v0}, Lorg/apache/http/client/HttpClient;->getConnectionManager()Lorg/apache/http/conn/ClientConnectionManager;
@@ -552,7 +441,6 @@
 .method public getHttpClient()Lorg/apache/http/client/HttpClient;
     .locals 1
 
-    .line 129
     iget-object v0, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->backend:Lorg/apache/http/client/HttpClient;
 
     return-object v0
@@ -560,15 +448,11 @@
 
 .method getHttpHost(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpHost;
     .locals 2
-    .param p1, "request"    # Lorg/apache/http/client/methods/HttpUriRequest;
 
-    .line 133
     invoke-interface {p1}, Lorg/apache/http/client/methods/HttpUriRequest;->getURI()Ljava/net/URI;
 
     move-result-object v0
 
-    .line 134
-    .local v0, "uri":Ljava/net/URI;
     invoke-static {v0}, Lorg/apache/http/client/utils/URIUtils;->extractHost(Ljava/net/URI;)Lorg/apache/http/HttpHost;
 
     move-result-object v1
@@ -579,7 +463,6 @@
 .method public getParams()Lorg/apache/http/params/HttpParams;
     .locals 1
 
-    .line 111
     iget-object v0, p0, Lorg/apache/http/impl/client/DecompressingHttpClient;->backend:Lorg/apache/http/client/HttpClient;
 
     invoke-interface {v0}, Lorg/apache/http/client/HttpClient;->getParams()Lorg/apache/http/params/HttpParams;

@@ -254,7 +254,7 @@ You can also %s to let others connect your hotspot."</string>
     <string name="disable_option">Disabled</string>
     <string name="contributors">Contributors</string>
     <string name="contributors_desc">People who help in project</string>
-    <string name="version">10.0</string>
+    <string name="version">9.7</string>
     <string name="split_action_bar_summary_on">May not work on versions higher than Android 8.1.0 or with Xposed modules</string>
     <string name="faq">Frequently asked questions</string>
     <string name="faq_desc">Cloud sync, among others</string>
@@ -275,8 +275,8 @@ You can also %s to let others connect your hotspot."</string>
     <string name="clear_category">Cleaning</string>
     <string name="anim_category">Animation</string>
     <string name="app_name_full">QuickPic Gallery</string>
-    <string name="version_number">Version: 10.0 (Moon)</string>
-    <string name="build_type">ALPHA 2</string>
+    <string name="version_number">Version: 9.7 (Methuselah)</string>
+    <string name="build_type">stable</string>
     <string name="telegram_url">https://t.me/WSTxda</string>
     <string name="email_url">mailto:wstxda@gmail.com</string>
     <string name="paypal_url">https://bit.ly/2lV0E6u</string>

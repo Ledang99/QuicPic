@@ -1,6 +1,5 @@
 .class public Lcom/alensw/b/l/b;
 .super Ljava/lang/Object;
-.source "b.java"
 
 
 # static fields
@@ -2760,73 +2759,21 @@
 .end method
 
 .method public static h(Ljava/lang/String;)Z
-    .locals 5
-    .param p0, "str"    # Ljava/lang/String;
+    .locals 1
 
-    .line 16
-    new-instance v0, Ljava/io/File;
+    if-eqz p0, :cond_0
 
-    invoke-direct {v0, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+    invoke-static {p0}, Lcom/alensw/jni/JniUtils;->fuHasNoMedia(Ljava/lang/String;)Z
 
-    .line 17
-    .local v0, "f":Ljava/io/File;
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+    move-result v0
 
-    move-result v1
+    :goto_0
+    return v0
 
-    const/4 v2, 0x0
-
-    if-nez v1, :cond_0
-
-    return v2
-
-    .line 18
     :cond_0
-    invoke-virtual {v0}, Ljava/io/File;->getName()Ljava/lang/String;
+    const/4 v0, 0x0
 
-    move-result-object v1
-
-    const-string v3, "."
-
-    invoke-virtual {v1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    new-instance v1, Ljava/io/File;
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v0}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v4, "/.nomedia"
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {v1, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v1}, Ljava/io/File;->exists()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    :cond_1
-    const/4 v2, 0x1
-
-    :cond_2
-    return v2
+    goto :goto_0
 .end method
 
 .method public static i(Ljava/lang/String;)Z

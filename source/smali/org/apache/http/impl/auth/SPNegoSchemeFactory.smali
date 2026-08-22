@@ -22,49 +22,36 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 65
     const/4 v0, 0x1
 
     invoke-direct {p0, v0, v0}, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;-><init>(ZZ)V
 
-    .line 66
     return-void
 .end method
 
 .method public constructor <init>(Z)V
     .locals 1
-    .param p1, "stripPort"    # Z
 
-    .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
     iput-boolean p1, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->stripPort:Z
 
-    .line 61
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->useCanonicalHostname:Z
 
-    .line 62
     return-void
 .end method
 
 .method public constructor <init>(ZZ)V
     .locals 0
-    .param p1, "stripPort"    # Z
-    .param p2, "useCanonicalHostname"    # Z
 
-    .line 53
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 54
     iput-boolean p1, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->stripPort:Z
 
-    .line 55
     iput-boolean p2, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->useCanonicalHostname:Z
 
-    .line 56
     return-void
 .end method
 
@@ -72,9 +59,7 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/auth/AuthScheme;
     .locals 3
-    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
-    .line 83
     new-instance v0, Lorg/apache/http/impl/auth/SPNegoScheme;
 
     iget-boolean v1, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->stripPort:Z
@@ -89,7 +74,6 @@
 .method public isStripPort()Z
     .locals 1
 
-    .line 69
     iget-boolean v0, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->stripPort:Z
 
     return v0
@@ -98,7 +82,6 @@
 .method public isUseCanonicalHostname()Z
     .locals 1
 
-    .line 73
     iget-boolean v0, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->useCanonicalHostname:Z
 
     return v0
@@ -106,9 +89,7 @@
 
 .method public newInstance(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/auth/AuthScheme;
     .locals 3
-    .param p1, "params"    # Lorg/apache/http/params/HttpParams;
 
-    .line 78
     new-instance v0, Lorg/apache/http/impl/auth/SPNegoScheme;
 
     iget-boolean v1, p0, Lorg/apache/http/impl/auth/SPNegoSchemeFactory;->stripPort:Z

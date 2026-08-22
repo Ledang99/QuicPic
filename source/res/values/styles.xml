@@ -525,6 +525,7 @@
     <style name="TextAppearance.Title.Dialog" parent="@android:style/TextAppearance.Material.Subhead">
         <item name="android:textSize">22.0sp</item>
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:maxLines">4</item>
     </style>
     <style name="ActionTextHide" parent="@style/ActionItem">
         <item name="android:textSize">0.0dip</item>

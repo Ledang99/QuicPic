@@ -1,6 +1,5 @@
 .class public Lcom/alensw/b/h/c;
 .super Lcom/alensw/jni/JniUtils;
-.source "c.java"
 
 
 # static fields

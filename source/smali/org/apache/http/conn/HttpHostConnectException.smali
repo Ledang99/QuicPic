@@ -19,11 +19,7 @@
 # direct methods
 .method public varargs constructor <init>(Ljava/io/IOException;Lorg/apache/http/HttpHost;[Ljava/net/InetAddress;)V
     .locals 3
-    .param p1, "cause"    # Ljava/io/IOException;
-    .param p2, "host"    # Lorg/apache/http/HttpHost;
-    .param p3, "remoteAddresses"    # [Ljava/net/InetAddress;
 
-    .line 68
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -118,31 +114,24 @@
 
     invoke-direct {p0, v0}, Ljava/net/ConnectException;-><init>(Ljava/lang/String;)V
 
-    .line 74
     iput-object p2, p0, Lorg/apache/http/conn/HttpHostConnectException;->host:Lorg/apache/http/HttpHost;
 
-    .line 75
     invoke-virtual {p0, p1}, Lorg/apache/http/conn/HttpHostConnectException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
 
-    .line 76
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/HttpHost;Ljava/net/ConnectException;)V
     .locals 1
-    .param p1, "host"    # Lorg/apache/http/HttpHost;
-    .param p2, "cause"    # Ljava/net/ConnectException;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
-    .line 56
     const/4 v0, 0x0
 
     check-cast v0, [Ljava/net/InetAddress;
 
     invoke-direct {p0, p2, p1, v0}, Lorg/apache/http/conn/HttpHostConnectException;-><init>(Ljava/io/IOException;Lorg/apache/http/HttpHost;[Ljava/net/InetAddress;)V
 
-    .line 57
     return-void
 .end method
 
@@ -151,7 +140,6 @@
 .method public getHost()Lorg/apache/http/HttpHost;
     .locals 1
 
-    .line 79
     iget-object v0, p0, Lorg/apache/http/conn/HttpHostConnectException;->host:Lorg/apache/http/HttpHost;
 
     return-object v0

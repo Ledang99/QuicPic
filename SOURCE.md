@@ -1,6 +1,6 @@
 # Source Code Guide
 
-This repository contains the **most complete publicly available source** for QuickPic Gallery Mod **v10.0**. The original Java/Kotlin Gradle project was never released by the developer — only modded APKs are distributed.
+This repository contains the **most complete publicly available source** for QuickPic Gallery Mod **v9.7.1** (stable 9.7 + arm64). The original Java/Kotlin Gradle project was never released by the developer — only modded APKs are distributed.
 
 ## What is included
 
@@ -9,7 +9,7 @@ This repository contains the **most complete publicly available source** for Qui
 | `source/` | Smali + XML resources | **Rebuild APK** with apktool (`./build.sh`) |
 | `source-java/` | Decompiled Java | **Read and study** app logic in Android Studio / any IDE (v9.7 reference) |
 | `source/lib/` | Native binaries | `libqpicjni156.so` — `arm64-v8a`, `armeabi`, `x86` |
-| `releases/stable.apk` | Signed APK | Pre-built output (v10.0) |
+| `releases/stable.apk` | Signed APK | Pre-built output (v9.7.1) |
 | `.github/workflows/android.yml` | GitHub Actions | Automated build on push to `master` |
 
 ### App packages (main code)
@@ -17,9 +17,9 @@ This repository contains the **most complete publicly available source** for Qui
 - **QuickPic UI:** `com.alensw.*` — gallery, viewer, settings, cloud sync
 - **Libraries:** `androidx.*`, `org.apache.http.*`, bundled support libs
 
-### File counts (v10.0)
+### File counts (v9.7.1)
 
-- ~2,800+ smali files (`source/smali/`, `smali_classes2/`–`smali_classes4/`)
+- ~2,332 smali files (`source/smali/`)
 - ~2,163 Java files (`source-java/sources/`) — reference from v9.7
 - ~298 resource XML/layout files (`source/res/`)
 
@@ -68,15 +68,21 @@ Download from: **Actions** → latest green run → **Artifacts**.
 
 **Minimum Android:** API 26 (Android 8.0).
 
-Older v9.7 builds (32-bit `armeabi` / `x86` only) will **not install** on many newer phones. This repo uses v10.0 source with `arm64-v8a`.
+Older v9.7 builds (32-bit `armeabi` / `x86` only) will **not install** on many newer phones. This repo adds `arm64-v8a` from v10 while keeping the stable v9.7 codebase.
 
 ## Known issues and fixes (this fork)
+
+### Crash immediately after install (opens then closes)
+
+**Cause:** v10.0.2 alpha is unstable WIP code and lacked Android 13+ `READ_MEDIA_*` permissions. It could install on 64-bit phones but crash at launch.
+
+**Fix:** v9.7.1 hybrid — stable v9.7 source + `arm64-v8a` native lib from v10. See [CHANGELOG.md](CHANGELOG.md).
 
 ### Install: "App not compatible with your phone"
 
 **Cause:** APK lacks `arm64-v8a` native libraries (v9.7 and earlier).
 
-**Fix:** Build from this repo’s v10.0 `source/` (includes `lib/arm64-v8a/libqpicjni156.so`). See [CHANGELOG.md](CHANGELOG.md).
+**Fix:** Build from this repo’s `source/` (includes `lib/arm64-v8a/libqpicjni156.so` on stable v9.7 base). See [CHANGELOG.md](CHANGELOG.md).
 
 ### Grid thumbnails sideways after rotating an image
 
@@ -95,6 +101,6 @@ Older v9.7 builds (32-bit `armeabi` / `x86` only) will **not install** on many n
 
 ## Upstream
 
-Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha**.
+Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **9.7 stable** + `arm64-v8a` from **10.0.2 alpha**.
 
 See [CHANGELOG.md](CHANGELOG.md) for fork-specific changes.

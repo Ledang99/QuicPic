@@ -26,10 +26,8 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 60
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 48
     const-class v0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;
 
     invoke-static {v0}, Lorg/apache/commons/logging/LogFactory;->getLog(Ljava/lang/Class;)Lorg/apache/commons/logging/Log;
@@ -38,14 +36,12 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;->log:Lorg/apache/commons/logging/Log;
 
-    .line 61
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;->dnsMap:Ljava/util/Map;
 
-    .line 62
     return-void
 .end method
 
@@ -53,38 +49,30 @@
 # virtual methods
 .method public varargs add(Ljava/lang/String;[Ljava/net/InetAddress;)V
     .locals 1
-    .param p1, "host"    # Ljava/lang/String;
-    .param p2, "ips"    # [Ljava/net/InetAddress;
 
-    .line 75
     const-string v0, "Host name"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 76
     const-string v0, "Array of IP addresses"
 
     invoke-static {p2, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 77
     iget-object v0, p0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;->dnsMap:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 78
     return-void
 .end method
 
 .method public resolve(Ljava/lang/String;)[Ljava/net/InetAddress;
     .locals 4
-    .param p1, "host"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/net/UnknownHostException;
         }
     .end annotation
 
-    .line 85
     iget-object v0, p0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;->dnsMap:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -93,8 +81,6 @@
 
     check-cast v0, [Ljava/net/InetAddress;
 
-    .line 86
-    .local v0, "resolvedAddresses":[Ljava/net/InetAddress;
     iget-object v1, p0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;->log:Lorg/apache/commons/logging/Log;
 
     invoke-interface {v1}, Lorg/apache/commons/logging/Log;->isInfoEnabled()Z
@@ -103,7 +89,6 @@
 
     if-eqz v1, :cond_0
 
-    .line 87
     iget-object v1, p0, Lorg/apache/http/impl/conn/InMemoryDnsResolver;->log:Lorg/apache/commons/logging/Log;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -132,14 +117,11 @@
 
     invoke-interface {v1, v2}, Lorg/apache/commons/logging/Log;->info(Ljava/lang/Object;)V
 
-    .line 89
     :cond_0
     if-eqz v0, :cond_1
 
-    .line 92
     return-object v0
 
-    .line 90
     :cond_1
     new-instance v1, Ljava/net/UnknownHostException;
 

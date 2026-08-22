@@ -25,14 +25,12 @@
 .method static constructor <clinit>()V
     .locals 5
 
-    .line 47
     new-instance v0, Lorg/apache/http/impl/DefaultHttpRequestFactory;
 
     invoke-direct {v0}, Lorg/apache/http/impl/DefaultHttpRequestFactory;-><init>()V
 
     sput-object v0, Lorg/apache/http/impl/DefaultHttpRequestFactory;->INSTANCE:Lorg/apache/http/impl/DefaultHttpRequestFactory;
 
-    .line 49
     const/4 v0, 0x1
 
     new-array v1, v0, [Ljava/lang/String;
@@ -45,7 +43,6 @@
 
     sput-object v1, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_COMMON_METHODS:[Ljava/lang/String;
 
-    .line 53
     const/4 v1, 0x2
 
     new-array v3, v1, [Ljava/lang/String;
@@ -60,7 +57,6 @@
 
     sput-object v3, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_ENTITY_ENC_METHODS:[Ljava/lang/String;
 
-    .line 58
     const/4 v3, 0x5
 
     new-array v3, v3, [Ljava/lang/String;
@@ -97,57 +93,40 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 69
     return-void
 .end method
 
 .method private static isOneOf([Ljava/lang/String;Ljava/lang/String;)Z
     .locals 5
-    .param p0, "methods"    # [Ljava/lang/String;
-    .param p1, "method"    # Ljava/lang/String;
 
-    .line 72
     move-object v0, p0
 
-    .local v0, "arr$":[Ljava/lang/String;
     array-length v1, v0
 
-    .local v1, "len$":I
     const/4 v2, 0x0
 
-    .local v2, "i$":I
     :goto_0
     if-ge v2, v1, :cond_1
 
     aget-object v3, v0, v2
 
-    .line 73
-    .local v3, "method2":Ljava/lang/String;
     invoke-virtual {v3, p1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v4
 
     if-eqz v4, :cond_0
 
-    .line 74
     const/4 v4, 0x1
 
     return v4
 
-    .line 72
-    .end local v3    # "method2":Ljava/lang/String;
     :cond_0
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 77
-    .end local v0    # "arr$":[Ljava/lang/String;
-    .end local v1    # "len$":I
-    .end local v2    # "i$":I
     :cond_1
     const/4 v0, 0x0
 
@@ -158,15 +137,12 @@
 # virtual methods
 .method public newHttpRequest(Ljava/lang/String;Ljava/lang/String;)Lorg/apache/http/HttpRequest;
     .locals 3
-    .param p1, "method"    # Ljava/lang/String;
-    .param p2, "uri"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/MethodNotSupportedException;
         }
     .end annotation
 
-    .line 99
     sget-object v0, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_COMMON_METHODS:[Ljava/lang/String;
 
     invoke-static {v0, p1}, Lorg/apache/http/impl/DefaultHttpRequestFactory;->isOneOf([Ljava/lang/String;Ljava/lang/String;)Z
@@ -175,14 +151,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 100
     new-instance v0, Lorg/apache/http/message/BasicHttpRequest;
 
     invoke-direct {v0, p1, p2}, Lorg/apache/http/message/BasicHttpRequest;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     return-object v0
 
-    .line 101
     :cond_0
     sget-object v0, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_ENTITY_ENC_METHODS:[Ljava/lang/String;
 
@@ -192,14 +166,12 @@
 
     if-eqz v0, :cond_1
 
-    .line 102
     new-instance v0, Lorg/apache/http/message/BasicHttpEntityEnclosingRequest;
 
     invoke-direct {v0, p1, p2}, Lorg/apache/http/message/BasicHttpEntityEnclosingRequest;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     return-object v0
 
-    .line 103
     :cond_1
     sget-object v0, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_SPECIAL_METHODS:[Ljava/lang/String;
 
@@ -209,14 +181,12 @@
 
     if-eqz v0, :cond_2
 
-    .line 104
     new-instance v0, Lorg/apache/http/message/BasicHttpRequest;
 
     invoke-direct {v0, p1, p2}, Lorg/apache/http/message/BasicHttpRequest;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     return-object v0
 
-    .line 106
     :cond_2
     new-instance v0, Lorg/apache/http/MethodNotSupportedException;
 
@@ -241,25 +211,20 @@
 
 .method public newHttpRequest(Lorg/apache/http/RequestLine;)Lorg/apache/http/HttpRequest;
     .locals 4
-    .param p1, "requestline"    # Lorg/apache/http/RequestLine;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/MethodNotSupportedException;
         }
     .end annotation
 
-    .line 83
     const-string v0, "Request line"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 84
     invoke-interface {p1}, Lorg/apache/http/RequestLine;->getMethod()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 85
-    .local v0, "method":Ljava/lang/String;
     sget-object v1, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_COMMON_METHODS:[Ljava/lang/String;
 
     invoke-static {v1, v0}, Lorg/apache/http/impl/DefaultHttpRequestFactory;->isOneOf([Ljava/lang/String;Ljava/lang/String;)Z
@@ -268,14 +233,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 86
     new-instance v1, Lorg/apache/http/message/BasicHttpRequest;
 
     invoke-direct {v1, p1}, Lorg/apache/http/message/BasicHttpRequest;-><init>(Lorg/apache/http/RequestLine;)V
 
     return-object v1
 
-    .line 87
     :cond_0
     sget-object v1, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_ENTITY_ENC_METHODS:[Ljava/lang/String;
 
@@ -285,14 +248,12 @@
 
     if-eqz v1, :cond_1
 
-    .line 88
     new-instance v1, Lorg/apache/http/message/BasicHttpEntityEnclosingRequest;
 
     invoke-direct {v1, p1}, Lorg/apache/http/message/BasicHttpEntityEnclosingRequest;-><init>(Lorg/apache/http/RequestLine;)V
 
     return-object v1
 
-    .line 89
     :cond_1
     sget-object v1, Lorg/apache/http/impl/DefaultHttpRequestFactory;->RFC2616_SPECIAL_METHODS:[Ljava/lang/String;
 
@@ -302,14 +263,12 @@
 
     if-eqz v1, :cond_2
 
-    .line 90
     new-instance v1, Lorg/apache/http/message/BasicHttpRequest;
 
     invoke-direct {v1, p1}, Lorg/apache/http/message/BasicHttpRequest;-><init>(Lorg/apache/http/RequestLine;)V
 
     return-object v1
 
-    .line 92
     :cond_2
     new-instance v1, Lorg/apache/http/MethodNotSupportedException;
 

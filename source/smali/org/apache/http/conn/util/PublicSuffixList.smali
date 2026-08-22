@@ -47,20 +47,15 @@
         }
     .end annotation
 
-    .line 61
-    .local p1, "rules":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p2, "exceptions":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     sget-object v0, Lorg/apache/http/conn/util/DomainType;->UNKNOWN:Lorg/apache/http/conn/util/DomainType;
 
     invoke-direct {p0, v0, p1, p2}, Lorg/apache/http/conn/util/PublicSuffixList;-><init>(Lorg/apache/http/conn/util/DomainType;Ljava/util/List;Ljava/util/List;)V
 
-    .line 62
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/util/DomainType;Ljava/util/List;Ljava/util/List;)V
     .locals 1
-    .param p1, "type"    # Lorg/apache/http/conn/util/DomainType;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -74,12 +69,8 @@
         }
     .end annotation
 
-    .line 54
-    .local p2, "rules":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p3, "exceptions":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
     const-string v0, "Domain type"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
@@ -90,7 +81,6 @@
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixList;->type:Lorg/apache/http/conn/util/DomainType;
 
-    .line 56
     const-string v0, "Domain suffix rules"
 
     invoke-static {p2, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
@@ -105,7 +95,6 @@
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixList;->rules:Ljava/util/List;
 
-    .line 57
     if-eqz p3, :cond_0
 
     move-object v0, p3
@@ -124,7 +113,6 @@
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixList;->exceptions:Ljava/util/List;
 
-    .line 58
     return-void
 .end method
 
@@ -141,7 +129,6 @@
         }
     .end annotation
 
-    .line 76
     iget-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixList;->exceptions:Ljava/util/List;
 
     return-object v0
@@ -158,7 +145,6 @@
         }
     .end annotation
 
-    .line 72
     iget-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixList;->rules:Ljava/util/List;
 
     return-object v0
@@ -167,7 +153,6 @@
 .method public getType()Lorg/apache/http/conn/util/DomainType;
     .locals 1
 
-    .line 68
     iget-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixList;->type:Lorg/apache/http/conn/util/DomainType;
 
     return-object v0

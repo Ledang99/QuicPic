@@ -32,42 +32,34 @@
 .method constructor <init>()V
     .locals 2
 
-    .line 1404
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1397
     const v0, 0x67452301
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1398
     const v0, -0x10325477
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1399
     const v0, -0x67452302
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1400
     const v0, 0x10325476
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1401
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
-    .line 1402
     const/16 v0, 0x40
 
     new-array v0, v0, [B
 
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->dataBuffer:[B
 
-    .line 1405
     return-void
 .end method
 
@@ -76,7 +68,6 @@
 .method getOutput()[B
     .locals 10
 
-    .line 1438
     iget-wide v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
     const-wide/16 v2, 0x3f
@@ -85,8 +76,6 @@
 
     long-to-int v1, v0
 
-    .line 1439
-    .local v1, "bufferIndex":I
     const/16 v0, 0x38
 
     if-ge v1, v0, :cond_0
@@ -98,31 +87,24 @@
     :cond_0
     rsub-int/lit8 v0, v1, 0x78
 
-    .line 1440
-    .local v0, "padLen":I
     :goto_0
     add-int/lit8 v2, v0, 0x8
 
     new-array v2, v2, [B
 
-    .line 1443
-    .local v2, "postBytes":[B
     const/16 v3, -0x80
 
     const/4 v4, 0x0
 
     aput-byte v3, v2, v4
 
-    .line 1445
     const/4 v3, 0x0
 
-    .local v3, "i":I
     :goto_1
     const/16 v5, 0x8
 
     if-ge v3, v5, :cond_1
 
-    .line 1446
     add-int v5, v0, v3
 
     iget-wide v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
@@ -141,67 +123,52 @@
 
     aput-byte v6, v2, v5
 
-    .line 1445
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
 
-    .line 1450
-    .end local v3    # "i":I
     :cond_1
     invoke-virtual {p0, v2}, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->update([B)V
 
-    .line 1453
     const/16 v3, 0x10
 
     new-array v3, v3, [B
 
-    .line 1454
-    .local v3, "result":[B
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     invoke-static {v3, v6, v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->writeULong([BII)V
 
-    .line 1455
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     const/4 v6, 0x4
 
     invoke-static {v3, v4, v6}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->writeULong([BII)V
 
-    .line 1456
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     invoke-static {v3, v4, v5}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->writeULong([BII)V
 
-    .line 1457
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     const/16 v5, 0xc
 
     invoke-static {v3, v4, v5}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->writeULong([BII)V
 
-    .line 1458
     return-object v3
 .end method
 
 .method protected processBuffer()V
     .locals 6
 
-    .line 1463
     const/16 v0, 0x10
 
     new-array v1, v0, [I
 
-    .line 1465
-    .local v1, "d":[I
     const/4 v2, 0x0
 
-    .local v2, "i":I
     :goto_0
     if-ge v2, v0, :cond_0
 
-    .line 1466
     iget-object v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->dataBuffer:[B
 
     mul-int/lit8 v4, v2, 0x4
@@ -248,75 +215,55 @@
 
     aput v4, v1, v2
 
-    .line 1465
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 1472
-    .end local v2    # "i":I
     :cond_0
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1473
-    .local v0, "AA":I
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1474
-    .local v2, "BB":I
     iget v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1475
-    .local v3, "CC":I
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1476
-    .local v4, "DD":I
     invoke-virtual {p0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->round1([I)V
 
-    .line 1477
     invoke-virtual {p0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->round2([I)V
 
-    .line 1478
     invoke-virtual {p0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->round3([I)V
 
-    .line 1479
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     add-int/2addr v5, v0
 
     iput v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1480
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     add-int/2addr v5, v2
 
     iput v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1481
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     add-int/2addr v5, v3
 
     iput v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1482
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     add-int/2addr v5, v4
 
     iput v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1484
     return-void
 .end method
 
 .method protected round1([I)V
     .locals 8
-    .param p1, "d"    # [I
 
-    .line 1487
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -345,7 +292,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1488
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -374,7 +320,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1489
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -403,7 +348,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1490
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -430,7 +374,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1492
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -457,7 +400,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1493
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -484,7 +426,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1494
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -511,7 +452,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1495
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -536,7 +476,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1497
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -563,7 +502,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1498
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -590,7 +528,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1499
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -617,7 +554,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1500
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -642,7 +578,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1502
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -669,7 +604,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1503
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -696,7 +630,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1504
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -723,7 +656,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1505
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -750,15 +682,12 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1506
     return-void
 .end method
 
 .method protected round2([I)V
     .locals 9
-    .param p1, "d"    # [I
 
-    .line 1509
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -791,7 +720,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1510
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -822,7 +750,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1511
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -853,7 +780,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1512
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -884,7 +810,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1514
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -913,7 +838,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1515
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -940,7 +864,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1516
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -967,7 +890,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1517
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -994,7 +916,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1519
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -1023,7 +944,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1520
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -1052,7 +972,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1521
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -1081,7 +1000,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1522
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -1110,7 +1028,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1524
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -1137,7 +1054,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1525
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -1166,7 +1082,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1526
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -1195,7 +1110,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1527
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -1224,15 +1138,12 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1529
     return-void
 .end method
 
 .method protected round3([I)V
     .locals 9
-    .param p1, "d"    # [I
 
-    .line 1532
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -1265,7 +1176,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1533
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -1296,7 +1206,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1534
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -1327,7 +1236,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1535
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -1358,7 +1266,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1537
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -1387,7 +1294,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1538
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -1416,7 +1322,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1539
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -1445,7 +1350,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1540
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -1474,7 +1378,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1542
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -1503,7 +1406,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1543
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -1530,7 +1432,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1544
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -1559,7 +1460,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1545
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -1588,7 +1488,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1547
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
     iget v6, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
@@ -1615,7 +1514,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
 
-    .line 1548
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->A:I
@@ -1642,7 +1540,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
 
-    .line 1549
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->D:I
@@ -1671,7 +1568,6 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
 
-    .line 1550
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
     iget v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->C:I
@@ -1698,15 +1594,12 @@
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->B:I
 
-    .line 1552
     return-void
 .end method
 
 .method update([B)V
     .locals 7
-    .param p1, "input"    # [B
 
-    .line 1411
     iget-wide v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
     const-wide/16 v2, 0x3f
@@ -1715,12 +1608,8 @@
 
     long-to-int v1, v0
 
-    .line 1412
-    .local v1, "curBufferPos":I
     const/4 v0, 0x0
 
-    .line 1413
-    .local v0, "inputIndex":I
     :goto_0
     array-length v2, p1
 
@@ -1734,16 +1623,12 @@
 
     if-lt v2, v4, :cond_0
 
-    .line 1417
     array-length v2, v3
 
     sub-int/2addr v2, v1
 
-    .line 1418
-    .local v2, "transferAmt":I
     invoke-static {p1, v0, v3, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1419
     iget-wide v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
     int-to-long v5, v2
@@ -1752,35 +1637,25 @@
 
     iput-wide v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
-    .line 1420
     const/4 v1, 0x0
 
-    .line 1421
     add-int/2addr v0, v2
 
-    .line 1422
     invoke-virtual {p0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->processBuffer()V
 
-    .line 1423
-    .end local v2    # "transferAmt":I
     goto :goto_0
 
-    .line 1427
     :cond_0
     array-length v2, p1
 
     if-ge v0, v2, :cond_1
 
-    .line 1428
     array-length v2, p1
 
     sub-int/2addr v2, v0
 
-    .line 1429
-    .restart local v2    # "transferAmt":I
     invoke-static {p1, v0, v3, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1430
     iget-wide v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
     int-to-long v5, v2
@@ -1789,11 +1664,8 @@
 
     iput-wide v3, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$MD4;->count:J
 
-    .line 1431
     add-int/2addr v1, v2
 
-    .line 1433
-    .end local v2    # "transferAmt":I
     :cond_1
     return-void
 .end method

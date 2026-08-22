@@ -22,7 +22,6 @@
 .method static constructor <clinit>()V
     .locals 3
 
-    .line 176
     invoke-static {}, Lorg/apache/http/impl/auth/GGSSchemeBase$State;->values()[Lorg/apache/http/impl/auth/GGSSchemeBase$State;
 
     move-result-object v0

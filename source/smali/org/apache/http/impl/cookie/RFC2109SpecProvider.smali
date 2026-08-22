@@ -26,45 +26,34 @@
 .method public constructor <init>()V
     .locals 2
 
-    .line 67
     const/4 v0, 0x0
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v0, v1}, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;-><init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;Z)V
 
-    .line 68
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
     .locals 1
-    .param p1, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
-    .line 63
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;-><init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;Z)V
 
-    .line 64
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;Z)V
     .locals 0
-    .param p1, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
-    .param p2, "oneHeader"    # Z
 
-    .line 57
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
     iput-boolean p2, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->oneHeader:Z
 
-    .line 59
     iput-object p1, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->publicSuffixMatcher:Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
-    .line 60
     return-void
 .end method
 
@@ -72,23 +61,18 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/cookie/CookieSpec;
     .locals 6
-    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
-    .line 72
     iget-object v0, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_1
 
-    .line 73
     monitor-enter p0
 
-    .line 74
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_0
 
-    .line 75
     new-instance v0, Lorg/apache/http/impl/cookie/RFC2109Spec;
 
     iget-boolean v1, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->oneHeader:Z
@@ -155,7 +139,6 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
-    .line 84
     :cond_0
     monitor-exit p0
 
@@ -170,7 +153,6 @@
 
     throw v0
 
-    .line 86
     :cond_1
     :goto_0
     iget-object v0, p0, Lorg/apache/http/impl/cookie/RFC2109SpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;

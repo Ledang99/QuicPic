@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference android:icon="@drawable/ic_preference_warning" android:layout="@layout/pref_card" android:title="Running alpha version" android:selectable="false" android:key="checkForUpdates" android:summary="You are currently using an alpha or internal build. This version may be unstable and could contain bugs or incomplete features" android:singleLineTitle="false" />
+    <Preference android:icon="@drawable/ic_update_check" android:layout="@layout/pref_card" android:title="@string/update_check_now" android:key="checkForUpdates" android:summary="@string/version" android:singleLineTitle="false" />
     <PreferenceCategory android:layout="@layout/pref_category_card" android:title="@string/settings">
-        <ListPreference android:icon="@drawable/ic_update_channel" android:enabled="false" android:entries="@array/update_channel" android:title="@string/update_channel" android:key="channel" android:defaultValue="beta" android:entryValues="@array/update_channel" android:singleLineTitle="false" />
-        <SwitchPreference android:icon="@drawable/ic_invisible" android:enabled="false" android:title="@string/update_auto" android:key="updates_on_startup" android:summary="@string/update_auto_desc" android:defaultValue="false" android:singleLineTitle="false" />
+        <ListPreference android:icon="@drawable/ic_update_channel" android:entries="@array/update_channel" android:title="@string/update_channel" android:key="channel" android:defaultValue="stable" android:entryValues="@array/update_channel" android:singleLineTitle="false" />
+        <SwitchPreference android:icon="@drawable/ic_invisible" android:title="@string/update_auto" android:key="updates_on_startup" android:summary="@string/update_auto_desc" android:defaultValue="false" android:singleLineTitle="false" />
         <Preference android:icon="@drawable/ic_preference_warning" android:selectable="false" android:summary="@string/update_warning" android:singleLineTitle="false" />
     </PreferenceCategory>
 </PreferenceScreen>

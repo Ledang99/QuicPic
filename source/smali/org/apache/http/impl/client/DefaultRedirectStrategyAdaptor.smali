@@ -21,15 +21,11 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/client/RedirectHandler;)V
     .locals 0
-    .param p1, "handler"    # Lorg/apache/http/client/RedirectHandler;
 
-    .line 53
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 54
     iput-object p1, p0, Lorg/apache/http/impl/client/DefaultRedirectStrategyAdaptor;->handler:Lorg/apache/http/client/RedirectHandler;
 
-    .line 55
     return-void
 .end method
 
@@ -38,7 +34,6 @@
 .method public getHandler()Lorg/apache/http/client/RedirectHandler;
     .locals 1
 
-    .line 78
     iget-object v0, p0, Lorg/apache/http/impl/client/DefaultRedirectStrategyAdaptor;->handler:Lorg/apache/http/client/RedirectHandler;
 
     return-object v0
@@ -46,24 +41,18 @@
 
 .method public getRedirect(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/client/methods/HttpUriRequest;
     .locals 3
-    .param p1, "request"    # Lorg/apache/http/HttpRequest;
-    .param p2, "response"    # Lorg/apache/http/HttpResponse;
-    .param p3, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/ProtocolException;
         }
     .end annotation
 
-    .line 68
     iget-object v0, p0, Lorg/apache/http/impl/client/DefaultRedirectStrategyAdaptor;->handler:Lorg/apache/http/client/RedirectHandler;
 
     invoke-interface {v0, p2, p3}, Lorg/apache/http/client/RedirectHandler;->getLocationURI(Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)Ljava/net/URI;
 
     move-result-object v0
 
-    .line 69
-    .local v0, "uri":Ljava/net/URI;
     invoke-interface {p1}, Lorg/apache/http/HttpRequest;->getRequestLine()Lorg/apache/http/RequestLine;
 
     move-result-object v1
@@ -72,8 +61,6 @@
 
     move-result-object v1
 
-    .line 70
-    .local v1, "method":Ljava/lang/String;
     const-string v2, "HEAD"
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
@@ -82,14 +69,12 @@
 
     if-eqz v2, :cond_0
 
-    .line 71
     new-instance v2, Lorg/apache/http/client/methods/HttpHead;
 
     invoke-direct {v2, v0}, Lorg/apache/http/client/methods/HttpHead;-><init>(Ljava/net/URI;)V
 
     return-object v2
 
-    .line 73
     :cond_0
     new-instance v2, Lorg/apache/http/client/methods/HttpGet;
 
@@ -100,16 +85,12 @@
 
 .method public isRedirected(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)Z
     .locals 1
-    .param p1, "request"    # Lorg/apache/http/HttpRequest;
-    .param p2, "response"    # Lorg/apache/http/HttpResponse;
-    .param p3, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/ProtocolException;
         }
     .end annotation
 
-    .line 61
     iget-object v0, p0, Lorg/apache/http/impl/client/DefaultRedirectStrategyAdaptor;->handler:Lorg/apache/http/client/RedirectHandler;
 
     invoke-interface {v0, p2, p3}, Lorg/apache/http/client/RedirectHandler;->isRedirectRequested(Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)Z

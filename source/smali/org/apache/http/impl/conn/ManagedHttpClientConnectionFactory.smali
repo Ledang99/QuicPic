@@ -63,14 +63,12 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 60
     new-instance v0, Ljava/util/concurrent/atomic/AtomicLong;
 
     invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicLong;-><init>()V
 
     sput-object v0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->COUNTER:Ljava/util/concurrent/atomic/AtomicLong;
 
-    .line 62
     new-instance v0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;
 
     invoke-direct {v0}, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;-><init>()V
@@ -83,12 +81,10 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 104
     const/4 v0, 0x0
 
     invoke-direct {p0, v0, v0}, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;-><init>(Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
 
-    .line 105
     return-void
 .end method
 
@@ -103,13 +99,10 @@
         }
     .end annotation
 
-    .line 100
-    .local p1, "responseParserFactory":Lorg/apache/http/io/HttpMessageParserFactory;, "Lorg/apache/http/io/HttpMessageParserFactory<Lorg/apache/http/HttpResponse;>;"
     const/4 v0, 0x0
 
     invoke-direct {p0, v0, p1}, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;-><init>(Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
 
-    .line 101
     return-void
 .end method
 
@@ -127,21 +120,15 @@
         }
     .end annotation
 
-    .line 95
-    .local p1, "requestWriterFactory":Lorg/apache/http/io/HttpMessageWriterFactory;, "Lorg/apache/http/io/HttpMessageWriterFactory<Lorg/apache/http/HttpRequest;>;"
-    .local p2, "responseParserFactory":Lorg/apache/http/io/HttpMessageParserFactory;, "Lorg/apache/http/io/HttpMessageParserFactory<Lorg/apache/http/HttpResponse;>;"
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0, v0}, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;-><init>(Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;)V
 
-    .line 96
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;)V
     .locals 1
-    .param p3, "incomingContentStrategy"    # Lorg/apache/http/entity/ContentLengthStrategy;
-    .param p4, "outgoingContentStrategy"    # Lorg/apache/http/entity/ContentLengthStrategy;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -157,12 +144,8 @@
         }
     .end annotation
 
-    .line 81
-    .local p1, "requestWriterFactory":Lorg/apache/http/io/HttpMessageWriterFactory;, "Lorg/apache/http/io/HttpMessageWriterFactory<Lorg/apache/http/HttpRequest;>;"
-    .local p2, "responseParserFactory":Lorg/apache/http/io/HttpMessageParserFactory;, "Lorg/apache/http/io/HttpMessageParserFactory<Lorg/apache/http/HttpResponse;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 64
     const-class v0, Lorg/apache/http/impl/conn/DefaultManagedHttpClientConnection;
 
     invoke-static {v0}, Lorg/apache/commons/logging/LogFactory;->getLog(Ljava/lang/Class;)Lorg/apache/commons/logging/Log;
@@ -171,7 +154,6 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->log:Lorg/apache/commons/logging/Log;
 
-    .line 65
     const-string v0, "org.apache.http.headers"
 
     invoke-static {v0}, Lorg/apache/commons/logging/LogFactory;->getLog(Ljava/lang/String;)Lorg/apache/commons/logging/Log;
@@ -180,7 +162,6 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->headerlog:Lorg/apache/commons/logging/Log;
 
-    .line 66
     const-string v0, "org.apache.http.wire"
 
     invoke-static {v0}, Lorg/apache/commons/logging/LogFactory;->getLog(Ljava/lang/String;)Lorg/apache/commons/logging/Log;
@@ -189,7 +170,6 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->wirelog:Lorg/apache/commons/logging/Log;
 
-    .line 82
     if-eqz p1, :cond_0
 
     move-object v0, p1
@@ -202,7 +182,6 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->requestWriterFactory:Lorg/apache/http/io/HttpMessageWriterFactory;
 
-    .line 84
     if-eqz p2, :cond_1
 
     move-object v0, p2
@@ -215,7 +194,6 @@
     :goto_1
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->responseParserFactory:Lorg/apache/http/io/HttpMessageParserFactory;
 
-    .line 86
     if-eqz p3, :cond_2
 
     move-object v0, p3
@@ -228,7 +206,6 @@
     :goto_2
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->incomingContentStrategy:Lorg/apache/http/entity/ContentLengthStrategy;
 
-    .line 88
     if-eqz p4, :cond_3
 
     move-object v0, p4
@@ -241,7 +218,6 @@
     :goto_3
     iput-object v0, p0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->outgoingContentStrategy:Lorg/apache/http/entity/ContentLengthStrategy;
 
-    .line 90
     return-void
 .end method
 
@@ -249,10 +225,7 @@
 # virtual methods
 .method public bridge synthetic create(Ljava/lang/Object;Lorg/apache/http/config/ConnectionConfig;)Lorg/apache/http/HttpConnection;
     .locals 1
-    .param p1, "x0"    # Ljava/lang/Object;
-    .param p2, "x1"    # Lorg/apache/http/config/ConnectionConfig;
 
-    .line 56
     move-object v0, p1
 
     check-cast v0, Lorg/apache/http/conn/routing/HttpRoute;
@@ -266,10 +239,7 @@
 
 .method public create(Lorg/apache/http/conn/routing/HttpRoute;Lorg/apache/http/config/ConnectionConfig;)Lorg/apache/http/conn/ManagedHttpClientConnection;
     .locals 23
-    .param p1, "route"    # Lorg/apache/http/conn/routing/HttpRoute;
-    .param p2, "config"    # Lorg/apache/http/config/ConnectionConfig;
 
-    .line 109
     move-object/from16 v0, p0
 
     if-eqz p2, :cond_0
@@ -281,23 +251,15 @@
     :cond_0
     sget-object v1, Lorg/apache/http/config/ConnectionConfig;->DEFAULT:Lorg/apache/http/config/ConnectionConfig;
 
-    .line 110
-    .local v1, "cconfig":Lorg/apache/http/config/ConnectionConfig;
     :goto_0
     const/4 v2, 0x0
 
-    .line 111
-    .local v2, "chardecoder":Ljava/nio/charset/CharsetDecoder;
     const/4 v3, 0x0
 
-    .line 112
-    .local v3, "charencoder":Ljava/nio/charset/CharsetEncoder;
     invoke-virtual {v1}, Lorg/apache/http/config/ConnectionConfig;->getCharset()Ljava/nio/charset/Charset;
 
     move-result-object v4
 
-    .line 113
-    .local v4, "charset":Ljava/nio/charset/Charset;
     invoke-virtual {v1}, Lorg/apache/http/config/ConnectionConfig;->getMalformedInputAction()Ljava/nio/charset/CodingErrorAction;
 
     move-result-object v5
@@ -313,8 +275,6 @@
     :cond_1
     sget-object v5, Ljava/nio/charset/CodingErrorAction;->REPORT:Ljava/nio/charset/CodingErrorAction;
 
-    .line 115
-    .local v5, "malformedInputAction":Ljava/nio/charset/CodingErrorAction;
     :goto_1
     invoke-virtual {v1}, Lorg/apache/http/config/ConnectionConfig;->getUnmappableInputAction()Ljava/nio/charset/CodingErrorAction;
 
@@ -331,34 +291,25 @@
     :cond_2
     sget-object v6, Ljava/nio/charset/CodingErrorAction;->REPORT:Ljava/nio/charset/CodingErrorAction;
 
-    .line 117
-    .local v6, "unmappableInputAction":Ljava/nio/charset/CodingErrorAction;
     :goto_2
     if-eqz v4, :cond_3
 
-    .line 118
     invoke-virtual {v4}, Ljava/nio/charset/Charset;->newDecoder()Ljava/nio/charset/CharsetDecoder;
 
     move-result-object v2
 
-    .line 119
     invoke-virtual {v2, v5}, Ljava/nio/charset/CharsetDecoder;->onMalformedInput(Ljava/nio/charset/CodingErrorAction;)Ljava/nio/charset/CharsetDecoder;
 
-    .line 120
     invoke-virtual {v2, v6}, Ljava/nio/charset/CharsetDecoder;->onUnmappableCharacter(Ljava/nio/charset/CodingErrorAction;)Ljava/nio/charset/CharsetDecoder;
 
-    .line 121
     invoke-virtual {v4}, Ljava/nio/charset/Charset;->newEncoder()Ljava/nio/charset/CharsetEncoder;
 
     move-result-object v3
 
-    .line 122
     invoke-virtual {v3, v5}, Ljava/nio/charset/CharsetEncoder;->onMalformedInput(Ljava/nio/charset/CodingErrorAction;)Ljava/nio/charset/CharsetEncoder;
 
-    .line 123
     invoke-virtual {v3, v6}, Ljava/nio/charset/CharsetEncoder;->onUnmappableCharacter(Ljava/nio/charset/CodingErrorAction;)Ljava/nio/charset/CharsetEncoder;
 
-    .line 125
     :cond_3
     new-instance v7, Ljava/lang/StringBuilder;
 
@@ -384,8 +335,6 @@
 
     move-result-object v21
 
-    .line 126
-    .local v21, "id":Ljava/lang/String;
     new-instance v22, Lorg/apache/http/impl/conn/LoggingManagedHttpClientConnection;
 
     iget-object v9, v0, Lorg/apache/http/impl/conn/ManagedHttpClientConnectionFactory;->log:Lorg/apache/commons/logging/Log;

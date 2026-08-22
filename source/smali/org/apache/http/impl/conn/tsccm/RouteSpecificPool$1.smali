@@ -25,7 +25,6 @@
 .method constructor <init>(Lorg/apache/http/impl/conn/tsccm/RouteSpecificPool;)V
     .locals 0
 
-    .line 86
     iput-object p1, p0, Lorg/apache/http/impl/conn/tsccm/RouteSpecificPool$1;->this$0:Lorg/apache/http/impl/conn/tsccm/RouteSpecificPool;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,9 +36,7 @@
 # virtual methods
 .method public getMaxForRoute(Lorg/apache/http/conn/routing/HttpRoute;)I
     .locals 1
-    .param p1, "unused"    # Lorg/apache/http/conn/routing/HttpRoute;
 
-    .line 88
     iget-object v0, p0, Lorg/apache/http/impl/conn/tsccm/RouteSpecificPool$1;->this$0:Lorg/apache/http/impl/conn/tsccm/RouteSpecificPool;
 
     iget v0, v0, Lorg/apache/http/impl/conn/tsccm/RouteSpecificPool;->maxEntries:I

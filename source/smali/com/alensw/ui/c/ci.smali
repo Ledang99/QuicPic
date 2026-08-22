@@ -1,6 +1,5 @@
 .class Lcom/alensw/ui/c/ci;
 .super Ljava/lang/Object;
-.source "ci.java"
 
 # interfaces
 .implements Lcom/alensw/ui/view/aj;

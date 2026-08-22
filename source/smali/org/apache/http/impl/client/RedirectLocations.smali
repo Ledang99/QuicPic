@@ -42,24 +42,20 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 53
     invoke-direct {p0}, Ljava/util/AbstractList;-><init>()V
 
-    .line 54
     new-instance v0, Ljava/util/HashSet;
 
     invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
-    .line 55
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
-    .line 56
     return-void
 .end method
 
@@ -67,10 +63,7 @@
 # virtual methods
 .method public add(ILjava/lang/Object;)V
     .locals 2
-    .param p1, "index"    # I
-    .param p2, "element"    # Ljava/lang/Object;
 
-    .line 185
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     move-object v1, p2
@@ -79,7 +72,6 @@
 
     invoke-interface {v0, p1, v1}, Ljava/util/List;->add(ILjava/lang/Object;)V
 
-    .line 186
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     move-object v1, p2
@@ -88,33 +80,26 @@
 
     invoke-interface {v0, v1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
-    .line 187
     return-void
 .end method
 
 .method public add(Ljava/net/URI;)V
     .locals 1
-    .param p1, "uri"    # Ljava/net/URI;
 
-    .line 69
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     invoke-interface {v0, p1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
-    .line 70
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 71
     return-void
 .end method
 
 .method public contains(Ljava/lang/Object;)Z
     .locals 1
-    .param p1, "o"    # Ljava/lang/Object;
 
-    .line 224
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     invoke-interface {v0, p1}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
@@ -126,9 +111,7 @@
 
 .method public contains(Ljava/net/URI;)Z
     .locals 1
-    .param p1, "uri"    # Ljava/net/URI;
 
-    .line 62
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     invoke-interface {v0, p1}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
@@ -140,9 +123,7 @@
 
 .method public bridge synthetic get(I)Ljava/lang/Object;
     .locals 1
-    .param p1, "x0"    # I
 
-    .line 46
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/client/RedirectLocations;->get(I)Ljava/net/URI;
 
     move-result-object v0
@@ -152,9 +133,7 @@
 
 .method public get(I)Ljava/net/URI;
     .locals 1
-    .param p1, "index"    # I
 
-    .line 114
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -177,7 +156,6 @@
         }
     .end annotation
 
-    .line 98
     new-instance v0, Ljava/util/ArrayList;
 
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
@@ -189,9 +167,7 @@
 
 .method public bridge synthetic remove(I)Ljava/lang/Object;
     .locals 1
-    .param p1, "x0"    # I
 
-    .line 46
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/client/RedirectLocations;->remove(I)Ljava/net/URI;
 
     move-result-object v0
@@ -201,9 +177,7 @@
 
 .method public remove(I)Ljava/net/URI;
     .locals 3
-    .param p1, "index"    # I
 
-    .line 204
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->remove(I)Ljava/lang/Object;
@@ -212,13 +186,10 @@
 
     check-cast v0, Ljava/net/URI;
 
-    .line 205
-    .local v0, "removed":Ljava/net/URI;
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     invoke-interface {v1, v0}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
 
-    .line 206
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->size()I
@@ -233,42 +204,33 @@
 
     if-eq v1, v2, :cond_0
 
-    .line 207
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     iget-object v2, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v1, v2}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
 
-    .line 209
     :cond_0
     return-object v0
 .end method
 
 .method public remove(Ljava/net/URI;)Z
     .locals 4
-    .param p1, "uri"    # Ljava/net/URI;
 
-    .line 77
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     invoke-interface {v0, p1}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
 
     move-result v0
 
-    .line 78
-    .local v0, "removed":Z
     if-eqz v0, :cond_1
 
-    .line 79
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .line 80
-    .local v1, "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/net/URI;>;"
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
@@ -276,41 +238,30 @@
 
     if-eqz v2, :cond_1
 
-    .line 81
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Ljava/net/URI;
 
-    .line 82
-    .local v2, "current":Ljava/net/URI;
     invoke-virtual {v2, p1}, Ljava/net/URI;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
     if-eqz v3, :cond_0
 
-    .line 83
     invoke-interface {v1}, Ljava/util/Iterator;->remove()V
 
-    .line 85
-    .end local v2    # "current":Ljava/net/URI;
     :cond_0
     goto :goto_0
 
-    .line 87
-    .end local v1    # "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/net/URI;>;"
     :cond_1
     return v0
 .end method
 
 .method public set(ILjava/lang/Object;)Ljava/lang/Object;
     .locals 3
-    .param p1, "index"    # I
-    .param p2, "element"    # Ljava/lang/Object;
 
-    .line 153
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     move-object v1, p2
@@ -323,13 +274,10 @@
 
     check-cast v0, Ljava/net/URI;
 
-    .line 154
-    .local v0, "removed":Ljava/net/URI;
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     invoke-interface {v1, v0}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
 
-    .line 155
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     move-object v2, p2
@@ -338,7 +286,6 @@
 
     invoke-interface {v1, v2}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
-    .line 156
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->size()I
@@ -353,14 +300,12 @@
 
     if-eq v1, v2, :cond_0
 
-    .line 157
     iget-object v1, p0, Lorg/apache/http/impl/client/RedirectLocations;->unique:Ljava/util/Set;
 
     iget-object v2, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v1, v2}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
 
-    .line 159
     :cond_0
     return-object v0
 .end method
@@ -368,7 +313,6 @@
 .method public size()I
     .locals 1
 
-    .line 127
     iget-object v0, p0, Lorg/apache/http/impl/client/RedirectLocations;->all:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I

@@ -18,12 +18,9 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/HttpEntity;)V
     .locals 1
-    .param p1, "wrappedEntity"    # Lorg/apache/http/HttpEntity;
 
-    .line 58
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 59
     const-string v0, "Wrapped entity"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
@@ -34,7 +31,6 @@
 
     iput-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
-    .line 60
     return-void
 .end method
 
@@ -51,12 +47,10 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
-    .line 111
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->consumeContent()V
 
-    .line 112
     return-void
 .end method
 
@@ -68,7 +62,6 @@
         }
     .end annotation
 
-    .line 90
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->getContent()Ljava/io/InputStream;
@@ -81,7 +74,6 @@
 .method public getContentEncoding()Lorg/apache/http/Header;
     .locals 1
 
-    .line 84
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->getContentEncoding()Lorg/apache/http/Header;
@@ -94,7 +86,6 @@
 .method public getContentLength()J
     .locals 2
 
-    .line 74
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->getContentLength()J
@@ -107,7 +98,6 @@
 .method public getContentType()Lorg/apache/http/Header;
     .locals 1
 
-    .line 79
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->getContentType()Lorg/apache/http/Header;
@@ -120,7 +110,6 @@
 .method public isChunked()Z
     .locals 1
 
-    .line 69
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->isChunked()Z
@@ -133,7 +122,6 @@
 .method public isRepeatable()Z
     .locals 1
 
-    .line 64
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->isRepeatable()Z
@@ -146,7 +134,6 @@
 .method public isStreaming()Z
     .locals 1
 
-    .line 101
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0}, Lorg/apache/http/HttpEntity;->isStreaming()Z
@@ -158,18 +145,15 @@
 
 .method public writeTo(Ljava/io/OutputStream;)V
     .locals 1
-    .param p1, "outstream"    # Ljava/io/OutputStream;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .line 96
     iget-object v0, p0, Lorg/apache/http/entity/HttpEntityWrapper;->wrappedEntity:Lorg/apache/http/HttpEntity;
 
     invoke-interface {v0, p1}, Lorg/apache/http/HttpEntity;->writeTo(Ljava/io/OutputStream;)V
 
-    .line 97
     return-void
 .end method

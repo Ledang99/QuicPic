@@ -21,45 +21,34 @@
 .method public constructor <init>()V
     .locals 2
 
-    .line 58
     const/4 v0, 0x0
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v0, v1}, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;-><init>(Lorg/apache/http/impl/auth/SpnegoTokenGenerator;Z)V
 
-    .line 59
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/impl/auth/SpnegoTokenGenerator;)V
     .locals 1
-    .param p1, "spengoGenerator"    # Lorg/apache/http/impl/auth/SpnegoTokenGenerator;
 
-    .line 54
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;-><init>(Lorg/apache/http/impl/auth/SpnegoTokenGenerator;Z)V
 
-    .line 55
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/impl/auth/SpnegoTokenGenerator;Z)V
     .locals 0
-    .param p1, "spengoGenerator"    # Lorg/apache/http/impl/auth/SpnegoTokenGenerator;
-    .param p2, "stripPort"    # Z
 
-    .line 48
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 49
     iput-object p1, p0, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;->spengoGenerator:Lorg/apache/http/impl/auth/SpnegoTokenGenerator;
 
-    .line 50
     iput-boolean p2, p0, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;->stripPort:Z
 
-    .line 51
     return-void
 .end method
 
@@ -68,7 +57,6 @@
 .method public getSpengoGenerator()Lorg/apache/http/impl/auth/SpnegoTokenGenerator;
     .locals 1
 
-    .line 70
     iget-object v0, p0, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;->spengoGenerator:Lorg/apache/http/impl/auth/SpnegoTokenGenerator;
 
     return-object v0
@@ -77,7 +65,6 @@
 .method public isStripPort()Z
     .locals 1
 
-    .line 66
     iget-boolean v0, p0, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;->stripPort:Z
 
     return v0
@@ -85,9 +72,7 @@
 
 .method public newInstance(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/auth/AuthScheme;
     .locals 3
-    .param p1, "params"    # Lorg/apache/http/params/HttpParams;
 
-    .line 62
     new-instance v0, Lorg/apache/http/impl/auth/NegotiateScheme;
 
     iget-object v1, p0, Lorg/apache/http/impl/auth/NegotiateSchemeFactory;->spengoGenerator:Lorg/apache/http/impl/auth/SpnegoTokenGenerator;

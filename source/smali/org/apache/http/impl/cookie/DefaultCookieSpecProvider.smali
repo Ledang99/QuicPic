@@ -33,7 +33,6 @@
 .method public constructor <init>()V
     .locals 3
 
-    .line 84
     sget-object v0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;->DEFAULT:Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;
 
     const/4 v1, 0x0
@@ -42,15 +41,12 @@
 
     invoke-direct {p0, v0, v1, v1, v2}, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;[Ljava/lang/String;Z)V
 
-    .line 85
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
     .locals 3
-    .param p1, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
-    .line 80
     sget-object v0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;->DEFAULT:Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;
 
     const/4 v1, 0x0
@@ -59,37 +55,26 @@
 
     invoke-direct {p0, v0, p1, v1, v2}, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;[Ljava/lang/String;Z)V
 
-    .line 81
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
     .locals 2
-    .param p1, "compatibilityLevel"    # Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;
-    .param p2, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
-    .line 76
     const/4 v0, 0x0
 
     const/4 v1, 0x0
 
     invoke-direct {p0, p1, p2, v0, v1}, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;[Ljava/lang/String;Z)V
 
-    .line 77
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;[Ljava/lang/String;Z)V
     .locals 1
-    .param p1, "compatibilityLevel"    # Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;
-    .param p2, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
-    .param p3, "datepatterns"    # [Ljava/lang/String;
-    .param p4, "oneHeader"    # Z
 
-    .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 67
     if-eqz p1, :cond_0
 
     move-object v0, p1
@@ -102,16 +87,12 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->compatibilityLevel:Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider$CompatibilityLevel;
 
-    .line 68
     iput-object p2, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->publicSuffixMatcher:Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
-    .line 69
     iput-object p3, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->datepatterns:[Ljava/lang/String;
 
-    .line 70
     iput-boolean p4, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->oneHeader:Z
 
-    .line 71
     return-void
 .end method
 
@@ -119,23 +100,18 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/cookie/CookieSpec;
     .locals 12
-    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
-    .line 89
     iget-object v0, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_3
 
-    .line 90
     monitor-enter p0
 
-    .line 91
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_2
 
-    .line 92
     new-instance v0, Lorg/apache/http/impl/cookie/RFC2965Spec;
 
     iget-boolean v1, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->oneHeader:Z
@@ -224,8 +200,6 @@
 
     invoke-direct {v0, v1, v2}, Lorg/apache/http/impl/cookie/RFC2965Spec;-><init>(Z[Lorg/apache/http/cookie/CommonCookieAttributeHandler;)V
 
-    .line 103
-    .local v0, "strict":Lorg/apache/http/impl/cookie/RFC2965Spec;
     new-instance v1, Lorg/apache/http/impl/cookie/RFC2109Spec;
 
     iget-boolean v2, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->oneHeader:Z
@@ -276,8 +250,6 @@
 
     invoke-direct {v1, v2, v3}, Lorg/apache/http/impl/cookie/RFC2109Spec;-><init>(Z[Lorg/apache/http/cookie/CommonCookieAttributeHandler;)V
 
-    .line 111
-    .local v1, "obsoleteStrict":Lorg/apache/http/impl/cookie/RFC2109Spec;
     new-instance v2, Lorg/apache/http/impl/cookie/NetscapeDraftSpec;
 
     new-array v3, v9, [Lorg/apache/http/cookie/CommonCookieAttributeHandler;
@@ -358,18 +330,12 @@
 
     invoke-direct {v2, v3}, Lorg/apache/http/impl/cookie/NetscapeDraftSpec;-><init>([Lorg/apache/http/cookie/CommonCookieAttributeHandler;)V
 
-    .line 127
-    .local v2, "netscapeDraft":Lorg/apache/http/impl/cookie/NetscapeDraftSpec;
     new-instance v3, Lorg/apache/http/impl/cookie/DefaultCookieSpec;
 
     invoke-direct {v3, v0, v1, v2}, Lorg/apache/http/impl/cookie/DefaultCookieSpec;-><init>(Lorg/apache/http/impl/cookie/RFC2965Spec;Lorg/apache/http/impl/cookie/RFC2109Spec;Lorg/apache/http/impl/cookie/NetscapeDraftSpec;)V
 
     iput-object v3, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
-    .line 129
-    .end local v0    # "strict":Lorg/apache/http/impl/cookie/RFC2965Spec;
-    .end local v1    # "obsoleteStrict":Lorg/apache/http/impl/cookie/RFC2109Spec;
-    .end local v2    # "netscapeDraft":Lorg/apache/http/impl/cookie/NetscapeDraftSpec;
     :cond_2
     monitor-exit p0
 
@@ -384,7 +350,6 @@
 
     throw v0
 
-    .line 131
     :cond_3
     :goto_2
     iget-object v0, p0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;

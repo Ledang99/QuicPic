@@ -28,17 +28,14 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 57
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
 
-    .line 59
     return-void
 .end method
 
@@ -46,14 +43,11 @@
 # virtual methods
 .method public final get(Ljava/lang/String;)Lorg/apache/http/conn/scheme/Scheme;
     .locals 1
-    .param p1, "name"    # Ljava/lang/String;
 
-    .line 105
     const-string v0, "Scheme name"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 108
     iget-object v0, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -62,28 +56,20 @@
 
     check-cast v0, Lorg/apache/http/conn/scheme/Scheme;
 
-    .line 109
-    .local v0, "found":Lorg/apache/http/conn/scheme/Scheme;
     return-object v0
 .end method
 
 .method public final getScheme(Ljava/lang/String;)Lorg/apache/http/conn/scheme/Scheme;
     .locals 4
-    .param p1, "name"    # Ljava/lang/String;
 
-    .line 72
     invoke-virtual {p0, p1}, Lorg/apache/http/conn/scheme/SchemeRegistry;->get(Ljava/lang/String;)Lorg/apache/http/conn/scheme/Scheme;
 
     move-result-object v0
 
-    .line 73
-    .local v0, "found":Lorg/apache/http/conn/scheme/Scheme;
     if-eqz v0, :cond_0
 
-    .line 77
     return-object v0
 
-    .line 74
     :cond_0
     new-instance v1, Ljava/lang/IllegalStateException;
 
@@ -112,14 +98,11 @@
 
 .method public final getScheme(Lorg/apache/http/HttpHost;)Lorg/apache/http/conn/scheme/Scheme;
     .locals 1
-    .param p1, "host"    # Lorg/apache/http/HttpHost;
 
-    .line 92
     const-string v0, "Host"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 93
     invoke-virtual {p1}, Lorg/apache/http/HttpHost;->getSchemeName()Ljava/lang/String;
 
     move-result-object v0
@@ -142,7 +125,6 @@
         }
     .end annotation
 
-    .line 150
     new-instance v0, Ljava/util/ArrayList;
 
     iget-object v1, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
@@ -158,14 +140,11 @@
 
 .method public final register(Lorg/apache/http/conn/scheme/Scheme;)Lorg/apache/http/conn/scheme/Scheme;
     .locals 2
-    .param p1, "sch"    # Lorg/apache/http/conn/scheme/Scheme;
 
-    .line 123
     const-string v0, "Scheme"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 124
     iget-object v0, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {p1}, Lorg/apache/http/conn/scheme/Scheme;->getName()Ljava/lang/String;
@@ -178,8 +157,6 @@
 
     check-cast v0, Lorg/apache/http/conn/scheme/Scheme;
 
-    .line 125
-    .local v0, "old":Lorg/apache/http/conn/scheme/Scheme;
     return-object v0
 .end method
 
@@ -195,38 +172,29 @@
         }
     .end annotation
 
-    .line 160
-    .local p1, "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lorg/apache/http/conn/scheme/Scheme;>;"
     if-nez p1, :cond_0
 
-    .line 161
     return-void
 
-    .line 163
     :cond_0
     iget-object v0, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentHashMap;->clear()V
 
-    .line 164
     iget-object v0, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/concurrent/ConcurrentHashMap;->putAll(Ljava/util/Map;)V
 
-    .line 165
     return-void
 .end method
 
 .method public final unregister(Ljava/lang/String;)Lorg/apache/http/conn/scheme/Scheme;
     .locals 1
-    .param p1, "name"    # Ljava/lang/String;
 
-    .line 137
     const-string v0, "Scheme name"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 140
     iget-object v0, p0, Lorg/apache/http/conn/scheme/SchemeRegistry;->registeredSchemes:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/concurrent/ConcurrentHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
@@ -235,7 +203,5 @@
 
     check-cast v0, Lorg/apache/http/conn/scheme/Scheme;
 
-    .line 141
-    .local v0, "gone":Lorg/apache/http/conn/scheme/Scheme;
     return-object v0
 .end method

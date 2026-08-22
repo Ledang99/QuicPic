@@ -12,17 +12,14 @@
 .method private constructor <init>()V
     .locals 0
 
-    .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 43
     return-void
 .end method
 
 .method public static createDefault()Lorg/apache/http/impl/client/CloseableHttpClient;
     .locals 1
 
-    .line 58
     invoke-static {}, Lorg/apache/http/impl/client/HttpClientBuilder;->create()Lorg/apache/http/impl/client/HttpClientBuilder;
 
     move-result-object v0
@@ -37,7 +34,6 @@
 .method public static createMinimal()Lorg/apache/http/impl/client/CloseableHttpClient;
     .locals 2
 
-    .line 74
     new-instance v0, Lorg/apache/http/impl/client/MinimalHttpClient;
 
     new-instance v1, Lorg/apache/http/impl/conn/PoolingHttpClientConnectionManager;
@@ -51,9 +47,7 @@
 
 .method public static createMinimal(Lorg/apache/http/conn/HttpClientConnectionManager;)Lorg/apache/http/impl/client/CloseableHttpClient;
     .locals 1
-    .param p0, "connManager"    # Lorg/apache/http/conn/HttpClientConnectionManager;
 
-    .line 82
     new-instance v0, Lorg/apache/http/impl/client/MinimalHttpClient;
 
     invoke-direct {v0, p0}, Lorg/apache/http/impl/client/MinimalHttpClient;-><init>(Lorg/apache/http/conn/HttpClientConnectionManager;)V
@@ -64,7 +58,6 @@
 .method public static createSystem()Lorg/apache/http/impl/client/CloseableHttpClient;
     .locals 1
 
-    .line 66
     invoke-static {}, Lorg/apache/http/impl/client/HttpClientBuilder;->create()Lorg/apache/http/impl/client/HttpClientBuilder;
 
     move-result-object v0
@@ -83,7 +76,6 @@
 .method public static custom()Lorg/apache/http/impl/client/HttpClientBuilder;
     .locals 1
 
-    .line 50
     invoke-static {}, Lorg/apache/http/impl/client/HttpClientBuilder;->create()Lorg/apache/http/impl/client/HttpClientBuilder;
 
     move-result-object v0

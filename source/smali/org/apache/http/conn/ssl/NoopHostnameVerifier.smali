@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 44
     new-instance v0, Lorg/apache/http/conn/ssl/NoopHostnameVerifier;
 
     invoke-direct {v0}, Lorg/apache/http/conn/ssl/NoopHostnameVerifier;-><init>()V
@@ -32,7 +31,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -43,7 +41,6 @@
 .method public final toString()Ljava/lang/String;
     .locals 1
 
-    .line 53
     const-string v0, "NO_OP"
 
     return-object v0
@@ -51,10 +48,7 @@
 
 .method public verify(Ljava/lang/String;Ljavax/net/ssl/SSLSession;)Z
     .locals 1
-    .param p1, "s"    # Ljava/lang/String;
-    .param p2, "sslSession"    # Ljavax/net/ssl/SSLSession;
 
-    .line 48
     const/4 v0, 0x1
 
     return v0

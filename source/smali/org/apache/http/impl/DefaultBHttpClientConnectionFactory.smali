@@ -56,7 +56,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 51
     new-instance v0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;
 
     invoke-direct {v0}, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;-><init>()V
@@ -69,7 +68,6 @@
 .method public constructor <init>()V
     .locals 6
 
-    .line 85
     const/4 v1, 0x0
 
     const/4 v2, 0x0
@@ -84,15 +82,12 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;-><init>(Lorg/apache/http/config/ConnectionConfig;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
 
-    .line 86
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/config/ConnectionConfig;)V
     .locals 6
-    .param p1, "cconfig"    # Lorg/apache/http/config/ConnectionConfig;
 
-    .line 81
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -107,15 +102,11 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;-><init>(Lorg/apache/http/config/ConnectionConfig;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
 
-    .line 82
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/config/ConnectionConfig;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
     .locals 1
-    .param p1, "cconfig"    # Lorg/apache/http/config/ConnectionConfig;
-    .param p2, "incomingContentStrategy"    # Lorg/apache/http/entity/ContentLengthStrategy;
-    .param p3, "outgoingContentStrategy"    # Lorg/apache/http/entity/ContentLengthStrategy;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -131,12 +122,8 @@
         }
     .end annotation
 
-    .line 65
-    .local p4, "requestWriterFactory":Lorg/apache/http/io/HttpMessageWriterFactory;, "Lorg/apache/http/io/HttpMessageWriterFactory<Lorg/apache/http/HttpRequest;>;"
-    .local p5, "responseParserFactory":Lorg/apache/http/io/HttpMessageParserFactory;, "Lorg/apache/http/io/HttpMessageParserFactory<Lorg/apache/http/HttpResponse;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 66
     if-eqz p1, :cond_0
 
     move-object v0, p1
@@ -149,25 +136,19 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->cconfig:Lorg/apache/http/config/ConnectionConfig;
 
-    .line 67
     iput-object p2, p0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->incomingContentStrategy:Lorg/apache/http/entity/ContentLengthStrategy;
 
-    .line 68
     iput-object p3, p0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->outgoingContentStrategy:Lorg/apache/http/entity/ContentLengthStrategy;
 
-    .line 69
     iput-object p4, p0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->requestWriterFactory:Lorg/apache/http/io/HttpMessageWriterFactory;
 
-    .line 70
     iput-object p5, p0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->responseParserFactory:Lorg/apache/http/io/HttpMessageParserFactory;
 
-    .line 71
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/config/ConnectionConfig;Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
     .locals 6
-    .param p1, "cconfig"    # Lorg/apache/http/config/ConnectionConfig;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -181,9 +162,6 @@
         }
     .end annotation
 
-    .line 77
-    .local p2, "requestWriterFactory":Lorg/apache/http/io/HttpMessageWriterFactory;, "Lorg/apache/http/io/HttpMessageWriterFactory<Lorg/apache/http/HttpRequest;>;"
-    .local p3, "responseParserFactory":Lorg/apache/http/io/HttpMessageParserFactory;, "Lorg/apache/http/io/HttpMessageParserFactory<Lorg/apache/http/HttpResponse;>;"
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -198,7 +176,6 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;-><init>(Lorg/apache/http/config/ConnectionConfig;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
 
-    .line 78
     return-void
 .end method
 
@@ -206,14 +183,12 @@
 # virtual methods
 .method public bridge synthetic createConnection(Ljava/net/Socket;)Lorg/apache/http/HttpConnection;
     .locals 1
-    .param p1, "x0"    # Ljava/net/Socket;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .line 47
     invoke-virtual {p0, p1}, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->createConnection(Ljava/net/Socket;)Lorg/apache/http/impl/DefaultBHttpClientConnection;
 
     move-result-object v0
@@ -223,14 +198,12 @@
 
 .method public createConnection(Ljava/net/Socket;)Lorg/apache/http/impl/DefaultBHttpClientConnection;
     .locals 11
-    .param p1, "socket"    # Ljava/net/Socket;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .line 90
     new-instance v10, Lorg/apache/http/impl/DefaultBHttpClientConnection;
 
     iget-object v0, p0, Lorg/apache/http/impl/DefaultBHttpClientConnectionFactory;->cconfig:Lorg/apache/http/config/ConnectionConfig;
@@ -275,10 +248,7 @@
 
     invoke-direct/range {v0 .. v9}, Lorg/apache/http/impl/DefaultBHttpClientConnection;-><init>(IILjava/nio/charset/CharsetDecoder;Ljava/nio/charset/CharsetEncoder;Lorg/apache/http/config/MessageConstraints;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/entity/ContentLengthStrategy;Lorg/apache/http/io/HttpMessageWriterFactory;Lorg/apache/http/io/HttpMessageParserFactory;)V
 
-    .line 100
-    .local v0, "conn":Lorg/apache/http/impl/DefaultBHttpClientConnection;
     invoke-virtual {v0, p1}, Lorg/apache/http/impl/DefaultBHttpClientConnection;->bind(Ljava/net/Socket;)V
 
-    .line 101
     return-object v0
 .end method

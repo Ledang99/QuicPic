@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 43
     new-instance v0, Lorg/apache/http/impl/NoConnectionReuseStrategy;
 
     invoke-direct {v0}, Lorg/apache/http/impl/NoConnectionReuseStrategy;-><init>()V
@@ -32,10 +31,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 46
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 47
     return-void
 .end method
 
@@ -43,10 +40,7 @@
 # virtual methods
 .method public keepAlive(Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)Z
     .locals 1
-    .param p1, "response"    # Lorg/apache/http/HttpResponse;
-    .param p2, "context"    # Lorg/apache/http/protocol/HttpContext;
 
-    .line 51
     const/4 v0, 0x0
 
     return v0

@@ -25,7 +25,6 @@
 .method constructor <init>(Lorg/apache/http/impl/client/InternalHttpClient;)V
     .locals 0
 
-    .line 216
     iput-object p1, p0, Lorg/apache/http/impl/client/InternalHttpClient$1;->this$0:Lorg/apache/http/impl/client/InternalHttpClient;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +37,6 @@
 .method public closeExpiredConnections()V
     .locals 1
 
-    .line 248
     iget-object v0, p0, Lorg/apache/http/impl/client/InternalHttpClient$1;->this$0:Lorg/apache/http/impl/client/InternalHttpClient;
 
     invoke-static {v0}, Lorg/apache/http/impl/client/InternalHttpClient;->access$000(Lorg/apache/http/impl/client/InternalHttpClient;)Lorg/apache/http/conn/HttpClientConnectionManager;
@@ -47,16 +45,12 @@
 
     invoke-interface {v0}, Lorg/apache/http/conn/HttpClientConnectionManager;->closeExpiredConnections()V
 
-    .line 249
     return-void
 .end method
 
 .method public closeIdleConnections(JLjava/util/concurrent/TimeUnit;)V
     .locals 1
-    .param p1, "idletime"    # J
-    .param p3, "tunit"    # Ljava/util/concurrent/TimeUnit;
 
-    .line 243
     iget-object v0, p0, Lorg/apache/http/impl/client/InternalHttpClient$1;->this$0:Lorg/apache/http/impl/client/InternalHttpClient;
 
     invoke-static {v0}, Lorg/apache/http/impl/client/InternalHttpClient;->access$000(Lorg/apache/http/impl/client/InternalHttpClient;)Lorg/apache/http/conn/HttpClientConnectionManager;
@@ -65,14 +59,12 @@
 
     invoke-interface {v0, p1, p2, p3}, Lorg/apache/http/conn/HttpClientConnectionManager;->closeIdleConnections(JLjava/util/concurrent/TimeUnit;)V
 
-    .line 244
     return-void
 .end method
 
 .method public getSchemeRegistry()Lorg/apache/http/conn/scheme/SchemeRegistry;
     .locals 1
 
-    .line 238
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
@@ -82,11 +74,7 @@
 
 .method public releaseConnection(Lorg/apache/http/conn/ManagedClientConnection;JLjava/util/concurrent/TimeUnit;)V
     .locals 1
-    .param p1, "conn"    # Lorg/apache/http/conn/ManagedClientConnection;
-    .param p2, "validDuration"    # J
-    .param p4, "timeUnit"    # Ljava/util/concurrent/TimeUnit;
 
-    .line 233
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
@@ -96,10 +84,7 @@
 
 .method public requestConnection(Lorg/apache/http/conn/routing/HttpRoute;Ljava/lang/Object;)Lorg/apache/http/conn/ClientConnectionRequest;
     .locals 1
-    .param p1, "route"    # Lorg/apache/http/conn/routing/HttpRoute;
-    .param p2, "state"    # Ljava/lang/Object;
 
-    .line 226
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
@@ -110,7 +95,6 @@
 .method public shutdown()V
     .locals 1
 
-    .line 220
     iget-object v0, p0, Lorg/apache/http/impl/client/InternalHttpClient$1;->this$0:Lorg/apache/http/impl/client/InternalHttpClient;
 
     invoke-static {v0}, Lorg/apache/http/impl/client/InternalHttpClient;->access$000(Lorg/apache/http/impl/client/InternalHttpClient;)Lorg/apache/http/conn/HttpClientConnectionManager;
@@ -119,6 +103,5 @@
 
     invoke-interface {v0}, Lorg/apache/http/conn/HttpClientConnectionManager;->shutdown()V
 
-    .line 221
     return-void
 .end method

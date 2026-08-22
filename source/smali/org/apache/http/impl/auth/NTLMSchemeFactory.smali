@@ -16,7 +16,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 46
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -26,9 +25,7 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/auth/AuthScheme;
     .locals 1
-    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
-    .line 55
     new-instance v0, Lorg/apache/http/impl/auth/NTLMScheme;
 
     invoke-direct {v0}, Lorg/apache/http/impl/auth/NTLMScheme;-><init>()V
@@ -38,9 +35,7 @@
 
 .method public newInstance(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/auth/AuthScheme;
     .locals 1
-    .param p1, "params"    # Lorg/apache/http/params/HttpParams;
 
-    .line 50
     new-instance v0, Lorg/apache/http/impl/auth/NTLMScheme;
 
     invoke-direct {v0}, Lorg/apache/http/impl/auth/NTLMScheme;-><init>()V

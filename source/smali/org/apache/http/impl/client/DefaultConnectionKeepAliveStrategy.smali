@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 51
     new-instance v0, Lorg/apache/http/impl/client/DefaultConnectionKeepAliveStrategy;
 
     invoke-direct {v0}, Lorg/apache/http/impl/client/DefaultConnectionKeepAliveStrategy;-><init>()V
@@ -32,7 +31,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,15 +40,11 @@
 # virtual methods
 .method public getKeepAliveDuration(Lorg/apache/http/HttpResponse;Lorg/apache/http/protocol/HttpContext;)J
     .locals 8
-    .param p1, "response"    # Lorg/apache/http/HttpResponse;
-    .param p2, "context"    # Lorg/apache/http/protocol/HttpContext;
 
-    .line 55
     const-string v0, "HTTP response"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 56
     new-instance v0, Lorg/apache/http/message/BasicHeaderElementIterator;
 
     const-string v1, "Keep-Alive"
@@ -61,8 +55,6 @@
 
     invoke-direct {v0, v1}, Lorg/apache/http/message/BasicHeaderElementIterator;-><init>(Lorg/apache/http/HeaderIterator;)V
 
-    .line 58
-    .local v0, "it":Lorg/apache/http/HeaderElementIterator;
     :goto_0
     invoke-interface {v0}, Lorg/apache/http/HeaderElementIterator;->hasNext()Z
 
@@ -70,25 +62,18 @@
 
     if-eqz v1, :cond_1
 
-    .line 59
     invoke-interface {v0}, Lorg/apache/http/HeaderElementIterator;->nextElement()Lorg/apache/http/HeaderElement;
 
     move-result-object v1
 
-    .line 60
-    .local v1, "he":Lorg/apache/http/HeaderElement;
     invoke-interface {v1}, Lorg/apache/http/HeaderElement;->getName()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 61
-    .local v2, "param":Ljava/lang/String;
     invoke-interface {v1}, Lorg/apache/http/HeaderElement;->getValue()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 62
-    .local v3, "value":Ljava/lang/String;
     if-eqz v3, :cond_0
 
     const-string v4, "timeout"
@@ -99,7 +84,6 @@
 
     if-eqz v4, :cond_0
 
-    .line 64
     :try_start_0
     invoke-static {v3}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
 
@@ -113,18 +97,12 @@
 
     return-wide v4
 
-    .line 65
     :catch_0
     move-exception v4
 
-    .line 68
-    .end local v1    # "he":Lorg/apache/http/HeaderElement;
-    .end local v2    # "param":Ljava/lang/String;
-    .end local v3    # "value":Ljava/lang/String;
     :cond_0
     goto :goto_0
 
-    .line 69
     :cond_1
     const-wide/16 v1, -0x1
 
