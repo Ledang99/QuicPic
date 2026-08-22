@@ -874,16 +874,27 @@
 
     const v2, 0x10e0001
 
+    const/16 v3, 0x190
+
+    :try_start_res
     invoke-virtual {v0, v2}, Landroid/content/res/Resources;->getInteger(I)I
 
-    move-result v0
+    move-result v2
 
-    const/16 v2, 0x190
+    invoke-static {v2, v3}, Ljava/lang/Math;->max(II)I
 
-    invoke-static {v0, v2}, Ljava/lang/Math;->max(II)I
+    move-result v2
+    :try_end_res
+    .catch Ljava/lang/Throwable; {:try_start_res .. :try_end_res} :catch_res
 
-    move-result v0
+    move v0, v2
 
+    goto :got_res
+
+    :catch_res
+    move v0, v3
+
+    :got_res
     iput v0, p0, Lcom/alensw/ui/c/cx;->b:I
 
     invoke-virtual {p0}, Lcom/alensw/ui/c/cx;->getContentResolver()Landroid/content/ContentResolver;
