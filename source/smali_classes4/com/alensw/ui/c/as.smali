@@ -4142,7 +4142,7 @@
 
     move-result-object v3
 
-    const/4 v4, 0x0
+    const/4 v4, 0x1
 
     invoke-virtual {v2, v3, v4}, Lcom/alensw/a/ao;->a(Landroid/net/Uri;Z)V
 

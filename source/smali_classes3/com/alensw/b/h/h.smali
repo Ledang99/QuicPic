@@ -94,7 +94,7 @@
 .end method
 
 .method public static a([BLandroid/graphics/BitmapFactory$Options;)Lcom/alensw/b/h/h;
-    .locals 2
+    .locals 4
 
     const/4 v0, 0x0
 
@@ -107,6 +107,19 @@
 
     if-eqz v1, :cond_0
 
+    if-eqz p1, :cond_1
+
+    new-instance v0, Lcom/alensw/b/h/h;
+
+    iget v2, p1, Lcom/alensw/b/h/a;->b:I
+
+    iget v3, p1, Lcom/alensw/b/h/a;->c:I
+
+    invoke-direct {v0, v1, v2, v3}, Lcom/alensw/b/h/h;-><init>(Landroid/graphics/Bitmap;II)V
+
+    goto :goto_0
+
+    :cond_1
     new-instance v0, Lcom/alensw/b/h/h;
 
     invoke-direct {v0, v1}, Lcom/alensw/b/h/h;-><init>(Landroid/graphics/Bitmap;)V

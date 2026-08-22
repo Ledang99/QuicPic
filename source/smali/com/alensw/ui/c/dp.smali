@@ -4157,7 +4157,9 @@
 
     iget-object v4, p0, Lcom/alensw/ui/c/dp;->o:Landroid/net/Uri;
 
-    invoke-virtual {v0, v4, v1}, Lcom/alensw/a/ao;->a(Landroid/net/Uri;Z)V
+    const/4 v5, 0x1
+
+    invoke-virtual {v0, v4, v5}, Lcom/alensw/a/ao;->a(Landroid/net/Uri;Z)V
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->s:Lcom/alensw/a/ba;
 
