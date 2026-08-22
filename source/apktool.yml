@@ -12,8 +12,8 @@ packageInfo:
   forcedPackageId: 127
   renameManifestPackage: null
 versionInfo:
-  versionCode: 9900008
-  versionName: 10.0.8
+  versionCode: 9900009
+  versionName: 10.0.9
 sharedLibrary: false
 sparseResources: false
 compactEntries: false

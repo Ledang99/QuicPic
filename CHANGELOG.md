@@ -2,6 +2,14 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.9] — 2026-08-22
+
+### Fixed
+
+- **Thumbnail orientation after rotate** — Clearing the in-memory grid thumbnail cache (`QuickApp.w`) when rotating from the image viewer, matching the batch-rotate path. Grid thumbnails now refresh with the updated EXIF orientation instead of reusing a stale cached bitmap.
+- **Batch rotate preview cache** — Multi-select rotate now also clears the disk preview cache per file.
+- **Cached thumbnail decode** — Reset both orientation fields on decode options before loading JPEG bytes from the thumbnail database, preventing stale metadata from affecting cached thumbnails.
+
 ## [10.0.8] — 2026-08-22
 
 ### Fixed

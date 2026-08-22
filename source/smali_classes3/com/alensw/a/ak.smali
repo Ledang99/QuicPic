@@ -291,6 +291,8 @@
     :cond_3
     iput v5, v8, Lcom/alensw/b/h/a;->c:I
 
+    iput v5, v8, Lcom/alensw/b/h/a;->b:I
+
     sget-object v0, Lcom/alensw/a/bc;->a:Landroid/graphics/Bitmap$Config;
 
     iput-object v0, v8, Lcom/alensw/b/h/a;->inPreferredConfig:Landroid/graphics/Bitmap$Config;

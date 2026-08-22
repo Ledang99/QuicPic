@@ -28,7 +28,7 @@
 
 # virtual methods
 .method protected a()V
-    .locals 4
+    .locals 6
 
     iget-object v0, p0, Lcom/alensw/ui/c/ar;->a:Ljava/util/HashSet;
 
@@ -49,13 +49,15 @@
 
     check-cast v0, Lcom/alensw/bean/CommonFile;
 
-    invoke-virtual {v0}, Lcom/alensw/bean/CommonFile;->j()Ljava/lang/String;
+    move-object v4, v0
+
+    invoke-virtual {v4}, Lcom/alensw/bean/CommonFile;->j()Ljava/lang/String;
 
     move-result-object v2
 
     if-eqz v2, :cond_1
 
-    invoke-virtual {v0}, Lcom/alensw/bean/CommonFile;->h()C
+    invoke-virtual {v4}, Lcom/alensw/bean/CommonFile;->h()C
 
     move-result v0
 
@@ -74,6 +76,16 @@
     const/4 v3, -0x1
 
     if-eq v0, v3, :cond_1
+
+    sget-object v3, Lcom/alensw/PicFolder/QuickApp;->u:Lcom/alensw/a/ao;
+
+    invoke-virtual {v4}, Lcom/alensw/bean/CommonFile;->i()Landroid/net/Uri;
+
+    move-result-object v4
+
+    const/4 v5, 0x1
+
+    invoke-virtual {v3, v4, v5}, Lcom/alensw/a/ao;->a(Landroid/net/Uri;Z)V
 
     sget-object v3, Lcom/alensw/PicFolder/QuickApp;->s:Lcom/alensw/a/ba;
 
