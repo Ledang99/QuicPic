@@ -23,7 +23,12 @@ cd QuicPic
 ./build.sh                 # → releases/stable.apk
 ```
 
-Install `releases/stable.apk` on your device (Android 8.0+).
+Install `releases/stable.apk` on your device (Android 8.0+). On first launch:
+
+1. Allow **Photos and videos** when prompted
+2. If redirected to settings, enable **All files access** for QuickPic (optional but recommended)
+
+Fallback: `releases/official-alpha-resigned.apk` is the upstream alpha APK re-signed only (no smali changes).
 
 ## Source code
 
