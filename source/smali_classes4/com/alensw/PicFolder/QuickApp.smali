@@ -1618,15 +1618,29 @@
 .method public onCreate()V
     .locals 3
 
+    invoke-static {p0}, Lcom/alensw/PicFolder/StartupLogger;->init(Landroid/content/Context;)V
+
+    const-string v0, "QuickApp.onCreate begin"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     :try_start_0
     invoke-direct {p0}, Lcom/alensw/PicFolder/QuickApp;->onCreateInternal()V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
+    const-string v0, "QuickApp.onCreate complete"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     return-void
 
     :catch_0
     move-exception v0
+
+    const-string v1, "QuickApp.onCreate failed"
+
+    invoke-static {v1, v0}, Lcom/alensw/PicFolder/StartupLogger;->logThrowable(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     sput-object p0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
 
