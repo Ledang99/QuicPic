@@ -347,36 +347,8 @@
 .end method
 
 .method private onCreate__$appendPatch3(Landroid/os/Bundle;)V
-    .locals 2
+    .locals 0
 
-    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->getCurrentChannel()Ljava/lang/String;
-
-    move-result-object v0
-
-    const/4 v1, 0x0
-
-    if-nez v0, :cond_0
-
-    const-string v0, "beta"
-
-    invoke-virtual {p0, v0}, Lcom/alensw/PicFolder/GalleryActivity;->writeUpdateChannelPreference(Ljava/lang/String;)V
-
-    invoke-virtual {p0, v1}, Lcom/alensw/PicFolder/GalleryActivity;->writeUpdatesOnStartup(Z)V
-
-    :cond_0
-    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->getStartupUpdates()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    new-instance v0, Lcom/alensw/updater/UpdaterAssistant;
-
-    invoke-direct {v0, p0, v1}, Lcom/alensw/updater/UpdaterAssistant;-><init>(Landroid/content/Context;Z)V
-
-    invoke-virtual {v0}, Lcom/alensw/updater/UpdaterAssistant;->checkForUpdates()V
-
-    :cond_1
     return-void
 .end method
 
@@ -1241,8 +1213,6 @@
 
     :recreate
     invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
-
-    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->recreate()V
 
     :done
     return-void

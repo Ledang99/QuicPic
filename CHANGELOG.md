@@ -2,6 +2,15 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.4] — 2026-08-22
+
+### Fixed
+
+- **Hard crash on launch** — `onActivityStarted` called `QuickApp.b()` with null scanner/thumbnail services when app init failed partway through `onCreate`.
+- **Activity base crash** — Guarded framework `getInteger` in `cx.onCreate` (same `Resources.NotFoundException` class of bug fixed earlier in `QuickApp.g()`).
+- **Lifecycle cleanup** — Null-safe `QuickApp.d()` and `QuickApp.c()`; `ensureServices()` runs before lifecycle callbacks register.
+- **Startup updater** — Disabled auto-update check on cold start (could interrupt launch).
+
 ## [10.0.3] — 2026-08-22
 
 ### Fixed

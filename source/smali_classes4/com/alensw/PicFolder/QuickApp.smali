@@ -799,6 +799,8 @@
         value = 0x9
     .end annotation
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     const/4 v3, 0x0
 
     const/4 v8, 0x3
@@ -897,7 +899,11 @@
 
     sget-object v7, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
 
+    if-eqz v7, :cond_q_done
+
     invoke-virtual {v7, v3, v5}, Lcom/alensw/a/s;->a(ILandroid/content/SharedPreferences;)V
+
+    :cond_q_done
 
     const-string v3, "sort_logical"
 
@@ -1084,14 +1090,22 @@
 .method protected b()V
     .locals 1
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+
+    if-eqz v0, :check_q
 
     invoke-virtual {v0}, Lcom/alensw/a/bc;->c()V
 
+    :check_q
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    if-eqz v0, :done
 
     invoke-virtual {v0}, Lcom/alensw/a/s;->a()V
 
+    :done
     return-void
 .end method
 
@@ -1200,6 +1214,8 @@
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->s:Lcom/alensw/a/ba;
 
+    if-eqz v0, :cond_s_done
+
     invoke-virtual {v0}, Lcom/alensw/a/ba;->c()Z
 
     move-result v0
@@ -1214,7 +1230,10 @@
 
     invoke-static {p0}, Lcom/alensw/PicFolder/QuickApp;->a(Landroid/content/Context;)V
 
+    goto :cond_s_done
+
     :cond_1
+    :cond_s_done
     return-void
 .end method
 
@@ -1248,11 +1267,15 @@
 
     const/4 v1, 0x0
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    if-eqz v0, :check_r
 
     iget-boolean v0, v0, Lcom/alensw/a/s;->b:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :check_r
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
 
@@ -1260,21 +1283,32 @@
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
 
+    if-eqz v0, :check_r
+
     invoke-virtual {v0, v1}, Lcom/alensw/a/x;->a(Z)Z
 
-    :cond_0
+    :check_r
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+
+    if-eqz v0, :check_q
 
     invoke-virtual {v0}, Lcom/alensw/a/bc;->d()V
 
+    :check_q
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    if-eqz v0, :check_u
 
     invoke-virtual {v0}, Lcom/alensw/a/s;->b()V
 
+    :check_u
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->u:Lcom/alensw/a/ao;
+
+    if-eqz v0, :done
 
     invoke-virtual {v0}, Lcom/alensw/a/ao;->a()V
 
+    :done
     return-void
 .end method
 
@@ -1529,6 +1563,8 @@
     goto :goto_0
 
     :goto_0
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v1, 0xe

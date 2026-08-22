@@ -13,7 +13,7 @@ packageInfo:
   renameManifestPackage: null
 versionInfo:
   versionCode: 9900000
-  versionName: 10.0.3
+  versionName: 10.0.4
 sharedLibrary: false
 sparseResources: false
 compactEntries: false
