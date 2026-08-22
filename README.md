@@ -23,13 +23,18 @@ cd QuicPic
 ./build.sh                 # → releases/stable.apk
 ```
 
-Install `releases/stable.apk` on your device (Android 8.0+).
+Install `releases/stable.apk` on your device (Android 8.0+). On first launch:
+
+1. Allow **Photos and videos** when prompted
+2. If redirected to settings, enable **All files access** for QuickPic (optional but recommended)
+
+Fallback: `releases/official-alpha-resigned.apk` is the upstream alpha APK re-signed only (no smali changes).
 
 ## Source code
 
 | Path | Description |
 |------|-------------|
-| [`source/`](source/) | Smali + resources (v10.0) — edit here, then `./build.sh` |
+| [`source/`](source/) | Smali + resources (v10.0.1) — edit here, then `./build.sh` |
 | [`source-java/`](source-java/) | Decompiled Java — browse in IDE (reference) |
 | [`SOURCE.md`](SOURCE.md) | Full source guide, compatibility, limitations |
 | [`CHANGELOG.md`](CHANGELOG.md) | Fork changes and bug fixes |
@@ -46,7 +51,9 @@ Install `releases/stable.apk` on your device (Android 8.0+).
 
 ## Recent fixes (this fork)
 
-- **64-bit install** — v10.0 source with `arm64-v8a` (fixes incompatible-with-your-phone errors)
+- **Android 15+ install** — `targetSdk 34` (v9.7 / API 23 builds are blocked on Android 15)
+- **Launch crash fix** — Android 13+ media permissions added to manifest
+- **64-bit install** — `arm64-v8a` native libs
 - **Rotation thumbnails** — Grid thumbnails keep correct orientation after rotating images
 - **CI build** — GitHub Actions builds APK with apktool on every push to `master`
 

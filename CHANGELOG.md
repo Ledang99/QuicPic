@@ -2,12 +2,58 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.5] — 2026-08-22
+
+### Fixed
+
+- **Pre-UI Java crashes** — Added top-level safety boundaries around `Application.onCreate` and `GalleryActivity.onCreate`.
+- **Visible diagnostics** — Startup exceptions now remain visible as selectable stack traces instead of immediately closing the app.
+- **Stale installs** — Incremented `versionCode` so Android and artifact consumers can distinguish this build from upstream Alpha 2.
+
+## [10.0.4] — 2026-08-22
+
+### Fixed
+
+- **Hard crash on launch** — `onActivityStarted` called `QuickApp.b()` with null scanner/thumbnail services when app init failed partway through `onCreate`.
+- **Activity base crash** — Guarded framework `getInteger` in `cx.onCreate` (same `Resources.NotFoundException` class of bug fixed earlier in `QuickApp.g()`).
+- **Lifecycle cleanup** — Null-safe `QuickApp.d()` and `QuickApp.c()`; `ensureServices()` runs before lifecycle callbacks register.
+- **Startup updater** — Disabled auto-update check on cold start (could interrupt launch).
+
+## [10.0.3] — 2026-08-22
+
+### Fixed
+
+- **Crash after granting permissions** — Hardened `ensureServices()` / `ensureBitmapCaches()` when thumbnail DB init fails; null-safe `QuickApp.r` and `QuickApp.v` in album and folder grid controllers.
+- **Empty grid after permission grant** — `onRequestPermissionsResult` re-initializes services and recreates the activity when media permissions are granted.
+
+## [10.0.2] — 2026-08-22
+
+### Fixed
+
+- **"create failed: NullPointerException"** — Gallery grid failed to load when `QuickApp` services (`o`, `v`) were not initialized. Added `ensureServices()`, null-safe thumbnail cache access, and split app init into separate try blocks.
+- **Thumbnail grid empty** — Same root cause; folder/album view could not create without media scanner and bitmap cache services.
+
+## [10.0.1] — 2026-08-22
+
+### Fixed
+
+- **Crash on launch (Android 13+)** — Request `READ_MEDIA_IMAGES` / `READ_MEDIA_VIDEO` at runtime (manifest alone was insufficient).
+- **Crash on launch (some devices)** — Guard all-files access settings intent with `resolveActivity` before `startActivity`.
+- **Hard exit on init errors** — Removed `System.exit()` from `QuickApp.onCreate` so recoverable init failures do not kill the app instantly.
+- **"Not compatible" on Android 15+** — v9.7 hybrid used `targetSdk 23` (blocked on Android 15). v10.0 base uses `targetSdk 34`.
+
+## [9.7.1] — 2026-08-22 (superseded)
+
+### Fixed
+
+- **Crash on launch** — Attempted v9.7 stable + arm64 hybrid. **Do not use on Android 15+** — blocked due to `targetSdk 23`.
+
 ## [10.0] — 2026-08-22
 
 ### Fixed
 
 - **Thumbnail orientation after rotate** — Grid thumbnails could stay sideways after rotating an image 90°/180°. Cached thumbnails now preserve EXIF orientation when loaded, and the disk preview cache is cleared after each rotate.
-- **64-bit phone install** — Replaced v9.7 (32-bit only) source with v10.0.2 alpha including `arm64-v8a` native libraries. Fixes *"App not installed as app isn't compatible with your phone"* on modern devices.
+- **64-bit phone install** — Replaced v9.7 (32-bit only) source with v10.0.2 alpha including `arm64-v8a` native libraries. Fixes *"App not installed as app isn't compatible with your phone"* on modern devices. **Superseded by v9.7.1 hybrid** (stable base + arm64).
 - **GitHub Actions CI** — Workflow now runs `./build.sh` (apktool) instead of Gradle, which does not exist in this repo.
 
 ### Added
@@ -31,4 +77,4 @@ If thumbnails still look wrong after upgrading, clear the app cache once or re-o
 
 ## Upstream reference
 
-Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha**.
+Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha** with manifest fixes for modern Android.

@@ -831,6 +831,8 @@
 
     invoke-super {p0, p1}, Lcom/alensw/ui/c/a;->a(Landroid/os/Bundle;)V
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     const v0, 0x7f030002
 
     invoke-super {p0, v0}, Lcom/alensw/ui/c/a;->h(I)V
@@ -859,6 +861,13 @@
     :cond_0
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
 
+    if-nez v0, :cond_w_ready
+
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
+
+    :cond_w_ready
     iput-object v0, p0, Lcom/alensw/ui/c/z;->O:Lcom/alensw/b/a/a;
 
     iget-object v0, p0, Lcom/alensw/ui/c/z;->y:Lcom/alensw/bean/CommonFolder;
@@ -2441,6 +2450,8 @@
 
     const/4 v3, 0x0
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     packed-switch p1, :pswitch_data_0
 
     iget-boolean v0, p0, Lcom/alensw/ui/c/z;->l:Z
@@ -2449,6 +2460,13 @@
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
 
+    if-nez v0, :cond_1_f
+
+    const/16 v0, 0xc0
+
+    goto :goto_0
+
+    :cond_1_f
     iget v0, v0, Lcom/alensw/a/bc;->f:I
 
     :goto_0
@@ -2460,6 +2478,13 @@
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
 
+    if-nez v0, :cond_2_g
+
+    const/16 v0, 0xc0
+
+    goto :goto_1
+
+    :cond_2_g
     iget v0, v0, Lcom/alensw/a/bc;->g:I
 
     :goto_1
@@ -2523,6 +2548,13 @@
     :cond_1
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
 
+    if-nez v0, :cond_1_r
+
+    const/16 v0, 0xc0
+
+    goto :goto_0
+
+    :cond_1_r
     iget v0, v0, Lcom/alensw/a/bc;->d:I
 
     goto :goto_0
@@ -2530,6 +2562,13 @@
     :cond_2
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
 
+    if-nez v0, :cond_2_r
+
+    const/16 v0, 0xc0
+
+    goto :goto_1
+
+    :cond_2_r
     iget v0, v0, Lcom/alensw/a/bc;->e:I
 
     goto :goto_1

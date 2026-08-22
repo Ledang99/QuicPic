@@ -528,6 +528,8 @@
 
     invoke-super {p0, p1}, Lcom/alensw/ui/c/a;->a(Landroid/os/Bundle;)V
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     const v0, 0x7f030002
 
     invoke-super {p0, v0}, Lcom/alensw/ui/c/a;->h(I)V
@@ -548,11 +550,23 @@
 
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
 
+    if-eqz v0, :cond_v_clear
+
     invoke-virtual {v0}, Lcom/alensw/b/a/a;->c()V
 
+    :cond_v_clear
     :cond_0
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
 
+    if-nez v0, :cond_o_ready
+
+    new-instance v0, Lcom/alensw/a/x;
+
+    invoke-direct {v0}, Lcom/alensw/a/x;-><init>()V
+
+    sput-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
+
+    :cond_o_ready
     iput-object v0, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
 
     iget-object v0, p0, Lcom/alensw/ui/c/bz;->E:Landroid/content/Intent;
@@ -1811,6 +1825,8 @@
 
     const/4 v4, 0x0
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     iget-object v3, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
 
     invoke-virtual {v3}, Lcom/alensw/a/x;->b()Z
@@ -1858,6 +1874,8 @@
     :goto_0
     sget-object v3, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
 
+    if-eqz v3, :cond_v_ok
+
     sget v6, Lcom/alensw/b/h/b;->b:I
 
     const v7, 0xfa000
@@ -1878,6 +1896,7 @@
 
     invoke-virtual {v3, v6}, Lcom/alensw/b/a/a;->a(I)V
 
+    :cond_v_ok
     iget v3, p0, Lcom/alensw/ui/c/bz;->q:I
 
     invoke-static {v3}, Lcom/alensw/a/p;->b(I)I
