@@ -1,0 +1,276 @@
+package com.alensw.cloud.p036a;
+
+import android.content.ContentValues;
+import android.content.Context;
+import com.alensw.cloud.oauth.C0889a;
+import com.alensw.cloud.oauth.C0905c;
+import com.alensw.p023b.p028e.C0675b;
+import com.alensw.p023b.p028e.C0681h;
+import com.alensw.p023b.p028e.C0682i;
+import com.alensw.p023b.p028e.InterfaceC0678e;
+import com.alensw.p023b.p028e.InterfaceC0679f;
+import com.alensw.p023b.p029f.C0690c;
+import com.alensw.p023b.p035l.C0742b;
+import com.p014a.p015a.p016a.AbstractC0518h;
+import com.p014a.p015a.p016a.EnumC0522l;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.ProtocolException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import org.apache.commons.codec.digest.MessageDigestAlgorithms;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+
+/* renamed from: com.alensw.cloud.a.a */
+/* loaded from: classes.dex */
+public class C0759a extends AbstractC0808bv {
+
+    /* renamed from: c */
+    private static final DateFormat f2879c = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
+    /* renamed from: d */
+    private final String f2880d;
+
+    /* renamed from: e */
+    private final String f2881e;
+
+    /* renamed from: f */
+    private final String f2882f;
+
+    static {
+        f2879c.setTimeZone(TimeZone.getTimeZone("UTC"));
+    }
+
+    public C0759a(Context context, C0889a c0889a) {
+        super(context, c0889a);
+        this.f2880d = c0889a.f3194e;
+        String[] m3393a_ = C0905c.m3393a_(c0889a.f3195f);
+        this.f2882f = m3393a_[0];
+        this.f2881e = m3393a_[1];
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    /* renamed from: a */
+    public char m3137a(AbstractC0518h abstractC0518h, ContentValues contentValues) {
+        m3237a(abstractC0518h.mo1650c(), EnumC0522l.START_OBJECT);
+        String str = "";
+        String str2 = "";
+        boolean z = false;
+        while (abstractC0518h.mo1643a() != EnumC0522l.END_OBJECT) {
+            String mo1619d = abstractC0518h.mo1619d();
+            abstractC0518h.mo1643a();
+            if ("kind".equals(mo1619d)) {
+                z = "FOLDER".equals(abstractC0518h.mo1656f());
+            } else if ("id".equals(mo1619d)) {
+                contentValues.put("document_id", abstractC0518h.mo1757p());
+            } else if ("name".equals(mo1619d)) {
+                str = abstractC0518h.mo1656f();
+                contentValues.put("_display_name", str);
+            } else if ("modifiedDate".equals(mo1619d)) {
+                long m3139a = m3139a(abstractC0518h.mo1656f());
+                contentValues.put("last_modified", Long.valueOf(m3139a));
+                contentValues.put("datetaken", Long.valueOf(m3139a));
+            } else if ("contentProperties".equals(mo1619d)) {
+                while (abstractC0518h.mo1643a() != EnumC0522l.END_OBJECT) {
+                    String mo1619d2 = abstractC0518h.mo1619d();
+                    abstractC0518h.mo1643a();
+                    if ("size".equals(mo1619d2)) {
+                        contentValues.put("_size", Long.valueOf(abstractC0518h.m1915m()));
+                    } else if ("contentType".equals(mo1619d2)) {
+                        str2 = abstractC0518h.mo1656f();
+                    } else if ("image".equals(mo1619d2)) {
+                        while (abstractC0518h.mo1643a() != EnumC0522l.END_OBJECT) {
+                            String mo1619d3 = abstractC0518h.mo1619d();
+                            abstractC0518h.mo1643a();
+                            if ("width".equals(mo1619d3)) {
+                                contentValues.put("width", Integer.valueOf(abstractC0518h.m1914l()));
+                            } else if ("height".equals(mo1619d3)) {
+                                contentValues.put("height", Integer.valueOf(abstractC0518h.m1914l()));
+                            }
+                        }
+                    } else {
+                        abstractC0518h.mo1648b();
+                    }
+                }
+            } else if ("assets".equals(mo1619d)) {
+                while (abstractC0518h.mo1643a() != EnumC0522l.END_ARRAY) {
+                    m3140b(abstractC0518h, contentValues);
+                }
+            } else {
+                abstractC0518h.mo1648b();
+            }
+        }
+        char m2721a = z ? 'D' : C0690c.m2721a(str);
+        if (z) {
+            contentValues.remove("_size");
+            contentValues.put("mime_type", "vnd.android.document/directory");
+            contentValues.put("flags", (Integer) 58);
+        } else {
+            contentValues.put("mime_type", str2);
+            contentValues.put("flags", Integer.valueOf((m2721a == 'I' || m2721a == 'V' ? 1 : 0) | 6));
+        }
+        return m2721a;
+    }
+
+    /* renamed from: a */
+    private static long m3139a(String str) {
+        try {
+            return f2879c.parse(str).getTime() / 1000;
+        } catch (Exception e) {
+            return 0L;
+        }
+    }
+
+    /* renamed from: b */
+    private void m3140b(AbstractC0518h abstractC0518h, ContentValues contentValues) {
+        m3237a(abstractC0518h.mo1650c(), EnumC0522l.START_OBJECT);
+        String str = "";
+        while (abstractC0518h.mo1643a() != EnumC0522l.END_OBJECT) {
+            String mo1619d = abstractC0518h.mo1619d();
+            abstractC0518h.mo1643a();
+            if ("id".equals(mo1619d)) {
+                str = abstractC0518h.mo1757p();
+            } else if (!"name".equals(mo1619d)) {
+                abstractC0518h.mo1648b();
+            } else if (abstractC0518h.mo1757p().endsWith("jpg")) {
+                contentValues.put("thumbnail_url", this.f2882f + "nodes/" + str + "/content?viewBox=512");
+            }
+        }
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    public ContentValues mo3141a() {
+        ContentValues contentValues = new ContentValues(3);
+        contentValues.put("document_id", this.f2880d);
+        contentValues.put("mime_type", "vnd.android.document/directory");
+        contentValues.put("flags", (Integer) 58);
+        return contentValues;
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    public ContentValues mo3142a(String str, String str2, InterfaceC0679f interfaceC0679f) {
+        ContentValues contentValues = new ContentValues();
+        String str3 = this.f2881e + "nodes";
+        StringBuilder sb = new StringBuilder();
+        sb.append("{").append("\"name\":\"").append(str2).append("\"");
+        sb.append(", \"kind\":\"FOLDER\"");
+        sb.append(", \"parents\": [\"").append(str).append("\"]");
+        sb.append("}");
+        C0675b.m2668a(str3, HttpPost.METHOD_NAME, mo3161b(), new C0838e(this, 1, interfaceC0679f, sb, contentValues));
+        return contentValues;
+    }
+
+    /* JADX WARN: Code restructure failed: missing block: B:13:0x00b7, code lost:
+    
+        return r6;
+     */
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public ContentValues mo3143a(String str, String str2, C0682i c0682i, InterfaceC0678e interfaceC0678e) {
+        ContentValues contentValues = new ContentValues(10);
+        InputStream inputStream = c0682i.f2578e;
+        int i = 0;
+        while (true) {
+            int i2 = i;
+            if (i2 >= 2) {
+                throw new ProtocolException("Create file failed");
+            }
+            String[] strArr = {null, null};
+            String str3 = this.f2882f + "nodes?suppress=deduplication";
+            StringBuilder sb = new StringBuilder();
+            sb.append("{").append("\"name\":\"").append(str2).append("\"");
+            sb.append(", \"kind\":\"FILE\"");
+            sb.append(", \"parents\": [\"").append(str).append("\"]");
+            sb.append("}");
+            C0675b.m2668a(str3, HttpPost.METHOD_NAME, mo3161b(), new C0839f(this, 1, interfaceC0678e, contentValues, sb, new C0681h(inputStream, "Content-Disposition", "form-data; name=\"content\"; filename=\"" + C0742b.m3008g(str2) + "\"", "Content-Type", c0682i.f2576c), strArr));
+            if (strArr[0] == null) {
+                break;
+            }
+            if (!(inputStream instanceof FileInputStream)) {
+                throw new ProtocolException("Can't rewind input stream");
+            }
+            C0675b.m2668a(this.f2881e + "nodes/" + strArr[0], HttpGet.METHOD_NAME, mo3161b(), new C0840g(this, 1, interfaceC0678e, strArr));
+            FileInputStream fileInputStream = (FileInputStream) inputStream;
+            if (C0742b.m2972a(fileInputStream, MessageDigestAlgorithms.MD5).equals(strArr[1])) {
+                contentValues.put("document_id", strArr[0]);
+                break;
+            }
+            fileInputStream.getChannel().position(0L);
+            str2 = m3238b(str2);
+            i = i2 + 1;
+        }
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    public ContentValues mo3144a(String str, String str2, String str3, InterfaceC0679f interfaceC0679f) {
+        String str4 = this.f2881e + "nodes/" + str3 + "/children/" + str;
+        ContentValues contentValues = new ContentValues();
+        C0675b.m2668a(str4, HttpPut.METHOD_NAME, mo3161b(), new C0811by(this, 0, interfaceC0679f));
+        C0675b.m2668a(this.f2881e + "nodes/" + str2 + "/children/" + str, HttpDelete.METHOD_NAME, mo3161b(), new C0811by(this, 0, interfaceC0679f));
+        contentValues.put("parent_id", str3);
+        return contentValues;
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    protected String mo3145a(String str, int i, InterfaceC0679f interfaceC0679f) {
+        return this.f2882f + "nodes/" + str + "/content?viewBox=" + i;
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    protected String mo3146a(String str, InterfaceC0679f interfaceC0679f) {
+        return this.f2882f + "nodes/" + str + "/content";
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    public void mo3147a(int i, String str) {
+        if (i != 401) {
+            throw new ProtocolException(str);
+        }
+        throw new C0814ca(str);
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    public void mo3148a(String str, ContentValues contentValues, InterfaceC0679f interfaceC0679f) {
+        C0675b.m2668a(this.f2881e + "nodes/" + str, HttpGet.METHOD_NAME, mo3161b(), new C0813c(this, 1, interfaceC0679f, contentValues));
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: a */
+    public boolean mo3149a(String str, C0785az c0785az, int i, InterfaceC0679f interfaceC0679f) {
+        Object m3194a = c0785az.m3194a();
+        c0785az.m3195a(null);
+        boolean[] zArr = {false};
+        C0675b.m2668a(this.f2881e + "nodes/" + str + "/children?asset=ALL&limit=" + HttpStatus.SC_OK + "&startToken=" + (m3194a != null ? m3194a.toString() : ""), HttpGet.METHOD_NAME, mo3161b(), new C0786b(this, 1, interfaceC0679f, c0785az, zArr));
+        return !zArr[0];
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: b */
+    public String mo3150b(String str, InterfaceC0679f interfaceC0679f) {
+        String str2 = this.f2881e + "nodes/" + str + "?tempLink=true";
+        StringBuilder sb = new StringBuilder();
+        C0675b.m2668a(str2, HttpGet.METHOD_NAME, mo3161b(), new C0837d(this, 1, interfaceC0679f, sb));
+        return sb.toString();
+    }
+
+    @Override // com.alensw.cloud.p036a.AbstractC0808bv
+    /* renamed from: c */
+    public void mo3151c(String str, InterfaceC0679f interfaceC0679f) {
+        C0675b.m2668a(this.f2881e + "trash/" + str, HttpPut.METHOD_NAME, mo3161b(), new C0841h(this, 0, interfaceC0679f, new StringBuilder("{\"kind\":\"FILE\"}")));
+    }
+}

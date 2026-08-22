@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="screen_orientation">
+        <item>@string/screen_orientation_default</item>
+        <item>@string/screen_orientation_sensor</item>
+        <item>@string/screen_orientation_imagesize</item>
+    </array>
+    <array name="screen_orientation_values">
+        <item>-1</item>
+        <item>4</item>
+        <item>-2</item>
+    </array>
+    <array name="slideshow_animations">
+        <item>@string/random</item>
+        <item>@string/animation_fade</item>
+        <item>@string/animation_slide</item>
+        <item>@string/animation_flip</item>
+        <item>@string/animation_cube</item>
+        <item>@string/animation_card</item>
+    </array>
+    <array name="show_controls">
+        <item>@string/details</item>
+        <item>@string/zoom_buttons</item>
+    </array>
+    <array name="task_cache">
+        <item>@string/clear_preview</item>
+        <item>@string/clear_thumb</item>
+    </array>
+    <array name="update_channel">
+        <item>stable</item>
+        <item>beta</item>
+        <item>alternative</item>
+    </array>
+</resources>

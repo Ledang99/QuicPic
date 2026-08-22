@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="action_bar_size">64dp</dimen>
+    <dimen name="action_text_size">22sp</dimen>
+    <dimen name="action_subtitle_size">14sp</dimen>
+    <dimen name="action_subtitle_top_margin">-3dp</dimen>
+    <dimen name="button_width">48dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="check_box_size">24dp</dimen>
+    <dimen name="circle_size">120dp</dimen>
+    <dimen name="circle2_size">90dp</dimen>
+    <dimen name="comment_text_size">14sp</dimen>
+    <dimen name="detail_text_size">12sp</dimen>
+    <dimen name="detail2_text_size">14sp</dimen>
+    <dimen name="folder_item_size">56dp</dimen>
+    <dimen name="grid_text_size">16sp</dimen>
+    <dimen name="grid_subtext_size">14sp</dimen>
+    <dimen name="home_width">56dp</dimen>
+    <dimen name="menu_min_width">160dp</dimen>
+    <dimen name="menu_max_width">320dp</dimen>
+    <dimen name="menu_item_height">48dp</dimen>
+    <dimen name="menu_material_icon_size">24dp</dimen>
+    <dimen name="menu_text_size">16sp</dimen>
+    <dimen name="overflow_size">24dp</dimen>
+    <dimen name="overflow_width">36dp</dimen>
+    <dimen name="overflow_padding">12dp</dimen>
+    <dimen name="overflow_padding_left">0dp</dimen>
+    <dimen name="progress_size">32dp</dimen>
+    <dimen name="progress_padding">6dp</dimen>
+    <dimen name="min_touch_target">56dp</dimen>
+    <dimen name="dialog_corner_radius">28dp</dimen>
+    <dimen name="menu_icon_size">24dp</dimen>
+    <dimen name="list_item_height">52dp</dimen>
+    <dimen name="list_item_padding">16dp</dimen>
+    <dimen name="detail_icon_size">62dp</dimen>
+</resources>

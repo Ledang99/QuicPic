@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:interpolator/fast_out_slow_in"
+    android:duration="450"
+    android:startOffset="150"
+    android:valueFrom="M 262.75 281.5 L 259 291.5 L 249.8 294.6 L 240.6 297.7 L 231.4 300.8 L 222.2 303.9 L 213 307 L 239.75 289.25 L 266.5 271.5 L 266.5 271.5 L 262.75 281.5"
+    android:valueTo="M 271.272 271 L 271.272 271 L 307 307 L 213 307 L 221.325 301.857 L 229.649 296.714 L 237.974 291.571 L 246.298 286.429 L 254.623 281.286 L 262.947 276.143 L 271.272 271"
+    android:valueType="pathType"
+    android:propertyName="pathData"/>

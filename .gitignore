@@ -1,2 +1,4 @@
 .build/
 *.idsig
+source/build/
+source-java/resources/classes.dex

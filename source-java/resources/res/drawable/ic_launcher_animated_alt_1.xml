@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="vector"
+    android:height="432dp"
+    android:width="432dp"
+    android:viewportWidth="432"
+    android:viewportHeight="432">
+    <path
+        android:name="path"
+        android:fillColor="@color/ic_launcher_background"
+        android:pathData="M 0 0 L 432 0 L 432 432 L 0 432 Z"
+        android:strokeWidth="1"/>
+    <path
+        android:name="path_1"
+        android:fillColor="@color/ic_launcher_foreground"
+        android:pathData="M 271.272 271 L 307 307 L 213 307 L 271.272 271 Z"
+        android:strokeWidth="1"/>
+    <path
+        android:name="path_2"
+        android:fillColor="@color/ic_launcher_foreground"
+        android:pathData="M 266.5 271.5 L 259 291.5 L 213 307 L 266.5 271.5 Z"
+        android:strokeWidth="1"/>
+    <path
+        android:name="path_3"
+        android:pathData="M 216 134 C 194.261 134 173.389 142.645 158.017 158.017 C 142.645 173.389 134 194.261 134 216 C 134 237.739 142.645 258.611 158.017 273.983 C 173.389 289.355 194.261 298 216 298 C 237.739 298 258.611 289.355 273.983 273.983 C 289.355 258.611 298 237.739 298 216 C 298 194.261 289.355 173.389 273.983 158.017 C 258.611 142.645 237.739 134 216 134 Z"
+        android:strokeColor="@color/ic_launcher_foreground"
+        android:strokeWidth="18"/>
+    <path
+        android:name="path_4"
+        android:fillColor="@color/ic_launcher_shadow_alt"
+        android:pathData="M 188 212 L 213 249 L 163.5 249 L 188 212 Z"
+        android:strokeWidth="1"/>
+    <path
+        android:name="path_5"
+        android:fillColor="@color/ic_launcher_shadow_alt"
+        android:pathData="M 214.5 212 L 239.5 249 L 190 249 L 214.5 212 Z"
+        android:strokeWidth="1"/>
+    <path
+        android:name="path_6"
+        android:fillColor="@color/ic_launcher_foreground"
+        android:pathData="M 229.006 190 L 268 249 L 189 249 L 229.006 190 Z M 192 175 C 189.466 175 186.996 175.802 184.947 177.292 C 182.897 178.781 181.37 180.882 180.587 183.292 C 179.804 185.702 179.804 188.298 180.587 190.708 C 181.37 193.118 182.897 195.219 184.947 196.708 C 186.996 198.198 189.466 199 192 199 C 194.534 199 197.004 198.198 199.053 196.708 C 201.103 195.219 202.63 193.118 203.413 190.708 C 204.196 188.298 204.196 185.702 203.413 183.292 C 202.63 180.882 201.103 178.781 199.053 177.292 C 197.004 175.802 194.534 175 192 175 Z"
+        android:strokeWidth="1"/>
+</vector>

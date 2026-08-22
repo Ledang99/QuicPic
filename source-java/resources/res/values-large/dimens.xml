@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_width">64dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="button_padding">12dp</dimen>
+    <dimen name="folder_item_size">64dp</dimen>
+    <dimen name="home_width">64dp</dimen>
+    <dimen name="overflow_width">40dp</dimen>
+    <dimen name="overflow_padding_left">4dp</dimen>
+</resources>

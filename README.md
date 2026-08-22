@@ -17,6 +17,21 @@ It includes multiple bug fixes, improved compatibility with recent Android versi
 > [!WARNING]
 > 32-bit architecture support required, check if your device is supported before proceeding to download
 
+## Source Code
+
+This repo includes the complete decompiled source for v9.7:
+
+- **`source/`** — Smali + resources (use with `./build.sh` to rebuild APK)
+- **`source-java/`** — Decompiled Java (readable reference for IDE browsing)
+- **`SOURCE.md`** — Full guide on what's included and limitations
+
+```bash
+./scripts/setup-tools.sh   # first-time tool setup
+./build.sh                 # build → releases/stable.apk
+```
+
+> The original Gradle project was never published. See [SOURCE.md](SOURCE.md) for details.
+
 ### Download
 
 [<img src="https://raw.githubusercontent.com/WSTxda/WSTxda/main/images/GitHub.svg"

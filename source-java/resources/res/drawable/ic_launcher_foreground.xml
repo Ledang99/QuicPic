@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="432dp"
+    android:width="432dp"
+    android:viewportWidth="432"
+    android:viewportHeight="432">
+    <group>
+        <path
+            android:fillColor="@color/ic_launcher_shadow"
+            android:pathData="M154.03 175.37c5.47-15.43 24.85-20.37 37.04-9.45L431.5 381.5v48H64l90.03-254.13Z"/>
+        <path
+            android:fillColor="@color/ic_launcher_mountain_dark"
+            android:pathData="M155.33 170.64c8.88-14.43 29.78-14.63 38.94-0.38L362.5 432H206.15 0v-9l155.33-252.36Z"/>
+        <path
+            android:fillColor="@color/ic_launcher_shadow"
+            android:pathData="M235.61 215.1c6.43-13.34 23.61-17.22 35.15-7.93l197.3 158.94 5.9 28.9-144.2 29.43L113.4 468.6l122.22-253.5Z"/>
+        <path
+            android:fillColor="@color/ic_launcher_mountain_light"
+            android:pathData="M234.44 208.06c8.97-11.79 26.58-12.15 36.02-0.74L432 402.5V432H284.83 64l170.44-223.94Z"/>
+        <path
+            android:fillColor="@color/ic_launcher_shadow"
+            android:pathData="M307 158c0 18.22-14.77 33-33 33-18.22 0-33-14.78-33-33s14.78-33 33-33c18.23 0 33 14.78 33 33Z"/>
+        <path
+            android:fillColor="@color/ic_launcher_foreground"
+            android:pathData="M302 156c0 18.22-14.77 33-33 33-18.22 0-33-14.78-33-33s14.78-33 33-33c18.23 0 33 14.78 33 33Z"/>
+    </group>
+</vector>

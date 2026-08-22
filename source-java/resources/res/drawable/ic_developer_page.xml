@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="24dp"
+    android:width="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="?attr/colorDrawableIcon"
+        android:pathData="M13.85 18.64l5.66-3.27c0.45-0.26 1.02-0.1 1.27 0.34 0.26 0.45 0.1 1.02-0.34 1.27l-5.66 3.27c-0.44 0.26-1.02 0.1-1.27-0.34-0.26-0.44-0.1-1.01 0.34-1.27Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M24.26 4.28v15.17c0 0.51-0.42 0.93-0.93 0.93-0.52 0-0.93-0.42-0.93-0.93V4.28c0-0.52 0.41-0.94 0.93-0.94 0.51 0 0.93 0.42 0.93 0.94Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M19.51 5.4l3.34-1.93c0.45-0.26 1.02-0.1 1.28 0.34 0.26 0.44 0.11 1.01-0.33 1.27l-3.35 1.93c-0.44 0.26-1.02 0.1-1.28-0.34-0.26-0.44-0.1-1.01 0.34-1.27Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M20.91 6.2v5.7c0 0.5-0.41 0.93-0.93 0.93-0.51 0-0.93-0.42-0.93-0.94V6.21c0-0.52 0.42-0.94 0.93-0.94 0.52 0 0.93 0.42 0.93 0.94Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M16.12 13.07l3.38-1.96c0.45-0.25 1.02-0.1 1.28 0.34 0.26 0.45 0.11 1.02-0.33 1.27l-3.39 1.96c-0.45 0.25-1.02 0.1-1.28-0.34-0.26-0.45-0.1-1.01 0.34-1.27Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M16.6 14.8c-0.52 0-0.94-0.41-0.94-0.93v-9.6c0-0.5 0.42-0.93 0.93-0.93 0.52 0 0.93 0.42 0.93 0.94v9.6c0 0.5-0.41 0.93-0.93 0.93Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M12.66 5.46l3.46-2c0.44-0.25 1.02-0.1 1.28 0.34 0.26 0.45 0.1 1.02-0.34 1.28l-3.46 2c-0.45 0.25-1.02 0.1-1.28-0.35-0.26-0.44-0.1-1 0.34-1.27Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M10.6 6.26v7.61c0 0.52-0.42 0.94-0.93 0.94-0.52 0-0.94-0.42-0.94-0.94v-7.6c0-0.52 0.42-0.94 0.94-0.94 0.51 0 0.93 0.42 0.93 0.93Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M14.05 6.26v9.53c0 0.51-0.42 0.93-0.93 0.93-0.52 0-0.94-0.42-0.94-0.93V6.26c0-0.51 0.42-0.93 0.94-0.93 0.51 0 0.93 0.42 0.93 0.93Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M6.75 3.5l3.38 1.96c0.45 0.26 0.6 0.83 0.34 1.27-0.26 0.45-0.83 0.6-1.28 0.34L5.81 5.12C5.36 4.86 5.2 4.29 5.47 3.85 5.73 3.4 6.3 3.25 6.75 3.5Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M5.81 18.92l6.83-3.94c0.44-0.25 1.02-0.1 1.28 0.34 0.26 0.45 0.1 1.02-0.34 1.27l-6.83 3.94c-0.44 0.26-1.01 0.11-1.27-0.33-0.26-0.45-0.11-1.02 0.33-1.28Z"
+        android:fillType="evenOdd"/>
+    <path
+        android:fillColor="?android:attr/textColorSecondary"
+        android:pathData="M7.21 4.32v15.4c0 0.51-0.42 0.93-0.93 0.93-0.52 0-0.93-0.42-0.93-0.93V4.32c0-0.52 0.41-0.94 0.93-0.94 0.51 0 0.93 0.42 0.93 0.94Z"
+        android:fillType="evenOdd"/>
+</vector>

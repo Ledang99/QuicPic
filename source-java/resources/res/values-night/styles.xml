@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Translucid" parent="@style/Theme.Base.Translucid">
+        <item name="android:colorAccent">?android:attr/textColorPrimary</item>
+        <item name="colorActionBar">@color/material_bar_translucid</item>
+        <item name="colorBackground">@color/material_background_translucid_dark</item>
+        <item name="colorForeground">@color/material_background_translucid</item>
+        <item name="colorElevation">?attr/colorAccentInverse</item>
+        <item name="colorAccentInverse">@color/material_divider_dark</item>
+    </style>
+    <style name="Theme.Blue" parent="@style/Theme.Base.Dark">
+        <item name="android:colorAccent">@color/material_accent_dark</item>
+        <item name="colorActionBar">@color/material_bar_blue_dark</item>
+        <item name="colorBackground">@color/material_background_dark</item>
+        <item name="colorForeground">@color/material_foreground_dark</item>
+        <item name="colorElevation">@color/material_elevation_dark</item>
+        <item name="colorAccentInverse">@color/material_accent_light</item>
+    </style>
+    <style name="Theme.DarkColor" parent="@style/Theme.Base.Dark">
+        <item name="android:alertDialogTheme">@style/Theme.Dialog.Alert.Color.Dark</item>
+        <item name="colorActionBar">@color/material_background_black</item>
+        <item name="colorBackground">@color/material_background_black</item>
+        <item name="colorForeground">@color/material_foreground_black_color</item>
+        <item name="colorElevation">?attr/colorForeground</item>
+        <item name="colorAccentInverse">?attr/colorForeground</item>
+        <item name="colorDrawableIcon">?android:attr/textColorSecondary</item>
+        <item name="colorDialog">@color/material_foreground_black_color</item>
+        <item name="colorThemeIcon">?android:attr/textColorPrimary</item>
+        <item name="colorTrackOn">@color/track_on_color_dark_color</item>
+        <item name="colorTrackOff">@color/track_off_color_dark_color</item>
+        <item name="colorTrackLine">@color/track_line_color_dark_color</item>
+        <item name="colorThumbOn">@color/thumb_on_color_dark_color</item>
+        <item name="colorThumbOff">@color/thumb_off_color_dark_color</item>
+    </style>
+    <style name="Theme.LightColor" parent="@style/Theme.Base.Dark">
+        <item name="android:alertDialogTheme">@style/Theme.Dialog.Alert.Color.Dark</item>
+        <item name="colorActionBar">@color/material_background_dark_color</item>
+        <item name="colorBackground">@color/material_background_dark_color</item>
+        <item name="colorForeground">@color/material_foreground_dark_color</item>
+        <item name="colorElevation">?attr/colorForeground</item>
+        <item name="colorAccentInverse">?attr/colorForeground</item>
+        <item name="colorDrawableIcon">?android:attr/textColorSecondary</item>
+        <item name="colorDialog">@color/material_foreground_dark_color</item>
+        <item name="colorThemeIcon">?android:attr/textColorPrimary</item>
+        <item name="colorTrackOn">@color/track_on_color_dark_color</item>
+        <item name="colorTrackOff">@color/track_off_color_dark_color</item>
+        <item name="colorTrackLine">@color/track_line_color_dark_color</item>
+        <item name="colorThumbOn">@color/thumb_on_color_dark_color</item>
+        <item name="colorThumbOff">@color/thumb_off_color_dark_color</item>
+    </style>
+</resources>
