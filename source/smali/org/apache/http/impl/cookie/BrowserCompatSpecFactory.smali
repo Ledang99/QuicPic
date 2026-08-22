@@ -31,40 +31,51 @@
 .method public constructor <init>()V
     .locals 2
 
+    .line 72
     sget-object v0, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;->SECURITYLEVEL_DEFAULT:Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v1, v0}, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory;-><init>([Ljava/lang/String;Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;)V
 
+    .line 73
     return-void
 .end method
 
 .method public constructor <init>([Ljava/lang/String;)V
     .locals 2
+    .param p1, "datepatterns"    # [Ljava/lang/String;
 
+    .line 68
     sget-object v0, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;->SECURITYLEVEL_DEFAULT:Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v1, v0}, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory;-><init>([Ljava/lang/String;Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;)V
 
+    .line 69
     return-void
 .end method
 
 .method public constructor <init>([Ljava/lang/String;Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;)V
     .locals 1
+    .param p1, "datepatterns"    # [Ljava/lang/String;
+    .param p2, "securityLevel"    # Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;
 
+    .line 62
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 63
     iput-object p2, p0, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory;->securityLevel:Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;
 
+    .line 64
     new-instance v0, Lorg/apache/http/impl/cookie/BrowserCompatSpec;
 
     invoke-direct {v0, p1, p2}, Lorg/apache/http/impl/cookie/BrowserCompatSpec;-><init>([Ljava/lang/String;Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory$SecurityLevel;)V
 
     iput-object v0, p0, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
+    .line 65
     return-void
 .end method
 
@@ -72,7 +83,9 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/cookie/CookieSpec;
     .locals 1
+    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
+    .line 94
     iget-object v0, p0, Lorg/apache/http/impl/cookie/BrowserCompatSpecFactory;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     return-object v0
@@ -80,11 +93,16 @@
 
 .method public newInstance(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/cookie/CookieSpec;
     .locals 4
+    .param p1, "params"    # Lorg/apache/http/params/HttpParams;
 
+    .line 77
     if-eqz p1, :cond_1
 
+    .line 79
     const/4 v0, 0x0
 
+    .line 80
+    .local v0, "patterns":[Ljava/lang/String;
     const-string v1, "http.protocol.cookie-datepatterns"
 
     invoke-interface {p1, v1}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
@@ -93,14 +111,18 @@
 
     check-cast v1, Ljava/util/Collection;
 
+    .line 82
+    .local v1, "param":Ljava/util/Collection;, "Ljava/util/Collection<*>;"
     if-eqz v1, :cond_0
 
+    .line 83
     invoke-interface {v1}, Ljava/util/Collection;->size()I
 
     move-result v2
 
     new-array v0, v2, [Ljava/lang/String;
 
+    .line 84
     invoke-interface {v1, v0}, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
     move-result-object v2
@@ -109,6 +131,7 @@
 
     check-cast v0, [Ljava/lang/String;
 
+    .line 86
     :cond_0
     new-instance v2, Lorg/apache/http/impl/cookie/BrowserCompatSpec;
 
@@ -118,6 +141,9 @@
 
     return-object v2
 
+    .line 88
+    .end local v0    # "patterns":[Ljava/lang/String;
+    .end local v1    # "param":Ljava/util/Collection;, "Ljava/util/Collection<*>;"
     :cond_1
     new-instance v0, Lorg/apache/http/impl/cookie/BrowserCompatSpec;
 

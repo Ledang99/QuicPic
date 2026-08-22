@@ -27,28 +27,33 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 4
+    .param p1, "message"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 1074
     const/4 v0, 0x2
 
     invoke-direct {p0, p1, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;-><init>(Ljava/lang/String;I)V
 
+    .line 1091
     const/16 v0, 0x8
 
     new-array v0, v0, [B
 
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->challenge:[B
 
+    .line 1092
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->challenge:[B
 
     const/16 v1, 0x18
 
     invoke-virtual {p0, v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->readBytes([BI)V
 
+    .line 1094
     const/16 v0, 0x14
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->readULong(I)I
@@ -57,32 +62,39 @@
 
     iput v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->flags:I
 
+    .line 1096
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->flags:I
 
     and-int/lit8 v1, v1, 0x1
 
     if-eqz v1, :cond_2
 
+    .line 1103
     const/4 v1, 0x0
 
     iput-object v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->target:Ljava/lang/String;
 
+    .line 1107
     invoke-virtual {p0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->getMessageLength()I
 
     move-result v2
 
     if-lt v2, v0, :cond_0
 
+    .line 1108
     const/16 v0, 0xc
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->readSecurityBuffer(I)[B
 
     move-result-object v0
 
+    .line 1109
+    .local v0, "bytes":[B
     array-length v2, v0
 
     if-eqz v2, :cond_0
 
+    .line 1111
     :try_start_0
     new-instance v2, Ljava/lang/String;
 
@@ -94,11 +106,15 @@
     :try_end_0
     .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 1114
     goto :goto_0
 
+    .line 1112
     :catch_0
     move-exception v1
 
+    .line 1113
+    .local v1, "e":Ljava/io/UnsupportedEncodingException;
     new-instance v2, Lorg/apache/http/impl/auth/NTLMEngineException;
 
     invoke-virtual {v1}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
@@ -109,10 +125,14 @@
 
     throw v2
 
+    .line 1119
+    .end local v0    # "bytes":[B
+    .end local v1    # "e":Ljava/io/UnsupportedEncodingException;
     :cond_0
     :goto_0
     iput-object v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->targetInfo:[B
 
+    .line 1121
     invoke-virtual {p0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->getMessageLength()I
 
     move-result v0
@@ -121,21 +141,28 @@
 
     if-lt v0, v1, :cond_1
 
+    .line 1122
     const/16 v0, 0x28
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->readSecurityBuffer(I)[B
 
     move-result-object v0
 
+    .line 1123
+    .restart local v0    # "bytes":[B
     array-length v1, v0
 
     if-eqz v1, :cond_1
 
+    .line 1124
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->targetInfo:[B
 
+    .line 1127
+    .end local v0    # "bytes":[B
     :cond_1
     return-void
 
+    .line 1097
     :cond_2
     new-instance v0, Lorg/apache/http/impl/auth/NTLMEngineException;
 
@@ -169,6 +196,7 @@
 .method getChallenge()[B
     .locals 1
 
+    .line 1131
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->challenge:[B
 
     return-object v0
@@ -177,6 +205,7 @@
 .method getFlags()I
     .locals 1
 
+    .line 1146
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->flags:I
 
     return v0
@@ -185,6 +214,7 @@
 .method getTarget()Ljava/lang/String;
     .locals 1
 
+    .line 1136
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->target:Ljava/lang/String;
 
     return-object v0
@@ -193,6 +223,7 @@
 .method getTargetInfo()[B
     .locals 1
 
+    .line 1141
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type2Message;->targetInfo:[B
 
     return-object v0

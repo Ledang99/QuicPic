@@ -48,4 +48,15 @@ Modifications must be made in `source/` (smali/resources), not `source-java/`. J
 
 ## Upstream
 
-Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) stable.apk v9.7.
+Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha** (64-bit ARM support).
+
+## Device compatibility
+
+| Architecture | Supported |
+|--------------|-----------|
+| **arm64-v8a** (most modern phones) | ✅ Yes |
+| armeabi (32-bit ARM) | ✅ Yes |
+| x86 (32-bit emulators) | ✅ Yes |
+| 64-bit-only devices (no 32-bit support) | ✅ Yes (via arm64-v8a) |
+
+**Minimum Android:** API 26 (Android 8.0). The v9.7 build (32-bit only) will **not install** on many newer phones — use the current v10 source.

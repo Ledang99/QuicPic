@@ -19,11 +19,13 @@ It includes multiple bug fixes, improved compatibility with recent Android versi
 
 ## Source Code
 
-This repo includes the complete decompiled source for v9.7:
+This repo includes the complete decompiled source for **v10.0** (64-bit compatible):
 
 - **`source/`** — Smali + resources (use with `./build.sh` to rebuild APK)
-- **`source-java/`** — Decompiled Java (readable reference for IDE browsing)
+- **`source-java/`** — Decompiled Java from v9.7 (reference only; source is now v10)
 - **`SOURCE.md`** — Full guide on what's included and limitations
+
+> **Install error on modern phones?** Older v9.7 builds only supported 32-bit (`armeabi`). The current source is v10.0 with **arm64-v8a** for 64-bit devices.
 
 ```bash
 ./scripts/setup-tools.sh   # first-time tool setup

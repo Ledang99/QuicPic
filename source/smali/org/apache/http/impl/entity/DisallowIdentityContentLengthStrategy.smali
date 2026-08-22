@@ -23,6 +23,7 @@
 .method static constructor <clinit>()V
     .locals 3
 
+    .line 45
     new-instance v0, Lorg/apache/http/impl/entity/DisallowIdentityContentLengthStrategy;
 
     new-instance v1, Lorg/apache/http/impl/entity/LaxContentLengthStrategy;
@@ -40,11 +41,15 @@
 
 .method public constructor <init>(Lorg/apache/http/entity/ContentLengthStrategy;)V
     .locals 0
+    .param p1, "contentLengthStrategy"    # Lorg/apache/http/entity/ContentLengthStrategy;
 
+    .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 52
     iput-object p1, p0, Lorg/apache/http/impl/entity/DisallowIdentityContentLengthStrategy;->contentLengthStrategy:Lorg/apache/http/entity/ContentLengthStrategy;
 
+    .line 53
     return-void
 .end method
 
@@ -52,26 +57,32 @@
 # virtual methods
 .method public determineLength(Lorg/apache/http/HttpMessage;)J
     .locals 5
+    .param p1, "message"    # Lorg/apache/http/HttpMessage;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/HttpException;
         }
     .end annotation
 
+    .line 57
     iget-object v0, p0, Lorg/apache/http/impl/entity/DisallowIdentityContentLengthStrategy;->contentLengthStrategy:Lorg/apache/http/entity/ContentLengthStrategy;
 
     invoke-interface {v0, p1}, Lorg/apache/http/entity/ContentLengthStrategy;->determineLength(Lorg/apache/http/HttpMessage;)J
 
     move-result-wide v0
 
+    .line 58
+    .local v0, "result":J
     const-wide/16 v2, -0x1
 
     cmp-long v4, v0, v2
 
     if-eqz v4, :cond_0
 
+    .line 61
     return-wide v0
 
+    .line 59
     :cond_0
     new-instance v2, Lorg/apache/http/ProtocolException;
 

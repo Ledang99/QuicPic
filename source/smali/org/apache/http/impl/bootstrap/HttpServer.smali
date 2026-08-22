@@ -61,6 +61,13 @@
 # direct methods
 .method constructor <init>(ILjava/net/InetAddress;Lorg/apache/http/config/SocketConfig;Ljavax/net/ServerSocketFactory;Lorg/apache/http/protocol/HttpService;Lorg/apache/http/HttpConnectionFactory;Lorg/apache/http/impl/bootstrap/SSLServerSetupHandler;Lorg/apache/http/ExceptionLogger;)V
     .locals 3
+    .param p1, "port"    # I
+    .param p2, "ifAddress"    # Ljava/net/InetAddress;
+    .param p3, "socketConfig"    # Lorg/apache/http/config/SocketConfig;
+    .param p4, "serverSocketFactory"    # Ljavax/net/ServerSocketFactory;
+    .param p5, "httpService"    # Lorg/apache/http/protocol/HttpService;
+    .param p7, "sslSetupHandler"    # Lorg/apache/http/impl/bootstrap/SSLServerSetupHandler;
+    .param p8, "exceptionLogger"    # Lorg/apache/http/ExceptionLogger;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
@@ -78,24 +85,35 @@
         }
     .end annotation
 
+    .line 79
+    .local p6, "connectionFactory":Lorg/apache/http/HttpConnectionFactory;, "Lorg/apache/http/HttpConnectionFactory<+Lorg/apache/http/impl/DefaultBHttpServerConnection;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 80
     iput p1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->port:I
 
+    .line 81
     iput-object p2, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->ifAddress:Ljava/net/InetAddress;
 
+    .line 82
     iput-object p3, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->socketConfig:Lorg/apache/http/config/SocketConfig;
 
+    .line 83
     iput-object p4, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocketFactory:Ljavax/net/ServerSocketFactory;
 
+    .line 84
     iput-object p5, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->httpService:Lorg/apache/http/protocol/HttpService;
 
+    .line 85
     iput-object p6, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->connectionFactory:Lorg/apache/http/HttpConnectionFactory;
 
+    .line 86
     iput-object p7, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->sslSetupHandler:Lorg/apache/http/impl/bootstrap/SSLServerSetupHandler;
 
+    .line 87
     iput-object p8, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->exceptionLogger:Lorg/apache/http/ExceptionLogger;
 
+    .line 88
     new-instance v0, Lorg/apache/http/impl/bootstrap/ThreadFactoryImpl;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -122,6 +140,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->listenerExecutorService:Ljava/util/concurrent/ExecutorService;
 
+    .line 90
     new-instance v0, Ljava/lang/ThreadGroup;
 
     const-string v1, "HTTP-workers"
@@ -130,6 +149,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerThreads:Ljava/lang/ThreadGroup;
 
+    .line 91
     new-instance v0, Lorg/apache/http/impl/bootstrap/ThreadFactoryImpl;
 
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerThreads:Ljava/lang/ThreadGroup;
@@ -144,6 +164,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerExecutorService:Ljava/util/concurrent/ExecutorService;
 
+    .line 93
     new-instance v0, Ljava/util/concurrent/atomic/AtomicReference;
 
     sget-object v1, Lorg/apache/http/impl/bootstrap/HttpServer$Status;->READY:Lorg/apache/http/impl/bootstrap/HttpServer$Status;
@@ -152,6 +173,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->status:Ljava/util/concurrent/atomic/AtomicReference;
 
+    .line 94
     return-void
 .end method
 
@@ -159,32 +181,41 @@
 # virtual methods
 .method public awaitTermination(JLjava/util/concurrent/TimeUnit;)V
     .locals 1
+    .param p1, "timeout"    # J
+    .param p3, "timeUnit"    # Ljava/util/concurrent/TimeUnit;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/InterruptedException;
         }
     .end annotation
 
+    .line 153
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerExecutorService:Ljava/util/concurrent/ExecutorService;
 
     invoke-interface {v0, p1, p2, p3}, Ljava/util/concurrent/ExecutorService;->awaitTermination(JLjava/util/concurrent/TimeUnit;)Z
 
+    .line 154
     return-void
 .end method
 
 .method public getInetAddress()Ljava/net/InetAddress;
     .locals 2
 
+    .line 97
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocket:Ljava/net/ServerSocket;
 
+    .line 98
+    .local v0, "localSocket":Ljava/net/ServerSocket;
     if-eqz v0, :cond_0
 
+    .line 99
     invoke-virtual {v0}, Ljava/net/ServerSocket;->getInetAddress()Ljava/net/InetAddress;
 
     move-result-object v1
 
     return-object v1
 
+    .line 101
     :cond_0
     const/4 v1, 0x0
 
@@ -194,16 +225,21 @@
 .method public getLocalPort()I
     .locals 2
 
+    .line 106
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocket:Ljava/net/ServerSocket;
 
+    .line 107
+    .local v0, "localSocket":Ljava/net/ServerSocket;
     if-eqz v0, :cond_0
 
+    .line 108
     invoke-virtual {v0}, Ljava/net/ServerSocket;->getLocalPort()I
 
     move-result v1
 
     return v1
 
+    .line 110
     :cond_0
     const/4 v1, -0x1
 
@@ -212,31 +248,42 @@
 
 .method public shutdown(JLjava/util/concurrent/TimeUnit;)V
     .locals 7
+    .param p1, "gracePeriod"    # J
+    .param p3, "timeUnit"    # Ljava/util/concurrent/TimeUnit;
 
+    .line 157
     invoke-virtual {p0}, Lorg/apache/http/impl/bootstrap/HttpServer;->stop()V
 
+    .line 158
     const-wide/16 v0, 0x0
 
     cmp-long v2, p1, v0
 
     if-lez v2, :cond_0
 
+    .line 160
     :try_start_0
     invoke-virtual {p0, p1, p2, p3}, Lorg/apache/http/impl/bootstrap/HttpServer;->awaitTermination(JLjava/util/concurrent/TimeUnit;)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 163
     goto :goto_0
 
+    .line 161
     :catch_0
     move-exception v0
 
+    .line 162
+    .local v0, "ex":Ljava/lang/InterruptedException;
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/Thread;->interrupt()V
 
+    .line 165
+    .end local v0    # "ex":Ljava/lang/InterruptedException;
     :cond_0
     :goto_0
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerExecutorService:Ljava/util/concurrent/ExecutorService;
@@ -245,10 +292,13 @@
 
     move-result-object v0
 
+    .line 166
+    .local v0, "runnables":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Runnable;>;"
     invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
+    .local v1, "i$":Ljava/util/Iterator;
     :goto_1
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
@@ -262,36 +312,54 @@
 
     check-cast v2, Ljava/lang/Runnable;
 
+    .line 167
+    .local v2, "runnable":Ljava/lang/Runnable;
     instance-of v3, v2, Lorg/apache/http/impl/bootstrap/Worker;
 
     if-eqz v3, :cond_1
 
+    .line 168
     move-object v3, v2
 
     check-cast v3, Lorg/apache/http/impl/bootstrap/Worker;
 
+    .line 169
+    .local v3, "worker":Lorg/apache/http/impl/bootstrap/Worker;
     invoke-virtual {v3}, Lorg/apache/http/impl/bootstrap/Worker;->getConnection()Lorg/apache/http/HttpServerConnection;
 
     move-result-object v4
 
+    .line 171
+    .local v4, "conn":Lorg/apache/http/HttpServerConnection;
     :try_start_1
     invoke-interface {v4}, Lorg/apache/http/HttpServerConnection;->shutdown()V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
 
+    .line 174
     goto :goto_2
 
+    .line 172
     :catch_1
     move-exception v5
 
+    .line 173
+    .local v5, "ex":Ljava/io/IOException;
     iget-object v6, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->exceptionLogger:Lorg/apache/http/ExceptionLogger;
 
     invoke-interface {v6, v5}, Lorg/apache/http/ExceptionLogger;->log(Ljava/lang/Exception;)V
 
+    .line 175
+    .end local v2    # "runnable":Ljava/lang/Runnable;
+    .end local v3    # "worker":Lorg/apache/http/impl/bootstrap/Worker;
+    .end local v4    # "conn":Lorg/apache/http/HttpServerConnection;
+    .end local v5    # "ex":Ljava/io/IOException;
     :cond_1
     :goto_2
     goto :goto_1
 
+    .line 177
+    .end local v1    # "i$":Ljava/util/Iterator;
     :cond_2
     return-void
 .end method
@@ -304,6 +372,7 @@
         }
     .end annotation
 
+    .line 115
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->status:Ljava/util/concurrent/atomic/AtomicReference;
 
     sget-object v1, Lorg/apache/http/impl/bootstrap/HttpServer$Status;->READY:Lorg/apache/http/impl/bootstrap/HttpServer$Status;
@@ -316,6 +385,7 @@
 
     if-eqz v0, :cond_2
 
+    .line 116
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocketFactory:Ljavax/net/ServerSocketFactory;
 
     iget v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->port:I
@@ -334,6 +404,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocket:Ljava/net/ServerSocket;
 
+    .line 118
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocket:Ljava/net/ServerSocket;
 
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->socketConfig:Lorg/apache/http/config/SocketConfig;
@@ -344,6 +415,7 @@
 
     invoke-virtual {v0, v1}, Ljava/net/ServerSocket;->setReuseAddress(Z)V
 
+    .line 119
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->socketConfig:Lorg/apache/http/config/SocketConfig;
 
     invoke-virtual {v0}, Lorg/apache/http/config/SocketConfig;->getRcvBufSize()I
@@ -352,6 +424,7 @@
 
     if-lez v0, :cond_0
 
+    .line 120
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocket:Ljava/net/ServerSocket;
 
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->socketConfig:Lorg/apache/http/config/SocketConfig;
@@ -362,6 +435,7 @@
 
     invoke-virtual {v0, v1}, Ljava/net/ServerSocket;->setReceiveBufferSize(I)V
 
+    .line 122
     :cond_0
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->sslSetupHandler:Lorg/apache/http/impl/bootstrap/SSLServerSetupHandler;
 
@@ -373,6 +447,7 @@
 
     if-eqz v0, :cond_1
 
+    .line 123
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->sslSetupHandler:Lorg/apache/http/impl/bootstrap/SSLServerSetupHandler;
 
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->serverSocket:Ljava/net/ServerSocket;
@@ -381,6 +456,7 @@
 
     invoke-interface {v0, v1}, Lorg/apache/http/impl/bootstrap/SSLServerSetupHandler;->initialize(Ljavax/net/ssl/SSLServerSocket;)V
 
+    .line 125
     :cond_1
     new-instance v0, Lorg/apache/http/impl/bootstrap/RequestListener;
 
@@ -402,12 +478,14 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->requestListener:Lorg/apache/http/impl/bootstrap/RequestListener;
 
+    .line 132
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->listenerExecutorService:Ljava/util/concurrent/ExecutorService;
 
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->requestListener:Lorg/apache/http/impl/bootstrap/RequestListener;
 
     invoke-interface {v0, v1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V
 
+    .line 134
     :cond_2
     return-void
 .end method
@@ -415,6 +493,7 @@
 .method public stop()V
     .locals 3
 
+    .line 137
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->status:Ljava/util/concurrent/atomic/AtomicReference;
 
     sget-object v1, Lorg/apache/http/impl/bootstrap/HttpServer$Status;->ACTIVE:Lorg/apache/http/impl/bootstrap/HttpServer$Status;
@@ -427,38 +506,52 @@
 
     if-eqz v0, :cond_1
 
+    .line 138
     iget-object v0, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->requestListener:Lorg/apache/http/impl/bootstrap/RequestListener;
 
+    .line 139
+    .local v0, "local":Lorg/apache/http/impl/bootstrap/RequestListener;
     if-eqz v0, :cond_0
 
+    .line 141
     :try_start_0
     invoke-virtual {v0}, Lorg/apache/http/impl/bootstrap/RequestListener;->terminate()V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 144
     goto :goto_0
 
+    .line 142
     :catch_0
     move-exception v1
 
+    .line 143
+    .local v1, "ex":Ljava/io/IOException;
     iget-object v2, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->exceptionLogger:Lorg/apache/http/ExceptionLogger;
 
     invoke-interface {v2, v1}, Lorg/apache/http/ExceptionLogger;->log(Ljava/lang/Exception;)V
 
+    .line 146
+    .end local v1    # "ex":Ljava/io/IOException;
     :cond_0
     :goto_0
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerThreads:Ljava/lang/ThreadGroup;
 
     invoke-virtual {v1}, Ljava/lang/ThreadGroup;->interrupt()V
 
+    .line 147
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->listenerExecutorService:Ljava/util/concurrent/ExecutorService;
 
     invoke-interface {v1}, Ljava/util/concurrent/ExecutorService;->shutdown()V
 
+    .line 148
     iget-object v1, p0, Lorg/apache/http/impl/bootstrap/HttpServer;->workerExecutorService:Ljava/util/concurrent/ExecutorService;
 
     invoke-interface {v1}, Ljava/util/concurrent/ExecutorService;->shutdown()V
 
+    .line 150
+    .end local v0    # "local":Lorg/apache/http/impl/bootstrap/RequestListener;
     :cond_1
     return-void
 .end method

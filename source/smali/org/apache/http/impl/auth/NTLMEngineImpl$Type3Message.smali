@@ -33,28 +33,43 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BILjava/lang/String;[B)V
     .locals 12
+    .param p1, "domain"    # Ljava/lang/String;
+    .param p2, "host"    # Ljava/lang/String;
+    .param p3, "user"    # Ljava/lang/String;
+    .param p4, "password"    # Ljava/lang/String;
+    .param p5, "nonce"    # [B
+    .param p6, "type2Flags"    # I
+    .param p7, "target"    # Ljava/lang/String;
+    .param p8, "targetInformation"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 1168
     move-object v1, p0
 
     move/from16 v2, p6
 
     invoke-direct {p0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;-><init>()V
 
+    .line 1170
     iput v2, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->type2Flags:I
 
+    .line 1173
     invoke-static {p2}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1600(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
+    .line 1175
+    .local v3, "unqualifiedHost":Ljava/lang/String;
     invoke-static {p1}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1700(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v11
 
+    .line 1178
+    .local v11, "unqualifiedDomain":Ljava/lang/String;
     new-instance v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;
 
     move-object v4, v0
@@ -73,6 +88,8 @@
 
     invoke-direct/range {v4 .. v10}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;[B)V
 
+    .line 1186
+    .local v4, "gen":Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;
     const/high16 v0, 0x800000
 
     and-int/2addr v0, v2
@@ -85,6 +102,7 @@
 
     if-eqz p7, :cond_1
 
+    .line 1189
     :try_start_0
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getNTLMv2Response()[B
 
@@ -92,29 +110,38 @@
 
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->ntResp:[B
 
+    .line 1190
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLMv2Response()[B
 
     move-result-object v0
 
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->lmResp:[B
 
+    .line 1191
     and-int/lit16 v0, v2, 0x80
 
     if-eqz v0, :cond_0
 
+    .line 1192
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLanManagerSessionKey()[B
 
     move-result-object v0
 
+    .local v0, "userSessionKey":[B
     goto :goto_0
 
+    .line 1194
+    .end local v0    # "userSessionKey":[B
     :cond_0
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getNTLMv2UserSessionKey()[B
 
     move-result-object v0
 
+    .restart local v0    # "userSessionKey":[B
     goto :goto_0
 
+    .line 1198
+    .end local v0    # "userSessionKey":[B
     :cond_1
     const/high16 v0, 0x80000
 
@@ -122,35 +149,45 @@
 
     if-eqz v0, :cond_3
 
+    .line 1200
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getNTLM2SessionResponse()[B
 
     move-result-object v0
 
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->ntResp:[B
 
+    .line 1201
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLM2SessionResponse()[B
 
     move-result-object v0
 
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->lmResp:[B
 
+    .line 1202
     and-int/lit16 v0, v2, 0x80
 
     if-eqz v0, :cond_2
 
+    .line 1203
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLanManagerSessionKey()[B
 
     move-result-object v0
 
+    .restart local v0    # "userSessionKey":[B
     goto :goto_0
 
+    .line 1205
+    .end local v0    # "userSessionKey":[B
     :cond_2
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getNTLM2SessionResponseUserSessionKey()[B
 
     move-result-object v0
 
+    .restart local v0    # "userSessionKey":[B
     goto :goto_0
 
+    .line 1208
+    .end local v0    # "userSessionKey":[B
     :cond_3
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getNTLMResponse()[B
 
@@ -158,22 +195,28 @@
 
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->ntResp:[B
 
+    .line 1209
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLMResponse()[B
 
     move-result-object v0
 
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->lmResp:[B
 
+    .line 1210
     and-int/lit16 v0, v2, 0x80
 
     if-eqz v0, :cond_4
 
+    .line 1211
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLanManagerSessionKey()[B
 
     move-result-object v0
 
+    .restart local v0    # "userSessionKey":[B
     goto :goto_0
 
+    .line 1213
+    .end local v0    # "userSessionKey":[B
     :cond_4
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getNTLMUserSessionKey()[B
 
@@ -181,30 +224,40 @@
     :try_end_0
     .catch Lorg/apache/http/impl/auth/NTLMEngineException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 1227
+    .restart local v0    # "userSessionKey":[B
     :goto_0
     goto :goto_1
 
+    .line 1217
+    .end local v0    # "userSessionKey":[B
     :catch_0
     move-exception v0
 
     move-object v6, v5
 
+    .line 1220
+    .local v0, "e":Lorg/apache/http/impl/auth/NTLMEngineException;
+    .local v6, "userSessionKey":[B
     const/4 v7, 0x0
 
     new-array v7, v7, [B
 
     iput-object v7, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->ntResp:[B
 
+    .line 1221
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLMResponse()[B
 
     move-result-object v7
 
     iput-object v7, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->lmResp:[B
 
+    .line 1222
     and-int/lit16 v7, v2, 0x80
 
     if-eqz v7, :cond_5
 
+    .line 1223
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLanManagerSessionKey()[B
 
     move-result-object v6
@@ -213,22 +266,28 @@
 
     goto :goto_1
 
+    .line 1225
+    .end local v6    # "userSessionKey":[B
     :cond_5
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getLMUserSessionKey()[B
 
     move-result-object v0
 
+    .line 1229
+    .local v0, "userSessionKey":[B
     :goto_1
     and-int/lit8 v6, v2, 0x10
 
     if-eqz v6, :cond_7
 
+    .line 1230
     const/high16 v6, 0x40000000    # 2.0f
 
     and-int/2addr v6, v2
 
     if-eqz v6, :cond_6
 
+    .line 1231
     invoke-virtual {v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$CipherGen;->getSecondaryKey()[B
 
     move-result-object v6
@@ -241,14 +300,17 @@
 
     goto :goto_2
 
+    .line 1233
     :cond_6
     iput-object v0, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->sessionKey:[B
 
     goto :goto_2
 
+    .line 1236
     :cond_7
     iput-object v5, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->sessionKey:[B
 
+    .line 1238
     :goto_2
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1500()Ljava/nio/charset/Charset;
 
@@ -256,6 +318,7 @@
 
     if-eqz v6, :cond_a
 
+    .line 1241
     if-eqz v3, :cond_8
 
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1500()Ljava/nio/charset/Charset;
@@ -274,6 +337,7 @@
     :goto_3
     iput-object v6, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->hostBytes:[B
 
+    .line 1242
     if-eqz v11, :cond_9
 
     sget-object v5, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
@@ -293,6 +357,7 @@
     :cond_9
     iput-object v5, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->domainBytes:[B
 
+    .line 1244
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1500()Ljava/nio/charset/Charset;
 
     move-result-object v5
@@ -305,8 +370,10 @@
 
     iput-object v5, v1, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->userBytes:[B
 
+    .line 1245
     return-void
 
+    .line 1239
     :cond_a
     move-object v6, p3
 
@@ -324,16 +391,21 @@
 .method getResponse()Ljava/lang/String;
     .locals 17
 
+    .line 1250
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->ntResp:[B
 
     array-length v1, v1
 
+    .line 1251
+    .local v1, "ntRespLen":I
     iget-object v2, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->lmResp:[B
 
     array-length v2, v2
 
+    .line 1253
+    .local v2, "lmRespLen":I
     iget-object v3, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->domainBytes:[B
 
     const/4 v4, 0x0
@@ -347,6 +419,8 @@
     :cond_0
     const/4 v3, 0x0
 
+    .line 1254
+    .local v3, "domainLen":I
     :goto_0
     iget-object v5, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->hostBytes:[B
 
@@ -354,85 +428,130 @@
 
     array-length v4, v5
 
+    .line 1255
+    .local v4, "hostLen":I
     :cond_1
     iget-object v5, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->userBytes:[B
 
     array-length v5, v5
 
+    .line 1257
+    .local v5, "userLen":I
     iget-object v6, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->sessionKey:[B
 
     if-eqz v6, :cond_2
 
+    .line 1258
     array-length v6, v6
 
+    .local v6, "sessionKeyLen":I
     goto :goto_1
 
+    .line 1260
+    .end local v6    # "sessionKeyLen":I
     :cond_2
     const/4 v6, 0x0
 
+    .line 1264
+    .restart local v6    # "sessionKeyLen":I
     :goto_1
     const/16 v7, 0x48
 
+    .line 1265
+    .local v7, "lmRespOffset":I
     add-int/lit8 v8, v2, 0x48
 
+    .line 1266
+    .local v8, "ntRespOffset":I
     add-int v9, v8, v1
 
+    .line 1267
+    .local v9, "domainOffset":I
     add-int v10, v9, v3
 
+    .line 1268
+    .local v10, "userOffset":I
     add-int v11, v10, v5
 
+    .line 1269
+    .local v11, "hostOffset":I
     add-int v12, v11, v4
 
+    .line 1270
+    .local v12, "sessionKeyOffset":I
     add-int v13, v12, v6
 
+    .line 1273
+    .local v13, "finalLength":I
     const/4 v14, 0x3
 
     invoke-virtual {v0, v13, v14}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->prepareResponse(II)V
 
+    .line 1276
     invoke-virtual {v0, v2}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1277
     invoke-virtual {v0, v2}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1280
     const/16 v14, 0x48
 
     invoke-virtual {v0, v14}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1283
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1284
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1287
     invoke-virtual {v0, v8}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1290
     invoke-virtual {v0, v3}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1291
     invoke-virtual {v0, v3}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1294
     invoke-virtual {v0, v9}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1297
     invoke-virtual {v0, v5}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1298
     invoke-virtual {v0, v5}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1301
     invoke-virtual {v0, v10}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1304
     invoke-virtual {v0, v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1305
     invoke-virtual {v0, v4}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1308
     invoke-virtual {v0, v11}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1311
     invoke-virtual {v0, v6}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1312
     invoke-virtual {v0, v6}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1315
     invoke-virtual {v0, v12}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1318
     iget v14, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->type2Flags:I
 
     and-int/lit16 v15, v14, 0x80
 
     move/from16 v16, v1
 
+    .end local v1    # "ntRespLen":I
+    .local v16, "ntRespLen":I
     and-int/lit16 v1, v14, 0x200
 
     or-int/2addr v1, v15
@@ -495,44 +614,55 @@
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1346
     const/16 v1, 0x105
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1348
     const/16 v1, 0xa28
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addULong(I)V
 
+    .line 1350
     const/16 v1, 0xf00
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addUShort(I)V
 
+    .line 1353
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->lmResp:[B
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addBytes([B)V
 
+    .line 1354
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->ntResp:[B
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addBytes([B)V
 
+    .line 1355
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->domainBytes:[B
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addBytes([B)V
 
+    .line 1356
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->userBytes:[B
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addBytes([B)V
 
+    .line 1357
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->hostBytes:[B
 
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addBytes([B)V
 
+    .line 1358
     iget-object v1, v0, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->sessionKey:[B
 
     if-eqz v1, :cond_3
 
+    .line 1359
     invoke-virtual {v0, v1}, Lorg/apache/http/impl/auth/NTLMEngineImpl$Type3Message;->addBytes([B)V
 
+    .line 1362
     :cond_3
     invoke-super/range {p0 .. p0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->getResponse()Ljava/lang/String;
 

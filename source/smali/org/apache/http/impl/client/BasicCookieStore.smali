@@ -36,8 +36,10 @@
 .method public constructor <init>()V
     .locals 2
 
+    .line 57
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 58
     new-instance v0, Ljava/util/TreeSet;
 
     new-instance v1, Lorg/apache/http/cookie/CookieIdentityComparator;
@@ -48,6 +50,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/client/BasicCookieStore;->cookies:Ljava/util/TreeSet;
 
+    .line 59
     return-void
 .end method
 
@@ -55,16 +58,20 @@
 # virtual methods
 .method public declared-synchronized addCookie(Lorg/apache/http/cookie/Cookie;)V
     .locals 1
+    .param p1, "cookie"    # Lorg/apache/http/cookie/Cookie;
 
     monitor-enter p0
 
+    .line 73
     if-eqz p1, :cond_0
 
+    .line 75
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/client/BasicCookieStore;->cookies:Ljava/util/TreeSet;
 
     invoke-virtual {v0, p1}, Ljava/util/TreeSet;->remove(Ljava/lang/Object;)Z
 
+    .line 76
     new-instance v0, Ljava/util/Date;
 
     invoke-direct {v0}, Ljava/util/Date;-><init>()V
@@ -75,6 +82,7 @@
 
     if-nez v0, :cond_0
 
+    .line 77
     iget-object v0, p0, Lorg/apache/http/impl/client/BasicCookieStore;->cookies:Ljava/util/TreeSet;
 
     invoke-virtual {v0, p1}, Ljava/util/TreeSet;->add(Ljava/lang/Object;)Z
@@ -83,6 +91,9 @@
 
     goto :goto_0
 
+    .line 72
+    .end local p0    # "this":Lorg/apache/http/impl/client/BasicCookieStore;
+    .end local p1    # "cookie":Lorg/apache/http/cookie/Cookie;
     :catchall_0
     move-exception p1
 
@@ -90,6 +101,8 @@
 
     throw p1
 
+    .line 80
+    .restart local p1    # "cookie":Lorg/apache/http/cookie/Cookie;
     :cond_0
     :goto_0
     monitor-exit p0
@@ -99,31 +112,47 @@
 
 .method public declared-synchronized addCookies([Lorg/apache/http/cookie/Cookie;)V
     .locals 4
+    .param p1, "cookies"    # [Lorg/apache/http/cookie/Cookie;
 
     monitor-enter p0
 
+    .line 93
     if-eqz p1, :cond_0
 
+    .line 94
     move-object v0, p1
 
+    .local v0, "arr$":[Lorg/apache/http/cookie/Cookie;
     :try_start_0
     array-length v1, v0
 
+    .local v1, "len$":I
     const/4 v2, 0x0
 
+    .local v2, "i$":I
     :goto_0
     if-ge v2, v1, :cond_0
 
     aget-object v3, v0, v2
 
+    .line 95
+    .local v3, "cooky":Lorg/apache/http/cookie/Cookie;
     invoke-virtual {p0, v3}, Lorg/apache/http/impl/client/BasicCookieStore;->addCookie(Lorg/apache/http/cookie/Cookie;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    .line 94
+    .end local v3    # "cooky":Lorg/apache/http/cookie/Cookie;
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
+    .line 92
+    .end local v0    # "arr$":[Lorg/apache/http/cookie/Cookie;
+    .end local v1    # "len$":I
+    .end local v2    # "i$":I
+    .end local p0    # "this":Lorg/apache/http/impl/client/BasicCookieStore;
+    .end local p1    # "cookies":[Lorg/apache/http/cookie/Cookie;
     :catchall_0
     move-exception p1
 
@@ -131,6 +160,8 @@
 
     throw p1
 
+    .line 98
+    .restart local p1    # "cookies":[Lorg/apache/http/cookie/Cookie;
     :cond_0
     monitor-exit p0
 
@@ -142,6 +173,7 @@
 
     monitor-enter p0
 
+    .line 140
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/client/BasicCookieStore;->cookies:Ljava/util/TreeSet;
 
@@ -149,10 +181,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    .line 141
     monitor-exit p0
 
     return-void
 
+    .line 139
+    .end local p0    # "this":Lorg/apache/http/impl/client/BasicCookieStore;
     :catchall_0
     move-exception v0
 
@@ -163,20 +198,26 @@
 
 .method public declared-synchronized clearExpired(Ljava/util/Date;)Z
     .locals 3
+    .param p1, "date"    # Ljava/util/Date;
 
     monitor-enter p0
 
+    .line 122
     if-nez p1, :cond_0
 
+    .line 123
     const/4 v0, 0x0
 
     monitor-exit p0
 
     return v0
 
+    .line 125
     :cond_0
     const/4 v0, 0x0
 
+    .line 126
+    .local v0, "removed":Z
     :try_start_0
     iget-object v1, p0, Lorg/apache/http/impl/client/BasicCookieStore;->cookies:Ljava/util/TreeSet;
 
@@ -184,6 +225,7 @@
 
     move-result-object v1
 
+    .local v1, "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lorg/apache/http/cookie/Cookie;>;"
     :cond_1
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -192,6 +234,7 @@
 
     if-eqz v2, :cond_2
 
+    .line 127
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v2
@@ -204,19 +247,27 @@
 
     if-eqz v2, :cond_1
 
+    .line 128
     invoke-interface {v1}, Ljava/util/Iterator;->remove()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    .line 129
     const/4 v0, 0x1
 
     goto :goto_0
 
+    .line 132
+    .end local v1    # "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lorg/apache/http/cookie/Cookie;>;"
+    .end local p0    # "this":Lorg/apache/http/impl/client/BasicCookieStore;
     :cond_2
     monitor-exit p0
 
     return v0
 
+    .line 121
+    .end local v0    # "removed":Z
+    .end local p1    # "date":Ljava/util/Date;
     :catchall_0
     move-exception p1
 
@@ -244,6 +295,7 @@
 
     monitor-enter p0
 
+    .line 109
     :try_start_0
     new-instance v0, Ljava/util/ArrayList;
 
@@ -257,6 +309,7 @@
 
     return-object v0
 
+    .end local p0    # "this":Lorg/apache/http/impl/client/BasicCookieStore;
     :catchall_0
     move-exception v0
 
@@ -270,6 +323,7 @@
 
     monitor-enter p0
 
+    .line 145
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/client/BasicCookieStore;->cookies:Ljava/util/TreeSet;
 
@@ -283,6 +337,7 @@
 
     return-object v0
 
+    .end local p0    # "this":Lorg/apache/http/impl/client/BasicCookieStore;
     :catchall_0
     move-exception v0
 

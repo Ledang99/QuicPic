@@ -20,13 +20,19 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/impl/client/RequestWrapper;Lorg/apache/http/conn/routing/HttpRoute;)V
     .locals 0
+    .param p1, "req"    # Lorg/apache/http/impl/client/RequestWrapper;
+    .param p2, "route"    # Lorg/apache/http/conn/routing/HttpRoute;
 
+    .line 54
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 55
     iput-object p1, p0, Lorg/apache/http/impl/client/RoutedRequest;->request:Lorg/apache/http/impl/client/RequestWrapper;
 
+    .line 56
     iput-object p2, p0, Lorg/apache/http/impl/client/RoutedRequest;->route:Lorg/apache/http/conn/routing/HttpRoute;
 
+    .line 57
     return-void
 .end method
 
@@ -35,6 +41,7 @@
 .method public final getRequest()Lorg/apache/http/impl/client/RequestWrapper;
     .locals 1
 
+    .line 60
     iget-object v0, p0, Lorg/apache/http/impl/client/RoutedRequest;->request:Lorg/apache/http/impl/client/RequestWrapper;
 
     return-object v0
@@ -43,6 +50,7 @@
 .method public final getRoute()Lorg/apache/http/conn/routing/HttpRoute;
     .locals 1
 
+    .line 64
     iget-object v0, p0, Lorg/apache/http/impl/client/RoutedRequest;->route:Lorg/apache/http/conn/routing/HttpRoute;
 
     return-object v0

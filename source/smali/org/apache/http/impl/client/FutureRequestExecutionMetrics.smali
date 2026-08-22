@@ -29,44 +29,52 @@
 .method constructor <init>()V
     .locals 1
 
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 36
     new-instance v0, Ljava/util/concurrent/atomic/AtomicLong;
 
     invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicLong;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->activeConnections:Ljava/util/concurrent/atomic/AtomicLong;
 
+    .line 37
     new-instance v0, Ljava/util/concurrent/atomic/AtomicLong;
 
     invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicLong;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->scheduledConnections:Ljava/util/concurrent/atomic/AtomicLong;
 
+    .line 38
     new-instance v0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-direct {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->successfulConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
+    .line 39
     new-instance v0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-direct {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->failedConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
+    .line 40
     new-instance v0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-direct {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->requests:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
+    .line 41
     new-instance v0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-direct {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->tasks:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
+    .line 44
     return-void
 .end method
 
@@ -75,6 +83,7 @@
 .method public getActiveConnectionCount()J
     .locals 2
 
+    .line 71
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->activeConnections:Ljava/util/concurrent/atomic/AtomicLong;
 
     invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicLong;->get()J
@@ -87,6 +96,7 @@
 .method getActiveConnections()Ljava/util/concurrent/atomic/AtomicLong;
     .locals 1
 
+    .line 47
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->activeConnections:Ljava/util/concurrent/atomic/AtomicLong;
 
     return-object v0
@@ -95,6 +105,7 @@
 .method public getFailedConnectionAverageDuration()J
     .locals 2
 
+    .line 91
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->failedConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->averageDuration()J
@@ -107,6 +118,7 @@
 .method public getFailedConnectionCount()J
     .locals 2
 
+    .line 87
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->failedConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->count()J
@@ -119,6 +131,7 @@
 .method getFailedConnections()Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
     .locals 1
 
+    .line 59
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->failedConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     return-object v0
@@ -127,6 +140,7 @@
 .method public getRequestAverageDuration()J
     .locals 2
 
+    .line 99
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->requests:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->averageDuration()J
@@ -139,6 +153,7 @@
 .method public getRequestCount()J
     .locals 2
 
+    .line 95
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->requests:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->count()J
@@ -151,6 +166,7 @@
 .method getRequests()Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
     .locals 1
 
+    .line 63
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->requests:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     return-object v0
@@ -159,6 +175,7 @@
 .method public getScheduledConnectionCount()J
     .locals 2
 
+    .line 75
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->scheduledConnections:Ljava/util/concurrent/atomic/AtomicLong;
 
     invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicLong;->get()J
@@ -171,6 +188,7 @@
 .method getScheduledConnections()Ljava/util/concurrent/atomic/AtomicLong;
     .locals 1
 
+    .line 51
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->scheduledConnections:Ljava/util/concurrent/atomic/AtomicLong;
 
     return-object v0
@@ -179,6 +197,7 @@
 .method public getSuccessfulConnectionAverageDuration()J
     .locals 2
 
+    .line 83
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->successfulConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->averageDuration()J
@@ -191,6 +210,7 @@
 .method public getSuccessfulConnectionCount()J
     .locals 2
 
+    .line 79
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->successfulConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->count()J
@@ -203,6 +223,7 @@
 .method getSuccessfulConnections()Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
     .locals 1
 
+    .line 55
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->successfulConnections:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     return-object v0
@@ -211,6 +232,7 @@
 .method public getTaskAverageDuration()J
     .locals 2
 
+    .line 107
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->tasks:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->averageDuration()J
@@ -223,6 +245,7 @@
 .method public getTaskCount()J
     .locals 2
 
+    .line 103
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->tasks:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;->count()J
@@ -235,6 +258,7 @@
 .method getTasks()Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
     .locals 1
 
+    .line 67
     iget-object v0, p0, Lorg/apache/http/impl/client/FutureRequestExecutionMetrics;->tasks:Lorg/apache/http/impl/client/FutureRequestExecutionMetrics$DurationCounter;
 
     return-object v0
@@ -243,10 +267,13 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
+    .line 112
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
+    .line 113
+    .local v0, "builder":Ljava/lang/StringBuilder;
     const-string v1, "[activeConnections="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -299,6 +326,7 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 120
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

@@ -22,14 +22,17 @@
 .method protected constructor <init>(Lorg/apache/http/impl/conn/SingleClientConnManager;)V
     .locals 1
 
+    .line 382
     iput-object p1, p0, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->this$0:Lorg/apache/http/impl/conn/SingleClientConnManager;
 
+    .line 383
     iget-object p1, p1, Lorg/apache/http/impl/conn/SingleClientConnManager;->connOperator:Lorg/apache/http/conn/ClientConnectionOperator;
 
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lorg/apache/http/impl/conn/AbstractPoolEntry;-><init>(Lorg/apache/http/conn/ClientConnectionOperator;Lorg/apache/http/conn/routing/HttpRoute;)V
 
+    .line 384
     return-void
 .end method
 
@@ -43,8 +46,10 @@
         }
     .end annotation
 
+    .line 390
     invoke-virtual {p0}, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->shutdownEntry()V
 
+    .line 391
     iget-object v0, p0, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->connection:Lorg/apache/http/conn/OperatedClientConnection;
 
     invoke-interface {v0}, Lorg/apache/http/conn/OperatedClientConnection;->isOpen()Z
@@ -53,10 +58,12 @@
 
     if-eqz v0, :cond_0
 
+    .line 392
     iget-object v0, p0, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->connection:Lorg/apache/http/conn/OperatedClientConnection;
 
     invoke-interface {v0}, Lorg/apache/http/conn/OperatedClientConnection;->close()V
 
+    .line 394
     :cond_0
     return-void
 .end method
@@ -69,8 +76,10 @@
         }
     .end annotation
 
+    .line 400
     invoke-virtual {p0}, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->shutdownEntry()V
 
+    .line 401
     iget-object v0, p0, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->connection:Lorg/apache/http/conn/OperatedClientConnection;
 
     invoke-interface {v0}, Lorg/apache/http/conn/OperatedClientConnection;->isOpen()Z
@@ -79,10 +88,12 @@
 
     if-eqz v0, :cond_0
 
+    .line 402
     iget-object v0, p0, Lorg/apache/http/impl/conn/SingleClientConnManager$PoolEntry;->connection:Lorg/apache/http/conn/OperatedClientConnection;
 
     invoke-interface {v0}, Lorg/apache/http/conn/OperatedClientConnection;->shutdown()V
 
+    .line 404
     :cond_0
     return-void
 .end method

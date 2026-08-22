@@ -44,28 +44,35 @@
         }
     .end annotation
 
+    .line 81
+    .local p1, "lists":Ljava/util/Collection;, "Ljava/util/Collection<Lorg/apache/http/conn/util/PublicSuffixList;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 82
     const-string v0, "Domain suffix lists"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
+    .line 83
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->rules:Ljava/util/Map;
 
+    .line 84
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->exceptions:Ljava/util/Map;
 
+    .line 85
     invoke-interface {p1}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
+    .local v0, "i$":Ljava/util/Iterator;
     :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
@@ -79,18 +86,25 @@
 
     check-cast v1, Lorg/apache/http/conn/util/PublicSuffixList;
 
+    .line 86
+    .local v1, "list":Lorg/apache/http/conn/util/PublicSuffixList;
     invoke-virtual {v1}, Lorg/apache/http/conn/util/PublicSuffixList;->getType()Lorg/apache/http/conn/util/DomainType;
 
     move-result-object v2
 
+    .line 87
+    .local v2, "domainType":Lorg/apache/http/conn/util/DomainType;
     invoke-virtual {v1}, Lorg/apache/http/conn/util/PublicSuffixList;->getRules()Ljava/util/List;
 
     move-result-object v3
 
+    .line 88
+    .local v3, "rules":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v4
 
+    .local v4, "i$":Ljava/util/Iterator;
     :goto_1
     invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
 
@@ -104,23 +118,33 @@
 
     check-cast v5, Ljava/lang/String;
 
+    .line 89
+    .local v5, "rule":Ljava/lang/String;
     iget-object v6, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->rules:Ljava/util/Map;
 
     invoke-interface {v6, v5, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 90
+    .end local v5    # "rule":Ljava/lang/String;
     goto :goto_1
 
+    .line 91
+    .end local v4    # "i$":Ljava/util/Iterator;
     :cond_0
     invoke-virtual {v1}, Lorg/apache/http/conn/util/PublicSuffixList;->getExceptions()Ljava/util/List;
 
     move-result-object v4
 
+    .line 92
+    .local v4, "exceptions":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     if-eqz v4, :cond_1
 
+    .line 93
     invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v5
 
+    .local v5, "i$":Ljava/util/Iterator;
     :goto_2
     invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
 
@@ -134,15 +158,27 @@
 
     check-cast v6, Ljava/lang/String;
 
+    .line 94
+    .local v6, "exception":Ljava/lang/String;
     iget-object v7, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->exceptions:Ljava/util/Map;
 
     invoke-interface {v7, v6, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 95
+    .end local v6    # "exception":Ljava/lang/String;
     goto :goto_2
 
+    .line 97
+    .end local v1    # "list":Lorg/apache/http/conn/util/PublicSuffixList;
+    .end local v2    # "domainType":Lorg/apache/http/conn/util/DomainType;
+    .end local v3    # "rules":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    .end local v4    # "exceptions":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    .end local v5    # "i$":Ljava/util/Iterator;
     :cond_1
     goto :goto_0
 
+    .line 98
+    .end local v0    # "i$":Ljava/util/Iterator;
     :cond_2
     return-void
 .end method
@@ -161,15 +197,20 @@
         }
     .end annotation
 
+    .line 56
+    .local p1, "rules":Ljava/util/Collection;, "Ljava/util/Collection<Ljava/lang/String;>;"
+    .local p2, "exceptions":Ljava/util/Collection;, "Ljava/util/Collection<Ljava/lang/String;>;"
     sget-object v0, Lorg/apache/http/conn/util/DomainType;->UNKNOWN:Lorg/apache/http/conn/util/DomainType;
 
     invoke-direct {p0, v0, p1, p2}, Lorg/apache/http/conn/util/PublicSuffixMatcher;-><init>(Lorg/apache/http/conn/util/DomainType;Ljava/util/Collection;Ljava/util/Collection;)V
 
+    .line 57
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/util/DomainType;Ljava/util/Collection;Ljava/util/Collection;)V
     .locals 3
+    .param p1, "domainType"    # Lorg/apache/http/conn/util/DomainType;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -183,16 +224,22 @@
         }
     .end annotation
 
+    .line 63
+    .local p2, "rules":Ljava/util/Collection;, "Ljava/util/Collection<Ljava/lang/String;>;"
+    .local p3, "exceptions":Ljava/util/Collection;, "Ljava/util/Collection<Ljava/lang/String;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 64
     const-string v0, "Domain type"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
+    .line 65
     const-string v0, "Domain suffix rules"
 
     invoke-static {p2, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
+    .line 66
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-interface {p2}, Ljava/util/Collection;->size()I
@@ -203,10 +250,12 @@
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->rules:Ljava/util/Map;
 
+    .line 67
     invoke-interface {p2}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
+    .local v0, "i$":Ljava/util/Iterator;
     :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
@@ -220,12 +269,18 @@
 
     check-cast v1, Ljava/lang/String;
 
+    .line 68
+    .local v1, "rule":Ljava/lang/String;
     iget-object v2, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->rules:Ljava/util/Map;
 
     invoke-interface {v2, v1, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 69
+    .end local v1    # "rule":Ljava/lang/String;
     goto :goto_0
 
+    .line 70
+    .end local v0    # "i$":Ljava/util/Iterator;
     :cond_0
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
@@ -233,12 +288,15 @@
 
     iput-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->exceptions:Ljava/util/Map;
 
+    .line 71
     if-eqz p3, :cond_1
 
+    .line 72
     invoke-interface {p3}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
+    .restart local v0    # "i$":Ljava/util/Iterator;
     :goto_1
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
@@ -252,18 +310,26 @@
 
     check-cast v1, Ljava/lang/String;
 
+    .line 73
+    .local v1, "exception":Ljava/lang/String;
     iget-object v2, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->exceptions:Ljava/util/Map;
 
     invoke-interface {v2, v1, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 74
+    .end local v1    # "exception":Ljava/lang/String;
     goto :goto_1
 
+    .line 76
+    .end local v0    # "i$":Ljava/util/Iterator;
     :cond_1
     return-void
 .end method
 
 .method private static hasEntry(Ljava/util/Map;Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
     .locals 3
+    .param p1, "rule"    # Ljava/lang/String;
+    .param p2, "expectedType"    # Lorg/apache/http/conn/util/DomainType;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -277,12 +343,16 @@
         }
     .end annotation
 
+    .line 101
+    .local p0, "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;>;"
     const/4 v0, 0x0
 
     if-nez p0, :cond_0
 
+    .line 102
     return v0
 
+    .line 104
     :cond_0
     invoke-interface {p0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -290,10 +360,14 @@
 
     check-cast v1, Lorg/apache/http/conn/util/DomainType;
 
+    .line 105
+    .local v1, "domainType":Lorg/apache/http/conn/util/DomainType;
     if-nez v1, :cond_1
 
+    .line 106
     return v0
 
+    .line 108
     :cond_1
     if-eqz p2, :cond_2
 
@@ -312,7 +386,10 @@
 
 .method private hasException(Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
     .locals 1
+    .param p1, "exception"    # Ljava/lang/String;
+    .param p2, "expectedType"    # Lorg/apache/http/conn/util/DomainType;
 
+    .line 117
     iget-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->exceptions:Ljava/util/Map;
 
     invoke-static {v0, p1, p2}, Lorg/apache/http/conn/util/PublicSuffixMatcher;->hasEntry(Ljava/util/Map;Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
@@ -324,7 +401,10 @@
 
 .method private hasRule(Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
     .locals 1
+    .param p1, "rule"    # Ljava/lang/String;
+    .param p2, "expectedType"    # Lorg/apache/http/conn/util/DomainType;
 
+    .line 113
     iget-object v0, p0, Lorg/apache/http/conn/util/PublicSuffixMatcher;->rules:Ljava/util/Map;
 
     invoke-static {v0, p1, p2}, Lorg/apache/http/conn/util/PublicSuffixMatcher;->hasEntry(Ljava/util/Map;Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
@@ -338,7 +418,9 @@
 # virtual methods
 .method public getDomainRoot(Ljava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "domain"    # Ljava/lang/String;
 
+    .line 128
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Lorg/apache/http/conn/util/PublicSuffixMatcher;->getDomainRoot(Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Ljava/lang/String;
@@ -350,13 +432,18 @@
 
 .method public getDomainRoot(Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Ljava/lang/String;
     .locals 8
+    .param p1, "domain"    # Ljava/lang/String;
+    .param p2, "expectedType"    # Lorg/apache/http/conn/util/DomainType;
 
+    .line 142
     const/4 v0, 0x0
 
     if-nez p1, :cond_0
 
+    .line 143
     return-object v0
 
+    .line 145
     :cond_0
     const-string v1, "."
 
@@ -366,20 +453,27 @@
 
     if-eqz v1, :cond_1
 
+    .line 146
     return-object v0
 
+    .line 148
     :cond_1
     const/4 v1, 0x0
 
+    .line 149
+    .local v1, "domainName":Ljava/lang/String;
     sget-object v2, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
 
     invoke-virtual {p1, v2}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
 
     move-result-object v2
 
+    .line 150
+    .local v2, "segment":Ljava/lang/String;
     :goto_0
     if-eqz v2, :cond_7
 
+    .line 153
     invoke-static {v2}, Ljava/net/IDN;->toUnicode(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -390,8 +484,10 @@
 
     if-eqz v3, :cond_2
 
+    .line 154
     return-object v2
 
+    .line 157
     :cond_2
     invoke-static {v2}, Ljava/net/IDN;->toUnicode(Ljava/lang/String;)Ljava/lang/String;
 
@@ -403,8 +499,10 @@
 
     if-eqz v3, :cond_3
 
+    .line 158
     goto :goto_2
 
+    .line 161
     :cond_3
     const/16 v3, 0x2e
 
@@ -412,6 +510,8 @@
 
     move-result v3
 
+    .line 162
+    .local v3, "nextdot":I
     const/4 v4, -0x1
 
     if-eq v3, v4, :cond_4
@@ -427,9 +527,12 @@
     :cond_4
     move-object v5, v0
 
+    .line 164
+    .local v5, "nextSegment":Ljava/lang/String;
     :goto_1
     if-eqz v5, :cond_5
 
+    .line 165
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -454,18 +557,26 @@
 
     if-eqz v6, :cond_5
 
+    .line 166
     goto :goto_2
 
+    .line 169
     :cond_5
     if-eq v3, v4, :cond_6
 
+    .line 170
     move-object v1, v2
 
+    .line 172
     :cond_6
     move-object v2, v5
 
+    .line 173
+    .end local v3    # "nextdot":I
+    .end local v5    # "nextSegment":Ljava/lang/String;
     goto :goto_0
 
+    .line 174
     :cond_7
     :goto_2
     return-object v1
@@ -473,7 +584,9 @@
 
 .method public matches(Ljava/lang/String;)Z
     .locals 1
+    .param p1, "domain"    # Ljava/lang/String;
 
+    .line 181
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Lorg/apache/http/conn/util/PublicSuffixMatcher;->matches(Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
@@ -485,13 +598,18 @@
 
 .method public matches(Ljava/lang/String;Lorg/apache/http/conn/util/DomainType;)Z
     .locals 3
+    .param p1, "domain"    # Ljava/lang/String;
+    .param p2, "expectedType"    # Lorg/apache/http/conn/util/DomainType;
 
+    .line 194
     const/4 v0, 0x0
 
     if-nez p1, :cond_0
 
+    .line 195
     return v0
 
+    .line 197
     :cond_0
     const-string v1, "."
 
@@ -517,6 +635,8 @@
 
     move-result-object v1
 
+    .line 199
+    .local v1, "domainRoot":Ljava/lang/String;
     if-nez v1, :cond_2
 
     const/4 v0, 0x1

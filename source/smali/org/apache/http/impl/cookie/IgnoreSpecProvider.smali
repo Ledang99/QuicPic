@@ -19,8 +19,10 @@
 .method public constructor <init>()V
     .locals 0
 
+    .line 46
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 47
     return-void
 .end method
 
@@ -28,24 +30,30 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/cookie/CookieSpec;
     .locals 1
+    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
+    .line 51
     iget-object v0, p0, Lorg/apache/http/impl/cookie/IgnoreSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_1
 
+    .line 52
     monitor-enter p0
 
+    .line 53
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/cookie/IgnoreSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_0
 
+    .line 54
     new-instance v0, Lorg/apache/http/impl/cookie/IgnoreSpec;
 
     invoke-direct {v0}, Lorg/apache/http/impl/cookie/IgnoreSpec;-><init>()V
 
     iput-object v0, p0, Lorg/apache/http/impl/cookie/IgnoreSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
+    .line 56
     :cond_0
     monitor-exit p0
 
@@ -60,6 +68,7 @@
 
     throw v0
 
+    .line 58
     :cond_1
     :goto_0
     iget-object v0, p0, Lorg/apache/http/impl/cookie/IgnoreSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;

@@ -19,6 +19,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .line 43
     new-instance v0, Lorg/apache/http/impl/conn/DefaultSchemePortResolver;
 
     invoke-direct {v0}, Lorg/apache/http/impl/conn/DefaultSchemePortResolver;-><init>()V
@@ -31,6 +32,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .line 41
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,29 +42,38 @@
 # virtual methods
 .method public resolve(Lorg/apache/http/HttpHost;)I
     .locals 5
+    .param p1, "host"    # Lorg/apache/http/HttpHost;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/conn/UnsupportedSchemeException;
         }
     .end annotation
 
+    .line 47
     const-string v0, "HTTP host"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
+    .line 48
     invoke-virtual {p1}, Lorg/apache/http/HttpHost;->getPort()I
 
     move-result v0
 
+    .line 49
+    .local v0, "port":I
     if-lez v0, :cond_0
 
+    .line 50
     return v0
 
+    .line 52
     :cond_0
     invoke-virtual {p1}, Lorg/apache/http/HttpHost;->getSchemeName()Ljava/lang/String;
 
     move-result-object v1
 
+    .line 53
+    .local v1, "name":Ljava/lang/String;
     const-string v2, "http"
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
@@ -71,10 +82,12 @@
 
     if-eqz v2, :cond_1
 
+    .line 54
     const/16 v2, 0x50
 
     return v2
 
+    .line 55
     :cond_1
     const-string v2, "https"
 
@@ -84,10 +97,12 @@
 
     if-eqz v2, :cond_2
 
+    .line 56
     const/16 v2, 0x1bb
 
     return v2
 
+    .line 58
     :cond_2
     new-instance v2, Lorg/apache/http/conn/UnsupportedSchemeException;
 

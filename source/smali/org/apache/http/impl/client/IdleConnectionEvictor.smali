@@ -28,7 +28,11 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/conn/HttpClientConnectionManager;JLjava/util/concurrent/TimeUnit;)V
     .locals 11
+    .param p1, "connectionManager"    # Lorg/apache/http/conn/HttpClientConnectionManager;
+    .param p2, "maxIdleTime"    # J
+    .param p4, "maxIdleTimeUnit"    # Ljava/util/concurrent/TimeUnit;
 
+    .line 90
     const-wide/16 v0, 0x0
 
     cmp-long v2, p2, v0
@@ -69,12 +73,19 @@
 
     invoke-direct/range {v2 .. v10}, Lorg/apache/http/impl/client/IdleConnectionEvictor;-><init>(Lorg/apache/http/conn/HttpClientConnectionManager;Ljava/util/concurrent/ThreadFactory;JLjava/util/concurrent/TimeUnit;JLjava/util/concurrent/TimeUnit;)V
 
+    .line 93
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/HttpClientConnectionManager;JLjava/util/concurrent/TimeUnit;JLjava/util/concurrent/TimeUnit;)V
     .locals 9
+    .param p1, "connectionManager"    # Lorg/apache/http/conn/HttpClientConnectionManager;
+    .param p2, "sleepTime"    # J
+    .param p4, "sleepTimeUnit"    # Ljava/util/concurrent/TimeUnit;
+    .param p5, "maxIdleTime"    # J
+    .param p7, "maxIdleTimeUnit"    # Ljava/util/concurrent/TimeUnit;
 
+    .line 84
     const/4 v2, 0x0
 
     move-object v0, p0
@@ -91,14 +102,23 @@
 
     invoke-direct/range {v0 .. v8}, Lorg/apache/http/impl/client/IdleConnectionEvictor;-><init>(Lorg/apache/http/conn/HttpClientConnectionManager;Ljava/util/concurrent/ThreadFactory;JLjava/util/concurrent/TimeUnit;JLjava/util/concurrent/TimeUnit;)V
 
+    .line 85
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/HttpClientConnectionManager;Ljava/util/concurrent/ThreadFactory;JLjava/util/concurrent/TimeUnit;JLjava/util/concurrent/TimeUnit;)V
     .locals 2
+    .param p1, "connectionManager"    # Lorg/apache/http/conn/HttpClientConnectionManager;
+    .param p2, "threadFactory"    # Ljava/util/concurrent/ThreadFactory;
+    .param p3, "sleepTime"    # J
+    .param p5, "sleepTimeUnit"    # Ljava/util/concurrent/TimeUnit;
+    .param p6, "maxIdleTime"    # J
+    .param p8, "maxIdleTimeUnit"    # Ljava/util/concurrent/TimeUnit;
 
+    .line 56
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 57
     const-string v0, "Connection manager"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
@@ -109,6 +129,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->connectionManager:Lorg/apache/http/conn/HttpClientConnectionManager;
 
+    .line 58
     if-eqz p2, :cond_0
 
     move-object v0, p2
@@ -123,6 +144,7 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->threadFactory:Ljava/util/concurrent/ThreadFactory;
 
+    .line 59
     if-eqz p5, :cond_1
 
     invoke-virtual {p5, p3, p4}, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
@@ -137,6 +159,7 @@
     :goto_1
     iput-wide v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->sleepTimeMs:J
 
+    .line 60
     if-eqz p8, :cond_2
 
     invoke-virtual {p8, p6, p7}, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
@@ -151,6 +174,7 @@
     :goto_2
     iput-wide v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->maxIdleTimeMs:J
 
+    .line 61
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->threadFactory:Ljava/util/concurrent/ThreadFactory;
 
     new-instance v1, Lorg/apache/http/impl/client/IdleConnectionEvictor$1;
@@ -163,12 +187,15 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->thread:Ljava/lang/Thread;
 
+    .line 78
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/apache/http/impl/client/IdleConnectionEvictor;)J
     .locals 2
+    .param p0, "x0"    # Lorg/apache/http/impl/client/IdleConnectionEvictor;
 
+    .line 42
     iget-wide v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->sleepTimeMs:J
 
     return-wide v0
@@ -176,7 +203,9 @@
 
 .method static synthetic access$100(Lorg/apache/http/impl/client/IdleConnectionEvictor;)J
     .locals 2
+    .param p0, "x0"    # Lorg/apache/http/impl/client/IdleConnectionEvictor;
 
+    .line 42
     iget-wide v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->maxIdleTimeMs:J
 
     return-wide v0
@@ -184,7 +213,10 @@
 
 .method static synthetic access$202(Lorg/apache/http/impl/client/IdleConnectionEvictor;Ljava/lang/Exception;)Ljava/lang/Exception;
     .locals 0
+    .param p0, "x0"    # Lorg/apache/http/impl/client/IdleConnectionEvictor;
+    .param p1, "x1"    # Ljava/lang/Exception;
 
+    .line 42
     iput-object p1, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->exception:Ljava/lang/Exception;
 
     return-object p1
@@ -194,12 +226,15 @@
 # virtual methods
 .method public awaitTermination(JLjava/util/concurrent/TimeUnit;)V
     .locals 3
+    .param p1, "time"    # J
+    .param p3, "tunit"    # Ljava/util/concurrent/TimeUnit;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/InterruptedException;
         }
     .end annotation
 
+    .line 108
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->thread:Ljava/lang/Thread;
 
     if-eqz p3, :cond_0
@@ -218,12 +253,14 @@
 
     invoke-virtual {v0, v1, v2}, Ljava/lang/Thread;->join(J)V
 
+    .line 109
     return-void
 .end method
 
 .method public isRunning()Z
     .locals 1
 
+    .line 104
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->thread:Ljava/lang/Thread;
 
     invoke-virtual {v0}, Ljava/lang/Thread;->isAlive()Z
@@ -236,19 +273,23 @@
 .method public shutdown()V
     .locals 1
 
+    .line 100
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->thread:Ljava/lang/Thread;
 
     invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V
 
+    .line 101
     return-void
 .end method
 
 .method public start()V
     .locals 1
 
+    .line 96
     iget-object v0, p0, Lorg/apache/http/impl/client/IdleConnectionEvictor;->thread:Ljava/lang/Thread;
 
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
+    .line 97
     return-void
 .end method

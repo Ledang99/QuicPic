@@ -25,23 +25,34 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/io/SessionOutputBuffer;Lorg/apache/http/impl/conn/Wire;)V
     .locals 1
+    .param p1, "out"    # Lorg/apache/http/io/SessionOutputBuffer;
+    .param p2, "wire"    # Lorg/apache/http/impl/conn/Wire;
 
+    .line 69
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;-><init>(Lorg/apache/http/io/SessionOutputBuffer;Lorg/apache/http/impl/conn/Wire;Ljava/lang/String;)V
 
+    .line 70
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/io/SessionOutputBuffer;Lorg/apache/http/impl/conn/Wire;Ljava/lang/String;)V
     .locals 1
+    .param p1, "out"    # Lorg/apache/http/io/SessionOutputBuffer;
+    .param p2, "wire"    # Lorg/apache/http/impl/conn/Wire;
+    .param p3, "charset"    # Ljava/lang/String;
 
+    .line 62
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 63
     iput-object p1, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
+    .line 64
     iput-object p2, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
+    .line 65
     if-eqz p3, :cond_0
 
     move-object v0, p3
@@ -58,6 +69,7 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->charset:Ljava/lang/String;
 
+    .line 66
     return-void
 .end method
 
@@ -71,16 +83,19 @@
         }
     .end annotation
 
+    .line 94
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0}, Lorg/apache/http/io/SessionOutputBuffer;->flush()V
 
+    .line 95
     return-void
 .end method
 
 .method public getMetrics()Lorg/apache/http/io/HttpTransportMetrics;
     .locals 1
 
+    .line 115
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0}, Lorg/apache/http/io/SessionOutputBuffer;->getMetrics()Lorg/apache/http/io/HttpTransportMetrics;
@@ -92,16 +107,19 @@
 
 .method public write(I)V
     .locals 1
+    .param p1, "b"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 80
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0, p1}, Lorg/apache/http/io/SessionOutputBuffer;->write(I)V
 
+    .line 81
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/conn/Wire;->enabled()Z
@@ -110,26 +128,31 @@
 
     if-eqz v0, :cond_0
 
+    .line 82
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0, p1}, Lorg/apache/http/impl/conn/Wire;->output(I)V
 
+    .line 84
     :cond_0
     return-void
 .end method
 
 .method public write([B)V
     .locals 1
+    .param p1, "b"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 87
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0, p1}, Lorg/apache/http/io/SessionOutputBuffer;->write([B)V
 
+    .line 88
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/conn/Wire;->enabled()Z
@@ -138,26 +161,33 @@
 
     if-eqz v0, :cond_0
 
+    .line 89
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0, p1}, Lorg/apache/http/impl/conn/Wire;->output([B)V
 
+    .line 91
     :cond_0
     return-void
 .end method
 
 .method public write([BII)V
     .locals 1
+    .param p1, "b"    # [B
+    .param p2, "off"    # I
+    .param p3, "len"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 73
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0, p1, p2, p3}, Lorg/apache/http/io/SessionOutputBuffer;->write([BII)V
 
+    .line 74
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/conn/Wire;->enabled()Z
@@ -166,26 +196,31 @@
 
     if-eqz v0, :cond_0
 
+    .line 75
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0, p1, p2, p3}, Lorg/apache/http/impl/conn/Wire;->output([BII)V
 
+    .line 77
     :cond_0
     return-void
 .end method
 
 .method public writeLine(Ljava/lang/String;)V
     .locals 3
+    .param p1, "s"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 107
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0, p1}, Lorg/apache/http/io/SessionOutputBuffer;->writeLine(Ljava/lang/String;)V
 
+    .line 108
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/conn/Wire;->enabled()Z
@@ -194,6 +229,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 109
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -208,6 +244,8 @@
 
     move-result-object v0
 
+    .line 110
+    .local v0, "tmp":Ljava/lang/String;
     iget-object v1, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     iget-object v2, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->charset:Ljava/lang/String;
@@ -218,22 +256,27 @@
 
     invoke-virtual {v1, v2}, Lorg/apache/http/impl/conn/Wire;->output([B)V
 
+    .line 112
+    .end local v0    # "tmp":Ljava/lang/String;
     :cond_0
     return-void
 .end method
 
 .method public writeLine(Lorg/apache/http/util/CharArrayBuffer;)V
     .locals 4
+    .param p1, "buffer"    # Lorg/apache/http/util/CharArrayBuffer;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 98
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->out:Lorg/apache/http/io/SessionOutputBuffer;
 
     invoke-interface {v0, p1}, Lorg/apache/http/io/SessionOutputBuffer;->writeLine(Lorg/apache/http/util/CharArrayBuffer;)V
 
+    .line 99
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0}, Lorg/apache/http/impl/conn/Wire;->enabled()Z
@@ -242,6 +285,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 100
     new-instance v0, Ljava/lang/String;
 
     invoke-virtual {p1}, Lorg/apache/http/util/CharArrayBuffer;->buffer()[C
@@ -256,6 +300,8 @@
 
     invoke-direct {v0, v1, v2, v3}, Ljava/lang/String;-><init>([CII)V
 
+    .line 101
+    .local v0, "s":Ljava/lang/String;
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -270,6 +316,8 @@
 
     move-result-object v1
 
+    .line 102
+    .local v1, "tmp":Ljava/lang/String;
     iget-object v2, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->wire:Lorg/apache/http/impl/conn/Wire;
 
     iget-object v3, p0, Lorg/apache/http/impl/conn/LoggingSessionOutputBuffer;->charset:Ljava/lang/String;
@@ -280,6 +328,9 @@
 
     invoke-virtual {v2, v3}, Lorg/apache/http/impl/conn/Wire;->output([B)V
 
+    .line 104
+    .end local v0    # "s":Ljava/lang/String;
+    .end local v1    # "tmp":Ljava/lang/String;
     :cond_0
     return-void
 .end method

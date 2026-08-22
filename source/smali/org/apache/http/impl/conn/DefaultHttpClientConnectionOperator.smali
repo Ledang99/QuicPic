@@ -36,6 +36,8 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/http/config/Lookup;Lorg/apache/http/conn/SchemePortResolver;Lorg/apache/http/conn/DnsResolver;)V
     .locals 1
+    .param p2, "schemePortResolver"    # Lorg/apache/http/conn/SchemePortResolver;
+    .param p3, "dnsResolver"    # Lorg/apache/http/conn/DnsResolver;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -48,8 +50,11 @@
         }
     .end annotation
 
+    .line 78
+    .local p1, "socketFactoryRegistry":Lorg/apache/http/config/Lookup;, "Lorg/apache/http/config/Lookup<Lorg/apache/http/conn/socket/ConnectionSocketFactory;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 68
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v0
@@ -60,12 +65,15 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
+    .line 79
     const-string v0, "Socket factory registry"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
 
+    .line 80
     iput-object p1, p0, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->socketFactoryRegistry:Lorg/apache/http/config/Lookup;
 
+    .line 81
     if-eqz p2, :cond_0
 
     move-object v0, p2
@@ -78,6 +86,7 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->schemePortResolver:Lorg/apache/http/conn/SchemePortResolver;
 
+    .line 83
     if-eqz p3, :cond_1
 
     move-object v0, p3
@@ -90,11 +99,13 @@
     :goto_1
     iput-object v0, p0, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->dnsResolver:Lorg/apache/http/conn/DnsResolver;
 
+    .line 85
     return-void
 .end method
 
 .method private getSocketFactoryRegistry(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/config/Lookup;
     .locals 1
+    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -106,6 +117,7 @@
         }
     .end annotation
 
+    .line 89
     const-string v0, "http.socket-factory-registry"
 
     invoke-interface {p1, v0}, Lorg/apache/http/protocol/HttpContext;->getAttribute(Ljava/lang/String;)Ljava/lang/Object;
@@ -114,10 +126,14 @@
 
     check-cast v0, Lorg/apache/http/config/Lookup;
 
+    .line 91
+    .local v0, "reg":Lorg/apache/http/config/Lookup;, "Lorg/apache/http/config/Lookup<Lorg/apache/http/conn/socket/ConnectionSocketFactory;>;"
     if-nez v0, :cond_0
 
+    .line 92
     iget-object v0, p0, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->socketFactoryRegistry:Lorg/apache/http/config/Lookup;
 
+    .line 94
     :cond_0
     return-object v0
 .end method
@@ -126,12 +142,19 @@
 # virtual methods
 .method public connect(Lorg/apache/http/conn/ManagedHttpClientConnection;Lorg/apache/http/HttpHost;Ljava/net/InetSocketAddress;ILorg/apache/http/config/SocketConfig;Lorg/apache/http/protocol/HttpContext;)V
     .locals 21
+    .param p1, "conn"    # Lorg/apache/http/conn/ManagedHttpClientConnection;
+    .param p2, "host"    # Lorg/apache/http/HttpHost;
+    .param p3, "localAddress"    # Ljava/net/InetSocketAddress;
+    .param p4, "connectTimeout"    # I
+    .param p5, "socketConfig"    # Lorg/apache/http/config/SocketConfig;
+    .param p6, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 105
     move-object/from16 v1, p0
 
     move-object/from16 v2, p1
@@ -144,6 +167,8 @@
 
     move-result-object v12
 
+    .line 106
+    .local v12, "registry":Lorg/apache/http/config/Lookup;, "Lorg/apache/http/config/Lookup<Lorg/apache/http/conn/socket/ConnectionSocketFactory;>;"
     invoke-virtual/range {p2 .. p2}, Lorg/apache/http/HttpHost;->getSchemeName()Ljava/lang/String;
 
     move-result-object v0
@@ -156,8 +181,11 @@
 
     check-cast v13, Lorg/apache/http/conn/socket/ConnectionSocketFactory;
 
+    .line 107
+    .local v13, "sf":Lorg/apache/http/conn/socket/ConnectionSocketFactory;
     if-eqz v13, :cond_b
 
+    .line 111
     invoke-virtual/range {p2 .. p2}, Lorg/apache/http/HttpHost;->getAddress()Ljava/net/InetAddress;
 
     move-result-object v0
@@ -192,23 +220,31 @@
     :goto_0
     move-object v9, v0
 
+    .line 113
+    .local v9, "addresses":[Ljava/net/InetAddress;
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->schemePortResolver:Lorg/apache/http/conn/SchemePortResolver;
 
     invoke-interface {v0, v10}, Lorg/apache/http/conn/SchemePortResolver;->resolve(Lorg/apache/http/HttpHost;)I
 
     move-result v8
 
+    .line 114
+    .local v8, "port":I
     const/4 v0, 0x0
 
     move v7, v0
 
+    .local v7, "i":I
     :goto_1
     array-length v0, v9
 
     if-ge v7, v0, :cond_a
 
+    .line 115
     aget-object v6, v9, v7
 
+    .line 116
+    .local v6, "address":Ljava/net/InetAddress;
     array-length v0, v9
 
     sub-int/2addr v0, v15
@@ -225,51 +261,66 @@
     :goto_2
     move/from16 v16, v0
 
+    .line 118
+    .local v16, "last":Z
     invoke-interface {v13, v11}, Lorg/apache/http/conn/socket/ConnectionSocketFactory;->createSocket(Lorg/apache/http/protocol/HttpContext;)Ljava/net/Socket;
 
     move-result-object v5
 
+    .line 119
+    .local v5, "sock":Ljava/net/Socket;
     invoke-virtual/range {p5 .. p5}, Lorg/apache/http/config/SocketConfig;->getSoTimeout()I
 
     move-result v0
 
     invoke-virtual {v5, v0}, Ljava/net/Socket;->setSoTimeout(I)V
 
+    .line 120
     invoke-virtual/range {p5 .. p5}, Lorg/apache/http/config/SocketConfig;->isSoReuseAddress()Z
 
     move-result v0
 
     invoke-virtual {v5, v0}, Ljava/net/Socket;->setReuseAddress(Z)V
 
+    .line 121
     invoke-virtual/range {p5 .. p5}, Lorg/apache/http/config/SocketConfig;->isTcpNoDelay()Z
 
     move-result v0
 
     invoke-virtual {v5, v0}, Ljava/net/Socket;->setTcpNoDelay(Z)V
 
+    .line 122
     invoke-virtual/range {p5 .. p5}, Lorg/apache/http/config/SocketConfig;->isSoKeepAlive()Z
 
     move-result v0
 
     invoke-virtual {v5, v0}, Ljava/net/Socket;->setKeepAlive(Z)V
 
+    .line 123
     invoke-virtual/range {p5 .. p5}, Lorg/apache/http/config/SocketConfig;->getSoLinger()I
 
     move-result v4
 
+    .line 124
+    .local v4, "linger":I
     if-ltz v4, :cond_2
 
+    .line 125
     invoke-virtual {v5, v15, v4}, Ljava/net/Socket;->setSoLinger(ZI)V
 
+    .line 127
     :cond_2
     invoke-interface {v2, v5}, Lorg/apache/http/conn/ManagedHttpClientConnection;->bind(Ljava/net/Socket;)V
 
+    .line 129
     new-instance v0, Ljava/net/InetSocketAddress;
 
     invoke-direct {v0, v6, v8}, Ljava/net/InetSocketAddress;-><init>(Ljava/net/InetAddress;I)V
 
     move-object v3, v0
 
+    .line 130
+    .local v3, "remoteAddress":Ljava/net/InetSocketAddress;
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
     invoke-interface {v0}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
@@ -278,6 +329,7 @@
 
     if-eqz v0, :cond_3
 
+    .line 131
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
     new-instance v14, Ljava/lang/StringBuilder;
@@ -296,31 +348,46 @@
 
     invoke-interface {v0, v14}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
 
+    .line 134
     :cond_3
     move-object v14, v3
 
+    .end local v3    # "remoteAddress":Ljava/net/InetSocketAddress;
+    .local v14, "remoteAddress":Ljava/net/InetSocketAddress;
     move-object v3, v13
 
     move v15, v4
 
+    .end local v4    # "linger":I
+    .local v15, "linger":I
     move/from16 v4, p4
 
     move-object/from16 v17, v5
 
+    .end local v5    # "sock":Ljava/net/Socket;
+    .local v17, "sock":Ljava/net/Socket;
     move-object/from16 v18, v6
 
+    .end local v6    # "address":Ljava/net/InetAddress;
+    .local v18, "address":Ljava/net/InetAddress;
     move-object/from16 v6, p2
 
     move/from16 v19, v7
 
+    .end local v7    # "i":I
+    .local v19, "i":I
     move-object v7, v14
 
     move/from16 v20, v8
 
+    .end local v8    # "port":I
+    .local v20, "port":I
     move-object/from16 v8, p3
 
     move-object v11, v9
 
+    .end local v9    # "addresses":[Ljava/net/InetAddress;
+    .local v11, "addresses":[Ljava/net/InetAddress;
     move-object/from16 v9, p6
 
     :try_start_0
@@ -334,9 +401,13 @@
 
     move-object v5, v0
 
+    .line 136
+    .end local v17    # "sock":Ljava/net/Socket;
+    .restart local v5    # "sock":Ljava/net/Socket;
     :try_start_1
     invoke-interface {v2, v5}, Lorg/apache/http/conn/ManagedHttpClientConnection;->bind(Ljava/net/Socket;)V
 
+    .line 137
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
     invoke-interface {v0}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
@@ -345,6 +416,7 @@
 
     if-eqz v0, :cond_4
 
+    .line 138
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -367,49 +439,72 @@
     .catch Ljava/net/ConnectException; {:try_start_1 .. :try_end_1} :catch_1
     .catch Ljava/net/NoRouteToHostException; {:try_start_1 .. :try_end_1} :catch_0
 
+    .line 140
     :cond_4
     return-void
 
+    .line 154
     :catch_0
     move-exception v0
 
     goto :goto_3
 
+    .line 145
     :catch_1
     move-exception v0
 
     goto :goto_4
 
+    .line 141
     :catch_2
     move-exception v0
 
     goto :goto_5
 
+    .line 154
+    .end local v5    # "sock":Ljava/net/Socket;
+    .restart local v17    # "sock":Ljava/net/Socket;
     :catch_3
     move-exception v0
 
     move-object/from16 v5, v17
 
+    .line 155
+    .end local v17    # "sock":Ljava/net/Socket;
+    .local v0, "ex":Ljava/net/NoRouteToHostException;
+    .restart local v5    # "sock":Ljava/net/Socket;
     :goto_3
     if-nez v16, :cond_5
 
     goto :goto_7
 
+    .line 156
     :cond_5
     throw v0
 
+    .line 145
+    .end local v0    # "ex":Ljava/net/NoRouteToHostException;
+    .end local v5    # "sock":Ljava/net/Socket;
+    .restart local v17    # "sock":Ljava/net/Socket;
     :catch_4
     move-exception v0
 
     move-object/from16 v5, v17
 
+    .line 146
+    .end local v17    # "sock":Ljava/net/Socket;
+    .local v0, "ex":Ljava/net/ConnectException;
+    .restart local v5    # "sock":Ljava/net/Socket;
     :goto_4
     if-eqz v16, :cond_7
 
+    .line 147
     invoke-virtual {v0}, Ljava/net/ConnectException;->getMessage()Ljava/lang/String;
 
     move-result-object v3
 
+    .line 148
+    .local v3, "msg":Ljava/lang/String;
     const-string v4, "Connection timed out"
 
     invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -418,12 +513,14 @@
 
     if-eqz v4, :cond_6
 
+    .line 149
     new-instance v4, Lorg/apache/http/conn/ConnectTimeoutException;
 
     invoke-direct {v4, v0, v10, v11}, Lorg/apache/http/conn/ConnectTimeoutException;-><init>(Ljava/io/IOException;Lorg/apache/http/HttpHost;[Ljava/net/InetAddress;)V
 
     throw v4
 
+    .line 151
     :cond_6
     new-instance v4, Lorg/apache/http/conn/HttpHostConnectException;
 
@@ -431,20 +528,33 @@
 
     throw v4
 
+    .line 146
+    .end local v0    # "ex":Ljava/net/ConnectException;
+    .end local v3    # "msg":Ljava/lang/String;
     :cond_7
     goto :goto_6
 
+    .line 141
+    .end local v5    # "sock":Ljava/net/Socket;
+    .restart local v17    # "sock":Ljava/net/Socket;
     :catch_5
     move-exception v0
 
     move-object/from16 v5, v17
 
+    .line 142
+    .end local v17    # "sock":Ljava/net/Socket;
+    .local v0, "ex":Ljava/net/SocketTimeoutException;
+    .restart local v5    # "sock":Ljava/net/Socket;
     :goto_5
     if-nez v16, :cond_9
 
+    .line 158
+    .end local v0    # "ex":Ljava/net/SocketTimeoutException;
     :goto_6
     nop
 
+    .line 159
     :goto_7
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
@@ -454,6 +564,7 @@
 
     if-eqz v0, :cond_8
 
+    .line 160
     iget-object v0, v1, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->log:Lorg/apache/commons/logging/Log;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -480,6 +591,12 @@
 
     invoke-interface {v0, v3}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
 
+    .line 114
+    .end local v5    # "sock":Ljava/net/Socket;
+    .end local v14    # "remoteAddress":Ljava/net/InetSocketAddress;
+    .end local v15    # "linger":I
+    .end local v16    # "last":Z
+    .end local v18    # "address":Ljava/net/InetAddress;
     :cond_8
     add-int/lit8 v7, v19, 0x1
 
@@ -493,8 +610,19 @@
 
     move-object/from16 v11, p6
 
+    .end local v19    # "i":I
+    .restart local v7    # "i":I
     goto/16 :goto_1
 
+    .line 143
+    .end local v7    # "i":I
+    .restart local v0    # "ex":Ljava/net/SocketTimeoutException;
+    .restart local v5    # "sock":Ljava/net/Socket;
+    .restart local v14    # "remoteAddress":Ljava/net/InetSocketAddress;
+    .restart local v15    # "linger":I
+    .restart local v16    # "last":Z
+    .restart local v18    # "address":Ljava/net/InetAddress;
+    .restart local v19    # "i":I
     :cond_9
     new-instance v3, Lorg/apache/http/conn/ConnectTimeoutException;
 
@@ -502,6 +630,19 @@
 
     throw v3
 
+    .line 114
+    .end local v0    # "ex":Ljava/net/SocketTimeoutException;
+    .end local v5    # "sock":Ljava/net/Socket;
+    .end local v11    # "addresses":[Ljava/net/InetAddress;
+    .end local v14    # "remoteAddress":Ljava/net/InetSocketAddress;
+    .end local v15    # "linger":I
+    .end local v16    # "last":Z
+    .end local v18    # "address":Ljava/net/InetAddress;
+    .end local v19    # "i":I
+    .end local v20    # "port":I
+    .restart local v7    # "i":I
+    .restart local v8    # "port":I
+    .restart local v9    # "addresses":[Ljava/net/InetAddress;
     :cond_a
     move/from16 v19, v7
 
@@ -509,8 +650,17 @@
 
     move-object v11, v9
 
+    .line 164
+    .end local v7    # "i":I
+    .end local v8    # "port":I
+    .end local v9    # "addresses":[Ljava/net/InetAddress;
+    .restart local v11    # "addresses":[Ljava/net/InetAddress;
+    .restart local v20    # "port":I
     return-void
 
+    .line 108
+    .end local v11    # "addresses":[Ljava/net/InetAddress;
+    .end local v20    # "port":I
     :cond_b
     new-instance v0, Lorg/apache/http/conn/UnsupportedSchemeException;
 
@@ -545,20 +695,28 @@
 
 .method public upgrade(Lorg/apache/http/conn/ManagedHttpClientConnection;Lorg/apache/http/HttpHost;Lorg/apache/http/protocol/HttpContext;)V
     .locals 7
+    .param p1, "conn"    # Lorg/apache/http/conn/ManagedHttpClientConnection;
+    .param p2, "host"    # Lorg/apache/http/HttpHost;
+    .param p3, "context"    # Lorg/apache/http/protocol/HttpContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 171
     invoke-static {p3}, Lorg/apache/http/client/protocol/HttpClientContext;->adapt(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/client/protocol/HttpClientContext;
 
     move-result-object v0
 
+    .line 172
+    .local v0, "clientContext":Lorg/apache/http/client/protocol/HttpClientContext;
     invoke-direct {p0, v0}, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->getSocketFactoryRegistry(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/config/Lookup;
 
     move-result-object v1
 
+    .line 173
+    .local v1, "registry":Lorg/apache/http/config/Lookup;, "Lorg/apache/http/config/Lookup<Lorg/apache/http/conn/socket/ConnectionSocketFactory;>;"
     invoke-virtual {p2}, Lorg/apache/http/HttpHost;->getSchemeName()Ljava/lang/String;
 
     move-result-object v2
@@ -569,26 +727,36 @@
 
     check-cast v2, Lorg/apache/http/conn/socket/ConnectionSocketFactory;
 
+    .line 174
+    .local v2, "sf":Lorg/apache/http/conn/socket/ConnectionSocketFactory;
     if-eqz v2, :cond_1
 
+    .line 178
     instance-of v3, v2, Lorg/apache/http/conn/socket/LayeredConnectionSocketFactory;
 
     if-eqz v3, :cond_0
 
+    .line 182
     move-object v3, v2
 
     check-cast v3, Lorg/apache/http/conn/socket/LayeredConnectionSocketFactory;
 
+    .line 183
+    .local v3, "lsf":Lorg/apache/http/conn/socket/LayeredConnectionSocketFactory;
     invoke-interface {p1}, Lorg/apache/http/conn/ManagedHttpClientConnection;->getSocket()Ljava/net/Socket;
 
     move-result-object v4
 
+    .line 184
+    .local v4, "sock":Ljava/net/Socket;
     iget-object v5, p0, Lorg/apache/http/impl/conn/DefaultHttpClientConnectionOperator;->schemePortResolver:Lorg/apache/http/conn/SchemePortResolver;
 
     invoke-interface {v5, p2}, Lorg/apache/http/conn/SchemePortResolver;->resolve(Lorg/apache/http/HttpHost;)I
 
     move-result v5
 
+    .line 185
+    .local v5, "port":I
     invoke-virtual {p2}, Lorg/apache/http/HttpHost;->getHostName()Ljava/lang/String;
 
     move-result-object v6
@@ -597,10 +765,16 @@
 
     move-result-object v4
 
+    .line 186
     invoke-interface {p1, v4}, Lorg/apache/http/conn/ManagedHttpClientConnection;->bind(Ljava/net/Socket;)V
 
+    .line 187
     return-void
 
+    .line 179
+    .end local v3    # "lsf":Lorg/apache/http/conn/socket/LayeredConnectionSocketFactory;
+    .end local v4    # "sock":Ljava/net/Socket;
+    .end local v5    # "port":I
     :cond_0
     new-instance v3, Lorg/apache/http/conn/UnsupportedSchemeException;
 
@@ -626,6 +800,7 @@
 
     throw v3
 
+    .line 175
     :cond_1
     new-instance v3, Lorg/apache/http/conn/UnsupportedSchemeException;
 

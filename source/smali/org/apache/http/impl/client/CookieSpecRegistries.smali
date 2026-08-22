@@ -7,6 +7,7 @@
 .method private constructor <init>()V
     .locals 0
 
+    .line 86
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -23,6 +24,7 @@
         }
     .end annotation
 
+    .line 76
     invoke-static {}, Lorg/apache/http/conn/util/PublicSuffixMatcherLoader;->getDefault()Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
     move-result-object v0
@@ -36,6 +38,7 @@
 
 .method public static createDefault(Lorg/apache/http/conn/util/PublicSuffixMatcher;)Lorg/apache/http/config/Lookup;
     .locals 1
+    .param p0, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -47,6 +50,7 @@
         }
     .end annotation
 
+    .line 83
     invoke-static {p0}, Lorg/apache/http/impl/client/CookieSpecRegistries;->createDefaultBuilder(Lorg/apache/http/conn/util/PublicSuffixMatcher;)Lorg/apache/http/config/RegistryBuilder;
 
     move-result-object v0
@@ -69,6 +73,7 @@
         }
     .end annotation
 
+    .line 69
     invoke-static {}, Lorg/apache/http/conn/util/PublicSuffixMatcherLoader;->getDefault()Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
     move-result-object v0
@@ -82,6 +87,7 @@
 
 .method public static createDefaultBuilder(Lorg/apache/http/conn/util/PublicSuffixMatcher;)Lorg/apache/http/config/RegistryBuilder;
     .locals 6
+    .param p0, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -93,22 +99,29 @@
         }
     .end annotation
 
+    .line 50
     new-instance v0, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;
 
     invoke-direct {v0, p0}, Lorg/apache/http/impl/cookie/DefaultCookieSpecProvider;-><init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
 
+    .line 51
+    .local v0, "defaultProvider":Lorg/apache/http/cookie/CookieSpecProvider;
     new-instance v1, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;
 
     sget-object v2, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;->RELAXED:Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
 
     invoke-direct {v1, v2, p0}, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
 
+    .line 53
+    .local v1, "laxStandardProvider":Lorg/apache/http/cookie/CookieSpecProvider;
     new-instance v2, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;
 
     sget-object v3, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;->STRICT:Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
 
     invoke-direct {v2, v3, p0}, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
 
+    .line 55
+    .local v2, "strictStandardProvider":Lorg/apache/http/cookie/CookieSpecProvider;
     invoke-static {}, Lorg/apache/http/config/RegistryBuilder;->create()Lorg/apache/http/config/RegistryBuilder;
 
     move-result-object v3
