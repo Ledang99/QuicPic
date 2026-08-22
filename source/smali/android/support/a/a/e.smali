@@ -1,0 +1,68 @@
+.class Landroid/support/a/a/e;
+.super Landroid/support/a/a/m;
+
+# interfaces
+.implements Landroid/support/a/a/f;
+
+
+# instance fields
+.field private final a:Landroid/app/Activity;
+
+
+# direct methods
+.method public constructor <init>(Landroid/app/Activity;Landroid/content/Context;)V
+    .locals 0
+
+    invoke-direct {p0, p2}, Landroid/support/a/a/m;-><init>(Landroid/content/Context;)V
+
+    iput-object p1, p0, Landroid/support/a/a/e;->a:Landroid/app/Activity;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(F)V
+    .locals 1
+
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    cmpl-float v0, p1, v0
+
+    if-nez v0, :cond_1
+
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Landroid/support/a/a/e;->a(Z)V
+
+    :cond_0
+    :goto_0
+    invoke-super {p0, p1}, Landroid/support/a/a/m;->b(F)V
+
+    return-void
+
+    :cond_1
+    const/4 v0, 0x0
+
+    cmpl-float v0, p1, v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0}, Landroid/support/a/a/e;->a(Z)V
+
+    goto :goto_0
+.end method
+
+.method protected a()Z
+    .locals 1
+
+    iget-object v0, p0, Landroid/support/a/a/e;->a:Landroid/app/Activity;
+
+    invoke-static {v0}, Landroid/support/a/a/a;->b(Landroid/app/Activity;)Z
+
+    move-result v0
+
+    return v0
+.end method

@@ -1,0 +1,73 @@
+version: 2.11.1
+apkFileName: stable.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+  tag: null
+sdkInfo:
+  minSdkVersion: 23
+  targetSdkVersion: 23
+packageInfo:
+  forcedPackageId: 127
+  renameManifestPackage: null
+versionInfo:
+  versionCode: 9700000
+  versionName: 9.7
+sharedLibrary: false
+sparseResources: false
+compactEntries: false
+doNotCompress:
+- arsc
+- png
+- so
+- res/raw/add_2.svg
+- res/raw/delete_2.svg
+- res/raw/folder_2.svg
+- res/raw/ic_button_check_off.svg
+- res/raw/ic_button_check_on.svg
+- res/raw/ic_button_forward.svg
+- res/raw/ic_button_radio_off.svg
+- res/raw/ic_button_radio_on.svg
+- res/raw/ic_menu_add.svg
+- res/raw/ic_menu_camera.svg
+- res/raw/ic_menu_cancel.svg
+- res/raw/ic_menu_crop.svg
+- res/raw/ic_menu_delete.svg
+- res/raw/ic_menu_done.svg
+- res/raw/ic_menu_download.svg
+- res/raw/ic_menu_flip.svg
+- res/raw/ic_menu_folder.svg
+- res/raw/ic_menu_help.svg
+- res/raw/ic_menu_overflow.svg
+- res/raw/ic_menu_retry.svg
+- res/raw/ic_menu_rotate.svg
+- res/raw/ic_menu_rotation.svg
+- res/raw/ic_menu_search.svg
+- res/raw/ic_menu_select.svg
+- res/raw/ic_menu_share.svg
+- res/raw/ic_menu_shrink.svg
+- res/raw/ic_menu_slideshow.svg
+- res/raw/ic_menu_upload.svg
+- res/raw/logo_360cloud.svg
+- res/raw/logo_500px.svg
+- res/raw/logo_amazon.svg
+- res/raw/logo_baidu_cloud.svg
+- res/raw/logo_box.svg
+- res/raw/logo_cloud_upload.svg
+- res/raw/logo_discovery.svg
+- res/raw/logo_dropbox.svg
+- res/raw/logo_flickr.svg
+- res/raw/logo_gallery.svg
+- res/raw/logo_google_drive.svg
+- res/raw/logo_kingsoft.svg
+- res/raw/logo_moments.svg
+- res/raw/logo_onedrive.svg
+- res/raw/logo_owncloud.svg
+- res/raw/logo_phone.svg
+- res/raw/logo_picasa.svg
+- res/raw/logo_samba.svg
+- res/raw/logo_settings.svg
+- res/raw/logo_transfer.svg
+- res/raw/logo_yandex.svg
+- res/raw/sd_steps.svg

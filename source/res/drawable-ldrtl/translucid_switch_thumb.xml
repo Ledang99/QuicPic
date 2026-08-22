@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:left="2.0dip" android:top="8.0dip" android:right="8.0dip" android:bottom="8.0dip">
+                <shape android:shape="oval">
+                    <solid android:color="?colorThumbOff" />
+                    <size android:height="16.0dip" android:width="16.0dip" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:left="4.0dip" android:top="4.0dip" android:right="-2.6999817dip" android:bottom="4.0dip">
+                <shape android:shape="oval">
+                    <solid android:color="?colorThumbOn" />
+                    <size android:height="24.0dip" android:width="24.0dip" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

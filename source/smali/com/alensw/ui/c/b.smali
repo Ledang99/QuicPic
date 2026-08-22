@@ -1,0 +1,43 @@
+.class Lcom/alensw/ui/c/b;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field final synthetic a:Lcom/alensw/ui/c/m;
+
+.field final synthetic b:Landroid/content/Intent;
+
+.field final synthetic c:Lcom/alensw/ui/c/a;
+
+
+# direct methods
+.method constructor <init>(Lcom/alensw/ui/c/a;Lcom/alensw/ui/c/m;Landroid/content/Intent;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/alensw/ui/c/b;->c:Lcom/alensw/ui/c/a;
+
+    iput-object p2, p0, Lcom/alensw/ui/c/b;->a:Lcom/alensw/ui/c/m;
+
+    iput-object p3, p0, Lcom/alensw/ui/c/b;->b:Landroid/content/Intent;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public run()V
+    .locals 2
+
+    iget-object v0, p0, Lcom/alensw/ui/c/b;->a:Lcom/alensw/ui/c/m;
+
+    iget-object v1, p0, Lcom/alensw/ui/c/b;->b:Landroid/content/Intent;
+
+    invoke-interface {v0, v1}, Lcom/alensw/ui/c/m;->a(Landroid/content/Intent;)V
+
+    return-void
+.end method

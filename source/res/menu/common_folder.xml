@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/search" android:title="@android:string/search_go" android:showAsAction="always" />
+    <item android:id="@id/slideshow" android:title="@string/slideshow" android:showAsAction="always" />
+    <item android:id="@id/upload" android:title="@string/upload" android:showAsAction="always" />
+    <item android:id="@id/browse_mode" android:title="@string/browse_mode" />
+    <item android:id="@id/sort" android:title="@string/sort" />
+</menu>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:icon="@drawable/launcher_shortcut_transfer" android:enabled="true" android:shortcutId="shortcut1" android:shortcutShortLabel="@string/transfer">
+        <intent android:targetPackage="com.alensw.PicFolder" android:action="android.intent.action.VIEW" android:targetClass="com.alensw.transfer.TransferActivity" />
+    </shortcut>
+    <shortcut android:icon="@drawable/launcher_shortcut_wallpaper" android:enabled="true" android:shortcutId="shortcut2" android:shortcutShortLabel="@string/wallpaper">
+        <intent android:action="android.intent.action.SET_WALLPAPER" />
+    </shortcut>
+</shortcuts>

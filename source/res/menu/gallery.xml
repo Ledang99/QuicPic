@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_bar_sort" android:id="@id/sort" android:title="@string/sort" android:showAsAction="always" />
+    <item android:icon="@drawable/ic_bar_search" android:id="@id/search" android:title="@android:string/search_go" android:showAsAction="always" />
+    <item android:id="@id/browse_mode" android:title="@string/browse_mode" />
+    <item android:id="@id/show_hidden" android:title="@string/show_hidden" />
+    <item android:id="@id/add" android:title="@string/add" />
+    <item android:id="@id/done" android:visible="false" android:title="@android:string/ok" />
+</menu>

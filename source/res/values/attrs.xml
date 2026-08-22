@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorActionBar" format="reference|color" />
+    <attr name="colorActionIcon" format="reference|color" />
+    <attr name="colorBackground" format="reference|color" />
+    <attr name="colorForeground" format="reference|color" />
+    <attr name="colorMenuIcon" format="reference|color" />
+    <attr name="colorNavigateBar" format="reference|color" />
+    <attr name="colorStatusBar" format="reference|color" />
+    <attr name="colorElevation" format="reference|color" />
+    <attr name="colorAccentInverse" format="reference|color" />
+    <attr name="colorDivider" format="reference|color" />
+    <attr name="colorDrawableIcon" format="reference|color" />
+    <attr name="colorDisabled" format="reference|color" />
+    <attr name="colorDialog" format="reference|color" />
+    <attr name="colorWarning" format="reference|color" />
+    <attr name="colorMenuDrawable" format="reference|color" />
+    <attr name="colorThemeIcon" format="reference|color" />
+    <attr name="colorPathBar" format="reference|color" />
+    <attr name="colorTrackOn" format="reference|color" />
+    <attr name="colorTrackOff" format="reference|color" />
+    <attr name="colorTrackLine" format="reference|color" />
+    <attr name="colorThumbOn" format="reference|color" />
+    <attr name="colorThumbOff" format="reference|color" />
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/tracks" android:title="@string/tracks" android:showAsAction="always" />
+    <item android:id="@id/share" android:title="@string/share" android:showAsAction="always" />
+    <item android:icon="@drawable/ic_orientation" android:id="@id/rotation" android:title="@string/rotate" android:showAsAction="always" />
+</menu>

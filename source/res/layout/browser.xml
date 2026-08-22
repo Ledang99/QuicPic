@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.alensw.ui.view.ImageGridView android:id="@id/grid" android:paddingTop="@dimen/button_height" style="@style/ImageGrid" />
+    <LinearLayout android:id="@id/bottom_bar" android:visibility="gone" style="@style/ToolBar.Bottom" />
+</FrameLayout>

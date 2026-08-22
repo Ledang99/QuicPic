@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="?android:listDivider" android:showDividers="middle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/empty" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.alensw.ui.view.RadarView android:layout_width="100.0dip" android:layout_height="100.0dip" />
+            <TextView android:textColor="?android:textColorSecondary" android:gravity="center" android:id="@id/empty_tip" android:paddingTop="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/please_open_transfer" />
+        </LinearLayout>
+        <ListView android:id="@id/devices" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0">
+        <View android:background="?colorDivider" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+            <TextView android:layout_gravity="center|left" android:id="@id/files_to_send" android:padding="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/files_to_send" android:singleLine="false" android:layout_weight="1.0" style="@style/TextAppearance.PreferenceTitle.Settings" />
+            <ImageView android:id="@id/add" android:background="@android:color/transparent" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerCrop" style="@style/ActionButton" />
+            <ImageView android:id="@id/clear" android:background="@android:color/transparent" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerCrop" style="@style/ActionButton" />
+        </LinearLayout>
+        <com.alensw.ui.view.ImageGridView android:id="@id/grid" style="@style/ImageGrid" />
+    </LinearLayout>
+</LinearLayout>

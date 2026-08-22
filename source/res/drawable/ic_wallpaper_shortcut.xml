@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:tint="@color/shortcut_foreground" android:height="24.0dip" android:width="24.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <clip-path android:pathData="M0 0H24V24H0z" />
+        <group>
+            <path android:fillColor="#ff000000" android:pathData="M5 21c-0.55 0-1.02-0.2-1.41-0.59C3.19 20.02 3 19.55 3 19v-6h2v6h6v2H5Zm8 0v-2h6v-6h2v6c0 0.55-0.2 1.02-0.59 1.41C20.02 20.81 19.55 21 19 21h-6Zm-7-4l3-4 2.25 3 3-4L18 17H6Zm-3-6V5c0-0.55 0.2-1.02 0.59-1.41C3.98 3.19 4.45 3 5 3h6v2H5v6H3Zm16 0V5h-6V3h6c0.55 0 1.02 0.2 1.41 0.59C20.81 3.98 21 4.45 21 5v6h-2Zm-3.5-1c-0.43 0-0.8-0.14-1.07-0.43C14.14 9.3 14 8.93 14 8.5c0-0.43 0.14-0.8 0.43-1.08C14.7 7.14 15.07 7 15.5 7c0.43 0 0.8 0.14 1.07 0.42C16.86 7.71 17 8.07 17 8.5c0 0.43-0.14 0.8-0.43 1.07C16.3 9.86 15.93 10 15.5 10Z" />
+        </group>
+    </group>
+</vector>

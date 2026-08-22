@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Base.Translucid" parent="@style/Theme.Inherit.Translucid">
+        <item name="android:textColorPrimary">@color/text_theme_dark</item>
+        <item name="android:textColorSecondary">@color/text_theme_dark_secondary</item>
+        <item name="android:windowBackground">?colorBackground</item>
+        <item name="android:dropDownListViewStyle">@style/ListView.DropDown</item>
+        <item name="android:itemBackground">?colorDialog</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:actionBarSize">@dimen/action_bar_size</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/list_item_height</item>
+        <item name="android:textAppearanceListItem">@style/TextAppearance.PreferenceTitle.Settings</item>
+        <item name="android:listPreferredItemPaddingLeft">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingStart">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/list_item_padding</item>
+        <item name="android:switchStyle">@style/Translucid.Switch.Settings</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorActionIcon">@color/material_icon_dark</item>
+        <item name="colorMenuIcon">?android:colorAccent</item>
+        <item name="colorNavigateBar">@android:color/transparent</item>
+        <item name="colorStatusBar">?colorActionBar</item>
+        <item name="colorDivider">@color/material_divider_dark</item>
+        <item name="colorDrawableIcon">?android:colorAccent</item>
+        <item name="colorDisabled">@color/material_disabled_dark</item>
+        <item name="colorDialog">@color/material_foreground_dark</item>
+        <item name="colorWarning">?android:textColorPrimary</item>
+        <item name="colorMenuDrawable">?android:colorAccent</item>
+        <item name="colorThemeIcon">?android:colorAccent</item>
+        <item name="colorPathBar">@android:color/transparent</item>
+        <item name="colorTrackOn">@color/track_on_color_translucid</item>
+        <item name="colorTrackOff">@color/track_off_color_translucid</item>
+        <item name="colorTrackLine">@color/track_line_color_translucid</item>
+        <item name="colorThumbOn">@color/thumb_on_color_translucid</item>
+        <item name="colorThumbOff">@color/thumb_off_color_translucid</item>
+    </style>
+    <style name="Theme.Translucid" parent="@style/Theme.Base.Translucid">
+        <item name="android:colorAccent">?android:textColorPrimary</item>
+        <item name="colorActionBar">@color/material_bar_translucid</item>
+        <item name="colorBackground">@color/material_background_translucid</item>
+        <item name="colorForeground">@color/material_background_translucid</item>
+        <item name="colorElevation">?colorAccentInverse</item>
+        <item name="colorAccentInverse">@color/material_divider_dark</item>
+    </style>
+    <style name="Theme.Dark" parent="@style/Theme.Monet.Base.Dark">
+        <item name="android:colorAccent">@color/monet_accent_dark</item>
+        <item name="colorActionBar">@color/monet_background_dark</item>
+        <item name="colorBackground">@color/monet_background_dark</item>
+        <item name="colorForeground">@color/monet_foreground_dark</item>
+        <item name="colorElevation">@color/monet_elevation_dark</item>
+        <item name="colorAccentInverse">@color/monet_accent_light</item>
+    </style>
+    <style name="Theme.Black" parent="@style/Theme.Monet.Base.Dark">
+        <item name="android:colorAccent">@color/monet_accent_black</item>
+        <item name="colorActionBar">@color/material_background_black</item>
+        <item name="colorBackground">@color/material_background_black</item>
+        <item name="colorForeground">@color/monet_foreground_black</item>
+        <item name="colorElevation">@color/monet_elevation_dark</item>
+        <item name="colorAccentInverse">@color/monet_accent_light</item>
+        <item name="colorDialog">@color/monet_surface_black</item>
+    </style>
+    <style name="Theme.Blue" parent="@style/Theme.Monet.Base.Color">
+        <item name="android:colorAccent">@color/monet_accent_light</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="colorActionBar">@color/monet_bar_light_color</item>
+        <item name="colorBackground">@color/monet_background_light</item>
+        <item name="colorForeground">@color/monet_foreground_light</item>
+        <item name="colorElevation">@color/monet_elevation_light</item>
+        <item name="colorAccentInverse">@color/monet_accent_dark</item>
+    </style>
+    <style name="Theme.DarkColor" parent="@style/Theme.Base.Dark">
+        <item name="android:alertDialogTheme">@style/Theme.Dialog.Alert.Color.Dark</item>
+        <item name="android:colorAccent">?android:textColorPrimary</item>
+        <item name="colorActionBar">@color/material_background_dark_color</item>
+        <item name="colorBackground">@color/material_background_dark_color</item>
+        <item name="colorForeground">@color/material_foreground_dark_color</item>
+        <item name="colorElevation">?colorForeground</item>
+        <item name="colorAccentInverse">?colorForeground</item>
+        <item name="colorDrawableIcon">?android:textColorSecondary</item>
+        <item name="colorDialog">@color/material_foreground_dark_color</item>
+        <item name="colorThemeIcon">?android:textColorPrimary</item>
+        <item name="colorTrackOn">@color/track_on_color_dark_color</item>
+        <item name="colorTrackOff">@color/track_off_color_dark_color</item>
+        <item name="colorTrackLine">@color/track_line_color_dark_color</item>
+        <item name="colorThumbOn">@color/thumb_on_color_dark_color</item>
+        <item name="colorThumbOff">@color/thumb_off_color_dark_color</item>
+    </style>
+    <style name="LaunchScreen" parent="@style/Theme.Monet.Base.Light">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSplashScreenBackground">@color/monet_background_light</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_animated</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+    </style>
+    <style name="Theme.Monet.Base.Light" parent="@style/Theme.Inherit.Light">
+        <item name="android:textColorPrimary">@color/monet_text_theme_light</item>
+        <item name="android:textColorSecondary">@color/monet_text_theme_light_secondary</item>
+        <item name="android:windowBackground">?colorBackground</item>
+        <item name="android:dropDownListViewStyle">@style/ListView.DropDown</item>
+        <item name="android:itemBackground">?colorDialog</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:actionBarSize">@dimen/action_bar_size</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/list_item_height</item>
+        <item name="android:textAppearanceListItem">@style/TextAppearance.PreferenceTitle.Settings</item>
+        <item name="android:listPreferredItemPaddingLeft">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingStart">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/list_item_padding</item>
+        <item name="android:switchStyle">@style/Monet.Switch.Settings</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorActionIcon">@color/monet_text_theme_light</item>
+        <item name="colorMenuIcon">?android:colorAccent</item>
+        <item name="colorNavigateBar">@android:color/transparent</item>
+        <item name="colorStatusBar">?colorActionBar</item>
+        <item name="colorDivider">@color/material_divider_light</item>
+        <item name="colorDrawableIcon">?android:colorAccent</item>
+        <item name="colorDisabled">@color/monet_tertiary_text_inverse</item>
+        <item name="colorDialog">@color/monet_surface_light</item>
+        <item name="colorWarning">@color/material_warning_light</item>
+        <item name="colorMenuDrawable">?android:textColorSecondary</item>
+        <item name="colorThemeIcon">?android:colorAccent</item>
+        <item name="colorPathBar">@android:color/transparent</item>
+        <item name="colorTrackOn">@color/track_on_color_light</item>
+        <item name="colorTrackOff">@color/track_off_color_light</item>
+        <item name="colorTrackLine">@color/track_line_color_light</item>
+        <item name="colorThumbOn">@color/thumb_on_color_light</item>
+        <item name="colorThumbOff">@color/thumb_off_color_light</item>
+    </style>
+    <style name="Theme.Monet.Base.Dark" parent="@style/Theme.Inherit.Dark">
+        <item name="android:textColorPrimary">@color/monet_text_theme_dark</item>
+        <item name="android:textColorSecondary">@color/monet_text_theme_dark_secondary</item>
+        <item name="android:windowBackground">?colorBackground</item>
+        <item name="android:dropDownListViewStyle">@style/ListView.DropDown</item>
+        <item name="android:itemBackground">?colorDialog</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:actionBarSize">@dimen/action_bar_size</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/list_item_height</item>
+        <item name="android:textAppearanceListItem">@style/TextAppearance.PreferenceTitle.Settings</item>
+        <item name="android:listPreferredItemPaddingLeft">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingStart">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/list_item_padding</item>
+        <item name="android:switchStyle">@style/Monet.Switch.Settings</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorActionIcon">@color/monet_text_theme_dark</item>
+        <item name="colorMenuIcon">?android:colorAccent</item>
+        <item name="colorNavigateBar">@android:color/transparent</item>
+        <item name="colorStatusBar">?colorActionBar</item>
+        <item name="colorDivider">@color/material_divider_dark</item>
+        <item name="colorDrawableIcon">?android:colorAccent</item>
+        <item name="colorDisabled">@color/monet_tertiary_text</item>
+        <item name="colorDialog">@color/monet_surface_dark</item>
+        <item name="colorWarning">@color/material_warning_dark</item>
+        <item name="colorMenuDrawable">?android:textColorSecondary</item>
+        <item name="colorThemeIcon">?android:colorAccent</item>
+        <item name="colorPathBar">@android:color/transparent</item>
+        <item name="colorTrackOn">@color/track_on_color_dark</item>
+        <item name="colorTrackOff">@color/track_off_color_dark</item>
+        <item name="colorTrackLine">@color/track_line_color_dark</item>
+        <item name="colorThumbOn">@color/thumb_on_color_dark</item>
+        <item name="colorThumbOff">@color/thumb_off_color_dark</item>
+    </style>
+    <style name="Theme.Monet.Base.Color" parent="@style/Theme.Inherit.Color">
+        <item name="android:textColorPrimary">@color/monet_text_theme_light</item>
+        <item name="android:textColorSecondary">@color/monet_text_theme_light_secondary</item>
+        <item name="android:windowBackground">?colorBackground</item>
+        <item name="android:dropDownListViewStyle">@style/ListView.DropDown</item>
+        <item name="android:itemBackground">?colorDialog</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:actionBarSize">@dimen/action_bar_size</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/list_item_height</item>
+        <item name="android:textAppearanceListItem">@style/TextAppearance.PreferenceTitle.Settings</item>
+        <item name="android:listPreferredItemPaddingLeft">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingStart">@dimen/list_item_padding</item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/list_item_padding</item>
+        <item name="android:switchStyle">@style/Monet.Switch.Settings</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorActionIcon">@color/monet_text_theme_dark</item>
+        <item name="colorMenuIcon">?android:colorAccent</item>
+        <item name="colorNavigateBar">@android:color/transparent</item>
+        <item name="colorStatusBar">?colorActionBar</item>
+        <item name="colorDivider">@color/material_divider_light</item>
+        <item name="colorDrawableIcon">?android:colorAccent</item>
+        <item name="colorDisabled">@color/monet_tertiary_text_inverse</item>
+        <item name="colorDialog">@color/monet_surface_light</item>
+        <item name="colorWarning">@color/material_warning_light</item>
+        <item name="colorMenuDrawable">?android:textColorSecondary</item>
+        <item name="colorThemeIcon">?android:colorAccent</item>
+        <item name="colorPathBar">@android:color/transparent</item>
+        <item name="colorTrackOn">@color/track_on_color_light</item>
+        <item name="colorTrackOff">@color/track_off_color_light</item>
+        <item name="colorTrackLine">@color/track_line_color_light</item>
+        <item name="colorThumbOn">@color/thumb_on_color_light</item>
+        <item name="colorThumbOff">@color/thumb_off_color_light</item>
+    </style>
+</resources>

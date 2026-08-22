@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@id/browse_mode">
+        <item android:id="@id/browse_default" android:title="@string/default" />
+        <item android:id="@id/browse_stack" android:title="@string/browse_stack" />
+        <item android:id="@id/browse_grid" android:title="@string/browse_grid" />
+        <item android:id="@id/browse_list" android:title="@string/browse_list" />
+    </group>
+    <item android:id="@id/browse_explorer" android:title="@string/browse_explorer" android:checkable="true" />
+</menu>
