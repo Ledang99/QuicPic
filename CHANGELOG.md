@@ -2,6 +2,13 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.2] — 2026-08-22
+
+### Fixed
+
+- **"create failed: NullPointerException"** — Gallery grid failed to load when `QuickApp` services (`o`, `v`) were not initialized. Added `ensureServices()`, null-safe thumbnail cache access, and split app init into separate try blocks.
+- **Thumbnail grid empty** — Same root cause; folder/album view could not create without media scanner and bitmap cache services.
+
 ## [10.0.1] — 2026-08-22
 
 ### Fixed

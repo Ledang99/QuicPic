@@ -622,18 +622,30 @@
 
     sput-boolean v0, Lcom/alensw/PicFolder/QuickApp;->c:Z
 
-    const v0, 0x10e0001
+    const/16 v0, 0x190
 
-    invoke-virtual {v6, v0}, Landroid/content/res/Resources;->getInteger(I)I
+    :try_start_res
+    const v1, 0x10e0001
 
-    move-result v0
-
-    const/16 v2, 0x190
-
-    invoke-static {v0, v2}, Ljava/lang/Math;->max(II)I
+    invoke-virtual {v6, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
     move-result v0
 
+    const/16 v1, 0x190
+
+    invoke-static {v0, v1}, Ljava/lang/Math;->max(II)I
+
+    move-result v0
+    :try_end_res
+    .catch Ljava/lang/Throwable; {:try_start_res .. :try_end_res} :catch_res
+
+    goto :goto_res_done
+
+    :catch_res
+
+    const/16 v0, 0x190
+
+    :goto_res_done
     sput v0, Lcom/alensw/PicFolder/QuickApp;->i:I
 
     sget v0, Lcom/alensw/PicFolder/QuickApp;->j:I
@@ -1411,9 +1423,16 @@
     move-result v2
 
     sput v2, Lcom/alensw/PicFolder/QuickApp;->j:I
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_f
 
+    :try_start_1
     invoke-direct {p0}, Lcom/alensw/PicFolder/QuickApp;->g()Z
 
+    :try_end_1
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_g
+
+    :try_start_2
     invoke-direct {p0}, Lcom/alensw/PicFolder/QuickApp;->h()V
 
     const-string v2, "QuickApp"
@@ -1471,8 +1490,43 @@
     move-result-object v0
 
     invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_0
-    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_2
+    .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_h
+
+    goto :goto_0
+
+    :catch_f
+    move-exception v0
+
+    const-string v1, "QuickApp"
+
+    const-string v2, "init channel: "
+
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    :catch_g
+    move-exception v0
+
+    const-string v1, "QuickApp"
+
+    const-string v2, "init services: "
+
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    :catch_h
+    move-exception v0
+
+    const-string v1, "QuickApp"
+
+    const-string v2, "init prefs: "
+
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
 
     :goto_0
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
@@ -1481,7 +1535,7 @@
 
     if-lt v0, v1, :cond_1
 
-    :try_start_1
+    :try_start_vc
     const-class v0, Landroid/view/ViewConfiguration;
 
     const-string v1, "sHasPermanentMenuKey"
@@ -1503,8 +1557,8 @@
     const/4 v2, 0x0
 
     invoke-virtual {v0, v1, v2}, Ljava/lang/reflect/Field;->setBoolean(Ljava/lang/Object;Z)V
-    :try_end_1
-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
+    :try_end_vc
+    .catch Ljava/lang/Exception; {:try_start_vc .. :try_end_vc} :catch_vc
 
     :cond_0
     :goto_1
@@ -1517,19 +1571,58 @@
     :cond_1
     return-void
 
-    :catch_0
-    move-exception v0
-
-    const-string v1, "QuickApp"
-
-    const-string v2, "init app: "
-
-    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    goto :goto_0
-
-    :catch_1
+    :catch_vc
     move-exception v0
 
     goto :goto_1
+.end method
+
+.method public static ensureServices()V
+    .locals 3
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
+
+    if-eqz v0, :needs_init
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
+
+    if-nez v0, :done
+
+    :needs_init
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    if-nez v0, :try_init
+
+    return-void
+
+    :try_init
+    :try_start_0
+    invoke-direct {v0}, Lcom/alensw/PicFolder/QuickApp;->g()Z
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :check_o
+
+    :catch_0
+    move-exception v1
+
+    const-string v0, "QuickApp"
+
+    const-string v2, "ensureServices: "
+
+    invoke-static {v0, v2, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    :check_o
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
+
+    if-nez v0, :done
+
+    new-instance v0, Lcom/alensw/a/x;
+
+    invoke-direct {v0}, Lcom/alensw/a/x;-><init>()V
+
+    sput-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
+
+    :done
+    return-void
 .end method
