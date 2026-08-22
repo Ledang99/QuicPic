@@ -1251,7 +1251,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_granted
+    if-eqz v0, :cond_granted
 
     const/4 v0, 0x2
 
