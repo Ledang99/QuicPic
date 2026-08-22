@@ -29,30 +29,39 @@
 .method public constructor <init>()V
     .locals 2
 
+    .line 73
     sget-object v0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;->RELAXED:Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v0, v1}, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
 
+    .line 74
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
     .locals 1
+    .param p1, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
+    .line 69
     sget-object v0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;->RELAXED:Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
 
     invoke-direct {p0, v0, p1}, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;-><init>(Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
 
+    .line 70
     return-void
 .end method
 
 .method public constructor <init>(Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;Lorg/apache/http/conn/util/PublicSuffixMatcher;)V
     .locals 1
+    .param p1, "compatibilityLevel"    # Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
+    .param p2, "publicSuffixMatcher"    # Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
+    .line 63
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 64
     if-eqz p1, :cond_0
 
     move-object v0, p1
@@ -65,8 +74,10 @@
     :goto_0
     iput-object v0, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->compatibilityLevel:Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
 
+    .line 65
     iput-object p2, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->publicSuffixMatcher:Lorg/apache/http/conn/util/PublicSuffixMatcher;
 
+    .line 66
     return-void
 .end method
 
@@ -74,18 +85,23 @@
 # virtual methods
 .method public create(Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/cookie/CookieSpec;
     .locals 8
+    .param p1, "context"    # Lorg/apache/http/protocol/HttpContext;
 
+    .line 78
     iget-object v0, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_3
 
+    .line 79
     monitor-enter p0
 
+    .line 80
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
     if-nez v0, :cond_2
 
+    .line 81
     sget-object v0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$2;->$SwitchMap$org$apache$http$impl$cookie$RFC6265CookieSpecProvider$CompatibilityLevel:[I
 
     iget-object v1, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->compatibilityLevel:Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider$CompatibilityLevel;
@@ -112,6 +128,7 @@
 
     if-eq v0, v5, :cond_0
 
+    .line 108
     new-instance v0, Lorg/apache/http/impl/cookie/RFC6265LaxSpec;
 
     new-array v4, v4, [Lorg/apache/http/cookie/CommonCookieAttributeHandler;
@@ -158,6 +175,7 @@
 
     goto :goto_0
 
+    .line 92
     :cond_0
     new-instance v0, Lorg/apache/http/impl/cookie/RFC6265LaxSpec;
 
@@ -205,8 +223,10 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
+    .line 106
     goto :goto_0
 
+    .line 83
     :cond_1
     new-instance v0, Lorg/apache/http/impl/cookie/RFC6265StrictSpec;
 
@@ -254,6 +274,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;
 
+    .line 117
     :cond_2
     :goto_0
     monitor-exit p0
@@ -269,6 +290,7 @@
 
     throw v0
 
+    .line 119
     :cond_3
     :goto_1
     iget-object v0, p0, Lorg/apache/http/impl/cookie/RFC6265CookieSpecProvider;->cookieSpec:Lorg/apache/http/cookie/CookieSpec;

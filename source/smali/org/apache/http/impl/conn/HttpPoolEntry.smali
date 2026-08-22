@@ -26,7 +26,14 @@
 # direct methods
 .method public constructor <init>(Lorg/apache/commons/logging/Log;Ljava/lang/String;Lorg/apache/http/conn/routing/HttpRoute;Lorg/apache/http/conn/OperatedClientConnection;JLjava/util/concurrent/TimeUnit;)V
     .locals 7
+    .param p1, "log"    # Lorg/apache/commons/logging/Log;
+    .param p2, "id"    # Ljava/lang/String;
+    .param p3, "route"    # Lorg/apache/http/conn/routing/HttpRoute;
+    .param p4, "conn"    # Lorg/apache/http/conn/OperatedClientConnection;
+    .param p5, "timeToLive"    # J
+    .param p7, "tunit"    # Ljava/util/concurrent/TimeUnit;
 
+    .line 56
     move-object v0, p0
 
     move-object v1, p2
@@ -41,14 +48,17 @@
 
     invoke-direct/range {v0 .. v6}, Lorg/apache/http/pool/PoolEntry;-><init>(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;JLjava/util/concurrent/TimeUnit;)V
 
+    .line 57
     iput-object p1, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->log:Lorg/apache/commons/logging/Log;
 
+    .line 58
     new-instance v0, Lorg/apache/http/conn/routing/RouteTracker;
 
     invoke-direct {v0, p3}, Lorg/apache/http/conn/routing/RouteTracker;-><init>(Lorg/apache/http/conn/routing/HttpRoute;)V
 
     iput-object v0, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->tracker:Lorg/apache/http/conn/routing/RouteTracker;
 
+    .line 59
     return-void
 .end method
 
@@ -57,28 +67,37 @@
 .method public close()V
     .locals 4
 
+    .line 90
     invoke-virtual {p0}, Lorg/apache/http/impl/conn/HttpPoolEntry;->getConnection()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lorg/apache/http/conn/OperatedClientConnection;
 
+    .line 92
+    .local v0, "conn":Lorg/apache/http/conn/OperatedClientConnection;
     :try_start_0
     invoke-interface {v0}, Lorg/apache/http/conn/OperatedClientConnection;->close()V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 95
     goto :goto_0
 
+    .line 93
     :catch_0
     move-exception v1
 
+    .line 94
+    .local v1, "ex":Ljava/io/IOException;
     iget-object v2, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->log:Lorg/apache/commons/logging/Log;
 
     const-string v3, "I/O error closing connection"
 
     invoke-interface {v2, v3, v1}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
 
+    .line 96
+    .end local v1    # "ex":Ljava/io/IOException;
     :goto_0
     return-void
 .end method
@@ -86,6 +105,7 @@
 .method getEffectiveRoute()Lorg/apache/http/conn/routing/HttpRoute;
     .locals 1
 
+    .line 79
     iget-object v0, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->tracker:Lorg/apache/http/conn/routing/RouteTracker;
 
     invoke-virtual {v0}, Lorg/apache/http/conn/routing/RouteTracker;->toRoute()Lorg/apache/http/conn/routing/HttpRoute;
@@ -98,6 +118,7 @@
 .method getPlannedRoute()Lorg/apache/http/conn/routing/HttpRoute;
     .locals 1
 
+    .line 75
     invoke-virtual {p0}, Lorg/apache/http/impl/conn/HttpPoolEntry;->getRoute()Ljava/lang/Object;
 
     move-result-object v0
@@ -110,6 +131,7 @@
 .method getTracker()Lorg/apache/http/conn/routing/RouteTracker;
     .locals 1
 
+    .line 71
     iget-object v0, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->tracker:Lorg/apache/http/conn/routing/RouteTracker;
 
     return-object v0
@@ -118,12 +140,15 @@
 .method public isClosed()Z
     .locals 2
 
+    .line 84
     invoke-virtual {p0}, Lorg/apache/http/impl/conn/HttpPoolEntry;->getConnection()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lorg/apache/http/conn/OperatedClientConnection;
 
+    .line 85
+    .local v0, "conn":Lorg/apache/http/conn/OperatedClientConnection;
     invoke-interface {v0}, Lorg/apache/http/conn/OperatedClientConnection;->isOpen()Z
 
     move-result v1
@@ -135,11 +160,15 @@
 
 .method public isExpired(J)Z
     .locals 6
+    .param p1, "now"    # J
 
+    .line 63
     invoke-super {p0, p1, p2}, Lorg/apache/http/pool/PoolEntry;->isExpired(J)Z
 
     move-result v0
 
+    .line 64
+    .local v0, "expired":Z
     if-eqz v0, :cond_0
 
     iget-object v1, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->log:Lorg/apache/commons/logging/Log;
@@ -150,6 +179,7 @@
 
     if-eqz v1, :cond_0
 
+    .line 65
     iget-object v1, p0, Lorg/apache/http/impl/conn/HttpPoolEntry;->log:Lorg/apache/commons/logging/Log;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -182,6 +212,7 @@
 
     invoke-interface {v1, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
 
+    .line 67
     :cond_0
     return v0
 .end method

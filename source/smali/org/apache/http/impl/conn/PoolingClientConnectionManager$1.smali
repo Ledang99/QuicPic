@@ -27,6 +27,7 @@
 .method constructor <init>(Lorg/apache/http/impl/conn/PoolingClientConnectionManager;Ljava/util/concurrent/Future;)V
     .locals 0
 
+    .line 186
     iput-object p1, p0, Lorg/apache/http/impl/conn/PoolingClientConnectionManager$1;->this$0:Lorg/apache/http/impl/conn/PoolingClientConnectionManager;
 
     iput-object p2, p0, Lorg/apache/http/impl/conn/PoolingClientConnectionManager$1;->val$future:Ljava/util/concurrent/Future;
@@ -41,17 +42,21 @@
 .method public abortRequest()V
     .locals 2
 
+    .line 189
     iget-object v0, p0, Lorg/apache/http/impl/conn/PoolingClientConnectionManager$1;->val$future:Ljava/util/concurrent/Future;
 
     const/4 v1, 0x1
 
     invoke-interface {v0, v1}, Ljava/util/concurrent/Future;->cancel(Z)Z
 
+    .line 190
     return-void
 .end method
 
 .method public getConnection(JLjava/util/concurrent/TimeUnit;)Lorg/apache/http/conn/ManagedClientConnection;
     .locals 2
+    .param p1, "timeout"    # J
+    .param p3, "tunit"    # Ljava/util/concurrent/TimeUnit;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/InterruptedException;,
@@ -59,6 +64,7 @@
         }
     .end annotation
 
+    .line 195
     iget-object v0, p0, Lorg/apache/http/impl/conn/PoolingClientConnectionManager$1;->this$0:Lorg/apache/http/impl/conn/PoolingClientConnectionManager;
 
     iget-object v1, p0, Lorg/apache/http/impl/conn/PoolingClientConnectionManager$1;->val$future:Ljava/util/concurrent/Future;

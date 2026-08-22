@@ -1,5 +1,6 @@
-.class Lcom/alensw/ui/c/de;
+.class public Lcom/alensw/ui/c/de;
 .super Ljava/lang/Object;
+.source "de.java"
 
 # interfaces
 .implements Ljava/lang/Runnable;

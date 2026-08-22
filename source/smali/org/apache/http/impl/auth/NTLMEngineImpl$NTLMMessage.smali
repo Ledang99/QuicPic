@@ -24,37 +24,47 @@
 .method constructor <init>()V
     .locals 1
 
+    .line 816
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 810
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
+    .line 813
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
+    .line 817
     return-void
 .end method
 
 .method constructor <init>(Ljava/lang/String;I)V
     .locals 5
+    .param p1, "messageBody"    # Ljava/lang/String;
+    .param p2, "expectedType"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 820
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 810
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
+    .line 813
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
+    .line 821
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1000()Ljava/nio/charset/Charset;
 
     move-result-object v0
@@ -69,6 +79,7 @@
 
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
+    .line 823
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     array-length v0, v0
@@ -81,8 +92,11 @@
 
     if-lt v0, v1, :cond_3
 
+    .line 826
     const/4 v0, 0x0
 
+    .line 827
+    .local v0, "i":I
     :goto_0
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1100()[B
 
@@ -92,6 +106,7 @@
 
     if-ge v0, v1, :cond_1
 
+    .line 828
     iget-object v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     aget-byte v1, v1, v0
@@ -104,10 +119,12 @@
 
     if-ne v1, v2, :cond_0
 
+    .line 832
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
+    .line 829
     :cond_0
     new-instance v1, Lorg/apache/http/impl/auth/NTLMEngineException;
 
@@ -117,6 +134,7 @@
 
     throw v1
 
+    .line 836
     :cond_1
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1100()[B
 
@@ -128,16 +146,21 @@
 
     move-result v1
 
+    .line 837
+    .local v1, "type":I
     if-ne v1, p2, :cond_2
 
+    .line 842
     iget-object v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     array-length v2, v2
 
     iput v2, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
+    .line 843
     return-void
 
+    .line 838
     :cond_2
     new-instance v2, Lorg/apache/http/impl/auth/NTLMEngineException;
 
@@ -173,6 +196,9 @@
 
     throw v2
 
+    .line 824
+    .end local v0    # "i":I
+    .end local v1    # "type":I
     :cond_3
     new-instance v0, Lorg/apache/http/impl/auth/NTLMEngineException;
 
@@ -193,66 +219,89 @@
 # virtual methods
 .method protected addByte(B)V
     .locals 2
+    .param p1, "b"    # B
 
+    .line 911
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     iget v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
     aput-byte p1, v0, v1
 
+    .line 912
     add-int/lit8 v1, v1, 0x1
 
     iput v1, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
+    .line 913
     return-void
 .end method
 
 .method protected addBytes([B)V
     .locals 6
+    .param p1, "bytes"    # [B
 
+    .line 922
     if-nez p1, :cond_0
 
+    .line 923
     return-void
 
+    .line 925
     :cond_0
     move-object v0, p1
 
+    .local v0, "arr$":[B
     array-length v1, v0
 
+    .local v1, "len$":I
     const/4 v2, 0x0
 
+    .local v2, "i$":I
     :goto_0
     if-ge v2, v1, :cond_1
 
     aget-byte v3, v0, v2
 
+    .line 926
+    .local v3, "b":B
     iget-object v4, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     iget v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
     aput-byte v3, v4, v5
 
+    .line 927
     add-int/lit8 v5, v5, 0x1
 
     iput v5, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
+    .line 925
+    .end local v3    # "b":B
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
+    .line 929
+    .end local v0    # "arr$":[B
+    .end local v1    # "len$":I
+    .end local v2    # "i$":I
     :cond_1
     return-void
 .end method
 
 .method protected addULong(I)V
     .locals 1
+    .param p1, "value"    # I
 
+    .line 939
     and-int/lit16 v0, p1, 0xff
 
     int-to-byte v0, v0
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addByte(B)V
 
+    .line 940
     shr-int/lit8 v0, p1, 0x8
 
     and-int/lit16 v0, v0, 0xff
@@ -261,6 +310,7 @@
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addByte(B)V
 
+    .line 941
     shr-int/lit8 v0, p1, 0x10
 
     and-int/lit16 v0, v0, 0xff
@@ -269,6 +319,7 @@
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addByte(B)V
 
+    .line 942
     shr-int/lit8 v0, p1, 0x18
 
     and-int/lit16 v0, v0, 0xff
@@ -277,18 +328,22 @@
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addByte(B)V
 
+    .line 943
     return-void
 .end method
 
 .method protected addUShort(I)V
     .locals 1
+    .param p1, "value"    # I
 
+    .line 933
     and-int/lit16 v0, p1, 0xff
 
     int-to-byte v0, v0
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addByte(B)V
 
+    .line 934
     shr-int/lit8 v0, p1, 0x8
 
     and-int/lit16 v0, v0, 0xff
@@ -297,12 +352,14 @@
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addByte(B)V
 
+    .line 935
     return-void
 .end method
 
 .method protected getMessageLength()I
     .locals 1
 
+    .line 855
     iget v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
     return v0
@@ -311,6 +368,7 @@
 .method protected getPreambleLength()I
     .locals 1
 
+    .line 850
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1100()[B
 
     move-result-object v0
@@ -325,6 +383,7 @@
 .method getResponse()Ljava/lang/String;
     .locals 4
 
+    .line 953
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     array-length v1, v0
@@ -333,19 +392,30 @@
 
     if-le v1, v2, :cond_0
 
+    .line 954
     new-array v1, v2, [B
 
+    .line 955
+    .local v1, "tmp":[B
     const/4 v3, 0x0
 
     invoke-static {v0, v3, v1, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
+    .line 956
     move-object v0, v1
 
+    .line 957
+    .end local v1    # "tmp":[B
+    .local v0, "resp":[B
     goto :goto_0
 
+    .line 958
+    .end local v0    # "resp":[B
     :cond_0
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
+    .line 960
+    .restart local v0    # "resp":[B
     :goto_0
     invoke-static {v0}, Lorg/apache/commons/codec/binary/Base64;->encodeBase64([B)[B
 
@@ -360,34 +430,43 @@
 
 .method protected prepareResponse(II)V
     .locals 1
+    .param p1, "maxlength"    # I
+    .param p2, "messageType"    # I
 
+    .line 898
     new-array v0, p1, [B
 
     iput-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
+    .line 899
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->currentOutputPosition:I
 
+    .line 900
     invoke-static {}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1100()[B
 
     move-result-object v0
 
     invoke-virtual {p0, v0}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addBytes([B)V
 
+    .line 901
     invoke-virtual {p0, p2}, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->addULong(I)V
 
+    .line 902
     return-void
 .end method
 
 .method protected readByte(I)B
     .locals 3
+    .param p1, "position"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 860
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     array-length v1, v0
@@ -396,10 +475,12 @@
 
     if-lt v1, v2, :cond_0
 
+    .line 863
     aget-byte v0, v0, p1
 
     return v0
 
+    .line 861
     :cond_0
     new-instance v0, Lorg/apache/http/impl/auth/NTLMEngineException;
 
@@ -412,12 +493,15 @@
 
 .method protected readBytes([BI)V
     .locals 3
+    .param p1, "buffer"    # [B
+    .param p2, "position"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 868
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     array-length v1, v0
@@ -428,14 +512,17 @@
 
     if-lt v1, v2, :cond_0
 
+    .line 871
     const/4 v1, 0x0
 
     array-length v2, p1
 
     invoke-static {v0, p2, p1, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
+    .line 872
     return-void
 
+    .line 869
     :cond_0
     new-instance v0, Lorg/apache/http/impl/auth/NTLMEngineException;
 
@@ -448,12 +535,14 @@
 
 .method protected readSecurityBuffer(I)[B
     .locals 1
+    .param p1, "position"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 886
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     invoke-static {v0, p1}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1400([BI)[B
@@ -465,12 +554,14 @@
 
 .method protected readULong(I)I
     .locals 1
+    .param p1, "position"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 881
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     invoke-static {v0, p1}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1300([BI)I
@@ -482,12 +573,14 @@
 
 .method protected readUShort(I)I
     .locals 1
+    .param p1, "position"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/apache/http/impl/auth/NTLMEngineException;
         }
     .end annotation
 
+    .line 876
     iget-object v0, p0, Lorg/apache/http/impl/auth/NTLMEngineImpl$NTLMMessage;->messageContents:[B
 
     invoke-static {v0, p1}, Lorg/apache/http/impl/auth/NTLMEngineImpl;->access$1200([BI)I

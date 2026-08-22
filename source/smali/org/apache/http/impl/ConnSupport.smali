@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .line 41
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -14,28 +15,39 @@
 
 .method public static createDecoder(Lorg/apache/http/config/ConnectionConfig;)Ljava/nio/charset/CharsetDecoder;
     .locals 5
+    .param p0, "cconfig"    # Lorg/apache/http/config/ConnectionConfig;
 
+    .line 44
     const/4 v0, 0x0
 
     if-nez p0, :cond_0
 
+    .line 45
     return-object v0
 
+    .line 47
     :cond_0
     invoke-virtual {p0}, Lorg/apache/http/config/ConnectionConfig;->getCharset()Ljava/nio/charset/Charset;
 
     move-result-object v1
 
+    .line 48
+    .local v1, "charset":Ljava/nio/charset/Charset;
     invoke-virtual {p0}, Lorg/apache/http/config/ConnectionConfig;->getMalformedInputAction()Ljava/nio/charset/CodingErrorAction;
 
     move-result-object v2
 
+    .line 49
+    .local v2, "malformed":Ljava/nio/charset/CodingErrorAction;
     invoke-virtual {p0}, Lorg/apache/http/config/ConnectionConfig;->getUnmappableInputAction()Ljava/nio/charset/CodingErrorAction;
 
     move-result-object v3
 
+    .line 50
+    .local v3, "unmappable":Ljava/nio/charset/CodingErrorAction;
     if-eqz v1, :cond_3
 
+    .line 51
     invoke-virtual {v1}, Ljava/nio/charset/Charset;->newDecoder()Ljava/nio/charset/CharsetDecoder;
 
     move-result-object v0
@@ -70,34 +82,46 @@
 
     return-object v0
 
+    .line 55
     :cond_3
     return-object v0
 .end method
 
 .method public static createEncoder(Lorg/apache/http/config/ConnectionConfig;)Ljava/nio/charset/CharsetEncoder;
     .locals 5
+    .param p0, "cconfig"    # Lorg/apache/http/config/ConnectionConfig;
 
+    .line 60
     const/4 v0, 0x0
 
     if-nez p0, :cond_0
 
+    .line 61
     return-object v0
 
+    .line 63
     :cond_0
     invoke-virtual {p0}, Lorg/apache/http/config/ConnectionConfig;->getCharset()Ljava/nio/charset/Charset;
 
     move-result-object v1
 
+    .line 64
+    .local v1, "charset":Ljava/nio/charset/Charset;
     if-eqz v1, :cond_3
 
+    .line 65
     invoke-virtual {p0}, Lorg/apache/http/config/ConnectionConfig;->getMalformedInputAction()Ljava/nio/charset/CodingErrorAction;
 
     move-result-object v0
 
+    .line 66
+    .local v0, "malformed":Ljava/nio/charset/CodingErrorAction;
     invoke-virtual {p0}, Lorg/apache/http/config/ConnectionConfig;->getUnmappableInputAction()Ljava/nio/charset/CodingErrorAction;
 
     move-result-object v2
 
+    .line 67
+    .local v2, "unmappable":Ljava/nio/charset/CodingErrorAction;
     invoke-virtual {v1}, Ljava/nio/charset/Charset;->newEncoder()Ljava/nio/charset/CharsetEncoder;
 
     move-result-object v3
@@ -132,6 +156,9 @@
 
     return-object v3
 
+    .line 71
+    .end local v0    # "malformed":Ljava/nio/charset/CodingErrorAction;
+    .end local v2    # "unmappable":Ljava/nio/charset/CodingErrorAction;
     :cond_3
     return-object v0
 .end method

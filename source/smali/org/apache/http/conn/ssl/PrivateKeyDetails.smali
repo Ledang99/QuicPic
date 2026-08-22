@@ -17,9 +17,13 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;[Ljava/security/cert/X509Certificate;)V
     .locals 1
+    .param p1, "type"    # Ljava/lang/String;
+    .param p2, "certChain"    # [Ljava/security/cert/X509Certificate;
 
+    .line 48
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 49
     const-string v0, "Private key type"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->notNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
@@ -30,8 +34,10 @@
 
     iput-object v0, p0, Lorg/apache/http/conn/ssl/PrivateKeyDetails;->type:Ljava/lang/String;
 
+    .line 50
     iput-object p2, p0, Lorg/apache/http/conn/ssl/PrivateKeyDetails;->certChain:[Ljava/security/cert/X509Certificate;
 
+    .line 51
     return-void
 .end method
 
@@ -40,6 +46,7 @@
 .method public getCertChain()[Ljava/security/cert/X509Certificate;
     .locals 1
 
+    .line 58
     iget-object v0, p0, Lorg/apache/http/conn/ssl/PrivateKeyDetails;->certChain:[Ljava/security/cert/X509Certificate;
 
     return-object v0
@@ -48,6 +55,7 @@
 .method public getType()Ljava/lang/String;
     .locals 1
 
+    .line 54
     iget-object v0, p0, Lorg/apache/http/conn/ssl/PrivateKeyDetails;->type:Ljava/lang/String;
 
     return-object v0
@@ -56,6 +64,7 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
+    .line 63
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

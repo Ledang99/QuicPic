@@ -34,11 +34,15 @@
 # direct methods
 .method constructor <init>(Lorg/apache/http/conn/ClientConnectionOperator;)V
     .locals 0
+    .param p1, "connOperator"    # Lorg/apache/http/conn/ClientConnectionOperator;
 
+    .line 74
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 75
     iput-object p1, p0, Lorg/apache/http/impl/conn/HttpConnPool$InternalConnFactory;->connOperator:Lorg/apache/http/conn/ClientConnectionOperator;
 
+    .line 76
     return-void
 .end method
 
@@ -46,12 +50,14 @@
 # virtual methods
 .method public bridge synthetic create(Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
+    .param p1, "x0"    # Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 70
     move-object v0, p1
 
     check-cast v0, Lorg/apache/http/conn/routing/HttpRoute;
@@ -65,12 +71,14 @@
 
 .method public create(Lorg/apache/http/conn/routing/HttpRoute;)Lorg/apache/http/conn/OperatedClientConnection;
     .locals 1
+    .param p1, "route"    # Lorg/apache/http/conn/routing/HttpRoute;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 79
     iget-object v0, p0, Lorg/apache/http/impl/conn/HttpConnPool$InternalConnFactory;->connOperator:Lorg/apache/http/conn/ClientConnectionOperator;
 
     invoke-interface {v0}, Lorg/apache/http/conn/ClientConnectionOperator;->createConnection()Lorg/apache/http/conn/OperatedClientConnection;

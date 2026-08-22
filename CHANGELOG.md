@@ -2,22 +2,18 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
-## [9.7.1] — 2026-08-22
+## [10.0.1] — 2026-08-22
 
 ### Fixed
 
-- **Crash on launch** — Reverted build base from unstable v10.0.2 alpha to **v9.7 stable**, while keeping `arm64-v8a` native libraries from v10. The alpha build installed on 64-bit phones but crashed at startup (missing Android 13+ media permissions, WIP code). The hybrid build is stable and installs on modern devices.
+- **"Not compatible" on Android 15+** — The v9.7 hybrid used `targetSdkVersion 23`, which Android 15 blocks at install time (shows as *"App not installed as app isn't compatible with your phone"*). Reverted to v10.0 base with `targetSdk 34` and `minSdk 26`.
+- **Crash on launch** — Added missing Android 13+ media permissions (`READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, etc.) to v10 manifest. Removed `android:debuggable="true"` and fixed invalid `largeHeap` attribute.
 
-### Technical details (launch crash)
+## [9.7.1] — 2026-08-22 (superseded)
 
-| Issue | v10 alpha | v9.7.1 hybrid |
-|-------|-----------|---------------|
-| Base code | 10.0.2 alpha (WIP) | 9.7 stable |
-| `arm64-v8a` | Yes | Yes (lib from v10) |
-| `READ_MEDIA_*` permissions | Missing | Present |
-| `android:debuggable` | `true` | Not set |
+### Fixed
 
-Rotation thumbnail fixes from [10.0] are retained in the hybrid source.
+- **Crash on launch** — Attempted v9.7 stable + arm64 hybrid. **Do not use on Android 15+** — blocked due to `targetSdk 23`.
 
 ## [10.0] — 2026-08-22
 
@@ -48,4 +44,4 @@ If thumbnails still look wrong after upgrading, clear the app cache once or re-o
 
 ## Upstream reference
 
-Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **9.7 stable** + `arm64-v8a` from **10.0.2 alpha**.
+Based on [WSTxda/QP-Gallery-Releases](https://github.com/WSTxda/QP-Gallery-Releases) **10.0.2 alpha** with manifest fixes for modern Android.

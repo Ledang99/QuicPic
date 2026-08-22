@@ -21,34 +21,44 @@
 .method public constructor <init>()V
     .locals 2
 
+    .line 68
     const/4 v0, 0x1
 
     const/16 v1, 0x3e8
 
     invoke-direct {p0, v0, v1}, Lorg/apache/http/impl/client/DefaultServiceUnavailableRetryStrategy;-><init>(II)V
 
+    .line 69
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 2
+    .param p1, "maxRetries"    # I
+    .param p2, "retryInterval"    # I
 
+    .line 60
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 61
     const-string v0, "Max retries"
 
     invoke-static {p1, v0}, Lorg/apache/http/util/Args;->positive(ILjava/lang/String;)I
 
+    .line 62
     const-string v0, "Retry interval"
 
     invoke-static {p2, v0}, Lorg/apache/http/util/Args;->positive(ILjava/lang/String;)I
 
+    .line 63
     iput p1, p0, Lorg/apache/http/impl/client/DefaultServiceUnavailableRetryStrategy;->maxRetries:I
 
+    .line 64
     int-to-long v0, p2
 
     iput-wide v0, p0, Lorg/apache/http/impl/client/DefaultServiceUnavailableRetryStrategy;->retryInterval:J
 
+    .line 65
     return-void
 .end method
 
@@ -57,6 +67,7 @@
 .method public getRetryInterval()J
     .locals 2
 
+    .line 79
     iget-wide v0, p0, Lorg/apache/http/impl/client/DefaultServiceUnavailableRetryStrategy;->retryInterval:J
 
     return-wide v0
@@ -64,7 +75,11 @@
 
 .method public retryRequest(Lorg/apache/http/HttpResponse;ILorg/apache/http/protocol/HttpContext;)Z
     .locals 2
+    .param p1, "response"    # Lorg/apache/http/HttpResponse;
+    .param p2, "executionCount"    # I
+    .param p3, "context"    # Lorg/apache/http/protocol/HttpContext;
 
+    .line 73
     iget v0, p0, Lorg/apache/http/impl/client/DefaultServiceUnavailableRetryStrategy;->maxRetries:I
 
     if-gt p2, v0, :cond_0

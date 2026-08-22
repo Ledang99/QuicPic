@@ -32,6 +32,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .line 53
     new-instance v0, Lorg/apache/http/cookie/CookiePathComparator;
 
     invoke-direct {v0}, Lorg/apache/http/cookie/CookiePathComparator;-><init>()V
@@ -44,6 +45,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -51,15 +53,21 @@
 
 .method private normalizePath(Lorg/apache/http/cookie/Cookie;)Ljava/lang/String;
     .locals 3
+    .param p1, "cookie"    # Lorg/apache/http/cookie/Cookie;
 
+    .line 58
     invoke-interface {p1}, Lorg/apache/http/cookie/Cookie;->getPath()Ljava/lang/String;
 
     move-result-object v0
 
+    .line 59
+    .local v0, "path":Ljava/lang/String;
     if-nez v0, :cond_0
 
+    .line 60
     const-string v0, "/"
 
+    .line 62
     :cond_0
     const-string v1, "/"
 
@@ -69,6 +77,7 @@
 
     if-nez v1, :cond_1
 
+    .line 63
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -83,6 +92,7 @@
 
     move-result-object v0
 
+    .line 65
     :cond_1
     return-object v0
 .end method
@@ -91,7 +101,10 @@
 # virtual methods
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 2
+    .param p1, "x0"    # Ljava/lang/Object;
+    .param p2, "x1"    # Ljava/lang/Object;
 
+    .line 50
     move-object v0, p1
 
     check-cast v0, Lorg/apache/http/cookie/Cookie;
@@ -109,15 +122,22 @@
 
 .method public compare(Lorg/apache/http/cookie/Cookie;Lorg/apache/http/cookie/Cookie;)I
     .locals 4
+    .param p1, "c1"    # Lorg/apache/http/cookie/Cookie;
+    .param p2, "c2"    # Lorg/apache/http/cookie/Cookie;
 
+    .line 70
     invoke-direct {p0, p1}, Lorg/apache/http/cookie/CookiePathComparator;->normalizePath(Lorg/apache/http/cookie/Cookie;)Ljava/lang/String;
 
     move-result-object v0
 
+    .line 71
+    .local v0, "path1":Ljava/lang/String;
     invoke-direct {p0, p2}, Lorg/apache/http/cookie/CookiePathComparator;->normalizePath(Lorg/apache/http/cookie/Cookie;)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 72
+    .local v1, "path2":Ljava/lang/String;
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v2
@@ -126,8 +146,10 @@
 
     if-eqz v2, :cond_0
 
+    .line 73
     return v3
 
+    .line 74
     :cond_0
     invoke-virtual {v0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -135,10 +157,12 @@
 
     if-eqz v2, :cond_1
 
+    .line 75
     const/4 v2, -0x1
 
     return v2
 
+    .line 76
     :cond_1
     invoke-virtual {v1, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -146,10 +170,12 @@
 
     if-eqz v2, :cond_2
 
+    .line 77
     const/4 v2, 0x1
 
     return v2
 
+    .line 80
     :cond_2
     return v3
 .end method

@@ -1,13 +1,6 @@
 .class public Lcom/alensw/ui/view/ImageGridView;
 .super Lcom/alensw/ui/view/bp;
-
-
-# annotations
-.annotation build Landroid/annotation/SuppressLint;
-    value = {
-        "Instantiatable"
-    }
-.end annotation
+.source "ImageGridView.java"
 
 
 # static fields

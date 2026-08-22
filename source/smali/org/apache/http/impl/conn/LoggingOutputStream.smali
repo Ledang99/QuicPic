@@ -17,13 +17,19 @@
 # direct methods
 .method public constructor <init>(Ljava/io/OutputStream;Lorg/apache/http/impl/conn/Wire;)V
     .locals 0
+    .param p1, "out"    # Ljava/io/OutputStream;
+    .param p2, "wire"    # Lorg/apache/http/impl/conn/Wire;
 
+    .line 47
     invoke-direct {p0}, Ljava/io/OutputStream;-><init>()V
 
+    .line 48
     iput-object p1, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->out:Ljava/io/OutputStream;
 
+    .line 49
     iput-object p2, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
+    .line 50
     return-void
 .end method
 
@@ -37,6 +43,7 @@
         }
     .end annotation
 
+    .line 97
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->out:Ljava/io/OutputStream;
 
@@ -44,13 +51,18 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 101
     nop
 
+    .line 102
     return-void
 
+    .line 98
     :catch_0
     move-exception v0
 
+    .line 99
+    .local v0, "ex":Ljava/io/IOException;
     iget-object v1, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -73,6 +85,7 @@
 
     invoke-virtual {v1, v2}, Lorg/apache/http/impl/conn/Wire;->output(Ljava/lang/String;)V
 
+    .line 100
     throw v0
 .end method
 
@@ -84,6 +97,7 @@
         }
     .end annotation
 
+    .line 87
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->out:Ljava/io/OutputStream;
 
@@ -91,13 +105,18 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 91
     nop
 
+    .line 92
     return-void
 
+    .line 88
     :catch_0
     move-exception v0
 
+    .line 89
+    .local v0, "ex":Ljava/io/IOException;
     iget-object v1, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -120,17 +139,20 @@
 
     invoke-virtual {v1, v2}, Lorg/apache/http/impl/conn/Wire;->output(Ljava/lang/String;)V
 
+    .line 90
     throw v0
 .end method
 
 .method public write(I)V
     .locals 4
+    .param p1, "b"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 55
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
@@ -138,13 +160,18 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 59
     nop
 
+    .line 60
     return-void
 
+    .line 56
     :catch_0
     move-exception v0
 
+    .line 57
+    .local v0, "ex":Ljava/io/IOException;
     iget-object v1, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -167,35 +194,44 @@
 
     invoke-virtual {v1, v2}, Lorg/apache/http/impl/conn/Wire;->output(Ljava/lang/String;)V
 
+    .line 58
     throw v0
 .end method
 
 .method public write([B)V
     .locals 4
+    .param p1, "b"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 65
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0, p1}, Lorg/apache/http/impl/conn/Wire;->output([B)V
 
+    .line 66
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->out:Ljava/io/OutputStream;
 
     invoke-virtual {v0, p1}, Ljava/io/OutputStream;->write([B)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 70
     nop
 
+    .line 71
     return-void
 
+    .line 67
     :catch_0
     move-exception v0
 
+    .line 68
+    .local v0, "ex":Ljava/io/IOException;
     iget-object v1, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -218,35 +254,46 @@
 
     invoke-virtual {v1, v2}, Lorg/apache/http/impl/conn/Wire;->output(Ljava/lang/String;)V
 
+    .line 69
     throw v0
 .end method
 
 .method public write([BII)V
     .locals 4
+    .param p1, "b"    # [B
+    .param p2, "off"    # I
+    .param p3, "len"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .line 76
     :try_start_0
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     invoke-virtual {v0, p1, p2, p3}, Lorg/apache/http/impl/conn/Wire;->output([BII)V
 
+    .line 77
     iget-object v0, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->out:Ljava/io/OutputStream;
 
     invoke-virtual {v0, p1, p2, p3}, Ljava/io/OutputStream;->write([BII)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 81
     nop
 
+    .line 82
     return-void
 
+    .line 78
     :catch_0
     move-exception v0
 
+    .line 79
+    .local v0, "ex":Ljava/io/IOException;
     iget-object v1, p0, Lorg/apache/http/impl/conn/LoggingOutputStream;->wire:Lorg/apache/http/impl/conn/Wire;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -269,5 +316,6 @@
 
     invoke-virtual {v1, v2}, Lorg/apache/http/impl/conn/Wire;->output(Ljava/lang/String;)V
 
+    .line 80
     throw v0
 .end method

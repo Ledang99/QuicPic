@@ -15,6 +15,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .line 46
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -28,6 +29,7 @@
         }
     .end annotation
 
+    .line 57
     :try_start_0
     const-string v0, "TLS"
 
@@ -35,6 +37,8 @@
 
     move-result-object v0
 
+    .line 58
+    .local v0, "sslcontext":Ljavax/net/ssl/SSLContext;
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1, v1, v1}, Ljavax/net/ssl/SSLContext;->init([Ljavax/net/ssl/KeyManager;[Ljavax/net/ssl/TrustManager;Ljava/security/SecureRandom;)V
@@ -42,11 +46,16 @@
     .catch Ljava/security/NoSuchAlgorithmException; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/security/KeyManagementException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 59
     return-object v0
 
+    .line 62
+    .end local v0    # "sslcontext":Ljavax/net/ssl/SSLContext;
     :catch_0
     move-exception v0
 
+    .line 63
+    .local v0, "ex":Ljava/security/KeyManagementException;
     new-instance v1, Lorg/apache/http/conn/ssl/SSLInitializationException;
 
     invoke-virtual {v0}, Ljava/security/KeyManagementException;->getMessage()Ljava/lang/String;
@@ -57,9 +66,13 @@
 
     throw v1
 
+    .line 60
+    .end local v0    # "ex":Ljava/security/KeyManagementException;
     :catch_1
     move-exception v0
 
+    .line 61
+    .local v0, "ex":Ljava/security/NoSuchAlgorithmException;
     new-instance v1, Lorg/apache/http/conn/ssl/SSLInitializationException;
 
     invoke-virtual {v0}, Ljava/security/NoSuchAlgorithmException;->getMessage()Ljava/lang/String;
@@ -79,6 +92,7 @@
         }
     .end annotation
 
+    .line 78
     :try_start_0
     invoke-static {}, Ljavax/net/ssl/SSLContext;->getDefault()Ljavax/net/ssl/SSLContext;
 
@@ -88,9 +102,12 @@
 
     return-object v0
 
+    .line 79
     :catch_0
     move-exception v0
 
+    .line 80
+    .local v0, "ex":Ljava/security/NoSuchAlgorithmException;
     invoke-static {}, Lorg/apache/http/conn/ssl/SSLContexts;->createDefault()Ljavax/net/ssl/SSLContext;
 
     move-result-object v1
@@ -101,6 +118,7 @@
 .method public static custom()Lorg/apache/http/conn/ssl/SSLContextBuilder;
     .locals 1
 
+    .line 90
     new-instance v0, Lorg/apache/http/conn/ssl/SSLContextBuilder;
 
     invoke-direct {v0}, Lorg/apache/http/conn/ssl/SSLContextBuilder;-><init>()V

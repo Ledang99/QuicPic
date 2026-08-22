@@ -29,7 +29,7 @@ Install `releases/stable.apk` on your device (Android 8.0+).
 
 | Path | Description |
 |------|-------------|
-| [`source/`](source/) | Smali + resources (v9.7.1) — edit here, then `./build.sh` |
+| [`source/`](source/) | Smali + resources (v10.0.1) — edit here, then `./build.sh` |
 | [`source-java/`](source-java/) | Decompiled Java — browse in IDE (reference) |
 | [`SOURCE.md`](SOURCE.md) | Full source guide, compatibility, limitations |
 | [`CHANGELOG.md`](CHANGELOG.md) | Fork changes and bug fixes |
@@ -46,8 +46,9 @@ Install `releases/stable.apk` on your device (Android 8.0+).
 
 ## Recent fixes (this fork)
 
-- **Launch crash** — Stable v9.7 base + arm64 (fixes crash after install on 64-bit phones)
-- **64-bit install** — `arm64-v8a` native libs (fixes incompatible-with-your-phone errors)
+- **Android 15+ install** — `targetSdk 34` (v9.7 / API 23 builds are blocked on Android 15)
+- **Launch crash fix** — Android 13+ media permissions added to manifest
+- **64-bit install** — `arm64-v8a` native libs
 - **Rotation thumbnails** — Grid thumbnails keep correct orientation after rotating images
 - **CI build** — GitHub Actions builds APK with apktool on every push to `master`
 

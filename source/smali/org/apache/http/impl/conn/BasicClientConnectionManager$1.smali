@@ -29,6 +29,7 @@
 .method constructor <init>(Lorg/apache/http/impl/conn/BasicClientConnectionManager;Lorg/apache/http/conn/routing/HttpRoute;Ljava/lang/Object;)V
     .locals 0
 
+    .line 136
     iput-object p1, p0, Lorg/apache/http/impl/conn/BasicClientConnectionManager$1;->this$0:Lorg/apache/http/impl/conn/BasicClientConnectionManager;
 
     iput-object p2, p0, Lorg/apache/http/impl/conn/BasicClientConnectionManager$1;->val$route:Lorg/apache/http/conn/routing/HttpRoute;
@@ -45,12 +46,16 @@
 .method public abortRequest()V
     .locals 0
 
+    .line 140
     return-void
 .end method
 
 .method public getConnection(JLjava/util/concurrent/TimeUnit;)Lorg/apache/http/conn/ManagedClientConnection;
     .locals 3
+    .param p1, "timeout"    # J
+    .param p3, "tunit"    # Ljava/util/concurrent/TimeUnit;
 
+    .line 144
     iget-object v0, p0, Lorg/apache/http/impl/conn/BasicClientConnectionManager$1;->this$0:Lorg/apache/http/impl/conn/BasicClientConnectionManager;
 
     iget-object v1, p0, Lorg/apache/http/impl/conn/BasicClientConnectionManager$1;->val$route:Lorg/apache/http/conn/routing/HttpRoute;

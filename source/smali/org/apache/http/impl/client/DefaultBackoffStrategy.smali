@@ -10,6 +10,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -19,7 +20,9 @@
 # virtual methods
 .method public shouldBackoff(Ljava/lang/Throwable;)Z
     .locals 1
+    .param p1, "t"    # Ljava/lang/Throwable;
 
+    .line 47
     instance-of v0, p1, Ljava/net/SocketTimeoutException;
 
     if-nez v0, :cond_1
@@ -45,7 +48,9 @@
 
 .method public shouldBackoff(Lorg/apache/http/HttpResponse;)Z
     .locals 2
+    .param p1, "resp"    # Lorg/apache/http/HttpResponse;
 
+    .line 53
     invoke-interface {p1}, Lorg/apache/http/HttpResponse;->getStatusLine()Lorg/apache/http/StatusLine;
 
     move-result-object v0
