@@ -1261,13 +1261,78 @@
     return-void
 .end method
 
-.method public onCreate(Landroid/os/Bundle;)V
+.method private onCreateInternal(Landroid/os/Bundle;)V
     .locals 0
     .param p1, "bundle"    # Landroid/os/Bundle;
 
     invoke-direct/range {p0 .. p1}, Lcom/alensw/PicFolder/GalleryActivity;->onCreate__$appendSource7(Landroid/os/Bundle;)V
 
     invoke-direct/range {p0 .. p1}, Lcom/alensw/PicFolder/GalleryActivity;->onCreate__$appendPatch7(Landroid/os/Bundle;)V
+
+    return-void
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+    .locals 5
+    .param p1, "bundle"    # Landroid/os/Bundle;
+
+    :try_start_0
+    invoke-direct {p0, p1}, Lcom/alensw/PicFolder/GalleryActivity;->onCreateInternal(Landroid/os/Bundle;)V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    return-void
+
+    :catch_0
+    move-exception v0
+
+    const-string v1, "GalleryActivity"
+
+    const-string v2, "fatal activity startup failure"
+
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    new-instance v1, Landroid/widget/TextView;
+
+    invoke-direct {v1, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "QuickPic startup error (10.0.5)\n\n"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-static {v0}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    const/4 v0, 0x1
+
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setTextIsSelectable(Z)V
+
+    const/16 v0, 0x20
+
+    invoke-virtual {v1, v0, v0, v0, v0}, Landroid/widget/TextView;->setPadding(IIII)V
+
+    const/high16 v0, 0x41800000    # 16.0f
+
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setTextSize(F)V
+
+    invoke-virtual {p0, v1}, Lcom/alensw/PicFolder/GalleryActivity;->setContentView(Landroid/view/View;)V
 
     return-void
 .end method

@@ -2,6 +2,14 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.5] — 2026-08-22
+
+### Fixed
+
+- **Pre-UI Java crashes** — Added top-level safety boundaries around `Application.onCreate` and `GalleryActivity.onCreate`.
+- **Visible diagnostics** — Startup exceptions now remain visible as selectable stack traces instead of immediately closing the app.
+- **Stale installs** — Incremented `versionCode` so Android and artifact consumers can distinguish this build from upstream Alpha 2.
+
 ## [10.0.4] — 2026-08-22
 
 ### Fixed
