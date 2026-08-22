@@ -2,6 +2,13 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.6] — 2026-08-22
+
+### Fixed
+
+- **Crash while opening the gallery** — Correctly cast thumbnail decode options before reading QuickPic-specific orientation fields, preventing ART from rejecting the cached-thumbnail method with a verifier error.
+- **Cached thumbnail fallback** — Plain Android `BitmapFactory.Options` values continue to use the safe, orientation-neutral decode path.
+
 ## [10.0] — 2026-08-22
 
 ### Fixed
