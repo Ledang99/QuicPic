@@ -1,11 +1,11 @@
-# QuickPic Gallery Mod
+# QuickPic Gallery Mod (QuicPic)
 
-[![Platform](https://img.shields.io/badge/android-platform?style=for-the-badge&label=platform&labelColor=21262d&color=6e7681)](https://www.android.com) [![API](https://img.shields.io/badge/23%2B-level?style=for-the-badge&logo=android&logoColor=3cd382&label=API&labelColor=21262d&color=ff663b)](https://developer.android.com/studio/releases/platforms) [![Release](https://img.shields.io/github/v/release/WSTxda/QP-Gallery-Releases?display_name=tag&style=for-the-badge&logo=github&labelColor=21262d&color=1f6feb)](https://github.com/WSTxda/QP-Gallery-Releases/releases/latest) [![Downloads](https://img.shields.io/github/downloads/WSTxda/QP-Gallery-Releases/total?style=for-the-badge&labelColor=21262d&color=238636)](https://github.com/WSTxda/QP-Gallery-Releases/releases)
+[![Platform](https://img.shields.io/badge/android-platform?style=for-the-badge&label=platform&labelColor=21262d&color=6e7681)](https://www.android.com) [![API](https://img.shields.io/badge/26%2B-level?style=for-the-badge&logo=android&logoColor=3cd382&label=API&labelColor=21262d&color=ff663b)](https://developer.android.com/studio/releases/platforms) [![Release](https://img.shields.io/github/v/release/WSTxda/QP-Gallery-Releases?display_name=tag&style=for-the-badge&logo=github&labelColor=21262d&color=1f6feb)](https://github.com/WSTxda/QP-Gallery-Releases/releases/latest)
 
 ![alt text](https://raw.githubusercontent.com/WSTxda/QP-Gallery-Releases/master/Images/Banner.svg)
 
 A modernized version of the classic QuickPic Gallery, focused on speed, stability, and simplicity.
-It includes multiple bug fixes, improved compatibility with recent Android versions, and a refreshed Material 3 design — while preserving the lightweight, fast, and offline-first experience of the original app.
+This fork includes decompiled source, a reproducible build pipeline, **64-bit ARM support**, and bug fixes for modern devices.
 
 <details>
   <summary>Screenshots</summary>
@@ -14,38 +14,57 @@ It includes multiple bug fixes, improved compatibility with recent Android versi
 
 </details>
 
-> [!WARNING]
-> 32-bit architecture support required, check if your device is supported before proceeding to download
-
-## Source Code
-
-This repo includes the complete decompiled source for **v10.0** (64-bit compatible):
-
-- **`source/`** — Smali + resources (use with `./build.sh` to rebuild APK)
-- **`source-java/`** — Decompiled Java from v9.7 (reference only; source is now v10)
-- **`SOURCE.md`** — Full guide on what's included and limitations
-
-> **Install error on modern phones?** Older v9.7 builds only supported 32-bit (`armeabi`). The current source is v10.0 with **arm64-v8a** for 64-bit devices.
+## Quick start
 
 ```bash
-./scripts/setup-tools.sh   # first-time tool setup
-./build.sh                 # build → releases/stable.apk
+git clone https://github.com/Ledang99/QuicPic.git
+cd QuicPic
+./scripts/setup-tools.sh   # first time only
+./build.sh                 # → releases/stable.apk
 ```
 
-> The original Gradle project was never published. See [SOURCE.md](SOURCE.md) for details.
+Install `releases/stable.apk` on your device (Android 8.0+).
 
-### Download
+## Source code
+
+| Path | Description |
+|------|-------------|
+| [`source/`](source/) | Smali + resources (v10.0) — edit here, then `./build.sh` |
+| [`source-java/`](source-java/) | Decompiled Java — browse in IDE (reference) |
+| [`SOURCE.md`](SOURCE.md) | Full source guide, compatibility, limitations |
+| [`CHANGELOG.md`](CHANGELOG.md) | Fork changes and bug fixes |
+
+> The original Gradle/Android Studio project was never published. Development uses the apktool/smali workflow described in [SOURCE.md](SOURCE.md).
+
+## Device support
+
+| | |
+|---|---|
+| **Android** | 8.0+ (API 26) |
+| **arm64-v8a** | Modern phones (Samsung, etc.) |
+| **armeabi / x86** | Older 32-bit devices and emulators |
+
+## Recent fixes (this fork)
+
+- **64-bit install** — v10.0 source with `arm64-v8a` (fixes incompatible-with-your-phone errors)
+- **Rotation thumbnails** — Grid thumbnails keep correct orientation after rotating images
+- **CI build** — GitHub Actions builds APK with apktool on every push to `master`
+
+Details: [CHANGELOG.md](CHANGELOG.md)
+
+## Build & CI
+
+- **Local:** `./scripts/setup-tools.sh` then `./build.sh`
+- **CI:** [GitHub Actions](https://github.com/Ledang99/QuicPic/actions) — download **QuicPic-stable-apk** from the latest successful run
+
+## Upstream
+
+Mod by [WSTxda](https://github.com/WSTxda/QP-Gallery-Releases). This repo adds source, build tooling, and fixes for [Ledang99/QuicPic](https://github.com/Ledang99/QuicPic).
+
+### Download upstream releases
 
 [<img src="https://raw.githubusercontent.com/WSTxda/WSTxda/main/images/GitHub.svg"
 	  alt='Get it on GitHub'
 	  height="80">](https://github.com/WSTxda/QP-Gallery-Releases/releases/latest) [<img src="https://raw.githubusercontent.com/WSTxda/WSTxda/main/images/Telegram.svg"
 	  alt='Get it on Telegram'
 	  height="80">](https://t.me/WSTprojects)
-	  
-### Donate
-
-[<img src="https://raw.githubusercontent.com/WSTxda/WSTxda/main/images/PayPal.svg"
-	  alt='Donate with PayPal'
-	  height="80">](https://bit.ly/2lV0E6u) [<img src="https://raw.githubusercontent.com/WSTxda/WSTxda/main/images/BMC.svg"
-	  alt='Donate with BMC'
-	  height="80">](https://www.buymeacoffee.com/wstxda)	  
