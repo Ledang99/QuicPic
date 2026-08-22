@@ -35,4 +35,6 @@ fi
   "${SOURCE}" \
   -o "${OUTPUT}"
 
+chmod 0644 "${OUTPUT}"
+
 echo "Built ${OUTPUT} with Android NDK ${NDK_VERSION}"
