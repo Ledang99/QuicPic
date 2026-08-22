@@ -2,6 +2,18 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.8] — 2026-08-22
+
+### Fixed
+
+- **Folder access onboarding** — Corrected the media permission callback (`PERMISSION_GRANTED` is `0`) and automatically opens Android’s per-app **All files access** settings after media access is granted.
+- **Existing installs** — Users who already granted photos/videos but never saw the folder-access screen are prompted once on their next resume.
+
+### Added
+
+- **Persistent diagnostics** — Startup checkpoints and uncaught Java stack traces are written to the app’s external files directory and, after All files access is enabled, to `Download/QuickPic-debug.log`.
+- **Visible log location** — The startup error screen now includes the exact debug-log path.
+
 ## [10.0.7] — 2026-08-22
 
 ### Fixed

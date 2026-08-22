@@ -1,6 +1,6 @@
 # Source Code Guide
 
-This repository contains the **most complete publicly available source** for QuickPic Gallery Mod **v10.0.7**. The original Java/Kotlin Gradle project was never released by the developer — only modded APKs are distributed.
+This repository contains the **most complete publicly available source** for QuickPic Gallery Mod **v10.0.8**. The original Java/Kotlin Gradle project was never released by the developer — only modded APKs are distributed.
 
 ## What is included
 
@@ -10,7 +10,7 @@ This repository contains the **most complete publicly available source** for Qui
 | `source-java/` | Decompiled Java | **Read and study** app logic in Android Studio / any IDE (v9.7 reference) |
 | `source/lib/` | Native binaries | `libqpicjni156.so` — `arm64-v8a`, `armeabi`, `x86` |
 | `native/` | C source | Reproducible arm64 compatibility stub for Android 16 |
-| `releases/stable.apk` | Signed APK | Pre-built output (v10.0.7) |
+| `releases/stable.apk` | Signed APK | Pre-built output (v10.0.8) |
 | `.github/workflows/android.yml` | GitHub Actions | Automated build on push to `master` |
 
 ### App packages (main code)
@@ -18,7 +18,7 @@ This repository contains the **most complete publicly available source** for Qui
 - **QuickPic UI:** `com.alensw.*` — gallery, viewer, settings, cloud sync
 - **Libraries:** `androidx.*`, `org.apache.http.*`, bundled support libs
 
-### File counts (v10.0.7)
+### File counts (v10.0.8)
 
 - ~2,800+ smali files (`source/smali/`, `smali_classes2/`–`smali_classes4/`)
 - ~2,163 Java files (`source-java/sources/`) — reference from v9.7
@@ -86,13 +86,15 @@ Older v9.7 builds (32-bit only, `targetSdk 23`) will **not install** on many new
 1. **Missing `arm64-v8a`** — v9.7 official APK has only 32-bit libs.
 2. **Low `targetSdkVersion`** — Android 15+ blocks apps targeting API 23 or lower at install time. A v9.7-based build will fail on Android 15 even with arm64 added.
 
-**Fix:** Build from this repo’s v10.0.7 `source/` (`targetSdk 34`, `arm64-v8a`, `READ_MEDIA_*` permissions). See [CHANGELOG.md](CHANGELOG.md).
+**Fix:** Build from this repo’s v10.0.8 `source/` (`targetSdk 34`, `arm64-v8a`, `READ_MEDIA_*` permissions). See [CHANGELOG.md](CHANGELOG.md).
 
 ### Crash immediately after install (opens then closes)
 
 **Causes:** v10.0.2 alpha lacked Android 13+ `READ_MEDIA_*` permissions. Later startup hardening accidentally returned integer `400` from the boolean `QuickApp.g()` method, which Android 16 ART rejected before creating the application. The arm64 compatibility stub also bundled an obsolete NDK r26b static runtime.
 
-**Fix:** Permissions were added in v10.0.1; v10.0.7 restores valid bytecode and rebuilds the arm64 stub with NDK r29 and flexible 16 KB page support. After upgrading, grant photo/video access on first launch.
+**Fix:** Permissions were added in v10.0.1; v10.0.7 restores valid bytecode and rebuilds the arm64 stub with NDK r29 and flexible 16 KB page support. v10.0.8 adds persistent startup/crash logs and repairs the complete folder-access onboarding flow.
+
+Debug logs are written to the app external-files directory. Once **All files access** is enabled, a directly viewable copy is also appended at `Download/QuickPic-debug.log`.
 
 ### Grid thumbnails sideways after rotating an image
 

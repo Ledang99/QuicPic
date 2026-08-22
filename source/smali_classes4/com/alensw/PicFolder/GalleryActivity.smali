@@ -355,6 +355,128 @@
 .method private onCreate__$appendPatch4(Landroid/os/Bundle;)V
     .locals 0
 
+    invoke-direct {p0}, Lcom/alensw/PicFolder/GalleryActivity;->requestAllFilesAccess()V
+
+    return-void
+.end method
+
+.method private requestAllFilesAccess()V
+    .locals 6
+
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x1e
+
+    if-lt v0, v1, :done
+
+    invoke-static {}, Landroid/os/Environment;->isExternalStorageManager()Z
+
+    move-result v0
+
+    if-eqz v0, :check_media_permission
+
+    const-string v0, "All files access is granted"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
+    goto :done
+
+    :check_media_permission
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x21
+
+    if-lt v0, v1, :check_prompted
+
+    const-string v0, "android.permission.READ_MEDIA_IMAGES"
+
+    invoke-virtual {p0, v0}, Lcom/alensw/PicFolder/GalleryActivity;->checkSelfPermission(Ljava/lang/String;)I
+
+    move-result v0
+
+    if-nez v0, :done
+
+    :check_prompted
+    const-string v0, "com.alensw.PicFolder_preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Lcom/alensw/PicFolder/GalleryActivity;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    const-string v1, "all_files_prompted"
+
+    const/4 v2, 0x0
+
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result v2
+
+    if-nez v2, :done
+
+    new-instance v2, Landroid/content/Intent;
+
+    const-string v3, "android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION"
+
+    invoke-direct {v2, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    const-string v3, "package:com.alensw.PicFolder"
+
+    invoke-static {v3}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;
+
+    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->resolveActivity(Landroid/content/pm/PackageManager;)Landroid/content/ComponentName;
+
+    move-result-object v3
+
+    if-eqz v3, :no_handler
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v0
+
+    const/4 v3, 0x1
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    const-string v0, "Opening all-files access settings"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
+    :try_start_0
+    invoke-virtual {p0, v2}, Lcom/alensw/PicFolder/GalleryActivity;->startActivity(Landroid/content/Intent;)V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :done
+
+    :catch_0
+    move-exception v0
+
+    const-string v1, "Unable to open all-files access settings"
+
+    invoke-static {v1, v0}, Lcom/alensw/PicFolder/StartupLogger;->logThrowable(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    goto :done
+
+    :no_handler
+    const-string v0, "No handler for all-files access settings"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
+    :done
     return-void
 .end method
 
@@ -1143,6 +1265,10 @@
 
     aput-object v1, v0, v4
 
+    const-string v1, "Requesting photos and videos permission"
+
+    invoke-static {v1}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     invoke-static {p0, v0, v4}, Landroidx/core/app/ActivityCompat;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
 
     return v3
@@ -1172,6 +1298,10 @@
 
     aput-object v1, v0, v3
 
+    const-string v1, "Requesting legacy storage permission"
+
+    invoke-static {v1}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     invoke-static {p0, v0, v4}, Landroidx/core/app/ActivityCompat;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
 
     return v3
@@ -1183,9 +1313,11 @@
 .method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
     .locals 3
 
+    invoke-super {p0, p1, p2, p3}, Lcom/alensw/ui/c/cx;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+
     const/4 v0, 0x1
 
-    if-eq p1, v0, :done
+    if-ne p1, v0, :done
 
     if-eqz p3, :done
 
@@ -1202,19 +1334,43 @@
 
     aget v2, p3, v1
 
-    if-eqz v2, :denied
+    if-nez v2, :denied
 
     add-int/lit8 v1, v1, 0x1
 
     goto :check_loop
 
     :denied
+    const-string v0, "Media permission request denied"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     goto :done
 
     :recreate
+    const-string v0, "Media permissions granted"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
 
+    invoke-direct {p0}, Lcom/alensw/PicFolder/GalleryActivity;->requestAllFilesAccess()V
+
     :done
+    return-void
+.end method
+
+.method protected onResume()V
+    .locals 1
+
+    invoke-super {p0}, Lcom/alensw/ui/c/cx;->onResume()V
+
+    const-string v0, "GalleryActivity.onResume"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
+    invoke-direct {p0}, Lcom/alensw/PicFolder/GalleryActivity;->requestAllFilesAccess()V
+
     return-void
 .end method
 
@@ -1276,15 +1432,27 @@
     .locals 5
     .param p1, "bundle"    # Landroid/os/Bundle;
 
+    const-string v0, "GalleryActivity.onCreate begin"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     :try_start_0
     invoke-direct {p0, p1}, Lcom/alensw/PicFolder/GalleryActivity;->onCreateInternal(Landroid/os/Bundle;)V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
+    const-string v0, "GalleryActivity.onCreate complete"
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/StartupLogger;->log(Ljava/lang/String;)V
+
     return-void
 
     :catch_0
     move-exception v0
+
+    const-string v1, "GalleryActivity.onCreate failed"
+
+    invoke-static {v1, v0}, Lcom/alensw/PicFolder/StartupLogger;->logThrowable(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     const-string v1, "GalleryActivity"
 
@@ -1300,7 +1468,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "QuickPic startup error (10.0.7)\n\n"
+    const-string v3, "QuickPic startup error (10.0.8)\n\n"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1311,6 +1479,20 @@
     move-result-object v0
 
     invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v2, "\n\nDebug log: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-static {}, Lcom/alensw/PicFolder/StartupLogger;->getLogPath()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
