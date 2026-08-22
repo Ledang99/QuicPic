@@ -87,12 +87,6 @@ Older v9.7 builds (32-bit only, `targetSdk 23`) will **not install** on many new
 
 **Fix:** Permissions added in v10.0.1 manifest. After upgrading, grant photo/video access on first launch.
 
-### Install: "App not compatible with your phone" (64-bit only)
-
-**Cause:** APK lacks `arm64-v8a` native libraries (v9.7 and earlier).
-
-**Fix:** Build from this repo’s `source/` (includes `lib/arm64-v8a/libqpicjni156.so`). See [CHANGELOG.md](CHANGELOG.md).
-
 ### Grid thumbnails sideways after rotating an image
 
 **Cause:** Thumbnail cache stored JPEG bytes without orientation metadata; disk preview cache was not cleared after rotate.

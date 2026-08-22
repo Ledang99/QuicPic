@@ -128,7 +128,7 @@
         <activity android:exported="true" android:name="com.dropbox.client2.android.AuthActivity"/>
         <receiver android:exported="true" android:name="com.alensw.cloud.sync.ConnectionChangeReceiver"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:label="@string/update" android:name="com.alensw.updater.UpdateView" android:theme="@style/LaunchScreen"/>
-        <provider android:authorities="com.alensw.PicFolder.provider" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+        <provider android:authorities="com.alensw.PicFolder.provider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
         </provider>
         <activity android:exported="true" android:label="@string/wallpaper" android:name="com.alensw.PicFolder.WallpaperActivity" android:theme="@style/LaunchScreen">
@@ -145,7 +145,7 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:label="@string/settings" android:name="com.alensw.ui.activity.MainPreference" android:theme="@style/LaunchScreen"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.alensw.ui.activity.PathListActivity"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:label="@string/theme" android:name="com.alensw.ui.activity.SelectThemeActivity"/>
-        <provider android:authorities="com.alensw.PicFolder.FileProvider" android:grantUriPermissions="true" android:name="com.alensw.PicFolder.FileProvider"/>
+        <provider android:authorities="com.alensw.PicFolder.FileProvider" android:exported="false" android:grantUriPermissions="true" android:name="com.alensw.PicFolder.FileProvider"/>
         <service android:name="com.alensw.transfer.TransferService"/>
         <uses-library android:name="com.sec.android.app.multiwindow" android:required="false"/>
         <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>

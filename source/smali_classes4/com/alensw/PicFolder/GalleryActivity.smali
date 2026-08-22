@@ -381,7 +381,7 @@
 .end method
 
 .method private onCreate__$appendPatch4(Landroid/os/Bundle;)V
-    .locals 2
+    .locals 3
 
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
@@ -408,6 +408,16 @@
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;
+
+    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->resolveActivity(Landroid/content/pm/PackageManager;)Landroid/content/ComponentName;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_0
 
     invoke-virtual {p0, v0}, Lcom/alensw/PicFolder/GalleryActivity;->startActivity(Landroid/content/Intent;)V
 
@@ -1149,7 +1159,7 @@
 
     const-string v1, "updates_on_startup"
 
-    const/4 v2, 0x1
+    const/4 v2, 0x0
 
     invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
 
@@ -1159,17 +1169,49 @@
 .end method
 
 .method public isStoragePermissionGranted()Z
-    .locals 4
+    .locals 5
 
-    const/4 v3, 0x1
+    const/4 v4, 0x1
 
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
+    const/16 v1, 0x21
+
+    if-lt v0, v1, :cond_legacy
+
+    const-string v0, "android.permission.READ_MEDIA_IMAGES"
+
+    invoke-virtual {p0, v0}, Lcom/alensw/PicFolder/GalleryActivity;->checkSelfPermission(Ljava/lang/String;)I
+
+    move-result v0
+
+    if-nez v0, :cond_granted
+
+    const/4 v0, 0x2
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    const-string v1, "android.permission.READ_MEDIA_IMAGES"
+
+    aput-object v1, v0, v3
+
+    const-string v1, "android.permission.READ_MEDIA_VIDEO"
+
+    aput-object v1, v0, v4
+
+    invoke-static {p0, v0, v4}, Landroidx/core/app/ActivityCompat;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
+
+    return v3
+
+    :cond_granted
+    return v4
+
+    :cond_legacy
     const/16 v1, 0x17
 
-    if-lt v0, v1, :cond_0
+    if-lt v0, v1, :cond_old_ok
 
     const-string v0, "android.permission.WRITE_EXTERNAL_STORAGE"
 
@@ -1177,22 +1219,23 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_request_legacy
 
-    :cond_0
-    :goto_0
-    return v2
+    return v4
 
-    :cond_1
-    new-array v0, v3, [Ljava/lang/String;
+    :cond_request_legacy
+    new-array v0, v4, [Ljava/lang/String;
 
     const-string v1, "android.permission.WRITE_EXTERNAL_STORAGE"
 
-    aput-object v1, v0, v2
+    aput-object v1, v0, v3
 
-    invoke-static {p0, v0, v3}, Landroidx/core/app/ActivityCompat;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
+    invoke-static {p0, v0, v4}, Landroidx/core/app/ActivityCompat;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
 
-    goto :goto_0
+    return v3
+
+    :cond_old_ok
+    return v4
 .end method
 
 .method public onBackPressed()V

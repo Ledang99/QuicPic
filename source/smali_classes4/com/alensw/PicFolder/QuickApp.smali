@@ -1526,8 +1526,6 @@
 
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    invoke-static {v5}, Ljava/lang/System;->exit(I)V
-
     goto :goto_0
 
     :catch_1

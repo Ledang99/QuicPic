@@ -6,8 +6,10 @@ All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99
 
 ### Fixed
 
-- **"Not compatible" on Android 15+** — The v9.7 hybrid used `targetSdkVersion 23`, which Android 15 blocks at install time (shows as *"App not installed as app isn't compatible with your phone"*). Reverted to v10.0 base with `targetSdk 34` and `minSdk 26`.
-- **Crash on launch** — Added missing Android 13+ media permissions (`READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, etc.) to v10 manifest. Removed `android:debuggable="true"` and fixed invalid `largeHeap` attribute.
+- **Crash on launch (Android 13+)** — Request `READ_MEDIA_IMAGES` / `READ_MEDIA_VIDEO` at runtime (manifest alone was insufficient).
+- **Crash on launch (some devices)** — Guard all-files access settings intent with `resolveActivity` before `startActivity`.
+- **Hard exit on init errors** — Removed `System.exit()` from `QuickApp.onCreate` so recoverable init failures do not kill the app instantly.
+- **"Not compatible" on Android 15+** — v9.7 hybrid used `targetSdk 23` (blocked on Android 15). v10.0 base uses `targetSdk 34`.
 
 ## [9.7.1] — 2026-08-22 (superseded)
 
