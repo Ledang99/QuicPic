@@ -2,6 +2,13 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.3] — 2026-08-22
+
+### Fixed
+
+- **Crash after granting permissions** — Hardened `ensureServices()` / `ensureBitmapCaches()` when thumbnail DB init fails; null-safe `QuickApp.r` and `QuickApp.v` in album and folder grid controllers.
+- **Empty grid after permission grant** — `onRequestPermissionsResult` re-initializes services and recreates the activity when media permissions are granted.
+
 ## [10.0.2] — 2026-08-22
 
 ### Fixed

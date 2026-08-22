@@ -1825,6 +1825,8 @@
 
     const/4 v4, 0x0
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     iget-object v3, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
 
     invoke-virtual {v3}, Lcom/alensw/a/x;->b()Z
@@ -1872,6 +1874,8 @@
     :goto_0
     sget-object v3, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
 
+    if-eqz v3, :cond_v_ok
+
     sget v6, Lcom/alensw/b/h/b;->b:I
 
     const v7, 0xfa000
@@ -1892,6 +1896,7 @@
 
     invoke-virtual {v3, v6}, Lcom/alensw/b/a/a;->a(I)V
 
+    :cond_v_ok
     iget v3, p0, Lcom/alensw/ui/c/bz;->q:I
 
     invoke-static {v3}, Lcom/alensw/a/p;->b(I)I

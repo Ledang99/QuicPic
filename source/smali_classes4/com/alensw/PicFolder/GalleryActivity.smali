@@ -381,47 +381,8 @@
 .end method
 
 .method private onCreate__$appendPatch4(Landroid/os/Bundle;)V
-    .locals 3
+    .locals 0
 
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    const/16 v1, 0x1e
-
-    if-lt v0, v1, :cond_0
-
-    invoke-static {}, Landroid/os/Environment;->isExternalStorageManager()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    new-instance v0, Landroid/content/Intent;
-
-    const-string v1, "android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION"
-
-    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    const-string v1, "package:com.alensw.PicFolder"
-
-    invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;
-
-    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->resolveActivity(Landroid/content/pm/PackageManager;)Landroid/content/ComponentName;
-
-    move-result-object v1
-
-    if-eqz v1, :cond_0
-
-    invoke-virtual {p0, v0}, Lcom/alensw/PicFolder/GalleryActivity;->startActivity(Landroid/content/Intent;)V
-
-    :cond_0
     return-void
 .end method
 
@@ -477,6 +438,8 @@
     const/4 v8, 0x0
 
     invoke-super {p0, p1}, Lcom/alensw/ui/c/cx;->onCreate(Landroid/os/Bundle;)V
+
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
 
     invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->getIntent()Landroid/content/Intent;
 
@@ -629,8 +592,15 @@
     :cond_6
     if-eqz v5, :cond_b
 
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->s:Lcom/alensw/a/ba;
 
+    if-nez v0, :cond_6_s
+
+    goto/16 :goto_0
+
+    :cond_6_s
     invoke-virtual {v0, v5}, Lcom/alensw/a/ba;->a(Landroid/net/Uri;)Ljava/lang/String;
 
     move-result-object v6
@@ -1236,6 +1206,46 @@
 
     :cond_old_ok
     return v4
+.end method
+
+.method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+    .locals 3
+
+    const/4 v0, 0x1
+
+    if-eq p1, v0, :done
+
+    if-eqz p3, :done
+
+    array-length v1, p3
+
+    if-lez v1, :done
+
+    const/4 v1, 0x0
+
+    :check_loop
+    array-length v2, p3
+
+    if-ge v1, v2, :recreate
+
+    aget v2, p3, v1
+
+    if-eqz v2, :denied
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :check_loop
+
+    :denied
+    goto :done
+
+    :recreate
+    invoke-static {}, Lcom/alensw/PicFolder/QuickApp;->ensureServices()V
+
+    invoke-virtual {p0}, Lcom/alensw/PicFolder/GalleryActivity;->recreate()V
+
+    :done
+    return-void
 .end method
 
 .method public onBackPressed()V

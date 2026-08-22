@@ -1578,17 +1578,8 @@
 .end method
 
 .method public static ensureServices()V
-    .locals 3
+    .locals 4
 
-    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
-
-    if-eqz v0, :needs_init
-
-    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
-
-    if-nez v0, :done
-
-    :needs_init
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
 
     if-nez v0, :try_init
@@ -1601,27 +1592,172 @@
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :check_o
+    goto :ensure_caches
 
     :catch_0
     move-exception v1
 
-    const-string v0, "QuickApp"
+    const-string v2, "QuickApp"
 
-    const-string v2, "ensureServices: "
+    const-string v3, "ensureServices: "
 
-    invoke-static {v0, v2, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v2, v3, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    :check_o
+    :ensure_caches
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/QuickApp;->ensureBitmapCaches(Lcom/alensw/PicFolder/QuickApp;)V
+
     sget-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
 
-    if-nez v0, :done
+    if-nez v0, :check_s
 
     new-instance v0, Lcom/alensw/a/x;
 
     invoke-direct {v0}, Lcom/alensw/a/x;-><init>()V
 
     sput-object v0, Lcom/alensw/PicFolder/QuickApp;->o:Lcom/alensw/a/x;
+
+    :check_s
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->s:Lcom/alensw/a/ba;
+
+    if-nez v0, :check_r
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    :try_start_1
+    new-instance v1, Lcom/alensw/a/ba;
+
+    invoke-direct {v1, v0}, Lcom/alensw/a/ba;-><init>(Landroid/content/Context;)V
+
+    sput-object v1, Lcom/alensw/PicFolder/QuickApp;->s:Lcom/alensw/a/ba;
+    :try_end_1
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
+
+    :catch_1
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    if-nez v0, :check_r
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    :try_start_2
+    new-instance v1, Lcom/alensw/a/s;
+
+    invoke-direct {v1, v0}, Lcom/alensw/a/s;-><init>(Landroid/content/Context;)V
+
+    sput-object v1, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+    :try_end_2
+    .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_2
+
+    :catch_2
+    :check_r
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+
+    if-nez v0, :check_t
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    :try_start_3
+    new-instance v1, Lcom/alensw/a/bc;
+
+    invoke-direct {v1, v0}, Lcom/alensw/a/bc;-><init>(Landroid/content/Context;)V
+
+    sput-object v1, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+    :try_end_3
+    .catch Ljava/lang/Throwable; {:try_start_3 .. :try_end_3} :catch_3
+
+    :catch_3
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/QuickApp;->ensureBitmapCaches(Lcom/alensw/PicFolder/QuickApp;)V
+
+    :check_t
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->t:Lcom/alensw/a/ah;
+
+    if-nez v0, :done
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->B:Lcom/alensw/PicFolder/QuickApp;
+
+    :try_start_4
+    new-instance v1, Lcom/alensw/a/ah;
+
+    invoke-direct {v1, v0}, Lcom/alensw/a/ah;-><init>(Landroid/content/Context;)V
+
+    sput-object v1, Lcom/alensw/PicFolder/QuickApp;->t:Lcom/alensw/a/ah;
+    :try_end_4
+    .catch Ljava/lang/Throwable; {:try_start_4 .. :try_end_4} :catch_4
+
+    :catch_4
+    :done
+    return-void
+.end method
+
+.method public static ensureBitmapCaches(Lcom/alensw/PicFolder/QuickApp;)V
+    .locals 4
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
+
+    if-nez v0, :check_w_entry
+
+    goto :create_caches
+
+    :check_w_entry
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
+
+    if-nez v0, :done
+
+    :create_caches
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+
+    if-nez v0, :has_r
+
+    :try_start_bc
+    new-instance v0, Lcom/alensw/a/bc;
+
+    invoke-direct {v0, p0}, Lcom/alensw/a/bc;-><init>(Landroid/content/Context;)V
+
+    sput-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+    :try_end_bc
+    .catch Ljava/lang/Throwable; {:try_start_bc .. :try_end_bc} :catch_bc
+
+    :catch_bc
+    :has_r
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->r:Lcom/alensw/a/bc;
+
+    if-nez v0, :has_r_dim
+
+    const/16 v0, 0xc0
+
+    goto :got_dim
+
+    :has_r_dim
+    iget v0, v0, Lcom/alensw/a/bc;->c:I
+
+    :got_dim
+
+    div-int/lit8 v1, v0, 0x2
+
+    sget-object v2, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
+
+    if-nez v2, :check_w_cache
+
+    new-instance v2, Lcom/alensw/PicFolder/bc;
+
+    invoke-direct {v2, p0, v1}, Lcom/alensw/PicFolder/bc;-><init>(Lcom/alensw/PicFolder/QuickApp;I)V
+
+    sput-object v2, Lcom/alensw/PicFolder/QuickApp;->v:Lcom/alensw/b/a/a;
+
+    :check_w_cache
+    sget-object v2, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
+
+    if-nez v2, :done
+
+    new-instance v2, Lcom/alensw/PicFolder/bd;
+
+    invoke-direct {v2, p0, v0}, Lcom/alensw/PicFolder/bd;-><init>(Lcom/alensw/PicFolder/QuickApp;I)V
+
+    sput-object v2, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
 
     :done
     return-void
