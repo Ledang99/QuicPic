@@ -90,9 +90,9 @@ Older v9.7 builds (32-bit only, `targetSdk 23`) will **not install** on many new
 
 ### Crash immediately after install (opens then closes)
 
-**Causes:** v10.0.2 alpha lacked Android 13+ `READ_MEDIA_*` permissions, and its arm64 compatibility stub bundled a legacy NDK r26b static runtime that could terminate during startup on Android 16.
+**Causes:** v10.0.2 alpha lacked Android 13+ `READ_MEDIA_*` permissions. Later startup hardening accidentally returned integer `400` from the boolean `QuickApp.g()` method, which Android 16 ART rejected before creating the application. The arm64 compatibility stub also bundled an obsolete NDK r26b static runtime.
 
-**Fix:** Permissions were added in v10.0.1; v10.0.7 rebuilds the arm64 stub with NDK r29 and flexible 16 KB page support. After upgrading, grant photo/video access on first launch.
+**Fix:** Permissions were added in v10.0.1; v10.0.7 restores valid bytecode and rebuilds the arm64 stub with NDK r29 and flexible 16 KB page support. After upgrading, grant photo/video access on first launch.
 
 ### Grid thumbnails sideways after rotating an image
 

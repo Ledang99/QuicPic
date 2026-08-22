@@ -751,7 +751,9 @@
 
     sput-object v2, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
 
-    return v1
+    const/4 v0, 0x1
+
+    return v0
 
     :cond_3
     move v0, v2

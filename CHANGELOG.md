@@ -6,7 +6,8 @@ All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99
 
 ### Fixed
 
-- **Android 16 instant close** — Rebuilt the arm64 compatibility JNI stub with NDK r29 and flexible 16 KB page support, removing the legacy NDK r26b static C++ runtime from startup.
+- **Android 16 instant close** — Restored a valid boolean return from `QuickApp.g()`. A previous resource fallback overwrote the return register with integer `400`, causing Android 16 ART to reject the `Application` class before startup.
+- **Modern arm64 runtime** — Rebuilt the arm64 compatibility JNI stub with NDK r29 and flexible 16 KB page support, removing the legacy NDK r26b static C++ runtime from startup.
 - **Reproducible arm64 stub** — Added the stub source and build script instead of relying on an opaque prebuilt binary.
 
 ## [10.0.6] — 2026-08-22
