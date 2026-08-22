@@ -1300,7 +1300,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "QuickPic startup error (10.0.6)\n\n"
+    const-string v3, "QuickPic startup error (10.0.7)\n\n"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
