@@ -109,6 +109,12 @@
 
     if-eqz p1, :cond_1
 
+    instance-of v2, p1, Lcom/alensw/b/h/a;
+
+    if-eqz v2, :cond_1
+
+    check-cast p1, Lcom/alensw/b/h/a;
+
     new-instance v0, Lcom/alensw/b/h/h;
 
     iget v2, p1, Lcom/alensw/b/h/a;->b:I

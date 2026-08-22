@@ -23,13 +23,20 @@ cd QuicPic
 ./build.sh                 # → releases/stable.apk
 ```
 
-Install `releases/stable.apk` on your device (Android 8.0+).
+Install `releases/stable.apk` on your device (Android 8.0+). On first launch:
+
+1. Allow **Photos and videos** when prompted
+2. When redirected to settings, enable **All files access** for QuickPic, then return to the app
+
+Startup checkpoints and uncaught Java crashes are recorded in `QuickPic-debug.log`. After All files access is enabled, the viewable copy is in the device’s **Download** folder.
+
+Fallback: `releases/official-alpha-resigned.apk` is the upstream alpha APK re-signed only (no smali changes).
 
 ## Source code
 
 | Path | Description |
 |------|-------------|
-| [`source/`](source/) | Smali + resources (v10.0) — edit here, then `./build.sh` |
+| [`source/`](source/) | Smali + resources (v10.0.8) — edit here, then `./build.sh` |
 | [`source-java/`](source-java/) | Decompiled Java — browse in IDE (reference) |
 | [`SOURCE.md`](SOURCE.md) | Full source guide, compatibility, limitations |
 | [`CHANGELOG.md`](CHANGELOG.md) | Fork changes and bug fixes |
@@ -46,7 +53,11 @@ Install `releases/stable.apk` on your device (Android 8.0+).
 
 ## Recent fixes (this fork)
 
-- **64-bit install** — v10.0 source with `arm64-v8a` (fixes incompatible-with-your-phone errors)
+- **Android 15+ install** — `targetSdk 34` (v9.7 / API 23 builds are blocked on Android 15)
+- **Android 16 launch** — Valid ART bytecode and 16 KB-compatible arm64 runtime
+- **Folder onboarding** — Photos/videos prompt followed by All files access settings
+- **Persistent debug log** — Startup and Java crash details saved for inspection
+- **64-bit install** — `arm64-v8a` native libs
 - **Rotation thumbnails** — Grid thumbnails keep correct orientation after rotating images
 - **CI build** — GitHub Actions builds APK with apktool on every push to `master`
 
