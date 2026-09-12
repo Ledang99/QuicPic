@@ -1,0 +1,4 @@
+{
+  "name": "QuicPic APK build",
+  "install": "./scripts/setup-tools.sh"
+}
