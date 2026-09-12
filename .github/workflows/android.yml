@@ -25,7 +25,7 @@ jobs:
           path: |
             ~/android-sdk
             ~/tools
-          key: ${{ runner.os }}-apktool-sdk-34.0.0
+          key: ${{ runner.os }}-apktool-sdk-35.0.0
 
       - name: Install build tools
         run: ./scripts/setup-tools.sh

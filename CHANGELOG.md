@@ -2,6 +2,12 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.11] — 2026-09-12
+
+### Fixed
+
+- **“There was a problem parsing the package”** — APK native libraries are now zip-aligned to **16 KB** page boundaries (`zipalign -p 16`) and signed with v1+v2+v3. The previous 4 KB alignment made PackageManager reject the APK on Android 15/16 16 KB devices.
+
 ## [10.0.10] — 2026-09-12
 
 ### Fixed

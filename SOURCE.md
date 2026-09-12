@@ -96,6 +96,12 @@ Older v9.7 builds (32-bit only, `targetSdk 23`) will **not install** on many new
 
 Debug logs are written to the app external-files directory. Once **All files access** is enabled, a directly viewable copy is also appended at `Download/QuickPic-debug.log`.
 
+### “There was a problem parsing the package”
+
+**Cause:** On Android 15/16 devices with 16 KB memory pages, uncompressed native libraries inside the APK must be zip-aligned to 16 KB. Builds that only used 4 KB alignment (`zipalign -p`) were rejected at install time.
+
+**Fix (v10.0.11):** `build.sh` uses build-tools 35+ `zipalign -P 16` and verifies page alignment before publishing `releases/stable.apk`.
+
 ### Grid thumbnails / image sideways after rotating
 
 **Cause (arm64):** The compatibility `libqpicjni156.so` stub always failed `exifOpenFD` / `exifSetDegrees`, so rotate appeared to work in the viewer (in-memory matrix) but never wrote EXIF. Reopening the image and regenerating thumbnails used the old orientation.

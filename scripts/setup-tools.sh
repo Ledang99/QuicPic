@@ -27,11 +27,11 @@ rm -f "$TMP_ZIP"
 
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 yes | sdkmanager --licenses 2>/dev/null || true
-sdkmanager "build-tools;34.0.0" "platform-tools"
+sdkmanager "build-tools;35.0.0" "platform-tools"
 
 echo ""
 echo "Setup complete. Add to your shell profile:"
 echo "  export ANDROID_HOME=$ANDROID_HOME"
-echo "  export PATH=\"\$ANDROID_HOME/cmdline-tools/latest/bin:\$ANDROID_HOME/build-tools/34.0.0:\$HOME/tools/apktool:\$PATH\""
+echo "  export PATH=\"\$ANDROID_HOME/cmdline-tools/latest/bin:\$ANDROID_HOME/build-tools/35.0.0:\$HOME/tools/apktool:\$PATH\""
 echo ""
 echo "Then run: ./build.sh"
