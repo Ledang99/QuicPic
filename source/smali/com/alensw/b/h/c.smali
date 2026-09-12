@@ -192,6 +192,17 @@
 
     move-result v1
 
+    if-nez v1, :cond_1
+
+    invoke-virtual {p0}, Lcom/alensw/b/c/f;->d()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->a(Ljava/lang/String;)I
+
+    move-result v1
+
+    :cond_1
     if-eqz v1, :cond_0
 
     new-instance v0, Lcom/alensw/b/h/c;
@@ -445,14 +456,30 @@
 
     iget v0, p0, Lcom/alensw/b/h/c;->c:I
 
-    invoke-static {v0}, Lcom/alensw/b/h/c;->exifClose(I)V
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->b(I)Z
 
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->a(I)V
+
+    :goto_1
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/alensw/b/h/c;->c:I
 
     :cond_0
     return-void
+
+    :cond_1
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
+    invoke-static {v0}, Lcom/alensw/b/h/c;->exifClose(I)V
+
+    goto :goto_1
 .end method
 
 .method public a(Lcom/alensw/b/h/k;J)V
@@ -584,11 +611,29 @@
 
     iget v0, p0, Lcom/alensw/b/h/c;->c:I
 
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->b(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
+    invoke-static {v0, p1}, Lcom/alensw/b/h/ExifCompat;->a(II)Z
+
+    move-result v0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
     invoke-static {v0, p1}, Lcom/alensw/b/h/c;->exifSetDegrees(II)Z
 
     move-result v0
 
-    return v0
+    goto :goto_0
 .end method
 
 .method public a(Lcom/alensw/b/c/f;)Z
@@ -682,6 +727,17 @@
 
     move-result v0
 
+    if-nez v0, :cond_2
+
+    invoke-virtual {p1}, Lcom/alensw/b/c/f;->d()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->a(Ljava/lang/String;)I
+
+    move-result v0
+
+    :cond_2
     iput v0, p0, Lcom/alensw/b/h/c;->c:I
 
     iget v0, p0, Lcom/alensw/b/h/c;->c:I
@@ -833,13 +889,31 @@
 
     iget v0, p0, Lcom/alensw/b/h/c;->c:I
 
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->b(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->c(I)I
+
+    move-result v0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
     const/4 v1, 0x4
 
     invoke-static {v0, v1}, Lcom/alensw/b/h/c;->exifGetInfo(II)I
 
     move-result v0
 
-    return v0
+    goto :goto_0
 .end method
 
 .method protected finalize()V

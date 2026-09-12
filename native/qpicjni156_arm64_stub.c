@@ -1,10 +1,15 @@
 #include <jni.h>
+#include <sys/stat.h>
 
 /*
  * The upstream arm64-v8a library contains compatibility stubs rather than the
  * original 32-bit QuickPic implementation. Keep those semantics, but build
  * them with a current NDK so Android 16 does not load the legacy static C++
  * runtime that was bundled solely to allocate the scanner's dummy handle.
+ *
+ * EXIF rotate/read is implemented in Java (ExifCompat) because these stubs
+ * cannot open or rewrite JPEG orientation. fuGetFileTime is real so MediaStore
+ * updates after rotate keep a valid date_modified.
  */
 
 #define UNUSED(value) ((void)(value))
@@ -183,10 +188,23 @@ Java_com_alensw_jni_JniUtils_fuGetFileSize(
 JNIEXPORT jint JNICALL
 Java_com_alensw_jni_JniUtils_fuGetFileTime(
         JNIEnv *env, jclass type, jstring path) {
-    UNUSED(env);
     UNUSED(type);
-    UNUSED(path);
-    return 0;
+    if (path == NULL) {
+        return 0;
+    }
+
+    const char *cpath = (*env)->GetStringUTFChars(env, path, NULL);
+    if (cpath == NULL) {
+        return 0;
+    }
+
+    struct stat st;
+    jint result = 0;
+    if (stat(cpath, &st) == 0) {
+        result = (jint) st.st_mtime;
+    }
+    (*env)->ReleaseStringUTFChars(env, path, cpath);
+    return result;
 }
 
 JNIEXPORT jboolean JNICALL

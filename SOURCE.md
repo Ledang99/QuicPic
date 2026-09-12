@@ -96,11 +96,11 @@ Older v9.7 builds (32-bit only, `targetSdk 23`) will **not install** on many new
 
 Debug logs are written to the app external-files directory. Once **All files access** is enabled, a directly viewable copy is also appended at `Download/QuickPic-debug.log`.
 
-### Grid thumbnails sideways after rotating an image
+### Grid thumbnails / image sideways after rotating
 
-**Cause:** Thumbnail cache stored JPEG bytes without orientation metadata; disk preview cache was not cleared after rotate.
+**Cause (arm64):** The compatibility `libqpicjni156.so` stub always failed `exifOpenFD` / `exifSetDegrees`, so rotate appeared to work in the viewer (in-memory matrix) but never wrote EXIF. Reopening the image and regenerating thumbnails used the old orientation.
 
-**Fix:** Applied in `com/alensw/b/h/h.smali` and viewer rotate handlers. After upgrading, clear app cache once if old wrong thumbnails persist.
+**Fix (v10.0.10):** `ExifCompat` writes/reads JPEG orientation via Android `ExifInterface`. Rotate also clears in-memory and disk thumbnail caches.
 
 ### Modifying and adding features
 

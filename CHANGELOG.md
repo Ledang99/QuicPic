@@ -2,6 +2,13 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.10] — 2026-09-12
+
+### Fixed
+
+- **Rotate did not persist on 64-bit devices** — The arm64 JNI library only stubbed `exifOpenFD` / `exifSetDegrees` (always failed). Rotation now writes JPEG EXIF orientation through Android’s `ExifInterface`, so the file, viewer, and grid keep the new orientation after save.
+- **Stale grid thumbnails after rotate** — Evicts the in-memory thumbnail cache and clears preview/disk thumbnail entries after a successful rotate.
+
 ## [10.0.8] — 2026-08-22
 
 ### Fixed
