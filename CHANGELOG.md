@@ -2,6 +2,12 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.13] — 2026-09-13
+
+### Fixed
+
+- **Excluded folders stayed visible until restart** — Exclude only removed the album in memory and called `requestLayout`, so an in-progress folder scan could show it again. Exclude now clears scan caches and forces the album grid to reload (same refresh path as the excluded-folders settings screen).
+
 ## [10.0.12] — 2026-09-13
 
 ### Fixed

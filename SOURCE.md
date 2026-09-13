@@ -108,6 +108,12 @@ Debug logs are written to the app external-files directory. Once **All files acc
 
 **Fix (v10.0.12):** `CommonFolder` only registers observers for `content://` URIs with an authority (and catches `SecurityException`). Moments search MediaStore registration is similarly guarded.
 
+### Excluded folder still shown until app restart
+
+**Cause:** Gallery exclude removed the folder from the in-memory album list and only called `requestLayout`. A scan already in progress could re-add the folder, and the grid did not force a full reload with the updated exclude list.
+
+**Fix (v10.0.13):** After exclude, clear folder-scan caches and reload the album grid (same approach as changing excluded folders in settings).
+
 ### Grid thumbnails / image sideways after rotating
 
 **Cause (arm64):** The compatibility `libqpicjni156.so` stub always failed `exifOpenFD` / `exifSetDegrees`, so rotate appeared to work in the viewer (in-memory matrix) but never wrote EXIF. Reopening the image and regenerating thumbnails used the old orientation.
