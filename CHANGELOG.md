@@ -2,6 +2,31 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.13] — 2026-09-13
+
+### Fixed
+
+- **Excluded folders stayed visible until restart** — Exclude only removed the album in memory and called `requestLayout`, so an in-progress folder scan could show it again. Exclude now clears scan caches and forces the album grid to reload (same refresh path as the excluded-folders settings screen).
+
+## [10.0.12] — 2026-09-13
+
+### Fixed
+
+- **Search “create failed: SecurityException”** — Opening search registered a content observer on `file:///search`, which Android 8+ rejects (no ContentProvider authority). Observer registration now skips non-`content://` URIs and catches `SecurityException`, so folder and moments search can open again.
+
+## [10.0.11] — 2026-09-12
+
+### Fixed
+
+- **“There was a problem parsing the package”** — APK native libraries are now zip-aligned to **16 KB** page boundaries (`zipalign -p 16`) and signed with v1+v2+v3. The previous 4 KB alignment made PackageManager reject the APK on Android 15/16 16 KB devices.
+
+## [10.0.10] — 2026-09-12
+
+### Fixed
+
+- **Rotate did not persist on 64-bit devices** — The arm64 JNI library only stubbed `exifOpenFD` / `exifSetDegrees` (always failed). Rotation now writes JPEG EXIF orientation through Android’s `ExifInterface`, so the file, viewer, and grid keep the new orientation after save.
+- **Stale grid thumbnails after rotate** — Evicts the in-memory thumbnail cache and clears preview/disk thumbnail entries after a successful rotate.
+
 ## [10.0.8] — 2026-08-22
 
 ### Fixed

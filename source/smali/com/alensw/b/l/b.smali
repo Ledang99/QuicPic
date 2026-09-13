@@ -261,29 +261,42 @@
 
     move-result-wide v4
 
-    invoke-static {v2}, Lcom/alensw/b/l/b;->d(Ljava/io/File;)Lcom/alensw/b/c/f;
+    invoke-static {p0, p1, p2}, Lcom/alensw/b/h/ExifCompat;->a(Ljava/lang/String;IZ)I
 
-    move-result-object v3
+    move-result v1
 
-    if-nez v3, :cond_0
+    if-eq v1, v0, :cond_0
+
+    invoke-virtual {v2, v4, v5}, Ljava/io/File;->setLastModified(J)Z
+
+    move v0, v1
 
     :goto_0
     return v0
 
     :cond_0
+    invoke-static {v2}, Lcom/alensw/b/l/b;->d(Ljava/io/File;)Lcom/alensw/b/c/f;
+
+    move-result-object v3
+
+    if-nez v3, :cond_1
+
+    goto :goto_0
+
+    :cond_1
     invoke-static {v3, p1, p2}, Lcom/alensw/b/h/c;->a(Lcom/alensw/b/c/f;IZ)I
 
     move-result v1
 
     invoke-virtual {v3}, Lcom/alensw/b/c/f;->h()V
 
-    if-eq v1, v0, :cond_1
+    if-eq v1, v0, :cond_2
 
     invoke-virtual {v2, v4, v5}, Ljava/io/File;->setLastModified(J)Z
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    :cond_1
+    :cond_2
     move v0, v1
 
     goto :goto_0

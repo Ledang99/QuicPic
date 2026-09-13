@@ -454,8 +454,11 @@ public class MediaStoreFolder extends CommonFolder {
     @Override // com.alensw.bean.CommonFolder
     /* renamed from: a */
     public void mo3030a(ContentResolver contentResolver, ContentObserver contentObserver) {
-        contentResolver.registerContentObserver(C0613ba.m2269a('I'), false, contentObserver);
-        contentResolver.registerContentObserver(C0613ba.m2269a('V'), false, contentObserver);
+        try {
+            contentResolver.registerContentObserver(C0613ba.m2269a('I'), false, contentObserver);
+            contentResolver.registerContentObserver(C0613ba.m2269a('V'), false, contentObserver);
+        } catch (SecurityException unused) {
+        }
     }
 
     @Override // com.alensw.bean.CommonFolder
