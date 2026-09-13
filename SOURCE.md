@@ -102,6 +102,12 @@ Debug logs are written to the app external-files directory. Once **All files acc
 
 **Fix (v10.0.11):** `build.sh` uses build-tools 35+ `zipalign -P 16` and verifies page alignment before publishing `releases/stable.apk`.
 
+### Search toast: “create failed: SecurityException… provider for user 0”
+
+**Cause:** Folder search opens a virtual `LocalFolder("/search")` whose URI is `file:///search`. On Android 8+ (`targetSdk` ≥ 26), `ContentResolver.registerContentObserver` requires a real ContentProvider authority; `file://` URIs have none, so creating the search screen threw and showed the toast.
+
+**Fix (v10.0.12):** `CommonFolder` only registers observers for `content://` URIs with an authority (and catches `SecurityException`). Moments search MediaStore registration is similarly guarded.
+
 ### Grid thumbnails / image sideways after rotating
 
 **Cause (arm64):** The compatibility `libqpicjni156.so` stub always failed `exifOpenFD` / `exifSetDegrees`, so rotate appeared to work in the viewer (in-memory matrix) but never wrote EXIF. Reopening the image and regenerating thumbnails used the old orientation.

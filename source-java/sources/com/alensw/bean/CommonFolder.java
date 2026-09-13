@@ -124,7 +124,16 @@ public class CommonFolder extends CommonFile {
 
     /* renamed from: a */
     public void mo3030a(ContentResolver contentResolver, ContentObserver contentObserver) {
-        contentResolver.registerContentObserver(mo3021i(), false, contentObserver);
+        // Android 8+ requires a real ContentProvider authority for registerContentObserver.
+        // LocalFolder search uses file:///search (null authority) and would throw SecurityException.
+        Uri uri = mo3021i();
+        if (uri == null || !"content".equals(uri.getScheme()) || uri.getAuthority() == null) {
+            return;
+        }
+        try {
+            contentResolver.registerContentObserver(uri, false, contentObserver);
+        } catch (SecurityException unused) {
+        }
     }
 
     /* renamed from: a */

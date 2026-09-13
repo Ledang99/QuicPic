@@ -2,6 +2,12 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.12] — 2026-09-13
+
+### Fixed
+
+- **Search “create failed: SecurityException”** — Opening search registered a content observer on `file:///search`, which Android 8+ rejects (no ContentProvider authority). Observer registration now skips non-`content://` URIs and catches `SecurityException`, so folder and moments search can open again.
+
 ## [10.0.11] — 2026-09-12
 
 ### Fixed

@@ -347,16 +347,46 @@
 .end method
 
 .method public a(Landroid/content/ContentResolver;Landroid/database/ContentObserver;)V
-    .locals 2
+    .locals 3
 
     invoke-virtual {p0}, Lcom/alensw/bean/CommonFolder;->i()Landroid/net/Uri;
 
     move-result-object v0
 
+    if-eqz v0, :cond_0
+
+    const-string v1, "content"
+
+    invoke-virtual {v0}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    invoke-virtual {v0}, Landroid/net/Uri;->getAuthority()Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_0
+
     const/4 v1, 0x0
 
+    :try_start_0
     invoke-virtual {p1, v0, v1, p2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
+    :try_end_0
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
+    goto :goto_0
+
+    :catch_0
+    move-exception v0
+
+    :cond_0
+    :goto_0
     return-void
 .end method
 
