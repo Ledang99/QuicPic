@@ -559,6 +559,11 @@
 
     move-result-object v7
 
+    if-nez v7, :cond_listfiles_ok
+
+    return v3
+
+    :cond_listfiles_ok
     array-length v8, v7
 
     const/4 v9, 0x0

@@ -857,8 +857,13 @@ public class C1212bz extends C1159a {
                 }
                 break;
             case 12:
-                this.f4023l.m2505d((C0623e) message.obj);
+                C0623e c0623e12 = (C0623e) message.obj;
+                int m2505d = this.f4023l.m2505d(c0623e12);
+                // Seeded albums keep the same visible range after scan fills
+                // images, so ImageGridView skips prefetch — load cover here.
                 if (this.f4087H == 2) {
+                    m4002d(c0623e12);
+                    this.f4021j.m4268d(m2505d);
                     this.f4021j.requestLayout();
                     this.f4021j.m4253a();
                 }

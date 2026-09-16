@@ -126,6 +126,8 @@ Debug logs are written to the app external-files directory. Once **All files acc
 
 **Fix (v10.0.14):** Seed album paths from `folder_cache` before scanning; keep the grid visible while background scan discovers new images. Exclude keeps the disk cache (path-scoped invalidation) so reopen stays fast.
 
+**Follow-up (v10.0.16):** Seeded shells had zero images, so the first layout prefetch could not load covers. After scan filled a folder, the visible range was unchanged and cover load was skipped. Msg-12 now calls cover load for the updated album; type-1 refresh always rescans empty albums; `listFiles()` null is guarded.
+
 ### Grid thumbnails / image sideways after rotating
 
 **Cause (arm64):** The compatibility `libqpicjni156.so` stub always failed `exifOpenFD` / `exifSetDegrees`, so rotate appeared to work in the viewer (in-memory matrix) but never wrote EXIF. Reopening the image and regenerating thumbnails used the old orientation.

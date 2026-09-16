@@ -2,6 +2,12 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.16] — 2026-09-16
+
+### Fixed
+
+- **Album covers blank after cold start** — Seeding albums from `folder_cache` showed titles with empty placeholders. After the scan filled each folder, the visible range did not change so cover prefetch never ran. Folder updates now load the first-image cover immediately, empty seeds are always rescanned, and `listFiles()` null is guarded on arm64.
+
 ## [10.0.15] — 2026-09-16
 
 ### Changed

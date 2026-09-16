@@ -3156,9 +3156,19 @@
 
     invoke-virtual {v3, v0}, Lcom/alensw/a/x;->d(Lcom/alensw/a/e;)I
 
-    iget v0, p0, Lcom/alensw/ui/c/bz;->H:I
+    move-result v3
 
-    if-ne v0, v4, :cond_1
+    # Seeded albums keep the same visible range after scan fills images, so
+    # ImageGridView.a() skips prefetch. Load this album's cover explicitly.
+    iget v5, p0, Lcom/alensw/ui/c/bz;->H:I
+
+    if-ne v5, v4, :cond_1
+
+    invoke-virtual {p0, v0}, Lcom/alensw/ui/c/bz;->d(Lcom/alensw/a/e;)V
+
+    iget-object v5, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
+
+    invoke-virtual {v5, v3}, Lcom/alensw/ui/view/ImageGridView;->d(I)Z
 
     iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
 
