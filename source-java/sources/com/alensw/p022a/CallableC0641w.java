@@ -54,7 +54,8 @@ class CallableC0641w implements Callable {
                 this.f2488f.f2477c.obtainMessage(12, 0, 0, this.f2484b).sendToTarget();
             }
             this.f2485c.incrementAndGet();
-        } else if (this.f2484b.m2393m() || (this.f2484b.f2423g != 0 && !this.f2484b.getPath().startsWith(C0623e.f2410b))) {
+        // Also rescan empty albums (folder_cache cold-start seeds) so covers fill.
+        } else if (this.f2484b.m2393m() || this.f2484b.m2390j() == 0 || (this.f2484b.f2423g != 0 && !this.f2484b.getPath().startsWith(C0623e.f2410b))) {
             String path = this.f2484b.getPath();
             c0612b = this.f2488f.f2480f.f2467a.f2456h;
             c0612b.m2614c(path);

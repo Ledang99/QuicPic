@@ -65,6 +65,16 @@
 
     if-nez v0, :cond_0
 
+    # Cold-start folder_cache seeds are empty (j==0). Always rescan them so
+    # covers/images are filled even when mtime looks unchanged (e.g. both 0).
+    iget-object v0, p0, Lcom/alensw/a/w;->b:Lcom/alensw/a/e;
+
+    invoke-virtual {v0}, Lcom/alensw/a/e;->j()I
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
     iget-object v0, p0, Lcom/alensw/a/w;->b:Lcom/alensw/a/e;
 
     iget v0, v0, Lcom/alensw/a/e;->g:I
