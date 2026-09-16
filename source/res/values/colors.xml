@@ -46,9 +46,9 @@
     <color name="material_error">#ffb41e46</color>
     <color name="material_clickable">#2c808080</color>
     <color name="material_warning">#ffff5a47</color>
-    <color name="ic_launcher_background">#ff0b75ff</color>
+    <color name="ic_launcher_background">#ff0f766e</color>
     <color name="ic_launcher_foreground">#ffffffff</color>
-    <color name="ic_launcher_shadow">#ff145bb7</color>
+    <color name="ic_launcher_shadow">#ff0d5f59</color>
     <color name="ic_launcher_mountain_light">#ffa9cdff</color>
     <color name="ic_launcher_mountain_dark">#ff93b4e9</color>
     <color name="ic_launcher_shadow_alt">#ffd9d9d9</color>

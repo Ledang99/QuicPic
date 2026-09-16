@@ -2,6 +2,13 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.15] — 2026-09-16
+
+### Changed
+
+- **App rename** — Launcher label is now **SimpView** (was “Gallery”) in all locales.
+- **New launcher icon** — Teal viewfinder icon replaces the blue mountain gallery icon so it is easy to find in the app drawer/search.
+
 ## [10.0.14] — 2026-09-16
 
 ### Fixed

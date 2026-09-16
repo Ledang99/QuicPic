@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Gallery</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">This mod is based in version 4.5.2</string>
     <string name="telegram_channel">Telegram Channel</string>
     <string name="app_translator">Translator</string>
@@ -243,7 +243,7 @@ You can also %s to let others connect your hotspot."</string>
     <string name="translucid_img_desc">Only in the translucent theme. This also change your wallpaper on home screen and lock screen</string>
     <string name="video_player">Video Player</string>
     <string name="system_theme">Follow system</string>
-    <string name="app_name_alt">QuickPic</string>
+    <string name="app_name_alt">SimpView</string>
     <string name="clear_cache_exit">Clear cache on exit</string>
     <string name="clear_cache_type">Choose cache type</string>
     <string name="clear_preview">Previews</string>
@@ -274,7 +274,7 @@ You can also %s to let others connect your hotspot."</string>
     <string name="auth_category">Authentication</string>
     <string name="clear_category">Cleaning</string>
     <string name="anim_category">Animation</string>
-    <string name="app_name_full">QuickPic Gallery</string>
+    <string name="app_name_full">SimpView</string>
     <string name="version_number">Version: 10.0 (Moon)</string>
     <string name="build_type">ALPHA 2</string>
     <string name="telegram_url">https://t.me/WSTxda</string>

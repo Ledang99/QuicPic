@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Галерея</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Этот мод основан на версии 4.5.2</string>
     <string name="telegram_channel">Канал в Telegram</string>
     <string name="app_translator">Перевод</string>
@@ -233,7 +233,7 @@
     <string name="translucid_img_desc">Только для прозрачной темы. Это также изменит ваши обои на домашнем экране и экране блокировки</string>
     <string name="video_player">Видеоплеер</string>
     <string name="system_theme">По умолчанию</string>
-    <string name="app_name_alt">QuickPic</string>
+    <string name="app_name_alt">SimpView</string>
     <string name="clear_cache_exit">Очистить кэш при выходе</string>
     <string name="clear_cache_type">Выберите тип кэша</string>
     <string name="clear_preview">Кэш просмотра</string>

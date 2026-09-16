@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">畫廊</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">此 MOD 基於版本 4.5.2</string>
     <string name="telegram_channel">Telegram 頻道</string>
     <string name="app_translator">翻譯</string>
@@ -246,7 +246,7 @@
     <string name="translucid_img_desc">僅在半透明的主題中。這也會更改主螢幕和鎖定螢幕上的桌布</string>
     <string name="video_player">影音播放器</string>
     <string name="system_theme">根據系統</string>
-    <string name="app_name_alt">快圖瀏覽</string>
+    <string name="app_name_alt">SimpView</string>
     <string name="clear_cache_exit">退出時清除快取</string>
     <string name="clear_cache_type">選擇快取類型</string>
     <string name="clear_preview">預覽圖</string>
@@ -274,7 +274,7 @@
     <string name="auth_category">驗證</string>
     <string name="clear_category">清除</string>
     <string name="anim_category">動畫</string>
-    <string name="app_name_full">畫廊 (快圖瀏覽)</string>
+    <string name="app_name_full">SimpView</string>
     <string name="update_channel">更新頻道</string>
     <string name="update_check_now">檢查更新</string>
     <string name="update_close">關閉</string>

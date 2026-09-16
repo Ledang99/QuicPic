@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ギャラリー</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">このアプリは QuickPic のバージョン 4.5.2 をもとに改良しています</string>
     <string name="telegram_channel">Telegram チャンネル</string>
     <string name="app_translator">翻訳</string>
