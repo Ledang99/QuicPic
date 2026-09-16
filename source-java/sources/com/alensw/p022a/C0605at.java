@@ -371,7 +371,8 @@ class C0605at implements InterfaceCallableC0740k {
                 }
                 c0715k.f2708a = c0705a.outWidth;
                 c0715k.f2709b = c0705a.outHeight;
-                c0715k.f2711d = 0;
+                // Preserve EXIF orientation already applied via ExifCompat.
+                c0715k.f2711d = c0705a.f2665c;
                 c0715k.f2713i = "image/jpeg".equals(c0705a.outMimeType) || "image/png".equals(c0705a.outMimeType);
                 c0715k.f2719o = c0705a.outMimeType;
                 m2244a(true);

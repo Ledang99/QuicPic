@@ -2,6 +2,13 @@
 
 All notable changes to this fork ([Ledang99/QuicPic](https://github.com/Ledang99/QuicPic)) are documented here.
 
+## [10.0.14] — 2026-09-16
+
+### Fixed
+
+- **Full image orientation after rotate** — Viewer metadata still used stubbed JNI `exifGetInfo` on arm64, so the grid looked correct but opening the JPEG showed the old orientation. Full-image load now reads orientation (and size) through `ExifCompat` / ExifInterface, and no longer zeroes orientation on the BitmapFactory fallback path.
+- **Cold start album reload lag** — Empty album list waited on a full scan. On open, albums are seeded immediately from on-disk `folder_cache`, then new media is scanned in the background without blanking the grid when albums are already visible. Exclude no longer wipes the whole folder cache.
+
 ## [10.0.13] — 2026-09-13
 
 ### Fixed

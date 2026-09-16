@@ -593,6 +593,20 @@
 
     iput-object v0, p1, Lcom/alensw/b/h/k;->o:Ljava/lang/String;
 
+    # On arm64, JNI exifGetInfo is stubbed; override from ExifCompat.
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
+    invoke-static {v0}, Lcom/alensw/b/h/ExifCompat;->b(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    iget v0, p0, Lcom/alensw/b/h/c;->c:I
+
+    invoke-static {v0, p1}, Lcom/alensw/b/h/ExifCompat;->a(ILcom/alensw/b/h/k;)V
+
+    :cond_2
     return-void
 
     :cond_0

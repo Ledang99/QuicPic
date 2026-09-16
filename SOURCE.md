@@ -114,6 +114,18 @@ Debug logs are written to the app external-files directory. Once **All files acc
 
 **Fix (v10.0.13):** After exclude, clear folder-scan caches and reload the album grid (same approach as changing excluded folders in settings).
 
+### Full image sideways after rotate (thumbnails OK)
+
+**Cause:** Thumbnails read orientation via ExifCompat, but the full-image loader filled metadata with stubbed JNI `exifGetInfo` (always 0 on arm64) and then forced orientation to 0 when falling back to BitmapFactory bounds.
+
+**Fix (v10.0.14):** Viewer metadata fill uses ExifCompat; bounds fallback preserves the EXIF orientation already read.
+
+### Cold start waits on full album rescan
+
+**Cause:** Cold start began with an empty in-memory album list and only filled it as the type-3 scan posted results, often with a loading empty state.
+
+**Fix (v10.0.14):** Seed album paths from `folder_cache` before scanning; keep the grid visible while background scan discovers new images. Exclude keeps the disk cache (path-scoped invalidation) so reopen stays fast.
+
 ### Grid thumbnails / image sideways after rotating
 
 **Cause (arm64):** The compatibility `libqpicjni156.so` stub always failed `exifOpenFD` / `exifSetDegrees`, so rotate appeared to work in the viewer (in-memory matrix) but never wrote EXIF. Reopening the image and regenerating thumbnails used the old orientation.

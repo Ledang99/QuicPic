@@ -36,7 +36,7 @@ Fallback: `releases/official-alpha-resigned.apk` is the upstream alpha APK re-si
 
 | Path | Description |
 |------|-------------|
-| [`source/`](source/) | Smali + resources (v10.0.13) — edit here, then `./build.sh` |
+| [`source/`](source/) | Smali + resources (v10.0.14) — edit here, then `./build.sh` |
 | [`source-java/`](source-java/) | Decompiled Java — browse in IDE (reference) |
 | [`SOURCE.md`](SOURCE.md) | Full source guide, compatibility, limitations |
 | [`CHANGELOG.md`](CHANGELOG.md) | Fork changes and bug fixes |

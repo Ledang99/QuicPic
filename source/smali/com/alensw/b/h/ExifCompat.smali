@@ -411,6 +411,75 @@
     goto :goto_0
 .end method
 
+# Fill viewer metadata (width/height/orientation) from ExifInterface when
+# the arm64 JNI stub cannot. Used by C0707c.a(k,J) / full-image load.
+.method public static a(ILcom/alensw/b/h/k;)V
+    .locals 3
+
+    invoke-static {p0}, Lcom/alensw/b/h/ExifCompat;->e(I)Landroid/media/ExifInterface;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    if-nez p1, :cond_1
+
+    :cond_0
+    :goto_0
+    return-void
+
+    :cond_1
+    :try_start_0
+    const-string v1, "ImageWidth"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/media/ExifInterface;->getAttributeInt(Ljava/lang/String;I)I
+
+    move-result v1
+
+    if-lez v1, :cond_2
+
+    iput v1, p1, Lcom/alensw/b/h/k;->a:I
+
+    :cond_2
+    const-string v1, "ImageLength"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/media/ExifInterface;->getAttributeInt(Ljava/lang/String;I)I
+
+    move-result v1
+
+    if-lez v1, :cond_3
+
+    iput v1, p1, Lcom/alensw/b/h/k;->b:I
+
+    :cond_3
+    invoke-static {p0}, Lcom/alensw/b/h/ExifCompat;->c(I)I
+
+    move-result v0
+
+    iput v0, p1, Lcom/alensw/b/h/k;->d:I
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p1, Lcom/alensw/b/h/k;->i:Z
+
+    const-string v0, "image/jpeg"
+
+    iput-object v0, p1, Lcom/alensw/b/h/k;->o:Ljava/lang/String;
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v0
+
+    goto :goto_0
+.end method
+
 .method private static e(I)Landroid/media/ExifInterface;
     .locals 3
 

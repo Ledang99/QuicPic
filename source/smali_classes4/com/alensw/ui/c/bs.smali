@@ -45,47 +45,28 @@
 
     invoke-virtual {v1, v0}, Lcom/alensw/a/x;->e(Lcom/alensw/a/e;)V
 
-    # Same refresh as PathListActivity / gallery exclude: dirty flag + cache clear
-    # so the album grid reloads without the excluded folder when we pop back.
+    # Cancel scan + mark dirty; keep folder_cache for instant reopen.
+    sget-object v1, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    invoke-virtual {v1}, Lcom/alensw/a/s;->c()V
+
+    # Path-scoped cache invalidation (not full wipe).
+    sget-object v1, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    const/4 v2, 0x4
+
+    invoke-virtual {v0}, Lcom/alensw/a/e;->getPath()Ljava/lang/String;
+
+    move-result-object v0
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v2, v0, v3}, Lcom/alensw/a/s;->a(ILjava/lang/Object;Landroid/os/Handler;)V
+
     const/4 v0, 0x1
 
     invoke-static {v0}, Lcom/alensw/PicFolder/QuickApp;->a(Z)Z
 
-    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
-
-    const/4 v1, 0x4
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0, v1, v2, v2}, Lcom/alensw/a/s;->a(ILjava/lang/Object;Landroid/os/Handler;)V
-
-    :try_start_0
-    iget-object v0, p0, Lcom/alensw/ui/c/bs;->a:Lcom/alensw/ui/c/bf;
-
-    iget-object v0, v0, Lcom/alensw/ui/c/bf;->C:Lcom/alensw/ui/c/cx;
-
-    invoke-virtual {v0}, Lcom/alensw/ui/c/cx;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v0
-
-    const/16 v1, 0x49
-
-    invoke-static {v1}, Lcom/alensw/a/ba;->a(C)Landroid/net/Uri;
-
-    move-result-object v1
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/ContentResolver;->notifyChange(Landroid/net/Uri;Landroid/database/ContentObserver;)V
-    :try_end_0
-    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
-
-    goto :goto_0
-
-    :catch_0
-    move-exception v0
-
-    :goto_0
     iget-object v0, p0, Lcom/alensw/ui/c/bs;->a:Lcom/alensw/ui/c/bf;
 
     iget-object v0, v0, Lcom/alensw/ui/c/bf;->C:Lcom/alensw/ui/c/cx;
