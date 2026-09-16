@@ -170,6 +170,7 @@ public class C0707c extends JniUtils {
         c0715k.f2717m = m2799c(270, false);
         c0715k.f2718n = m2807j();
         c0715k.f2719o = "image/jpeg";
+        // Smali: if ExifCompat handle, override width/height/orientation via ExifInterface.
     }
 
     /* renamed from: a */

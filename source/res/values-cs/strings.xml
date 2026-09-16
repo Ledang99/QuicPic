@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galerie</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Tento mod je založen na verzi 4.5.2</string>
     <string name="telegram_channel">Kanál v Telegram</string>
     <string name="app_translator">Překladatelé</string>

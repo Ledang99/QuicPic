@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">गैलरी</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">यह संसोधन(mod) वर्सन 4.5.2 पर आधारित है।</string>
     <string name="telegram_channel">टेलीग्राम चैनल</string>
     <string name="app_translator">अनुवादक</string>

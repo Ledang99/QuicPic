@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">گالری</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">این مد بر پایه نسخه 4.5.2 ساخته شده است</string>
     <string name="telegram_channel">کانال تلگرام</string>
     <string name="app_translator">مترجم</string>

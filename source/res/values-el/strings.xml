@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Συλλογή</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Αυτό το mod βασίζεται στην έκδοση 4.5.2</string>
     <string name="telegram_channel">Κανάλι Telegram</string>
     <string name="app_translator">Μεταφραστής</string>

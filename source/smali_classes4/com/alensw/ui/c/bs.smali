@@ -45,6 +45,28 @@
 
     invoke-virtual {v1, v0}, Lcom/alensw/a/x;->e(Lcom/alensw/a/e;)V
 
+    # Cancel scan + mark dirty; keep folder_cache for instant reopen.
+    sget-object v1, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    invoke-virtual {v1}, Lcom/alensw/a/s;->c()V
+
+    # Path-scoped cache invalidation (not full wipe).
+    sget-object v1, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    const/4 v2, 0x4
+
+    invoke-virtual {v0}, Lcom/alensw/a/e;->getPath()Ljava/lang/String;
+
+    move-result-object v0
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v2, v0, v3}, Lcom/alensw/a/s;->a(ILjava/lang/Object;Landroid/os/Handler;)V
+
+    const/4 v0, 0x1
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/QuickApp;->a(Z)Z
+
     iget-object v0, p0, Lcom/alensw/ui/c/bs;->a:Lcom/alensw/ui/c/bf;
 
     iget-object v0, v0, Lcom/alensw/ui/c/bf;->C:Lcom/alensw/ui/c/cx;

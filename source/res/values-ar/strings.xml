@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">المعرض</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">هذا التعديل معتمد على الاصدار 4.5.2</string>
     <string name="telegram_channel">قناة التليغرام</string>
     <string name="app_translator">المترجم</string>

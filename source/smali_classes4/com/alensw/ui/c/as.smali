@@ -4096,7 +4096,7 @@
 .end method
 
 .method protected b(I)V
-    .locals 5
+    .locals 6
 
     iget-object v0, p0, Lcom/alensw/ui/c/as;->l:Lcom/alensw/bean/CommonFile;
 
@@ -4133,6 +4133,12 @@
     const/4 v2, -0x1
 
     if-eq v1, v2, :cond_0
+
+    sget-object v2, Lcom/alensw/PicFolder/QuickApp;->w:Lcom/alensw/b/a/a;
+
+    iget-object v3, p0, Lcom/alensw/ui/c/as;->l:Lcom/alensw/bean/CommonFile;
+
+    invoke-virtual {v2, v3}, Lcom/alensw/b/a/a;->c(Ljava/lang/Object;)Lcom/alensw/b/a/c;
 
     sget-object v2, Lcom/alensw/PicFolder/QuickApp;->u:Lcom/alensw/a/ao;
 

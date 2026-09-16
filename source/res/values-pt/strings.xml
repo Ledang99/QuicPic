@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galeria</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Este mod é baseado na versão 4.5.2</string>
     <string name="telegram_channel">Canal no Telegram</string>
     <string name="app_translator">Tradutor</string>

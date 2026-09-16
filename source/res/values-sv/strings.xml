@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galleri</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Denna mod är baserad på version 4.5.2</string>
     <string name="telegram_channel">Telegram Channel</string>
     <string name="app_translator">Översättare</string>
@@ -231,7 +231,7 @@
     <string name="translucid_img_desc">Endast i det genomskinliga temat. Detta ändrar också din skrivbordsbild på hemskärmen och låsskärmen</string>
     <string name="video_player">Videospelare</string>
     <string name="system_theme">Följ systemet</string>
-    <string name="app_name_alt">QuickPic</string>
+    <string name="app_name_alt">SimpView</string>
     <string name="clear_cache_exit">Rensa cache vid avslut</string>
     <string name="clear_cache_type">Rensa cachetyp</string>
     <string name="clear_preview">Förhandsgranskningar</string>

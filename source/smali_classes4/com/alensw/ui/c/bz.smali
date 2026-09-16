@@ -3286,6 +3286,27 @@
     move v0, v1
 
     :goto_1
+    # If albums already seeded/visible, skip empty loading state so open feels instant.
+    iget-object v4, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
+
+    invoke-virtual {v4}, Lcom/alensw/a/x;->f()I
+
+    move-result v4
+
+    if-lez v4, :cond_msg10_empty
+
+    if-nez v0, :cond_0
+
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
+
+    invoke-virtual {v0, v3}, Lcom/alensw/ui/view/ImageGridView;->setEmptyText(Ljava/lang/String;)V
+
+    # Soft progress only; keep thumbnails loading (do not set p=true).
+    invoke-virtual {p0, v1}, Lcom/alensw/ui/c/bz;->c(Z)V
+
+    goto/16 :goto_0
+
+    :cond_msg10_empty
     iget-object v4, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
 
     if-eqz v0, :cond_4
@@ -3895,6 +3916,36 @@
 .method public u()V
     .locals 4
 
+    # Cold start: seed albums from folder_cache before background scan.
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
+
+    invoke-virtual {v0}, Lcom/alensw/a/x;->f()I
+
+    move-result v0
+
+    if-nez v0, :cond_seed_done
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    iget-object v1, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
+
+    invoke-virtual {v0, v1}, Lcom/alensw/a/s;->a(Lcom/alensw/a/x;)I
+
+    move-result v0
+
+    if-lez v0, :cond_seed_done
+
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/alensw/ui/view/ImageGridView;->setEmptyText(Ljava/lang/String;)V
+
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
+
+    invoke-virtual {v0}, Lcom/alensw/ui/view/ImageGridView;->requestLayout()V
+
+    :cond_seed_done
     iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
 
     sget v1, Lcom/alensw/ui/c/bz;->h:F
@@ -4031,6 +4082,40 @@
     invoke-virtual {v0}, Lcom/alensw/a/x;->i()V
 
     :cond_0
+    # Seed before type-3 if still empty (cold start path via type-1 → w).
+    iget-boolean v0, p0, Lcom/alensw/ui/c/bz;->o:Z
+
+    if-nez v0, :cond_seed_skip
+
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
+
+    invoke-virtual {v0}, Lcom/alensw/a/x;->f()I
+
+    move-result v0
+
+    if-nez v0, :cond_seed_skip
+
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    iget-object v1, p0, Lcom/alensw/ui/c/bz;->l:Lcom/alensw/a/x;
+
+    invoke-virtual {v0, v1}, Lcom/alensw/a/s;->a(Lcom/alensw/a/x;)I
+
+    move-result v0
+
+    if-lez v0, :cond_seed_skip
+
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/alensw/ui/view/ImageGridView;->setEmptyText(Ljava/lang/String;)V
+
+    iget-object v0, p0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;
+
+    invoke-virtual {v0}, Lcom/alensw/ui/view/ImageGridView;->requestLayout()V
+
+    :cond_seed_skip
     iget-boolean v0, p0, Lcom/alensw/ui/c/bz;->o:Z
 
     if-eqz v0, :cond_1

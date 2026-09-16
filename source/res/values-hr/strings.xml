@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galerija</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Ova modifikacija je temeljena na verziji 4.5.2</string>
     <string name="telegram_channel">Telegram Kanal</string>
     <string name="app_translator">Prevoditelj</string>

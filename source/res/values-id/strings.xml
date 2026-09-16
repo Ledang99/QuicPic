@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galeri</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Mod ini menggunakan base versi 4.5.2</string>
     <string name="telegram_channel">Kanal Telegram</string>
     <string name="app_translator">Penerjemah</string>

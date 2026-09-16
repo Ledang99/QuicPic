@@ -1396,7 +1396,10 @@
 
     iput v3, v0, Lcom/alensw/b/h/k;->b:I
 
-    iput v1, v0, Lcom/alensw/b/h/k;->d:I
+    # Keep EXIF orientation already read via ExifCompat; do not force 0.
+    iget v3, v6, Lcom/alensw/b/h/a;->c:I
+
+    iput v3, v0, Lcom/alensw/b/h/k;->d:I
 
     const-string v3, "image/jpeg"
 

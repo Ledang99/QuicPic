@@ -44,6 +44,22 @@
     invoke-virtual {v0, v1}, Lcom/alensw/ui/c/cx;->d(Z)V
 
     :cond_0
+    # Cancel in-flight scan so it cannot re-add the excluded folder,
+    # but keep folder_cache so cold start stays instant.
+    sget-object v0, Lcom/alensw/PicFolder/QuickApp;->q:Lcom/alensw/a/s;
+
+    invoke-virtual {v0}, Lcom/alensw/a/s;->c()V
+
+    const/4 v0, 0x1
+
+    invoke-static {v0}, Lcom/alensw/PicFolder/QuickApp;->a(Z)Z
+
+    iget-object v0, p0, Lcom/alensw/ui/c/cg;->a:Lcom/alensw/ui/c/bz;
+
+    iget-object v0, v0, Lcom/alensw/ui/c/bz;->A:Ljava/util/LinkedHashSet;
+
+    invoke-virtual {v0}, Ljava/util/LinkedHashSet;->clear()V
+
     iget-object v0, p0, Lcom/alensw/ui/c/cg;->a:Lcom/alensw/ui/c/bz;
 
     iget-object v0, v0, Lcom/alensw/ui/c/bz;->j:Lcom/alensw/ui/view/ImageGridView;

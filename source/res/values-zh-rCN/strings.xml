@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">图库</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">该MOD基于版本4.5.2</string>
     <string name="telegram_channel">Telegram 频道</string>
     <string name="app_translator">翻译</string>

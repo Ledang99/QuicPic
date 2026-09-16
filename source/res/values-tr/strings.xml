@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galeri</string>
+    <string name="app_name">SimpView</string>
     <string name="mod_base">Bu mod 4.5.2 sürümüne dayanmaktadır.</string>
     <string name="telegram_channel">Kanal girişi Telegram</string>
     <string name="app_translator">Çeviren</string>
